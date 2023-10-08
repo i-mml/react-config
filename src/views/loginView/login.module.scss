@@ -1,16 +1,15 @@
 .container {
   display: flex;
-  justify-content: space-between;
   padding: 87px 48px;
 }
 
 //informationBox
 .informationBoxContainer {
-  width: 552;
+  width: 552px;
   height: auto;
 
   .logoBox {
-    margin: 40px 67px 0 0;
+    margin: 40px 67px 0 auto;
     display: flex;
     justify-content: right;
 
@@ -28,16 +27,11 @@
   }
 
   .form {
-    width: 21.1%;
-    min-width: 300px;
-    background-color: #fff;
-    padding: 47.8px 38px 50px 37px;
-    border-radius: 15px;
-    box-shadow: 0 12px 33px 0 rgba(62, 73, 84, 0.08);
-    background-color: #fff;
-    @media (max-width: 1600px) {
-      width: 26%;
-    }
+    width: 320px;
+    height: 225px;
+    display: flex;
+    justify-content: center;
+    margin: 333px 116px 292px;
   }
 
   .field,
@@ -45,10 +39,9 @@
   .password {
     display: block;
     width: 100%;
-    height: 42px;
-    margin-top: 2px;
+    height: auto;
     padding: 0 16px;
-    border-radius: 10px;
+    border-radius: 12px;
     border: solid 1px #d8dae2;
     background-color: #fff;
     color: gray;

@@ -4,7 +4,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const CarouselPage = () => {
   return (
-    <div style={{ width: "740px", height: "auto", marginRight: "32px" }}>
+    <div
+      style={{
+        width: "740px",
+        height: "auto",
+        marginRight: "32px",
+      }}
+    >
       <Carousel>
         <Carousel.Item interval={500}>
           <img src="/images/slide1.png" alt="slide1" />
