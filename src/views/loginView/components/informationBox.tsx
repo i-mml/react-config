@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Field, Form, Formik } from "formik";
 import s from "../login.module.scss";
 import * as Yup from "yup";
@@ -9,6 +9,17 @@ const loginSchema = Yup.object().shape({
 });
 
 const InformationBox = () => {
+  const [password, setPassword] = useState("");
+  const [type, setType] = useState("password");
+
+  const handleToggle = () => {
+    if (type === "password") {
+      setType("text");
+    } else {
+      setType("password");
+    }
+  };
+
   return (
     <div className={s.informationBoxContainer}>
       <div className={s.logoBox}>
@@ -51,27 +62,34 @@ const InformationBox = () => {
 
                 <div className={s.passwordField}>
                   <Field
+                    id="password"
                     name="password"
-                    type="password"
+                    type={type}
+                    value={password}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setPassword(e.target.value)
+                    }
                     placeholder="رمز عبور"
                     className={s.password}
                   />
                   <img
                     src="/Images/Icons/lock.svg"
-                    alt="user-icon"
+                    alt="lock-icon"
                     className={s.icon}
                   />
 
                   {errors.password && touched.password ? (
                     <div className={s.error}>{errors.password}</div>
                   ) : null}
-                </div>
 
-                <img
-                  src="/Images/Icons/eye.svg"
-                  alt="user-icon"
-                  className={s.eye}
-                />
+                  <img
+                    id="eye"
+                    src="/Images/Icons/eye.svg"
+                    alt="eye-icon"
+                    className={s.eye}
+                    onClick={handleToggle}
+                  />
+                </div>
               </div>
 
               <button type="submit" className={s.button}>
