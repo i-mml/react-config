@@ -1,8 +1,10 @@
 .container {
   width: 100%;
   display: flex;
-  justify-content: center;
   padding: 87px 48px;
+  @media (max-width: 600px) {
+    padding: 0;
+  }
   @media (max-width: 900px) {
     flex-direction: column;
   }
@@ -12,7 +14,6 @@
 
 .carouselContainer {
   width: 760px;
-  height: 850px;
   margin-right: 32px;
   @media (max-width: 600px) {
     display: none;
@@ -27,8 +28,7 @@
 
 //informationBox
 .informationBoxContainer {
-  width: 252px;
-  height: 850px;
+  width: auto;
   @media (max-width: 900px) {
     order: 1;
     width: 100%;
@@ -39,6 +39,9 @@
     margin: 40px 67px 0 auto;
     display: flex;
     justify-content: right;
+    @media (max-width: 600px) {
+      margin: 22px 20px 96px 0;
+    }
     .logoImg {
       align-items: right;
     }
@@ -60,9 +63,15 @@
     align-items: center;
     gap: 16px;
     margin: 300px 116px;
+
+    @media (max-width: 600px) {
+      margin: auto !important;
+    }
+
     @media (max-width: 900px) {
       margin: 16px auto;
     }
+
     @media (max-width: 1400px) {
       margin: 300px 0 0 16px;
     }
@@ -77,7 +86,6 @@
 
     .loginInputBox {
       width: 320px;
-      height: auto;
       border-radius: 12px;
       background: var(--color-gray-background, #f1f2f6);
       box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.07);
@@ -94,7 +102,6 @@
       .userName,
       .password {
         width: 245px;
-        height: auto;
         border: none;
         background: var(--color-gray-background, #f1f2f6);
         margin-bottom: 16px;
