@@ -1,16 +1,11 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
+import s from "../login.module.scss";
 
 const CarouselPage = () => {
   return (
-    <div
-      style={{
-        width: "740px",
-        height: "auto",
-        marginRight: "32px",
-      }}
-    >
+    <div className={s.carouselContainer}>
       <Carousel>
         <Carousel.Item interval={500}>
           <img src="/images/slide1.png" alt="slide1" />

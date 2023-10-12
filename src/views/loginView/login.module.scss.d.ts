@@ -1,5 +1,6 @@
 export declare const logoBox,
   form,
+  carouselContainer,
   informationBoxContainer,
   container,
   password,

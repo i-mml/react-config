@@ -1,19 +1,44 @@
 .container {
+  width: 100%;
   display: flex;
   justify-content: center;
   padding: 87px 48px;
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+}
+
+//carousel
+
+.carouselContainer {
+  width: 760px;
+  height: 850px;
+  margin-right: 32px;
+  @media (max-width: 600px) {
+    display: none;
+  }
+  @media (max-width: 900px) {
+    order: 2;
+  }
+  @media (max-width: 1400px) {
+    margin-right: 8px;
+  }
 }
 
 //informationBox
 .informationBoxContainer {
-  width: 552px;
-  height: auto;
+  width: 252px;
+  height: 850px;
+  @media (max-width: 900px) {
+    order: 1;
+    width: 100%;
+    margin-bottom: 35px;
+  }
 
   .logoBox {
     margin: 40px 67px 0 auto;
     display: flex;
     justify-content: right;
-
     .logoImg {
       align-items: right;
     }
@@ -35,6 +60,12 @@
     align-items: center;
     gap: 16px;
     margin: 300px 116px;
+    @media (max-width: 900px) {
+      margin: 16px auto;
+    }
+    @media (max-width: 1400px) {
+      margin: 300px 0 0 16px;
+    }
 
     .welcome {
       color: var(--colors-neutral-700, #111);
