@@ -43,12 +43,22 @@ const UserInformationTab = () => {
               {({ field }: any) => (
                 <div className={s.inputBox}>
                   <div className={s.label}>نقش</div>
-                  <input
+                  {/* <input
                     type="text"
                     {...field}
                     placeholder="مدیر"
                     className={s.input}
-                  />
+                  /> */}
+                  <select
+                    className={s.select}
+                    {...field}
+                    defaultValue="1"
+                    defaultChecked="1"
+                  >
+                    <option value={1}>مدیر</option>
+                    <option value={2}>کارمند</option>
+                    <option value={3}>ادمین</option>
+                  </select>
                 </div>
               )}
             </Field>

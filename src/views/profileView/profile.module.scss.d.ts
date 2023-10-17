@@ -22,4 +22,5 @@ export declare const container,
   cancelBtn,
   rules,
   linksBox,
-  infoIcon: string;
+  infoIcon,
+  select: string;
