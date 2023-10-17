@@ -8,7 +8,7 @@ const ProfileView = () => {
 
   const tabsList = [
     { id: 1, faTitle: "اطلاعات حساب کاربری", title: "user_information" },
-    { id: 3, faTitle: "رمز عبور", title: "password" },
+    { id: 3, faTitle: "تغییر رمز عبور", title: "password" },
   ];
 
   const contentGenerator = {
