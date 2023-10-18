@@ -26,7 +26,7 @@ const SideBarView = () => {
               // className={`${s.sidebarItem} ${
               //   router.path === item.link && s.active
               // }`}
-              className={s.active}
+              className={s.sidebarItem}
             >
               <div className={s.iconBox}>
                 <img src={item?.icon} alt="sideBar icon" className={s.icon} />
