@@ -1,7 +1,7 @@
 * {
   background: var(--color-gray-background, #f1f2f6);
 }
-//login
+//profile
 .container {
   width: 94%;
   margin: 88px 32px 97px;
@@ -40,6 +40,9 @@
     padding: 37px 0 12px;
     font-size: 16px;
     font-weight: 500;
+    @media (max-width: 600px) {
+      margin-right: 16px;
+    }
   }
 
   .profileActiveTab {
@@ -49,6 +52,9 @@
     padding: 37px 0 12px;
     background-color: white;
     font-weight: 500;
+    @media (max-width: 600px) {
+      margin-right: 22px;
+    }
   }
 
   .content {
@@ -210,4 +216,67 @@
 
 .passwordContainer {
   background-color: white;
+  .form {
+    background-color: white;
+    margin: 32px 24px;
+
+    .formBody {
+      background-color: white;
+      .inputBox {
+        background-color: white;
+        width: 536px;
+        @media (max-width: 600px) {
+          width: 100%;
+        }
+        .label {
+          background-color: white;
+          color: var(--colors-neutral-500, #585858);
+          font-size: 14px;
+          font-weight: 500;
+          margin-bottom: 8px;
+        }
+
+        .input {
+          background-color: white;
+          width: 100%;
+          height: 44px;
+          padding: 10px 14px;
+          margin-bottom: 32px;
+          outline: none;
+          border-radius: 8px;
+          background: #f1f2f6;
+          box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+          border: none;
+        }
+      }
+
+      .btnBox {
+        display: flex;
+        background-color: white;
+        margin: 58px 24px auto auto;
+        @media (max-width: 600px) {
+          margin: 56px 16px auto;
+        }
+        .saveBtn {
+          width: 132px;
+          height: 48px;
+          border-radius: 10px;
+          background: #007eff;
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1) inset,
+            0px -4px 4px 0px rgba(0, 0, 0, 0.1) inset;
+          border: none;
+          color: white;
+          margin-left: 16px;
+        }
+        .cancelBtn {
+          border-radius: 10px;
+          background: var(--colors-primary-primary-200, #e5f2ff);
+          width: 132px;
+          height: 48px;
+          border: none;
+          color: #007eff;
+        }
+      }
+    }
+  }
 }
