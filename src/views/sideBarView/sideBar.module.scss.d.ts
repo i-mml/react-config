@@ -1,1 +1,10 @@
-export declare const container: string;
+export declare const container,
+  title,
+  icon,
+  active,
+  sidebarItem,
+  logoImg,
+  logoText,
+  logoBox,
+  itemBox,
+  iconBox: string;

@@ -1,8 +1,87 @@
 * {
-  background: var(--color-gray-background, #f1f2f6);
+  background: white;
 }
-//profile
 .container {
   width: 224px;
   background: #e8f3fe;
+  padding: 22px 5px 0 0;
+  min-height: 100vh;
+  border-radius: 20px 0px 0px 20px;
+  box-shadow: 0px 4px 4px 0px rgba(132, 132, 132, 0.1),
+    -2px 4px 4px 1px rgba(172, 198, 202, 0.28);
+
+  .logoBox {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    justify-content: right;
+    background: #e8f3fe;
+
+    .logoImg {
+      align-items: right;
+      background: #e8f3fe;
+      width: 32px;
+      height: 32px;
+    }
+
+    .logoText {
+      background: #e8f3fe;
+      margin-right: 8px;
+      color: var(--colors-neutral-700, #111);
+      text-align: right;
+      font-size: 14px;
+      font-weight: 700;
+    }
+  }
+
+  .itemBox {
+    margin-top: 196px;
+    background: #e8f3fe;
+
+    .sidebarItem {
+      display: flex;
+      background: #e8f3fe;
+      margin-top: 29px;
+
+      .icon {
+        background: #e8f3fe;
+        margin-right: 18px;
+      }
+
+      .title {
+        background: #e8f3fe;
+        margin-right: 12px;
+        color: #585858;
+      }
+    }
+
+    .active {
+      display: flex;
+      height: 49px;
+      border-radius: 0px 100px 100px 0px;
+      background: #007eff;
+      // padding: 7px 8px 7px auto;
+
+      .iconBox {
+        background: #e8f3fe;
+        margin-right: 18px;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        margin: 7px;
+        .icon {
+          background: #e8f3fe;
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      .title {
+        background: #007eff;
+        margin-right: 12px;
+        color: white;
+      }
+    }
+  }
 }
