@@ -2,12 +2,12 @@ import React from "react";
 import LoginPage from "../pages/login";
 import { Routes, Route } from "react-router-dom";
 import PrivateRoute from "./privateRouter";
-
 import NotFound from "../pages/notFound";
 import AbountUsPage from "../pages/about-us";
 import HomePage from "../pages/home";
 import ProfilePage from "../pages/profile";
 import SideBarPage from "../pages/side-bar";
+import MobileSideBarPage from "../pages/mobile-sidebar";
 
 const RoutingConfig = () => {
   return (
@@ -40,6 +40,15 @@ const RoutingConfig = () => {
         element={
           <PrivateRoute>
             <SideBarPage />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/mobile-sidebar"
+        element={
+          <PrivateRoute>
+            <MobileSideBarPage />
           </PrivateRoute>
         }
       />
