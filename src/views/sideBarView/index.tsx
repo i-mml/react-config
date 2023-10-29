@@ -21,21 +21,36 @@ const SideBarView = () => {
             icon: string;
             subMenue: any[];
           }) => (
-            <div
-              // onClick={() => setcurrent(item.title)}
-              // className={`${s.sidebarItem} ${
-              //   router.path === item.link && s.active
-              // }`}
-              className={s.sidebarItem}
-            >
-              <div className={s.iconBox}>
-                <img src={item?.icon} alt="sideBar icon" className={s.icon} />
+            <a href={item?.link} className={s.sidebarLink}>
+              <div
+                // onClick={() => setcurrent(item.title)}
+                // className={`${s.sidebarItem} ${
+                //   router.path === item.link && s.active
+                // }`}
+                className={s.sidebarItem}
+              >
+                <div className={s.iconBox}>
+                  <img src={item?.icon} alt="sideBar icon" className={s.icon} />
+                </div>
+                {/* <div className={s.icon}>{item?.icon}</div> */}
+                <div className={s.title}>{item.title}</div>
               </div>
-              {/* <div className={s.icon}>{item?.icon}</div> */}
-              <div className={s.title}>{item.title}</div>
-            </div>
+            </a>
           )
         )}
+      </div>
+      <div className={s.profileBox}>
+        <img src="/Images/Avatar.png" alt="profile" className={s.profileImg} />
+        <div className={s.infoProfileBox}>
+          <div className={s.profileName}>سارا احمدی</div>
+          <div className={s.profileEmail}>sara@gmail.com</div>
+        </div>
+
+        <img
+          src="/Images/Icons/log-out.svg"
+          alt="log out"
+          className={s.logOut}
+        />
       </div>
     </div>
   );
