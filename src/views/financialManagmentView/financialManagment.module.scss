@@ -1,14 +1,124 @@
 * {
   background: var(--color-gray-background, #f1f2f6);
 }
-//profile
+
 .container {
   width: 94%;
-  margin: 88px 32px 97px;
-  padding: 24px;
-  background-color: white;
-  border-radius: 14px;
-  @media (max-width: 600px) {
-    margin: 88px 14px 97px;
+  background: white;
+  padding: 36px 34px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+
+    .title {
+      background: white;
+      color: #111;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .date {
+      color: #585858;
+      background: white;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
+  .statusBox {
+    width: 579px;
+    height: 497px;
+    background: white;
+    margin: 85px auto;
+    border-radius: 14px;
+    border: 1px dashed #888888;
+
+    .ringImg {
+      width: 125px;
+      height: 125px;
+      background: white;
+      display: flex;
+      margin: 40px auto 24px;
+    }
+
+    .remainDayContent {
+      background: white;
+      position: absolute;
+      right: 45%;
+      bottom: 50%;
+      .remainDayText,
+      .remainDayCount {
+        background: white;
+        text-align: center;
+        color: #111;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .remainDayCount {
+        font-size: 24px;
+      }
+    }
+
+    .subTitle {
+      color: #111;
+      background: white;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .infoBox {
+      background: white;
+      display: flex;
+      margin: 15px 115px;
+      .infoIcon {
+        width: 24px;
+        height: 24px;
+        background: white;
+        margin-left: 8px;
+      }
+
+      .infoITitle,
+      .infoValue {
+        color: #111;
+        font-size: 14px;
+        font-weight: 500;
+        background: white;
+        margin-left: 8px;
+      }
+    }
+    .btnBox {
+      display: flex;
+      background-color: white;
+      margin-top: 56px;
+      justify-content: center;
+      .renevalBtn {
+        width: 132px;
+        height: 48px;
+        border-radius: 10px;
+        background: #007eff;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1) inset,
+          0px -4px 4px 0px rgba(0, 0, 0, 0.1) inset;
+        border: none;
+        color: white;
+        font-size: 16px;
+        font-weight: 700;
+      }
+      .detailBtn {
+        color: #007eff;
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 10px;
+        background: var(--colors-primary-primary-200, #e5f2ff);
+        width: 132px;
+        height: 48px;
+        border: none;
+        color: #007eff;
+        margin-left: 16px;
+      }
+    }
   }
 }

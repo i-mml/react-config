@@ -1,1 +1,17 @@
-export declare const container: string;
+export declare const container,
+  title,
+  date,
+  header,
+  statusBox,
+  ringImg,
+  subTitle,
+  infoBox,
+  infoIcon,
+  infoITitle,
+  infoValue,
+  remainDayText,
+  remainDayCount,
+  remainDayContent,
+  detailBtn,
+  renevalBtn,
+  btnBox: string;

@@ -2,16 +2,11 @@
   background: var(--color-gray-background, #f1f2f6);
 }
 
-body {
-  border-radius: 14px;
-}
 //profile
 .container {
   width: 94%;
-  margin: 88px 32px 97px;
   padding: 24px;
   background-color: white;
-  border-radius: 14px;
   @media (max-width: 600px) {
     margin: 88px 14px 97px;
   }
@@ -56,6 +51,7 @@ body {
     padding: 37px 0 12px;
     background-color: white;
     font-weight: 500;
+    border-radius: 0;
     @media (max-width: 600px) {
       margin-right: 22px;
     }
