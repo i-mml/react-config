@@ -1,0 +1,14 @@
+* {
+  background: var(--color-gray-background, #f1f2f6);
+}
+//profile
+.container {
+  width: 94%;
+  margin: 88px 32px 97px;
+  padding: 24px;
+  background-color: white;
+  border-radius: 14px;
+  @media (max-width: 600px) {
+    margin: 88px 14px 97px;
+  }
+}

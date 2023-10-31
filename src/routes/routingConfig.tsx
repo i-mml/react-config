@@ -8,6 +8,7 @@ import HomePage from "../pages/home";
 import ProfilePage from "../pages/profile";
 import SideBarPage from "../pages/side-bar";
 import MobileSideBarPage from "../pages/mobile-sidebar";
+import FinancialManagmentPage from "../pages/financial-managment";
 
 const RoutingConfig = () => {
   return (
@@ -58,6 +59,15 @@ const RoutingConfig = () => {
         element={
           <PrivateRoute>
             <AbountUsPage />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/financial-managment"
+        element={
+          <PrivateRoute>
+            <FinancialManagmentPage />
           </PrivateRoute>
         }
       />

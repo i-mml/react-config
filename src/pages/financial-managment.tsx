@@ -1,7 +1,12 @@
 import React from "react";
+import FinancialManagmentView from "../views/financialManagmentView";
 
-const FinancialManagment = () => {
-  return <div>FinancialManagment</div>;
+const FinancialManagmentPage = () => {
+  return (
+    <div>
+      <FinancialManagmentView />
+    </div>
+  );
 };
 
-export default FinancialManagment;
+export default FinancialManagmentPage;
