@@ -7,5 +7,6 @@ body {
 }
 
 :root {
-  background: red;
+  background: var(--color-gray-background, #f1f2f6);
+  padding: 88px 32px 97px;
 }

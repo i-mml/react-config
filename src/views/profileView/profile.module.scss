@@ -1,6 +1,10 @@
 * {
   background: var(--color-gray-background, #f1f2f6);
 }
+
+body {
+  border-radius: 14px;
+}
 //profile
 .container {
   width: 94%;
@@ -46,8 +50,8 @@
   }
 
   .profileActiveTab {
-    color: var(--colors-primary-primary-500, #007eff);
-    border-bottom: 2px solid var(--colors-primary-primary-500, #007eff);
+    color: #007eff;
+    border-bottom: 1px solid #007eff;
     font-size: 16px;
     padding: 37px 0 12px;
     background-color: white;
