@@ -16,4 +16,7 @@ export declare const container,
   renevalBtn,
   btnBox,
   renevalContainer,
-  detailContainer: string;
+  detailContainer,
+  informationBox,
+  informationContainer,
+  editIcon: string;

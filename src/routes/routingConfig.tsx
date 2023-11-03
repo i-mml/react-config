@@ -9,6 +9,8 @@ import ProfilePage from "../pages/profile";
 import SideBarPage from "../pages/side-bar";
 import MobileSideBarPage from "../pages/mobile-sidebar";
 import FinancialManagmentPage from "../pages/financial-managment";
+import DetailServis from "../views/financialManagmentView/components/detail-servis";
+import RenevalServis from "../views/financialManagmentView/components/revenal-servis";
 
 const RoutingConfig = () => {
   return (
@@ -68,6 +70,24 @@ const RoutingConfig = () => {
         element={
           <PrivateRoute>
             <FinancialManagmentPage />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/detail-servis"
+        element={
+          <PrivateRoute>
+            <DetailServis />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/reneval-servis"
+        element={
+          <PrivateRoute>
+            <RenevalServis />
           </PrivateRoute>
         }
       />

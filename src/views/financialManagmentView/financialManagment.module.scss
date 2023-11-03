@@ -156,7 +156,83 @@
 //detail
 
 .detailContainer {
+  width: 94%;
   background: white;
+  padding: 36px 34px;
+
+  @media (max-width: 750px) {
+    width: 94%;
+    padding: 16px 20px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    flex-wrap: wrap;
+
+    .title {
+      background: white;
+      color: #111;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .date {
+      color: #585858;
+      background: white;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
+  .informationContainer {
+    background: white;
+    width: 579px;
+    height: auto;
+    border-radius: 14px;
+    border: 1px dashed #888888;
+    margin: 139px auto;
+    padding: 20px 0;
+
+    @media (max-width: 750px) {
+      width: 90%;
+      padding: 16px 0;
+      margin: 16px auto;
+    }
+
+    .informationBox {
+      background: white;
+      display: flex;
+      padding: 16px 32px;
+      @media (max-width: 750px) {
+        padding: 16px;
+      }
+
+      .infoIcon {
+        width: 24px;
+        height: 24px;
+        background: white;
+        margin-left: 8px;
+      }
+
+      .editIcon {
+        width: 24px;
+        height: 24px;
+        background: white;
+        margin-right: 8px;
+      }
+
+      .infoITitle,
+      .infoValue {
+        color: #111;
+        font-size: 14px;
+        font-weight: 500;
+        background: white;
+        margin-left: 8px;
+      }
+    }
+  }
 }
 
 //reneval
