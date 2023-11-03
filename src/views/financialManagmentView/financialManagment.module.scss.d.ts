@@ -14,4 +14,6 @@ export declare const container,
   remainDayContent,
   detailBtn,
   renevalBtn,
-  btnBox: string;
+  btnBox,
+  renevalContainer,
+  detailContainer: string;

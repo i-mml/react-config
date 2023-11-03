@@ -53,6 +53,7 @@ const FinancialManagmentView = () => {
           <button type="submit" className={s.detailBtn}>
             جزئیات سرویس
           </button>
+
           <button type="submit" className={s.renevalBtn}>
             تمدید سرویس
           </button>
