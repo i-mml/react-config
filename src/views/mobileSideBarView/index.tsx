@@ -1,17 +1,13 @@
 // import React, { useState } from "react";
-import s from "./sideBar.module.scss";
-import { SidebarList } from "./sidebar.data";
+import s from "./mobileSideBar.module.scss";
+import { SidebarList } from "./mobileSideBar.data";
 
-const SideBarView = () => {
+const MobileSideBarView = () => {
   // const [current, setcurrent] = useState<string>("");
   // const router = useRouter();
 
   return (
     <div className={s.container}>
-      <div className={s.logoBox}>
-        <img src="/Images/logo.svg" alt="Logo" className={s.logoImg} />
-        <div className={s.logoText}>نام برند و لوگو</div>
-      </div>
       <div className={s.itemBox}>
         {SidebarList?.map(
           (item: {
@@ -27,7 +23,7 @@ const SideBarView = () => {
                 // className={`${s.sidebarItem} ${
                 //   router.path === item.link && s.active
                 // }`}
-                className={s.sidebarItem}
+                className={s.active}
               >
                 <div className={s.iconBox}>
                   <img src={item?.icon} alt="sideBar icon" className={s.icon} />
@@ -38,21 +34,8 @@ const SideBarView = () => {
           )
         )}
       </div>
-      <div className={s.profileBox}>
-        <img src="/Images/Avatar.png" alt="profile" className={s.profileImg} />
-        <div className={s.infoProfileBox}>
-          <div className={s.profileName}>سارا احمدی</div>
-          <div className={s.profileEmail}>sara@gmail.com</div>
-        </div>
-
-        <img
-          src="/Images/Icons/log-out.svg"
-          alt="log out"
-          className={s.logOut}
-        />
-      </div>
     </div>
   );
 };
 
-export default SideBarView;
+export default MobileSideBarView;

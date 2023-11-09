@@ -1,0 +1,14 @@
+body {
+  font-size: 15px;
+}
+
+* {
+  direction: rtl;
+  border-radius: 14px;
+  padding: 0 auto;
+}
+
+:root {
+  background: var(--color-gray-background, #f1f2f6);
+  padding: 88px 32px 97px;
+}

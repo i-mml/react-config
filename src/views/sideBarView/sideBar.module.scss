@@ -4,7 +4,7 @@
 .container {
   width: 224px;
   background: #e8f3fe;
-  padding: 22px 5px 0 0;
+  padding-top: 22px;
   min-height: 100vh;
   border-radius: 20px 0px 0px 20px;
   box-shadow: 0px 4px 4px 0px rgba(132, 132, 132, 0.1),
@@ -38,29 +38,35 @@
     margin-top: 196px;
     background: #e8f3fe;
 
-    .sidebarItem {
-      display: flex;
-      background: #e8f3fe;
-      margin-top: 29px;
+    .sidebarLink {
+      text-decoration: none;
 
-      .iconBox {
+      .sidebarItem {
+        display: flex;
         background: #e8f3fe;
-        margin-right: 22px;
-        width: 35px;
-        height: 35px;
+        margin-top: 29px;
+        cursor: pointer;
 
-        .icon {
+        .iconBox {
           background: #e8f3fe;
-          width: 20px;
-          height: 20px;
-        }
-      }
+          margin-right: 22px;
+          width: 35px;
+          height: 35px;
 
-      .title {
-        background: #e8f3fe;
-        margin-right: 12px;
-        color: #585858;
-        font-size: 14px;
+          .icon {
+            background: #e8f3fe;
+            width: 20px;
+            height: 20px;
+          }
+        }
+
+        .title {
+          background: #e8f3fe;
+          margin-right: 12px;
+          color: #585858;
+          font-size: 14px;
+          font-weight: 500;
+        }
       }
     }
 
@@ -92,6 +98,44 @@
         color: white;
         font-size: 14px;
       }
+    }
+  }
+
+  .profileBox {
+    margin-top: 369px;
+    background: #e8f3fe;
+    padding: 24px 0 32px;
+    border-top: 1px solid var(--colors-primary-primary-300, #80bfff);
+    display: flex;
+
+    .profileImg {
+      border-radius: 200px;
+      margin-right: 4px;
+    }
+
+    .infoProfileBox {
+      width: 106px;
+      background: #e8f3fe;
+      margin-right: 8px;
+      .profileName {
+        background: #e8f3fe;
+        color: var(--color-black, #000);
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .profileEmail {
+        background: #e8f3fe;
+        color: var(--colors-neutral-500, #585858);
+        font-size: 14px;
+      }
+    }
+
+    .logOut {
+      width: 20px;
+      height: 20px;
+      background: #e8f3fe;
+      margin: 15px 18px 4px 0;
     }
   }
 }
