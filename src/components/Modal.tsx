@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./modal.module.scss";
 
-const Modal = () => {
+const Modal = ({ closeModal }: any) => {
   return (
     <div className={s.container}>
       <div className={s.modalContent}>
@@ -11,13 +11,13 @@ const Modal = () => {
             src="/Images/Icons/x-circle.svg"
             alt="cross-icon"
             style={{ backgroundColor: "white" }}
+            onClick={() => closeModal(false)}
           />
         </div>
-        <input
-          type="text"
+        <textarea
           placeholder="تهران،امیرآباد شمالی ، کوچه 20 ام."
           className={s.inputBox}
-        />
+        ></textarea>
         <button className={s.btn}>ثبت تغییرات</button>
       </div>
     </div>
