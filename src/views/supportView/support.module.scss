@@ -1,0 +1,117 @@
+* {
+  background: white;
+}
+//support
+
+.container {
+  width: 94%;
+  padding: 24px;
+  background-color: white;
+  @media (max-width: 600px) {
+    margin: 88px 14px 97px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 48px;
+
+    .title {
+      color: var(--colors-neutral-700, #111);
+      background-color: white;
+      font-weight: 500;
+      text-align: right;
+      font-size: 16px;
+      font-weight: 500;
+      margin-top: 10px;
+    }
+
+    .SearchBox {
+      width: 320px;
+      height: 44px;
+      display: flex;
+      padding: 10px 14px;
+      margin-right: 16px;
+      align-items: center;
+      border-radius: 8px;
+      border: 1px solid var(--colors-neutral-200, #e7e7e7);
+      background-color: var(--White, #fff);
+      // background: url("/images/icons/search.svg") no-repeat scroll 10px;
+      // background: url('/images/icons/search.svg');
+      box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+      &::placeholder {
+        color: var(--colors-neutral-300, #b8b8b8);
+        font-size: 14px;
+        font-weight: 500;
+        margin-right: 8px;
+      }
+    }
+
+    .sentTiketBtn {
+      display: flex;
+      width: 182px;
+      height: 48px;
+      margin: 0 auto 140px 0;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      border-radius: 10px;
+      background: #007eff;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1) inset,
+        0px -4px 4px 0px rgba(0, 0, 0, 0.1) inset;
+      color: var(--White, #fff);
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+
+  .tabContainer {
+    background-color: white;
+  }
+
+  .TabsBox {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: white;
+  }
+
+  .profileTab {
+    color: var(--colors-neutral-400, #888);
+    cursor: pointer;
+    background-color: white;
+    margin: 0 1.8%;
+    padding: 37px 0 12px;
+    font-size: 16px;
+    font-weight: 500;
+    @media (max-width: 600px) {
+      margin-right: 16px;
+    }
+  }
+
+  .profileActiveTab {
+    color: #007eff;
+    border-bottom: 1px solid #007eff;
+    font-size: 16px;
+    padding: 37px 0 12px;
+    background-color: white;
+    font-weight: 500;
+    border-radius: 0;
+    @media (max-width: 600px) {
+      margin-right: 22px;
+    }
+  }
+
+  .content {
+    height: 70vh;
+    overflow-y: auto;
+    background-color: white;
+  }
+}
+
+//internal
+
+.internalContainer {
+  margin: 43px 25px;
+}

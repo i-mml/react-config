@@ -11,6 +11,7 @@ import MobileSideBarPage from "../pages/mobile-sidebar";
 import FinancialManagmentPage from "../pages/financial-managment";
 import DetailServis from "../views/financialManagmentView/components/detail-servis";
 import RenevalServis from "../views/financialManagmentView/components/revenal-servis";
+import Support from "../pages/support";
 
 const RoutingConfig = () => {
   return (
@@ -88,6 +89,15 @@ const RoutingConfig = () => {
         element={
           <PrivateRoute>
             <RenevalServis />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/support"
+        element={
+          <PrivateRoute>
+            <Support />
           </PrivateRoute>
         }
       />

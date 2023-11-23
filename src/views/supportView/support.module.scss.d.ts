@@ -1,0 +1,12 @@
+export declare const container,
+  title,
+  tabContainer,
+  TabsBox,
+  profileTab,
+  profileActiveTab,
+  content,
+  SearchBox,
+  header,
+  sentTiketBtn,
+  internalContainer,
+  externalContainer: string;
