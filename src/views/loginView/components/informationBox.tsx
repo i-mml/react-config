@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Field, Form, Formik } from "formik";
 import s from "../login.module.scss";
 import * as Yup from "yup";
+import Cookies from "js-cookie";
+import { useLocation } from "react-router-dom";
+
 
 const loginSchema = Yup.object().shape({
   user_name: Yup.string().required("نام کاربری خود را وارد کنید"),
@@ -9,7 +12,9 @@ const loginSchema = Yup.object().shape({
 });
 
 const InformationBox = () => {
-  const [password, setPassword] = useState("");
+  const location = useLocation()
+
+  console.log(Cookies?.get("ems-token"), location)
   const [type, setType] = useState("password");
 
   const handleToggle = () => {
@@ -19,6 +24,10 @@ const InformationBox = () => {
       setType("password");
     }
   };
+
+  const handleSubmit = () => {
+    Cookies.set("ems-token", "emsTokenValue", { path: "/" })
+  }
 
   return (
     <div className={s.informationBoxContainer}>
@@ -34,9 +43,7 @@ const InformationBox = () => {
             user_name: "",
             password: "",
           }}
-          onSubmit={() => {
-            console.log("submit");
-          }}
+          onSubmit={handleSubmit}
           validationSchema={loginSchema}
         >
           {({ errors, touched }) => (
@@ -65,10 +72,6 @@ const InformationBox = () => {
                     id="password"
                     name="password"
                     type={type}
-                    value={password}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                      setPassword(e.target.value)
-                    }
                     placeholder="رمز عبور"
                     className={s.password}
                   />

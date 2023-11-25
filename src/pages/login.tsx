@@ -1,5 +1,7 @@
 import React from "react";
 import LoginView from "../views/loginView/loginView";
+import Cookies from "js-cookie";
+import { Navigate, redirect } from "react-router-dom";
 
 const LoginPage = () => {
   // todo =>
@@ -7,6 +9,11 @@ const LoginPage = () => {
   // set token in LocalStorage (search it)
   // set user infos in redux (read redux hint in redux folder)
 
+  const tokenValue = Cookies.get("ems-token")
+
+  if (tokenValue && tokenValue !== '') {
+    return <Navigate to='/' replace />
+  }
   return <LoginView />;
 };
 

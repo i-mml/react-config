@@ -1,8 +1,11 @@
+import Cookies from 'js-cookie'
 import React from 'react'
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <div>
+      <h2>HoemPage</h2>
+    </div>
   )
 }
 
