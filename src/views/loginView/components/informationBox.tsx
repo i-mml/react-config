@@ -3,42 +3,31 @@ import { Field, Form, Formik } from "formik";
 import s from "../login.module.scss";
 import * as Yup from "yup";
 import Cookies from "js-cookie";
-import { useLocation } from "react-router-dom";
-import { PostLogin } from "../../../api/services/login";
-
-interface LoginFields {
-  user_name: string,
-  password: string
-}
-
+import { useLocation, useNavigate } from "react-router-dom";
+import { LoginService, } from "../../../api/services/auth";
+import { LoginFields } from "../../../types/api/auth";
+import { useMutation } from "react-query";
 
 const loginSchema = Yup.object().shape({
-  user_name: Yup.string().required("نام کاربری خود را وارد کنید"),
+  number: Yup.string().required("نام کاربری خود را وارد کنید"),
   password: Yup.string().required("رمز خود را وارد کنید"),
 });
 
 const InformationBox = () => {
   const location = useLocation()
+  const mutation = useMutation((e: LoginFields) => LoginService(e).finally(() => navigate("/", { replace: true })));
+
+  const navigate = useNavigate()
 
   console.log(Cookies?.get("ems-token"), location)
   const [type, setType] = useState("password");
 
   const handleToggle = () => {
-    if (type === "password") {
-      setType("text");
-    } else {
-      setType("password");
-    }
+    setType(type === "password" ? "text" : "password");
   };
 
   const handleSubmit = (e: LoginFields) => {
-    PostLogin({
-      number: e.user_name,
-      password: e.password
-    }).then(
-      res => console.log("this is the res", res)
-    )
-    // Cookies.set("ems-token", "emsTokenValue", { path: "/" })
+    mutation.mutate(e);
   }
 
   return (
@@ -52,7 +41,7 @@ const InformationBox = () => {
         <div className={s.welcome}>.به سبیان خوش آمدید</div>
         <Formik
           initialValues={{
-            user_name: "",
+            number: "",
             password: "",
           }}
           onSubmit={handleSubmit}
@@ -63,7 +52,7 @@ const InformationBox = () => {
               <div className={s.loginInputBox}>
                 <div className={s.userNameField}>
                   <Field
-                    name="user_name"
+                    name="number"
                     placeholder="نام کاربری"
                     className={s.userName}
                   />
@@ -72,8 +61,8 @@ const InformationBox = () => {
                     alt="user-icon"
                     className={s.icon}
                   />
-                  {errors.user_name && touched.user_name ? (
-                    <div className={s.error}>{errors.user_name}</div>
+                  {errors.number && touched.number ? (
+                    <div className={s.error}>{errors.number}</div>
                   ) : null}
                 </div>
 
@@ -107,8 +96,10 @@ const InformationBox = () => {
                 </div>
               </div>
 
-              <button type="submit" className={s.button}>
-                ورود
+              <button type="submit" className={s.button} disabled={mutation.isLoading}>
+                {
+                  mutation.isLoading ? "درحال ورود" : "ورود"
+                }
               </button>
             </Form>
           )}

@@ -30,3 +30,8 @@ export interface LoginResponseType {
     DeletedAt: string;
   };
 }
+
+export interface LoginFields {
+  number: string;
+  password: string;
+}
