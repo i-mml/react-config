@@ -1,1 +1,1 @@
-export declare const logoBox, layout: string;
+export declare const layout, contents: string;
