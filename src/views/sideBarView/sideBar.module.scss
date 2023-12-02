@@ -9,6 +9,8 @@
   border-radius: 20px 0px 0px 20px;
   box-shadow: 0px 4px 4px 0px rgba(132, 132, 132, 0.1),
     -2px 4px 4px 1px rgba(172, 198, 202, 0.28);
+  display: flex;
+  flex-direction: column;
 
   .logoBox {
     display: flex;
@@ -35,7 +37,7 @@
   }
 
   .itemBox {
-    margin-top: 196px;
+    margin: auto 0;
     background: #e8f3fe;
 
     .sidebarLink {
@@ -102,7 +104,6 @@
   }
 
   .profileBox {
-    margin-top: 369px;
     background: #e8f3fe;
     padding: 24px 0 32px;
     border-top: 1px solid var(--colors-primary-primary-300, #80bfff);

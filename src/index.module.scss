@@ -10,5 +10,10 @@ body {
 
 :root {
   background: var(--color-gray-background, #f1f2f6);
-  padding: 88px 32px 97px;
+}
+
+.flexRoot {
+  display: flex;
+  align-items: start;
+  gap: 32px;
 }
