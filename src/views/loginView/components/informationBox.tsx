@@ -4,6 +4,12 @@ import s from "../login.module.scss";
 import * as Yup from "yup";
 import Cookies from "js-cookie";
 import { useLocation } from "react-router-dom";
+import { PostLogin } from "../../../api/services/login";
+
+interface LoginFields {
+  user_name: string,
+  password: string
+}
 
 
 const loginSchema = Yup.object().shape({
@@ -25,8 +31,14 @@ const InformationBox = () => {
     }
   };
 
-  const handleSubmit = () => {
-    Cookies.set("ems-token", "emsTokenValue", { path: "/" })
+  const handleSubmit = (e: LoginFields) => {
+    PostLogin({
+      number: e.user_name,
+      password: e.password
+    }).then(
+      res => console.log("this is the res", res)
+    )
+    // Cookies.set("ems-token", "emsTokenValue", { path: "/" })
   }
 
   return (
