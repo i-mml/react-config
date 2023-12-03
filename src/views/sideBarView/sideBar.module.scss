@@ -9,8 +9,12 @@
   border-radius: 20px 0px 0px 20px;
   box-shadow: 0px 4px 4px 0px rgba(132, 132, 132, 0.1),
     -2px 4px 4px 1px rgba(172, 198, 202, 0.28);
-  display: flex;
+  display: none;
   flex-direction: column;
+
+  @media (min-width: 1100px) {
+    display: flex;
+  }
 
   .logoBox {
     display: flex;
