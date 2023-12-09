@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import s from "../financialManagment.module.scss";
+import Modal from "../../../components/Modal";
 
 const DetailServis = () => {
+  const [openModal, setOpenModal] = useState(false);
+
   const informationList = [
     {
       id: 1,
@@ -43,11 +46,21 @@ const DetailServis = () => {
             <div className={s.infoITitle}>{item?.title}</div>
             <div className={s.infoValue}>{item?.value}</div>
             {item?.edit ? (
-              <img alt="info-icon" src={item?.edit} className={s.editIcon} />
+              <>
+                <img
+                  alt="info-icon"
+                  src={item?.edit}
+                  className={s.editIcon}
+                  onClick={() => {
+                    setOpenModal(true);
+                  }}
+                />
+              </>
             ) : null}
           </div>
         ))}
       </div>
+      {openModal && <Modal closeModal={setOpenModal} />}
     </div>
   );
 };
