@@ -1,10 +1,10 @@
 // import React, { useState } from "react";
+import { useLocation } from "react-router";
 import s from "./sideBar.module.scss";
 import { SidebarList } from "./sidebar.data";
 
 const SideBarView = () => {
-  // const [current, setcurrent] = useState<string>("");
-  // const router = useRouter();
+  let location = useLocation();
 
   return (
     <div className={s.container}>
@@ -21,12 +21,8 @@ const SideBarView = () => {
             icon: string;
             subMenue: any[];
           }) => (
-            <a href={item?.link} className={s.sidebarLink}>
+            <a href={item?.link} className={`${s.sidebarLink} ${location?.pathname === item?.link && s.active}`}>
               <div
-                // onClick={() => setcurrent(item.title)}
-                // className={`${s.sidebarItem} ${
-                //   router.path === item.link && s.active
-                // }`}
                 className={s.sidebarItem}
               >
                 <div className={s.iconBox}>

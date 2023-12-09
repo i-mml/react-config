@@ -11,7 +11,7 @@ export const SidebarList = [
     id: 2,
     title: "مدیریت مالی",
     icon: "/Images/Icons/credit-card.svg",
-    link: "/FinancialManagment",
+    link: "/financial-managment",
     subMenue: [],
   },
 
@@ -19,7 +19,7 @@ export const SidebarList = [
     id: 3,
     title: "پشتیبانی",
     icon: "/Images/Icons/life-buoy.svg",
-    link: "/Support",
+    link: "/support",
     subMenue: [],
   },
 
