@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import s from "./support.module.scss";
-import InternalSupport from "./components/internalSupport";
-import ExternalSupport from "./components/externalSupport";
 
 const SupportView = () => {
   const [currentTab, setCurrentTab] = useState("external-support");
@@ -11,10 +9,44 @@ const SupportView = () => {
     { id: 3, faTitle: "پشتیبانی داخلی", title: "internal_support" },
   ];
 
-  const contentGenerator = {
-    external_support: <ExternalSupport />,
-    internal_support: <InternalSupport />,
-  };
+  const tableList = [
+    {
+      id: 1,
+      title: "شماره تیکت",
+      value: "",
+      icon: "",
+      subValue: "",
+    },
+    {
+      id: 2,
+      title: "تاریخ ایجاد",
+      value: "",
+      icon: "",
+      subValue: "",
+    },
+    {
+      id: 3,
+      title: "درجه اهمیت",
+      value: "",
+      icon: "",
+      subValue: "",
+    },
+    {
+      id: 4,
+      title: "وضعیت",
+      value: "",
+      icon: "",
+      subValue: "",
+    },
+    {
+      id: 5,
+      title: "آخرین آپدیت",
+      value: "",
+      icon: "",
+      subValue: "",
+    },
+  ];
+
 
   return (
     <div className={s.container}>
@@ -27,9 +59,8 @@ const SupportView = () => {
         <div className={s.TabsBox}>
           {tabsList?.map(({ faTitle, id, title }) => (
             <div
-              className={`${s.profileTab} ${
-                currentTab === title && s.profileActiveTab
-              }`}
+              className={`${s.profileTab} ${currentTab === title && s.profileActiveTab
+                }`}
               onClick={() => setCurrentTab(title)}
               key={id}
             >
@@ -37,12 +68,22 @@ const SupportView = () => {
             </div>
           ))}
         </div>
-        <>
-          <div className={s.content}>
-            {/* @ts-ignore */}
-            {contentGenerator[currentTab]}
+        <div className={s.content}>
+          <div className={s.internalContainer}>
+            {tableList.map((item) => {
+              return (
+                <table key={item.id}>
+                  <tr>
+                    <td>{item?.title}</td>
+                    <td>{item?.value}</td>
+                    <td>{item?.subValue}</td>
+                  </tr>
+                </table>
+              );
+            })}
           </div>
-        </>
+        </div>
+
       </div>
     </div>
   );
