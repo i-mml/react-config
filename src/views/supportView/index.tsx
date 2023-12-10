@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import s from "./support.module.scss";
 
-const SupportView = () => {
+interface ISupportViewProps {
+  loading: boolean,
+  data: any[]
+}
+
+const SupportView = (props: ISupportViewProps) => {
   const [currentTab, setCurrentTab] = useState("external-support");
 
   const tabsList = [
@@ -46,6 +51,7 @@ const SupportView = () => {
       subValue: "",
     },
   ];
+
 
 
   return (
