@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Field, Form, Formik } from "formik";
 import s from "../login.module.scss";
 import * as Yup from "yup";
@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { LoginService, } from "../../../api/services/auth";
 import { LoginFields } from "../../../types/api/auth";
 import { useMutation } from "react-query";
+import { AuthContext } from "../../../api/context";
 
 const loginSchema = Yup.object().shape({
   number: Yup.string().required("نام کاربری خود را وارد کنید"),
@@ -14,12 +15,13 @@ const loginSchema = Yup.object().shape({
 });
 
 const InformationBox = () => {
+  const { authValue, setAuthValue } = useContext(AuthContext);
   const location = useLocation()
   const mutation = useMutation((e: LoginFields) => LoginService(e).finally(() => navigate("/", { replace: true })));
-
   const navigate = useNavigate()
 
-  console.log(Cookies?.get("ems-token"), location)
+  console.log('auth', authValue)
+
   const [type, setType] = useState("password");
 
   const handleToggle = () => {
@@ -27,6 +29,7 @@ const InformationBox = () => {
   };
 
   const handleSubmit = (e: LoginFields) => {
+    setAuthValue("this is token value in context")
     mutation.mutate(e);
   }
 
