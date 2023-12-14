@@ -1,8 +1,12 @@
 .layout {
   display: flex;
   align-items: start;
-  gap: 32px;
+  justify-content: space-between;
+  background-color: #f1f2f6;
+
   .contents {
-    padding: 32px 0 50px;
+    padding: 32px 2.2% 50px;
+    width: 84.5%;
+    background-color: #f1f2f6;
   }
 }

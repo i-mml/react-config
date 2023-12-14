@@ -4,14 +4,13 @@ body {
 
 * {
   direction: rtl;
-  border-radius: 14px;
-  padding: 0 auto;
+  // border-radius: 14px;
+  // padding: 0 auto;
 }
 
-:root {
-  background: var(--color-gray-background, #f1f2f6);
-}
-
+// :root {
+//   background: var(--color-gray-background, #f1f2f6);
+// }
 .flexRoot {
   display: flex;
   align-items: start;

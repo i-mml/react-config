@@ -12,6 +12,7 @@ import FinancialManagmentPage from "../pages/financial-managment";
 import DetailServis from "../views/financialManagmentView/components/detail-servis";
 import RenevalServis from "../views/financialManagmentView/components/revenal-servis";
 import Support from "../pages/support";
+import DashboardView from "../views/dashboardView";
 
 const RoutingConfig = () => {
   return (
@@ -25,7 +26,7 @@ const RoutingConfig = () => {
         path="/"
         element={
           <PrivateRoute>
-            <HomePage />
+            <DashboardView />
           </PrivateRoute>
         }
       />
