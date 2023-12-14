@@ -1,6 +1,8 @@
 .dashboardTopBox {
+  display: flex;
+  align-items: center;
   .right {
-    width: 57.56%;
+    width: 48.2%;
   }
   .title {
     color: #111;
@@ -13,5 +15,11 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 24px;
+  }
+  .left {
+    width: 50%;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
   }
 }

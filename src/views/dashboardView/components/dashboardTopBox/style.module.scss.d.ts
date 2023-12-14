@@ -1,1 +1,1 @@
-export declare const dashboardTopBox, title, subTitle, right: string;
+export declare const dashboardTopBox, title, subTitle, right, left: string;

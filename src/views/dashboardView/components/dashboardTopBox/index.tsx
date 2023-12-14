@@ -1,5 +1,6 @@
 import React from 'react'
 import s from './style.module.scss';
+import UsedTraficItem from '../usedTrafixItem';
 
 const DashboardTopBox = () => {
     return (
@@ -11,6 +12,11 @@ const DashboardTopBox = () => {
                 <div className={s.subTitle}>
                     در پنل کاربری خود میتوانید آنالیز و ردیابی وسایل الکترونیکی خود را ببینید.
                 </div>
+            </div>
+            <div className={s.left}>
+                <UsedTraficItem />
+                <UsedTraficItem />
+
             </div>
         </div>
     )
