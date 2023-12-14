@@ -1,1 +1,1 @@
-export declare const dashboardContainer: string;
+export declare const dashboardContainer, statusesBox: string;
