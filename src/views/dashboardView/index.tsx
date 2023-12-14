@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../../api/context';
 import s from './dashboard.module.scss';
+import DashboardTopBox from './components/dashboardTopBox';
 
 
 const DashboardView = () => {
@@ -8,7 +9,9 @@ const DashboardView = () => {
     console.log('auth', auth?.value)
 
     return (
-        <div className={s.dashboardContainer}>DashboardView</div>
+        <div className={s.dashboardContainer}>
+            <DashboardTopBox />
+        </div>
     )
 }
 

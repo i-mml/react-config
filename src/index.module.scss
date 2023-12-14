@@ -1,5 +1,17 @@
+@font-face {
+  font-family: "Vazirmmatn";
+  src: url("./fonts/Vazirmatn-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Vazirmmatn";
+  src: url("./fonts/Vazirmatn-VariableFont_wght.ttf") format("truetype");
+  font-weight: 400;
+}
+
 body {
   font-size: 15px;
+  font-family: "Vazirmmatn";
 }
 
 * {

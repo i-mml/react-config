@@ -47,6 +47,7 @@
 
       .sidebarItem {
         display: flex;
+        align-items: center;
         padding: 15px 0;
         cursor: pointer;
         background: #e8f3fe;
@@ -56,6 +57,8 @@
           margin-right: 22px;
           width: 35px;
           height: 35px;
+          display: grid;
+          place-items: center;
 
           .icon {
             background: #e8f3fe;
