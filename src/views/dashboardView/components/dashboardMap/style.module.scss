@@ -1,0 +1,26 @@
+.dashboardMapContainer {
+  width: 100%;
+  margin-top: 16px;
+  background-color: #fff;
+  padding: 20px 18px 48px;
+  border-radius: 14px;
+  .mapTitleBox {
+    display: flex;
+    align-items: center;
+  }
+  .mapTitle {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    margin: 0 8px 0 0;
+  }
+  .mapIcon {
+    width: 20px;
+    height: 20px;
+  }
+  .mapTitle {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 16px;
+  }
+}

@@ -3,6 +3,7 @@ import { AuthContext } from '../../api/context';
 import s from './dashboard.module.scss';
 import DashboardTopBox from './components/dashboardTopBox';
 import StatusCartItem from './components/statusCartItem';
+import DashboardMap from './components/dashboardMap';
 
 
 const DashboardView = () => {
@@ -17,8 +18,8 @@ const DashboardView = () => {
                 <StatusCartItem title='کاربران فعال' value={33} icon="zap" hasArrow arrowType="up" />
                 <StatusCartItem title='کاربران غیر فعال' value={0} icon="zap-off" hasArrow arrowType="down" />
                 <StatusCartItem title='نمونه' value={0} icon="zap-off" />
-
             </div>
+            <DashboardMap />
         </div>
     )
 }
