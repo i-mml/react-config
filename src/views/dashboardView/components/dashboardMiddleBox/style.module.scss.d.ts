@@ -1,0 +1,11 @@
+export declare const container,
+  notifications,
+  content,
+  middleSlider,
+  middleSliderItem,
+  image,
+  slider,
+  textBox,
+  title,
+  subTitle,
+  description: string;

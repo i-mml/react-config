@@ -4,6 +4,7 @@ import s from './dashboard.module.scss';
 import DashboardTopBox from './components/dashboardTopBox';
 import StatusCartItem from './components/statusCartItem';
 import DashboardMap from './components/dashboardMap';
+import DashboardMiddleBox from './components/dashboardMiddleBox';
 
 
 const DashboardView = () => {
@@ -20,6 +21,7 @@ const DashboardView = () => {
                 <StatusCartItem title='نمونه' value={0} icon="zap-off" />
             </div>
             <DashboardMap />
+            <DashboardMiddleBox />
         </div>
     )
 }

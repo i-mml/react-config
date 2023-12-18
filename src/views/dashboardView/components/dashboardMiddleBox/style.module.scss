@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-top: 16px;
+
+  .content {
+    width: 74.47%;
+
+    .middleSlider {
+      background-color: white;
+      padding: 38px 0;
+      border-radius: 14px;
+    }
+    .slider {
+      width: 88.11%;
+      margin: 0 auto;
+      :global {
+        .swiper-pagination {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 18px;
+          width: fit-content;
+          margin: 0 auto;
+          background-color: #e5f2ff;
+          padding: 3px 5px;
+          border-radius: 14px;
+        }
+        .swiper-pagination-bullet {
+          margin: 0 8px;
+          border-radius: 50%;
+          background: #fff;
+          width: 7px;
+          height: 7px;
+          cursor: pointer;
+        }
+        .swiper-pagination-bullet-active {
+          background: #007eff;
+        }
+      }
+    }
+  }
+  .notifications {
+    width: 23.43%;
+  }
+}
