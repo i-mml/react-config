@@ -1,4 +1,5 @@
 export declare const dashboardMapContainer,
   mapTitle,
   mapIcon,
-  mapTitleBox: string;
+  mapTitleBox,
+  sliderBox: string;

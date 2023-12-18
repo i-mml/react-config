@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import RoutingConfig from './routes/routingConfig';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import Layout from './views/layout/layout';
 import { AuthContext } from './api/context';
+import 'swiper/css';
 
 const queryClient = new QueryClient();
 
