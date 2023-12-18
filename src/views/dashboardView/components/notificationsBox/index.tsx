@@ -2,6 +2,7 @@ import React from 'react'
 import s from './style.module.scss';
 import TitleBox from '../titleBox';
 import NotifListItem from '../notificationItem';
+import SecondaryButton from '../../../../components/buttons/secondaryButton';
 
 const NotificationsBox = () => {
     const notifs = [
@@ -19,7 +20,10 @@ const NotificationsBox = () => {
                 <TitleBox icon='/images/icons/bell.svg' title='اعلانات' />
                 <div className={s.readAll}>خواندن همه</div>
             </div>
-            {notifs?.slice(0, 8)?.map((item, index) => <NotifListItem {...item} defaultShow={index === 0} />)}
+            {notifs?.slice(0, 7)?.map((item, index) => <NotifListItem {...item} defaultShow={index === 0} />)}
+            <SecondaryButton className={s.showAll} onClick={() => alert("hs")}>
+                مشاهده همه دوربین ها
+            </SecondaryButton>
         </div>
     )
 }

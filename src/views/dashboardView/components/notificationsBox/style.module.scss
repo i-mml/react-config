@@ -4,6 +4,7 @@
   background-color: white;
   padding: 16px;
   border-radius: 14px;
+  position: relative;
   .top {
     display: flex;
     align-items: center;
@@ -15,5 +16,12 @@
     font-size: 12px;
     font-weight: 600;
     line-height: 16px;
+  }
+  .showAll {
+    width: calc(100% - 32px);
+    position: absolute;
+    bottom: 20px;
+    right: 16px;
+    left: 16px;
   }
 }
