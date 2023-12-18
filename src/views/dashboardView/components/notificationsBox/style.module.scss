@@ -1,4 +1,19 @@
 .container {
   width: 100%;
+  height: 100%;
   background-color: white;
+  padding: 16px;
+  border-radius: 14px;
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .readAll {
+    color: #007eff;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+  }
 }
