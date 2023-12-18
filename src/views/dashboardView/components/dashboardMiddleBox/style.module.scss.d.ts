@@ -8,4 +8,6 @@ export declare const container,
   textBox,
   title,
   subTitle,
-  description: string;
+  description,
+  smallBox,
+  smallBoxWrapper: string;

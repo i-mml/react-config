@@ -4,6 +4,8 @@ import NotificationsBox from '../notificationsBox';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import MiddleSliderItem from '../middleSliderItem';
+import DashboardConnectedDevices from '../dashboardConnectedDevices';
+import DashboardCameras from '../dashboardCameras';
 
 const DashboardMiddleBox = () => {
     return (
@@ -26,6 +28,14 @@ const DashboardMiddleBox = () => {
                             <MiddleSliderItem />
                         </SwiperSlide>
                     </Swiper>
+                </div>
+                <div className={s.smallBoxWrapper}>
+                    <div className={s.smallBox}>
+                        <DashboardConnectedDevices />
+                    </div>
+                    <div className={s.smallBox}>
+                        <DashboardCameras />
+                    </div>
                 </div>
             </div >
             <div className={s.notifications}>

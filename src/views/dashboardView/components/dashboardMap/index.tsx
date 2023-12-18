@@ -2,6 +2,7 @@ import React from 'react'
 import s from "./style.module.scss"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
+import TitleBox from '../titleBox';
 
 const DashboardMap = () => {
     const pagination = {
@@ -13,12 +14,7 @@ const DashboardMap = () => {
 
     return (
         <div className={s.dashboardMapContainer}>
-            <div className={s.mapTitleBox}>
-                <img src='/images/icons/blackMap.svg' className={s.mapIcon} />
-                <h4 className={s.mapTitle}>
-                    نقشه
-                </h4>
-            </div>
+            <TitleBox title='نقشه' icon='/images/icons/blackMap.svg' />
 
             <div className={s.sliderBox}>
                 <Swiper
@@ -30,16 +26,16 @@ const DashboardMap = () => {
                     modules={[Navigation, Pagination]}
                 >
                     <SwiperSlide>
-                        <img src='/images/rooms.png' />
+                        <img src='/images/rooms.png' className={s.image} />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src='/images/rooms.png' />
+                        <img src='/images/rooms.png' className={s.image} />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src='/images/rooms.png' />
+                        <img src='/images/rooms.png' className={s.image} />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src='/images/rooms.png' />
+                        <img src='/images/rooms.png' className={s.image} />
                     </SwiperSlide>
                 </Swiper>
 

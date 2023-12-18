@@ -2,12 +2,14 @@
   display: flex;
   justify-content: space-between;
   align-items: stretch;
+  flex-wrap: wrap;
   margin-top: 16px;
 
   .content {
     width: 74.47%;
 
     .middleSlider {
+      width: 100%;
       background-color: white;
       padding: 38px 0;
       border-radius: 14px;
@@ -43,5 +45,14 @@
   }
   .notifications {
     width: 23.43%;
+  }
+  .smallBoxWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+  .smallBox {
+    width: 48.6%;
   }
 }
