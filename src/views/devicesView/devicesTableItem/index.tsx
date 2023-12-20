@@ -43,13 +43,30 @@ const DeviceTableItem = ({ name, nameEng, status, sensorLink }: IProps) => {
             <Modal
                 isOpen={modal}
                 toggle={toggle}
-                className={s.modal}
+                className={s.modalContainer}
                 backdrop={backdrop}
                 keyboard={keyboard}
             >
-                <ModalBody>
+                <ModalBody className={s.modalBody}>
                     <ModalHeaderTitle title='سنسورها' handleClose={toggle} />
-                    fasfsdf
+                    <div className={s.sensorsList}>
+                        <div className={s.listHeader}>
+                            <span>عنوان</span>
+                            <span>مقدار</span>
+                        </div>
+                        <div className={s.listItem}>
+                            <span>سنسورP</span>
+                            <span>23145</span>
+                        </div>
+                        <div className={s.listItem}>
+                            <span>سنسورP</span>
+                            <span>23145</span>
+                        </div>
+                        <div className={s.listItem}>
+                            <span>سنسورP</span>
+                            <span>23145</span>
+                        </div>
+                    </div>
                 </ModalBody>
             </Modal>
         </tr>
