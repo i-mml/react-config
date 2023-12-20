@@ -3,8 +3,11 @@ import s from './style.module.scss';
 import TitleBox from '../titleBox';
 import CameraListItem from '../cameraListItem';
 import SecondaryButton from '../../../../components/buttons/secondaryButton';
+import { useNavigate } from 'react-router-dom';
 
 const DashboardCameras = () => {
+    const navigate = useNavigate()
+
     const camerasList = [
         {
             id: 1,
@@ -33,7 +36,7 @@ const DashboardCameras = () => {
             {
                 camerasList?.slice(0, 4)?.map((item, index) => <CameraListItem key={item.id} title={item.title} isLast={index === 3} />)
             }
-            <SecondaryButton className={s.showAll} onClick={() => alert("hs")}>
+            <SecondaryButton className={s.showAll} onClick={() => navigate("/cameras")}>
                 مشاهده همه دوربین ها
             </SecondaryButton>
         </div>

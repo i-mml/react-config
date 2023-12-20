@@ -13,6 +13,8 @@ import DetailServis from "../views/financialManagmentView/components/detail-serv
 import RenevalServis from "../views/financialManagmentView/components/revenal-servis";
 import Support from "../pages/support";
 import DashboardView from "../views/dashboardView";
+import DevicesView from "../views/devicesView";
+import CamerasView from "../views/camerasView";
 
 const RoutingConfig = () => {
   return (
@@ -99,6 +101,22 @@ const RoutingConfig = () => {
         element={
           <PrivateRoute>
             <Support />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/devices"
+        element={
+          <PrivateRoute>
+            <DevicesView />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/cameras"
+        element={
+          <PrivateRoute>
+            <CamerasView />
           </PrivateRoute>
         }
       />
