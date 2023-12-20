@@ -80,10 +80,11 @@
   .active {
     display: flex;
     height: 49px;
-    border-radius: 0px 100px 100px 0px;
-    background: #007eff;
     .sidebarItem {
       background: #007eff !important;
+      border-radius: 0px 100px 100px 0px;
+      width: 100%;
+
       .title {
         background: #007eff !important;
       }
