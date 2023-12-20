@@ -1,0 +1,18 @@
+.modalTitle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  .button {
+    background-color: unset;
+    width: fit-content;
+    border: none;
+
+    .icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
