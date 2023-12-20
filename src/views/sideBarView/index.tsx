@@ -1,10 +1,18 @@
 // import React, { useState } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import s from "./sideBar.module.scss";
 import { SidebarList } from "./sidebar.data";
+import { useMutation } from "react-query";
+import { LogoutService } from "../../api/services/auth";
 
 const SideBarView = () => {
   let location = useLocation();
+  const navigate = useNavigate()
+  const mutation = useMutation(() => LogoutService().finally(() => navigate("/login", { replace: true })));
+
+  const removeToken = () => {
+    mutation.mutate();
+  }
 
   return (
     <div className={s.container}>
@@ -34,7 +42,7 @@ const SideBarView = () => {
           )
         )}
       </div>
-      <div className={s.profileBox}>
+      <div className={s.profileBox} onClick={removeToken}>
         <img src="/Images/Avatar.png" alt="profile" className={s.profileImg} />
         <div className={s.infoProfileBox}>
           <div className={s.profileName}>سارا احمدی</div>
