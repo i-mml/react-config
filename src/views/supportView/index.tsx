@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import s from "./support.module.scss";
+import { useNavigate } from "react-router-dom";
 
 interface ISupportViewProps {
   loading: boolean,
@@ -8,6 +9,7 @@ interface ISupportViewProps {
 
 const SupportView = (props: ISupportViewProps) => {
   const [currentTab, setCurrentTab] = useState("external-support");
+  const navigate = useNavigate()
 
   const tabsList = [
     { id: 1, faTitle: "پشتیبانی خارجی", title: "external_support" },
@@ -112,7 +114,7 @@ const SupportView = (props: ISupportViewProps) => {
         <tbody className={s.tableBody}>
           {
             tableData?.map(item =>
-              <tr key={item.id}>
+              <tr key={item.id} onClick={() => navigate(`/support/${item?.id}`)}>
                 <td className={s.mobileShow}>
                   <div className={s.ticketId}>
                     <img src="/images/ticket_tag.png" className={s.ticketIcon} />

@@ -138,6 +138,9 @@
   }
 }
 .tableBody {
+  & tr {
+    cursor: pointer;
+  }
   & td {
     color: #111;
     font-size: 14px;

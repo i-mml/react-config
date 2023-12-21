@@ -1,0 +1,26 @@
+.container {
+  background-color: white;
+  padding: 40px 24px 10px 0;
+  border-radius: 14px;
+
+  .chatNumber {
+    color: #111;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+  }
+  .subTitle {
+    color: #888;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-top: 8px;
+  }
+  .chatList {
+    height: 65vh;
+    margin-top: 39px;
+    padding-left: 24px;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+}
