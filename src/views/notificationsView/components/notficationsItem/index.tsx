@@ -16,8 +16,8 @@ const NotificationItem = (props: IProps) => {
     const [isOpened, toggle] = useState(false)
 
     return (
-        <div className={s.notifItemContainer} onClick={() => toggle(pre => !pre)}>
-            <div className={s.titleBox}>
+        <div className={s.notifItemContainer} >
+            <div className={s.titleBox} onClick={() => toggle(pre => !pre)}>
                 <div className={s.title}>
                     {title}
                 </div>
