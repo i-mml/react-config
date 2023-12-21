@@ -1,8 +1,3 @@
-// * {
-//   background: white;
-// }
-//support
-
 .container {
   width: 94%;
   padding: 24px;
@@ -109,9 +104,102 @@
     background-color: white;
   }
 }
+.tableWrapper {
+  margin-top: 34px;
+  width: 100%;
+  & th {
+    color: #888888;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+  }
+  & tbody tr {
+    border-bottom: 1px solid #e7e7e7;
+  }
+  & td {
+    color: #111;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 18px 0;
+  }
+}
+.tableBody {
+  & td {
+    color: #111;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+  }
+  .ticketId {
+    display: flex;
+    align-items: center;
+    .ticketIcon {
+      margin-left: 8px;
+    }
+    .ticketIdNumber {
+      color: #111;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 16px;
+    }
+    .ticketTitle {
+      color: #888;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+    }
+  }
 
-//internal
+  .updatedUser {
+    color: #888;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+  }
 
-.internalContainer {
-  margin: 43px 25px;
+  .label {
+    width: fit-content;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    padding: 2px 8px;
+    .circle {
+      width: 6px;
+      height: 6px;
+      margin-left: 4px;
+      border-radius: 100%;
+    }
+    .labelValue {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+    }
+  }
+  .high {
+    background-color: #f9e7e7;
+    .circle {
+      background-color: #c92b2b;
+    }
+    .labelValue {
+      color: #c92b2b;
+    }
+  }
+  .medium {
+    background-color: #fff5e7;
+    .circle {
+      background-color: #fea526;
+    }
+    .labelValue {
+      color: #fea526;
+    }
+  }
+  .low {
+    background-color: #b8b8b880;
+    .circle {
+      background-color: #888888;
+    }
+    .labelValue {
+      color: #888888;
+    }
+  }
 }
