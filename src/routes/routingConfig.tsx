@@ -15,6 +15,7 @@ import Support from "../pages/support";
 import DashboardView from "../views/dashboardView";
 import DevicesView from "../views/devicesView";
 import CamerasView from "../views/camerasView";
+import NotificationsView from "../views/notificationsView";
 
 const RoutingConfig = () => {
   return (
@@ -117,6 +118,14 @@ const RoutingConfig = () => {
         element={
           <PrivateRoute>
             <CamerasView />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/notifications"
+        element={
+          <PrivateRoute>
+            <NotificationsView />
           </PrivateRoute>
         }
       />

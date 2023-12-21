@@ -1,0 +1,50 @@
+.notifItemContainer {
+  padding: 16px 0;
+  border-bottom: 1px solid #e7e7e7;
+  .titleBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+
+    .title {
+      color: #007eff;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+  .subTitleBox {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    .subTitle {
+      color: #585858;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+    }
+    .date {
+      color: #888;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      margin-right: 8px;
+    }
+  }
+  .description {
+    color: #888;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    margin-top: 8px;
+  }
+  .collapseIcon {
+    width: 16px;
+    height: 16px;
+    transition: 0.5s;
+  }
+  .opened {
+    transition: 0.5s;
+    transform: rotate(180deg);
+  }
+}
