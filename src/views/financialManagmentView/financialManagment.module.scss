@@ -1,5 +1,5 @@
 .container {
-  width: 94%;
+  width: 100%;
   background: white;
   padding: 36px 34px;
   border-radius: 14px;
@@ -162,12 +162,12 @@
 //detail
 
 .detailContainer {
-  width: 94%;
+  width: 100%;
   background: white;
   padding: 36px 34px;
 
   @media (max-width: 750px) {
-    width: 94%;
+    width: 100%;
     padding: 16px 20px;
   }
 
@@ -244,12 +244,12 @@
 //reneval
 
 .renevalContainer {
-  width: 94%;
+  width: 100%;
   background: white;
   padding: 36px 34px;
 
   @media (max-width: 750px) {
-    width: 94%;
+    width: 100%;
     padding: 16px 20px;
   }
 
