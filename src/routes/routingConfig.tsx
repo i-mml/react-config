@@ -6,8 +6,6 @@ import NotFound from "../pages/notFound";
 import AbountUsPage from "../pages/about-us";
 import HomePage from "../pages/home";
 import ProfilePage from "../pages/profile";
-import SideBarPage from "../pages/side-bar";
-import MobileSideBarPage from "../pages/mobile-sidebar";
 import FinancialManagmentPage from "../pages/financial-managment";
 import DetailServis from "../views/financialManagmentView/components/detail-servis";
 import RenevalServis from "../views/financialManagmentView/components/revenal-servis";
@@ -39,24 +37,6 @@ const RoutingConfig = () => {
         element={
           <PrivateRoute>
             <ProfilePage />
-          </PrivateRoute>
-        }
-      />
-
-      <Route
-        path="/side-bar"
-        element={
-          <PrivateRoute>
-            <SideBarPage />
-          </PrivateRoute>
-        }
-      />
-
-      <Route
-        path="/mobile-sidebar"
-        element={
-          <PrivateRoute>
-            <MobileSideBarPage />
           </PrivateRoute>
         }
       />

@@ -1,6 +1,6 @@
 import React from 'react'
-import SideBarView from '../sideBarView'
 import s from './layout.module.scss';
+import SideBarView from './components/sidebar';
 
 const Layout = ({ children }: any) => {
     return (

@@ -1,14 +1,12 @@
-// * {
-//   background: var(--color-gray-background, #f1f2f6);
-// }
-//financial-managment
 .container {
   width: 94%;
   background: white;
   padding: 36px 34px;
+  border-radius: 14px;
+
   @media (max-width: 750px) {
-    width: 94%;
-    padding: 16px 20px;
+    width: 100%;
+    padding: 16px;
   }
 
   .header {

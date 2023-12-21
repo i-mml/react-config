@@ -1,7 +1,7 @@
 import React from 'react';
-import { SidebarList } from "../layout/components/sidebar/sidebar.data";
 import s from "./mobileSideBar.module.scss";
 import { useLocation, useNavigate } from 'react-router';
+import { SidebarList } from '../sidebar/sidebar.data';
 
 
 const MobileSideBarView = () => {

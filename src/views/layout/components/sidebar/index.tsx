@@ -1,10 +1,11 @@
 // import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import s from "./sideBar.module.scss";
-import { SidebarList } from "./sidebar.data";
 import { useMutation } from "react-query";
-import { LogoutService } from "../../api/services/auth";
-import MobileSideBarView from "../mobileSideBarView";
+import { LogoutService } from "../../../../api/services/auth";
+import MobileSideBarView from "../mobileSidebar";
+import { SidebarList } from "./sidebar.data";
+import MobileHeader from "../mobileHeader";
 
 const SideBarView = () => {
   let location = useLocation();
@@ -58,6 +59,7 @@ const SideBarView = () => {
           />
         </div>
       </div>
+      <MobileHeader />
       <MobileSideBarView />
     </>
   );
