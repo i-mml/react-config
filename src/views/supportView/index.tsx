@@ -102,10 +102,10 @@ const SupportView = (props: ISupportViewProps) => {
       <table className={s.tableWrapper}>
         <thead>
           <tr>
-            <th>شماره تیکت</th>
+            <th className={s.mobileShow}>شماره تیکت</th>
             <th>تاریخ ایجاد</th>
             <th>درجه اهمیت</th>
-            <th>وضعیت</th>
+            <th className={s.mobileShow}>وضعیت</th>
             <th>آخرین آپدیت</th>
           </tr>
         </thead>
@@ -113,7 +113,7 @@ const SupportView = (props: ISupportViewProps) => {
           {
             tableData?.map(item =>
               <tr key={item.id}>
-                <td>
+                <td className={s.mobileShow}>
                   <div className={s.ticketId}>
                     <img src="/images/ticket_tag.png" className={s.ticketIcon} />
                     <div>
@@ -135,8 +135,14 @@ const SupportView = (props: ISupportViewProps) => {
                     </span>
                   </div>
                 </td>
-                <td>
+                <td className={s.mobileShow}>
                   {statusGenerator[item?.status]}
+                  <div className={`${s.label} ${labelGenerator[item?.label]?.class}`}>
+                    <span className={s.circle}></span>
+                    <span className={s.labelValue}>
+                      {labelGenerator[item?.label]?.title}
+                    </span>
+                  </div>
                 </td>
                 <td>
                   <div className={s.updatedAt}>

@@ -2,8 +2,11 @@
   width: 94%;
   padding: 24px;
   background-color: white;
-  @media (max-width: 600px) {
-    margin: 88px 14px 97px;
+  border-radius: 14px;
+  min-height: 90vh;
+  @media (max-width: 750px) {
+    width: 100%;
+    padding: 16px;
   }
 
   .header {
@@ -112,6 +115,9 @@
     font-size: 16px;
     font-weight: 600;
     line-height: 16px;
+    @media (max-width: 750px) {
+      display: none;
+    }
   }
   & tbody tr {
     border-bottom: 1px solid #e7e7e7;
@@ -121,6 +127,14 @@
     font-size: 16px;
     font-weight: 400;
     padding: 18px 0;
+    @media (max-width: 750px) {
+      display: none;
+    }
+  }
+  @media (max-width: 750px) {
+    .mobileShow {
+      display: table-cell;
+    }
   }
 }
 .tableBody {
