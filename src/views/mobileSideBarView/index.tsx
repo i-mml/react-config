@@ -1,10 +1,12 @@
-// import React, { useState } from "react";
+import React from 'react';
+import { SidebarList } from "../sideBarView/sidebar.data";
 import s from "./mobileSideBar.module.scss";
-import { SidebarList } from "./mobileSideBar.data";
+import { useLocation, useNavigate } from 'react-router';
+
 
 const MobileSideBarView = () => {
-  // const [current, setcurrent] = useState<string>("");
-  // const router = useRouter();
+  let location = useLocation();
+  const navigate = useNavigate()
 
   return (
     <div className={s.container}>
@@ -17,19 +19,11 @@ const MobileSideBarView = () => {
             icon: string;
             subMenue: any[];
           }) => (
-            <a href={item?.link} className={s.sidebarLink}>
-              <div
-                // onClick={() => setcurrent(item.title)}
-                // className={`${s.sidebarItem} ${
-                //   router.path === item.link && s.active
-                // }`}
-                className={s.active}
-              >
-                <div className={s.iconBox}>
-                  <img src={item?.icon} alt="sideBar icon" className={s.icon} />
-                </div>
-                <div className={s.title}>{item.title}</div>
+            <a href={item?.link} className={`${s.sidebarLink}  ${location?.pathname === item?.link && s.active}`}>
+              <div className={s.iconBox}>
+                <img src={item?.icon} alt="sideBar icon" className={s.icon} />
               </div>
+              <div className={s.title}>{item.title}</div>
             </a>
           )
         )}
