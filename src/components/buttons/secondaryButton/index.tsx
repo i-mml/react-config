@@ -3,7 +3,7 @@ import s from './style.module.scss';
 
 const SecondaryButton = ({ children = "", onClick = () => { }, className = "" }) => {
     return (
-        <div className={`${s.secondaryButton} ${className}`} onClick={onClick}>{children}</div>
+        <button className={`${s.secondaryButton} ${className}`} onClick={onClick}>{children}</button>
     )
 }
 

@@ -84,7 +84,7 @@ const SupportView = (props: ISupportViewProps) => {
       <div className={s.header}>
         <div className={s.title}>تیکت ها</div>
         <input type="search" placeholder="جستجو تیکت" className={s.SearchBox} />
-        <button className={s.sentTiketBtn}>ارسال تیکت</button>
+        <button className={s.sentTiketBtn} onClick={() => navigate("/support/create")}>ارسال تیکت</button>
       </div>
       <div className={s.tabContainer}>
         <div className={s.TabsBox}>

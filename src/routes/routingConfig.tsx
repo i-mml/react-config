@@ -4,17 +4,17 @@ import { Routes, Route } from "react-router-dom";
 import PrivateRoute from "./privateRouter";
 import NotFound from "../pages/notFound";
 import AbountUsPage from "../pages/about-us";
-import HomePage from "../pages/home";
 import ProfilePage from "../pages/profile";
 import FinancialManagmentPage from "../pages/financial-managment";
+import Support from "../pages/support";
 import DetailServis from "../views/financialManagmentView/components/detail-servis";
 import RenevalServis from "../views/financialManagmentView/components/revenal-servis";
-import Support from "../pages/support";
-import DashboardView from "../views/dashboardView";
-import DevicesView from "../views/devicesView";
-import CamerasView from "../views/camerasView";
-import NotificationsView from "../views/notificationsView";
-import SingleSupportView from "../views/singleSupportView";
+import HomePage from "../pages/home";
+import SupportCreatePage from "../pages/supportCreate";
+import SingleSupportPage from "../pages/singleSupport";
+import NotificationsPage from "../pages/notifications";
+import CamerasPage from "../pages/cameras";
+import DevicesPage from "../pages/devices";
 
 const RoutingConfig = () => {
   return (
@@ -28,7 +28,7 @@ const RoutingConfig = () => {
         path="/"
         element={
           <PrivateRoute>
-            <DashboardView />
+            <HomePage />
           </PrivateRoute>
         }
       />
@@ -87,10 +87,18 @@ const RoutingConfig = () => {
         }
       />
       <Route
+        path="/support/create"
+        element={
+          <PrivateRoute>
+            <SupportCreatePage />
+          </PrivateRoute>
+        }
+      />
+      <Route
         path="/support/:id"
         element={
           <PrivateRoute>
-            <SingleSupportView />
+            <SingleSupportPage />
           </PrivateRoute>
         }
       />
@@ -99,7 +107,7 @@ const RoutingConfig = () => {
         path="/devices"
         element={
           <PrivateRoute>
-            <DevicesView />
+            <DevicesPage />
           </PrivateRoute>
         }
       />
@@ -107,7 +115,7 @@ const RoutingConfig = () => {
         path="/cameras"
         element={
           <PrivateRoute>
-            <CamerasView />
+            <CamerasPage />
           </PrivateRoute>
         }
       />
@@ -115,7 +123,7 @@ const RoutingConfig = () => {
         path="/notifications"
         element={
           <PrivateRoute>
-            <NotificationsView />
+            <NotificationsPage />
           </PrivateRoute>
         }
       />
