@@ -5,7 +5,8 @@ import DashboardTopBox from './components/dashboardTopBox';
 import StatusCartItem from './components/statusCartItem';
 import DashboardMap from './components/dashboardMap';
 import DashboardMiddleBox from './components/dashboardMiddleBox';
-
+import { isMobile } from 'react-device-detect';
+import DashboardMobileLinkBox from './components/dashboardMobileLinkBox';
 
 const DashboardView = () => {
     const auth = useContext(AuthContext);
@@ -20,7 +21,21 @@ const DashboardView = () => {
                 <StatusCartItem title='کاربران غیر فعال' value={0} icon="zap-off" hasArrow arrowType="down" />
                 <StatusCartItem title='نمونه' value={0} icon="zap-off" />
             </div>
-            <DashboardMap />
+            {
+                isMobile ? <>
+                    <DashboardMobileLinkBox
+                        icon='/images/Computer.png'
+                        link='/devices'
+                        title='دستگاه‌های متصل'
+                    />
+                    <DashboardMobileLinkBox
+                        icon='/images/Telescope.png'
+                        link='/cameras'
+                        title='دوربین‌ها'
+                    />
+                </> :
+                    <DashboardMap />
+            }
             <DashboardMiddleBox />
         </div>
     )

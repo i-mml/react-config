@@ -16,7 +16,6 @@ const DashboardTopBox = () => {
             <div className={s.left}>
                 <UsedTraficItem />
                 <UsedTraficItem />
-
             </div>
         </div>
     )
