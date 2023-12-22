@@ -22,7 +22,7 @@ const DashboardView = () => {
                 <StatusCartItem title='نمونه' value={0} icon="zap-off" />
             </div>
             {
-                isMobile ? <>
+                isMobile ? <div className={s.mobileLinkWrapper}>
                     <DashboardMobileLinkBox
                         icon='/images/Computer.png'
                         link='/devices'
@@ -33,7 +33,7 @@ const DashboardView = () => {
                         link='/cameras'
                         title='دوربین‌ها'
                     />
-                </> :
+                </div> :
                     <DashboardMap />
             }
             <DashboardMiddleBox />

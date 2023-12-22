@@ -10,4 +10,10 @@
       flex-wrap: wrap;
     }
   }
+  .mobileLinkWrapper {
+    display: none;
+    @media (max-width: 750px) {
+      display: inherit;
+    }
+  }
 }
