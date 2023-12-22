@@ -1,9 +1,11 @@
 import React from 'react'
 import s from './style.module.scss';
+import { useNavigate } from 'react-router-dom';
 
 const MobileHeader = () => {
+    const navigate = useNavigate()
     return (
-        <div className={s.mobileHeader}>
+        <div className={s.mobileHeader} onClick={() => navigate('/notifications')}>
             <div className={s.contentBox}>
                 <img src='https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp'
                     className={s.profileImage}

@@ -7,7 +7,9 @@
 
   .content {
     width: 74.47%;
-
+    @media (max-width: 750px) {
+      width: 100%;
+    }
     .middleSlider {
       width: 100%;
       background-color: white;
@@ -24,10 +26,13 @@
           align-items: center;
           margin-top: 18px;
           width: fit-content;
-          margin: 0 auto;
+          margin: 41px auto 0;
           background-color: #e5f2ff;
           padding: 3px 5px;
           border-radius: 14px;
+          @media (max-width: 750px) {
+            margin-top: 31px;
+          }
         }
         .swiper-pagination-bullet {
           margin: 0 8px;
@@ -45,12 +50,18 @@
   }
   .notifications {
     width: 23.43%;
+    @media (max-width: 750px) {
+      display: none;
+    }
   }
   .smallBoxWrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 16px;
+    @media (max-width: 750px) {
+      display: none;
+    }
   }
   .smallBox {
     width: 48.6%;

@@ -1,9 +1,16 @@
 .middleSliderItem {
   display: flex;
   align-items: center;
+  @media (max-width: 750px) {
+    flex-wrap: wrap;
+  }
   .image {
     width: 41.4%;
     margin-left: 7.5%;
+    @media (max-width: 750px) {
+      width: 100%;
+      margin: 0;
+    }
   }
   .textBox {
     .title {
@@ -21,6 +28,9 @@
       font-size: 12px;
       font-weight: 300;
       line-height: 16px;
+      @media (max-width: 750px) {
+        margin-top: 6px;
+      }
     }
   }
 }
