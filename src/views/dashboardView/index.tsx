@@ -7,6 +7,7 @@ import DashboardMap from './components/dashboardMap';
 import DashboardMiddleBox from './components/dashboardMiddleBox';
 import { isMobile } from 'react-device-detect';
 import DashboardMobileLinkBox from './components/dashboardMobileLinkBox';
+import LineChart from '../../components/charts/lineCart';
 
 const DashboardView = () => {
     const auth = useContext(AuthContext);
@@ -37,6 +38,7 @@ const DashboardView = () => {
                     <DashboardMap />
             }
             <DashboardMiddleBox />
+            <LineChart />
         </div>
     )
 }
