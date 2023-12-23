@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LoginPage from "../pages/login";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import PrivateRoute from "./privateRouter";
 import NotFound from "../pages/notFound";
 import AbountUsPage from "../pages/about-us";
@@ -15,8 +15,16 @@ import SingleSupportPage from "../pages/singleSupport";
 import NotificationsPage from "../pages/notifications";
 import CamerasPage from "../pages/cameras";
 import DevicesPage from "../pages/devices";
+import Cookies from "js-cookie";
 
 const RoutingConfig = () => {
+  const tokenValue = Cookies.get("ems-token")
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!tokenValue || tokenValue === "") { return navigate('/login') };
+  }, [])
+
   return (
     <Routes>
       {/* public routes(e.g policies , login , 404 ,...) */}

@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import { AuthContext } from '../../api/context';
+
 import s from './dashboard.module.scss';
 import DashboardTopBox from './components/dashboardTopBox';
 import StatusCartItem from './components/statusCartItem';
@@ -8,10 +7,12 @@ import DashboardMiddleBox from './components/dashboardMiddleBox';
 import { isMobile } from 'react-device-detect';
 import DashboardMobileLinkBox from './components/dashboardMobileLinkBox';
 import LineChart from '../../components/charts/lineCart';
+import auth from '../../redux/reducers/auth';
+import { useSelector } from 'react-redux';
 
 const DashboardView = () => {
-    const auth = useContext(AuthContext);
-    console.log('auth', auth?.value)
+    const user = useSelector((state: any) => state?.auth);
+    console.log(user)
 
     return (
         <div className={s.dashboardContainer}>
