@@ -1,0 +1,26 @@
+.mobileNavigator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  .title {
+    color: #888;
+    font-size: 16px;
+  }
+  .left {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    .link {
+      color: #111;
+      font-size: 13px;
+      margin-left: 4px;
+    }
+    .icon {
+      width: 20px;
+      height: 20px;
+      transform: rotate(270deg);
+    }
+  }
+}
