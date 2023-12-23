@@ -80,90 +80,96 @@ const SupportView = (props: ISupportViewProps) => {
 
 
   return (
-    <div className={s.container}>
-      <div className={s.header}>
-        <div className={s.title}>تیکت ها</div>
+    <div className={s.supportWrapper}>
+      <div className={s.mobileSearchBox}>
         <input type="search" placeholder="جستجو تیکت" className={s.SearchBox} />
-        <button className={s.sentTiketBtn} onClick={() => navigate("/support/create")}>ارسال تیکت</button>
       </div>
-      <div className={s.tabContainer}>
-        <div className={s.TabsBox}>
-          {tabsList?.map(({ faTitle, id, title }) => (
-            <div
-              className={`${s.profileTab} ${currentTab === title && s.profileActiveTab
-                }`}
-              onClick={() => setCurrentTab(title)}
-              key={id}
-            >
-              {faTitle}
-            </div>
-          ))}
+      <div className={s.container}>
+        <div className={s.header}>
+          <div className={s.title}>تیکت ها</div>
+          <input type="search" placeholder="جستجو تیکت" className={s.SearchBox} />
+          <button className={s.sentTiketBtn} onClick={() => navigate("/support/create")}>ارسال تیکت</button>
         </div>
-      </div>
+        <div className={s.tabContainer}>
+          <div className={s.TabsBox}>
+            {tabsList?.map(({ faTitle, id, title }) => (
+              <div
+                className={`${s.profileTab} ${currentTab === title && s.profileActiveTab
+                  }`}
+                onClick={() => setCurrentTab(title)}
+                key={id}
+              >
+                {faTitle}
+              </div>
+            ))}
+          </div>
+        </div>
 
-      <table className={s.tableWrapper}>
-        <thead>
-          <tr>
-            <th className={s.mobileShow}>شماره تیکت</th>
-            <th>تاریخ ایجاد</th>
-            <th>درجه اهمیت</th>
-            <th className={s.mobileShow}>وضعیت</th>
-            <th>آخرین آپدیت</th>
-          </tr>
-        </thead>
-        <tbody className={s.tableBody}>
-          {
-            tableData?.map(item =>
-              <tr key={item.id} onClick={() => navigate(`/support/${item?.id}`)}>
-                <td className={s.mobileShow}>
-                  <div className={s.ticketId}>
-                    <img src="/images/ticket_tag.png" className={s.ticketIcon} />
-                    <div>
-                      <div className={s.ticketIdNumber}>#{item.ticket_id}</div>
-                      <div className={s.ticketTitle}>
-                        {item.title}
+        <table className={s.tableWrapper}>
+          <thead>
+            <tr>
+              <th className={s.mobileShow}>شماره تیکت</th>
+              <th>تاریخ ایجاد</th>
+              <th>درجه اهمیت</th>
+              <th className={s.mobileShow}>وضعیت</th>
+              <th>آخرین آپدیت</th>
+            </tr>
+          </thead>
+          <tbody className={s.tableBody}>
+            {
+              tableData?.map(item =>
+                <tr key={item.id} onClick={() => navigate(`/support/${item?.id}`)}>
+                  <td className={s.mobileShow}>
+                    <div className={s.ticketId}>
+                      <img src="/images/ticket_tag.png" className={s.ticketIcon} />
+                      <div>
+                        <div className={s.ticketIdNumber}>#{item.ticket_id}</div>
+                        <div className={s.ticketTitle}>
+                          {item.title}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-                <td>
-                  {item?.created_at}
-                </td>
-                <td>
-                  <div className={`${s.label} ${labelGenerator[item?.label]?.class}`}>
-                    <span className={s.circle}></span>
-                    <span className={s.labelValue}>
-                      {labelGenerator[item?.label]?.title}
-                    </span>
-                  </div>
-                </td>
-                <td className={s.mobileShow}>
-                  {statusGenerator[item?.status]}
-                  <div className={`${s.label} ${labelGenerator[item?.label]?.class}`}>
-                    <span className={s.circle}></span>
-                    <span className={s.labelValue}>
-                      {labelGenerator[item?.label]?.title}
-                    </span>
-                  </div>
-                </td>
-                <td>
-                  <div className={s.updatedAt}>
-                    <div className={s.date}>
-                      {item?.updated_at}
+                  </td>
+                  <td>
+                    {item?.created_at}
+                  </td>
+                  <td>
+                    <div className={`${s.label} ${labelGenerator[item?.label]?.class}`}>
+                      <span className={s.circle}></span>
+                      <span className={s.labelValue}>
+                        {labelGenerator[item?.label]?.title}
+                      </span>
                     </div>
-                    <div className={s.updatedUser}>
-                      {item?.updated_at_user}
+                  </td>
+                  <td className={s.mobileShow}>
+                    {statusGenerator[item?.status]}
+                    <div className={`${s.label} ${labelGenerator[item?.label]?.class}`}>
+                      <span className={s.circle}></span>
+                      <span className={s.labelValue}>
+                        {labelGenerator[item?.label]?.title}
+                      </span>
                     </div>
-                  </div>
-                </td>
-              </tr>
-            )
-          }
-        </tbody>
-      </table>
+                  </td>
+                  <td>
+                    <div className={s.updatedAt}>
+                      <div className={s.date}>
+                        {item?.updated_at}
+                      </div>
+                      <div className={s.updatedUser}>
+                        {item?.updated_at_user}
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              )
+            }
+          </tbody>
+        </table>
 
 
+      </div>
     </div>
+
   );
 };
 

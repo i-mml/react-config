@@ -20,7 +20,9 @@ const MobileNaviagtorLine = (props: IProps) => {
             </div>
             {
                 hasCustom ?
-                    customLink
+                    <div className={s.leftCustomBox}>
+                        {customLink}
+                    </div>
                     :
                     hasLink ?
                         (

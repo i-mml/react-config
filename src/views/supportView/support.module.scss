@@ -1,3 +1,17 @@
+.mobileSearchBox {
+  width: 100%;
+  margin-bottom: 24px;
+  display: none;
+  @media (max-width: 750px) {
+    display: block;
+  }
+  .SearchBox {
+    width: 100%;
+    height: 44px;
+    margin: 0 auto;
+    max-width: unset;
+  }
+}
 .container {
   width: 100%;
   padding: 24px;
@@ -15,6 +29,10 @@
     width: 100%;
     height: 48px;
 
+    @media (max-width: 750px) {
+      display: none;
+    }
+
     .title {
       color: var(--colors-neutral-700, #111);
       background-color: white;
@@ -23,27 +41,6 @@
       font-size: 16px;
       font-weight: 500;
       margin-top: 10px;
-    }
-
-    .SearchBox {
-      width: 320px;
-      height: 44px;
-      display: flex;
-      padding: 10px 14px;
-      margin-right: 16px;
-      align-items: center;
-      border-radius: 8px;
-      border: 1px solid var(--colors-neutral-200, #e7e7e7);
-      background-color: var(--White, #fff);
-      // background: url("/images/icons/search.svg") no-repeat scroll 10px;
-      // background: url('/images/icons/search.svg');
-      box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
-      &::placeholder {
-        color: var(--colors-neutral-300, #b8b8b8);
-        font-size: 14px;
-        font-weight: 500;
-        margin-right: 8px;
-      }
     }
 
     .sentTiketBtn {
@@ -83,22 +80,16 @@
     padding: 37px 0 12px;
     font-size: 16px;
     font-weight: 500;
-    @media (max-width: 600px) {
-      margin-right: 16px;
+    @media (max-width: 750px) {
+      padding: 0 0 12px;
+      margin: 0;
+      margin-left: 16px;
     }
   }
 
   .profileActiveTab {
     color: #007eff;
     border-bottom: 1px solid #007eff;
-    font-size: 16px;
-    padding: 37px 0 12px;
-    background-color: white;
-    font-weight: 500;
-    border-radius: 0;
-    @media (max-width: 600px) {
-      margin-right: 22px;
-    }
   }
 
   .content {
@@ -218,5 +209,24 @@
     .labelValue {
       color: #888888;
     }
+  }
+}
+.SearchBox {
+  width: 100%;
+  height: 44px;
+  max-width: 320px;
+  display: flex;
+  padding: 10px 14px;
+  margin-right: 16px;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--colors-neutral-200, #e7e7e7);
+  background-color: var(--White, #fff);
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  &::placeholder {
+    color: var(--colors-neutral-300, #b8b8b8);
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 8px;
   }
 }
