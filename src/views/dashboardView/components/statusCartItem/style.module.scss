@@ -1,0 +1,38 @@
+.container {
+  background-color: white;
+  width: 23.43%;
+  border-radius: 14px;
+  padding: 16px;
+  margin-top: 24px;
+  @media (max-width: 750px) {
+    width: 48%;
+  }
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  .arrow {
+  }
+  .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .title {
+    color: #b8b8b8;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+  .value {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 16px;
+  }
+}

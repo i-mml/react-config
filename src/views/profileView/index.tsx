@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import s from "./profile.module.scss";
 import UserInformationTab from "./components/userInformation";
 import PasswordTab from "./components/password";
+import TitleBox from "../dashboardView/components/titleBox";
 
 const ProfileView = () => {
   const [currentTab, setCurrentTab] = useState("user_information");
@@ -18,14 +19,13 @@ const ProfileView = () => {
 
   return (
     <div className={s.container}>
-      <div className={s.title}>پروفایل</div>
+      <TitleBox title="پروفایل" />
       <div className={s.tabContainer}>
         <div className={s.TabsBox}>
           {tabsList?.map(({ faTitle, id, title }) => (
             <div
-              className={`${s.profileTab} ${
-                currentTab === title && s.profileActiveTab
-              }`}
+              className={`${s.profileTab} ${currentTab === title && s.profileActiveTab
+                }`}
               onClick={() => setCurrentTab(title)}
               key={id}
             >

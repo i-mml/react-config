@@ -1,0 +1,36 @@
+.dashboardTopBox {
+  display: flex;
+  align-items: center;
+  @media (max-width: 750px) {
+    flex-wrap: wrap;
+  }
+  .right {
+    width: 48.2%;
+    @media (max-width: 750px) {
+      width: 100%;
+    }
+  }
+  .title {
+    color: #111;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+  .subTitle {
+    color: #888;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  .left {
+    width: 50%;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 750px) {
+      width: 100%;
+      margin-right: 0;
+      margin-top: 16px;
+    }
+  }
+}

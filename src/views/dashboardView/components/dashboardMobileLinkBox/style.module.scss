@@ -1,0 +1,20 @@
+.mobileLinkBox {
+  background-color: white;
+  width: 100%;
+  border-radius: 14px;
+  padding: 17px;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+
+  .icon {
+    width: 23.4%;
+    height: auto;
+    margin-left: 16px;
+  }
+  .title {
+    color: #111;
+    font-size: 20px;
+    font-weight: 600;
+  }
+}

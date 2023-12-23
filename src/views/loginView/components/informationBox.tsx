@@ -1,26 +1,29 @@
-import React, { useState, useContext } from "react";
+import React, { useState, } from "react";
 import { Field, Form, Formik } from "formik";
 import s from "../login.module.scss";
 import * as Yup from "yup";
-import Cookies from "js-cookie";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { LoginService, } from "../../../api/services/auth";
 import { LoginFields } from "../../../types/api/auth";
 import { useMutation } from "react-query";
-import { AuthContext } from "../../../api/context";
+import { setToken } from "../../../redux/reducers/auth";
+import { useDispatch } from "react-redux";
 
 const loginSchema = Yup.object().shape({
   number: Yup.string().required("نام کاربری خود را وارد کنید"),
   password: Yup.string().required("رمز خود را وارد کنید"),
 });
-
 const InformationBox = () => {
-  const { authValue, setAuthValue } = useContext(AuthContext);
-  const location = useLocation()
-  const mutation = useMutation((e: LoginFields) => LoginService(e).finally(() => navigate("/", { replace: true })));
+  const dispatch = useDispatch()
+
+  const mutation = useMutation((e: LoginFields) => LoginService(e).then((res) => {
+    console.log(res.data)
+    dispatch(setToken(res?.data));
+    navigate("/", { replace: true });
+  }
+  ));
   const navigate = useNavigate()
 
-  console.log('auth', authValue)
 
   const [type, setType] = useState("password");
 
@@ -29,7 +32,6 @@ const InformationBox = () => {
   };
 
   const handleSubmit = (e: LoginFields) => {
-    setAuthValue("this is token value in context")
     mutation.mutate(e);
   }
 

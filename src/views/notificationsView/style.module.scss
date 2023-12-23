@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+  min-height: 80vh;
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 14px;
+  .titleWrappwer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+}

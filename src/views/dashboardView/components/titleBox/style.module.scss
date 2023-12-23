@@ -1,0 +1,14 @@
+.titleBox {
+  display: flex;
+  align-items: center;
+  .title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    margin: 0 8px 0 0;
+  }
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -1,19 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LoginPage from "../pages/login";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import PrivateRoute from "./privateRouter";
 import NotFound from "../pages/notFound";
 import AbountUsPage from "../pages/about-us";
-import HomePage from "../pages/home";
 import ProfilePage from "../pages/profile";
-import SideBarPage from "../pages/side-bar";
-import MobileSideBarPage from "../pages/mobile-sidebar";
 import FinancialManagmentPage from "../pages/financial-managment";
+import Support from "../pages/support";
 import DetailServis from "../views/financialManagmentView/components/detail-servis";
 import RenevalServis from "../views/financialManagmentView/components/revenal-servis";
-import Support from "../pages/support";
+import HomePage from "../pages/home";
+import SupportCreatePage from "../pages/supportCreate";
+import SingleSupportPage from "../pages/singleSupport";
+import NotificationsPage from "../pages/notifications";
+import CamerasPage from "../pages/cameras";
+import DevicesPage from "../pages/devices";
+import Cookies from "js-cookie";
 
 const RoutingConfig = () => {
+  const tokenValue = Cookies.get("ems-token")
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!tokenValue || tokenValue === "") { return navigate('/login') };
+  }, [])
+
   return (
     <Routes>
       {/* public routes(e.g policies , login , 404 ,...) */}
@@ -35,24 +46,6 @@ const RoutingConfig = () => {
         element={
           <PrivateRoute>
             <ProfilePage />
-          </PrivateRoute>
-        }
-      />
-
-      <Route
-        path="/side-bar"
-        element={
-          <PrivateRoute>
-            <SideBarPage />
-          </PrivateRoute>
-        }
-      />
-
-      <Route
-        path="/mobile-sidebar"
-        element={
-          <PrivateRoute>
-            <MobileSideBarPage />
           </PrivateRoute>
         }
       />
@@ -98,6 +91,47 @@ const RoutingConfig = () => {
         element={
           <PrivateRoute>
             <Support />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/support/create"
+        element={
+          <PrivateRoute>
+            <SupportCreatePage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/support/:id"
+        element={
+          <PrivateRoute>
+            <SingleSupportPage />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/devices"
+        element={
+          <PrivateRoute>
+            <DevicesPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/cameras"
+        element={
+          <PrivateRoute>
+            <CamerasPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/notifications"
+        element={
+          <PrivateRoute>
+            <NotificationsPage />
           </PrivateRoute>
         }
       />

@@ -1,0 +1,69 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin-top: 16px;
+
+  .content {
+    width: 74.47%;
+    @media (max-width: 750px) {
+      width: 100%;
+    }
+    .middleSlider {
+      width: 100%;
+      background-color: white;
+      padding: 38px 0;
+      border-radius: 14px;
+    }
+    .slider {
+      width: 88.11%;
+      margin: 0 auto;
+      :global {
+        .swiper-pagination {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 18px;
+          width: fit-content;
+          margin: 41px auto 0;
+          background-color: #e5f2ff;
+          padding: 3px 5px;
+          border-radius: 14px;
+          @media (max-width: 750px) {
+            margin-top: 31px;
+          }
+        }
+        .swiper-pagination-bullet {
+          margin: 0 8px;
+          border-radius: 50%;
+          background: #fff;
+          width: 7px;
+          height: 7px;
+          cursor: pointer;
+        }
+        .swiper-pagination-bullet-active {
+          background: #007eff;
+        }
+      }
+    }
+  }
+  .notifications {
+    width: 23.43%;
+    @media (max-width: 750px) {
+      display: none;
+    }
+  }
+  .smallBoxWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    @media (max-width: 750px) {
+      display: none;
+    }
+  }
+  .smallBox {
+    width: 48.6%;
+  }
+}
