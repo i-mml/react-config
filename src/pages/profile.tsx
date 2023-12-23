@@ -1,11 +1,13 @@
 import React from "react";
 import ProfileView from "../views/profileView";
+import MobileNaviagtorLine from "../components/mobileNaviagatorLine";
 
 const ProfilePage = () => {
   return (
-    <div>
+    <>
+      <MobileNaviagtorLine title="حساب کاربری" hasLink={false} />
       <ProfileView />
-    </div>
+    </>
   );
 };
 
