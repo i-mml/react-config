@@ -22,7 +22,7 @@ export const putMessageEdit = async (e: MessageEditFields) => {
 
 export const postMessageCreate = async (e: MessageCreateFields) => {
   const response = await axiosInstance
-    .post("/message/create", e)
+    .post("/message/send", e)
     .then((res) => res?.data);
 
   return response;

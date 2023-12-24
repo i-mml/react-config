@@ -3,13 +3,13 @@ import s from './style.module.scss';
 import { string } from 'yup';
 
 interface IProps {
-    children: ReactNode, onClick: () => void, className?: string; type: "button" | "reset" | "submit"
+    children: ReactNode, onClick: () => void, className?: string; type: "button" | "reset" | "submit", disabled?: boolean
 }
 
 const PrimaryButton = (props: IProps) => {
-    const { children = "", onClick = () => { }, className = "", type = "button" } = props
+    const { children = "", onClick = () => { }, className = "", type = "button", disabled = false } = props
     return (
-        <button className={`${s.secondaryButton} ${className}`} onClick={onClick} type={type}>{children}</button>
+        <button className={`${s.secondaryButton} ${className}`} onClick={onClick} type={type} disabled={disabled}>{children}</button>
     )
 }
 
