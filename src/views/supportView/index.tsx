@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import s from "./support.module.scss";
 import { useNavigate } from "react-router-dom";
+import moment from "moment-jalaali";
+
+moment.loadPersian();
 
 interface ISupportViewProps {
   loading: boolean,
@@ -132,7 +135,9 @@ const SupportView = (props: ISupportViewProps) => {
                     </div>
                   </td>
                   <td>
-                    {item?.CreatedAt}
+                    {
+                      moment(item?.CreatedAt).format("jYYYY/jMM/jDD")
+                    }
                   </td>
                   <td>
                     {item?.label === "" ? "-" :
@@ -155,7 +160,9 @@ const SupportView = (props: ISupportViewProps) => {
                   <td>
                     <div className={s.updatedAt}>
                       <div className={s.date}>
-                        {item?.UpdatedAt}
+                        {
+                          moment(item?.UpdatedAt).format("jYYYY/jMM/jDD")
+                        }
                       </div>
                       <div className={s.updatedUser}>
                         {item?.updated_at_user}
