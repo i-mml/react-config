@@ -1,4 +1,5 @@
 import {
+  CompanyChangePassword,
   CompanyCreateFields,
   CompanyEditFields,
 } from "../../types/api/company";
@@ -31,6 +32,14 @@ export const getCompanyAll = async () => {
 export const getCompanyById = async (id: number) => {
   const response = await axiosInstance
     .get(`/company/${id}`)
+    .then((res) => res?.data);
+
+  return response;
+};
+
+export const putCompanyChangePassword = async (e: CompanyChangePassword) => {
+  const response = await axiosInstance
+    .put("/company/change/password", e)
     .then((res) => res?.data);
 
   return response;

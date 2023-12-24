@@ -11,3 +11,8 @@ export type CompanyEditFields = {
   active?: number;
   title?: string;
 };
+
+export type CompanyChangePassword = {
+  old_password: string;
+  new_password: string;
+};
