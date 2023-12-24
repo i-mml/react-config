@@ -3,7 +3,7 @@ import s from './style.module.scss';
 
 
 const CameraListItem = ({ title = "", isLast = false }) => {
-    console.log(isLast)
+
     return (
         <div className={`${s.container} ${isLast ? s.isLast : ""}`}>
             <img src='/images/icons/webcam.svg' className={s.image} />

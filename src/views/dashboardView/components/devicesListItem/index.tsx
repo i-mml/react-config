@@ -3,7 +3,7 @@ import s from './style.module.scss';
 
 
 const DeviceListItem = ({ name = "", isLast = false, status = "" }) => {
-    console.log(status)
+
     return (
         <div className={`${s.container} ${isLast ? s.isLast : ""}`}>
             <img src='/images/icons/printer.svg' className={s.image} />

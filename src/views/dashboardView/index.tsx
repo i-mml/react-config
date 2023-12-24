@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 
 const DashboardView = () => {
     const user = useSelector((state: any) => state?.auth);
-    console.log(user)
+
 
     return (
         <div className={s.dashboardContainer}>

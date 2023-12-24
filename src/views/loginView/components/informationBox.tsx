@@ -17,7 +17,6 @@ const InformationBox = () => {
   const dispatch = useDispatch()
 
   const mutation = useMutation((e: LoginFields) => LoginService(e).then((res) => {
-    console.log(res.data)
     dispatch(setToken(res?.data));
     navigate("/", { replace: true });
   }

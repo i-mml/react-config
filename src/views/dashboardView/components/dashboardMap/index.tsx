@@ -19,8 +19,8 @@ const DashboardMap = () => {
             <div className={s.sliderBox}>
                 <Swiper
                     slidesPerView={1}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper: any) => console.log(swiper)}
+                    onSlideChange={() => { }}
+                    onSwiper={(swiper: any) => { }}
                     pagination={pagination}
                     navigation={true}
                     modules={[Navigation, Pagination]}
