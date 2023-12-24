@@ -4,7 +4,7 @@ import {
 } from "../../types/api/message";
 import axiosInstance from "../axiosConfig";
 
-export const getMessageAll = async (params: string) => {
+export const getMessageAll = async (params: string | undefined) => {
   const response = await axiosInstance
     .get(`/message/all?${params}`)
     .then((res) => res?.data);
