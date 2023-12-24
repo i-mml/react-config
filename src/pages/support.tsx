@@ -12,7 +12,7 @@ const Support = () => {
   const { data: tickets, isLoading } = useQuery("tickets-list", getTicketAll);
 
   const propsToPass = {
-    data: tickets,
+    data: tickets?.data,
     loading: isLoading
   }
 

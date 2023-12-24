@@ -184,6 +184,12 @@
       line-height: 16px;
     }
   }
+  .onlyMobile {
+    display: none;
+    @media (max-width: 750px) {
+      display: flex;
+    }
+  }
   .high {
     background-color: #f9e7e7;
     .circle {

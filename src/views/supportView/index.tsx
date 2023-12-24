@@ -8,6 +8,7 @@ interface ISupportViewProps {
 }
 
 const SupportView = (props: ISupportViewProps) => {
+  console.log(props?.data)
   const [currentTab, setCurrentTab] = useState("external-support");
   const navigate = useNavigate()
 
@@ -16,59 +17,59 @@ const SupportView = (props: ISupportViewProps) => {
     { id: 3, faTitle: "پشتیبانی داخلی", title: "internal_support" },
   ];
 
-  const tableData = [
-    {
-      id: 1,
-      title: "مشکل در سفارش",
-      ticket_id: "65232",
-      created_at: "1403/09/03",
-      label: "high",
-      status: "pending",
-      updated_at: "1403/0903",
-      updated_at_user: "علی احمدی",
-    },
-    {
-      id: 2,
-      title: "مشکل در سفارش",
-      ticket_id: "65232",
-      created_at: "1403/09/03",
-      label: "high",
-      status: "pending",
-      updated_at: "1403/0903",
-      updated_at_user: "علی احمدی",
-    },
-    {
-      id: 3,
-      title: "مشکل در سفارش",
-      ticket_id: "65232",
-      created_at: "1403/09/03",
-      label: "medium",
-      status: "pending",
-      updated_at: "1403/0903",
-      updated_at_user: "علی احمدی",
-    },
-    {
-      id: 4,
-      title: "مشکل در سفارش",
-      ticket_id: "65232",
-      created_at: "1403/09/03",
-      label: "low",
-      status: "pending",
-      updated_at: "1403/0903",
-      updated_at_user: "علی احمدی",
-    },
-  ];
+  // const tableData = [
+  //   {
+  //     id: 1,
+  //     title: "مشکل در سفارش",
+  //     ticket_id: "65232",
+  //     created_at: "1403/09/03",
+  //     label: "high",
+  //     status: "pending",
+  //     updated_at: "1403/0903",
+  //     updated_at_user: "علی احمدی",
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "مشکل در سفارش",
+  //     ticket_id: "65232",
+  //     created_at: "1403/09/03",
+  //     label: "high",
+  //     status: "pending",
+  //     updated_at: "1403/0903",
+  //     updated_at_user: "علی احمدی",
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "مشکل در سفارش",
+  //     ticket_id: "65232",
+  //     created_at: "1403/09/03",
+  //     label: "medium",
+  //     status: "pending",
+  //     updated_at: "1403/0903",
+  //     updated_at_user: "علی احمدی",
+  //   },
+  //   {
+  //     id: 4,
+  //     title: "مشکل در سفارش",
+  //     ticket_id: "65232",
+  //     created_at: "1403/09/03",
+  //     label: "low",
+  //     status: "pending",
+  //     updated_at: "1403/0903",
+  //     updated_at_user: "علی احمدی",
+  //   },
+  // ];
 
   const labelGenerator: any = {
-    high: {
+    "فوری": {
       class: s.high,
       title: "فوری"
     },
-    medium: {
+    "متوسط": {
       class: s.medium,
       title: "متوسط"
     },
-    low: {
+    "کم": {
       class: s.low,
       title: "کم"
     }
@@ -117,33 +118,34 @@ const SupportView = (props: ISupportViewProps) => {
           </thead>
           <tbody className={s.tableBody}>
             {
-              tableData?.map(item =>
+              props.data?.map(item =>
                 <tr key={item.id} onClick={() => navigate(`/support/${item?.id}`)}>
                   <td className={s.mobileShow}>
                     <div className={s.ticketId}>
                       <img src="/images/ticket_tag.png" className={s.ticketIcon} />
                       <div>
-                        <div className={s.ticketIdNumber}>#{item.ticket_id}</div>
+                        <div className={s.ticketIdNumber}>#{item?.ID}</div>
                         <div className={s.ticketTitle}>
-                          {item.title}
+                          {item?.title}
                         </div>
                       </div>
                     </div>
                   </td>
                   <td>
-                    {item?.created_at}
+                    {item?.CreatedAt}
                   </td>
                   <td>
-                    <div className={`${s.label} ${labelGenerator[item?.label]?.class}`}>
-                      <span className={s.circle}></span>
-                      <span className={s.labelValue}>
-                        {labelGenerator[item?.label]?.title}
-                      </span>
-                    </div>
+                    {item?.label === "" ? "-" :
+                      <div className={`${s.label} ${labelGenerator[item?.label]?.class}`}>
+                        <span className={s.circle}></span>
+                        <span className={s.labelValue}>
+                          {labelGenerator[item?.label]?.title}
+                        </span>
+                      </div>}
                   </td>
                   <td className={s.mobileShow}>
-                    {statusGenerator[item?.status]}
-                    <div className={`${s.label} ${labelGenerator[item?.label]?.class}`}>
+                    {statusGenerator[item?.status] ?? "-"}
+                    <div className={`${s.onlyMobile} ${s.label} ${labelGenerator[item?.label]?.class} `}>
                       <span className={s.circle}></span>
                       <span className={s.labelValue}>
                         {labelGenerator[item?.label]?.title}
@@ -153,7 +155,7 @@ const SupportView = (props: ISupportViewProps) => {
                   <td>
                     <div className={s.updatedAt}>
                       <div className={s.date}>
-                        {item?.updated_at}
+                        {item?.UpdatedAt}
                       </div>
                       <div className={s.updatedUser}>
                         {item?.updated_at_user}
