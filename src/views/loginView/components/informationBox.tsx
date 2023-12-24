@@ -8,6 +8,7 @@ import { LoginFields } from "../../../types/api/auth";
 import { useMutation } from "react-query";
 import { setToken } from "../../../redux/reducers/auth";
 import { useDispatch } from "react-redux";
+import Cookies from "js-cookie";
 
 const loginSchema = Yup.object().shape({
   number: Yup.string().required("نام کاربری خود را وارد کنید"),
@@ -17,6 +18,7 @@ const InformationBox = () => {
   const dispatch = useDispatch()
 
   const mutation = useMutation((e: LoginFields) => LoginService(e).then((res) => {
+    Cookies.set("ems-token", res?.token?.access_token, { path: "/" })
     dispatch(setToken(res?.data));
     navigate("/", { replace: true });
   }

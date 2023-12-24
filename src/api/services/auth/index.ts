@@ -1,11 +1,12 @@
 import Cookies from "js-cookie";
 import { LoginFields } from "../../../types/api/auth";
 import axiosInstance from "../../axiosConfig";
+import axios from "axios";
 
 export const LoginService = async (e: LoginFields) => {
-  const response = await axiosInstance
-    .post("/login", e)
-    .finally(() => Cookies.set("ems-token", "emsTokenValue", { path: "/" }));
+  const response = await axios
+    .post(process.env.REACT_APP_BASE_URL + "/login", e)
+    .then((res) => res.data);
 
   return response;
 };
