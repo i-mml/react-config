@@ -122,7 +122,7 @@ const SupportView = (props: ISupportViewProps) => {
           <tbody className={s.tableBody}>
             {
               props.data?.map(item =>
-                <tr key={item.id} onClick={() => navigate(`/support/${item?.id}`)}>
+                <tr key={item.id} onClick={() => navigate(`/support/${item?.ID}`)}>
                   <td className={s.mobileShow}>
                     <div className={s.ticketId}>
                       <img src="/images/ticket_tag.png" className={s.ticketIcon} />
