@@ -5,7 +5,7 @@ import axios from "axios";
 
 export const LoginService = async (e: LoginFields) => {
   const response = await axios
-    .post(process.env.REACT_APP_BASE_URL + "/login", e)
+    .post(process.env.REACT_APP_BASE_URL + "/admin/login", e)
     .then((res) => res.data);
 
   return response;
