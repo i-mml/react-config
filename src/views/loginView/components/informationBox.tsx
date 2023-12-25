@@ -52,20 +52,21 @@ const InformationBox = () => {
           }}
           onSubmit={handleSubmit}
           validationSchema={loginSchema}
+
         >
           {({ errors, touched }) => (
-            <Form>
+            <Form className={s.formContainer}>
               <div className={s.loginInputBox}>
                 <div className={s.userNameField}>
-                  <Field
-                    name="number"
-                    placeholder="نام کاربری"
-                    className={s.userName}
-                  />
                   <img
                     src="/Images/Icons/user.svg"
                     alt="user-icon"
                     className={s.icon}
+                  />
+                  <Field
+                    name="number"
+                    placeholder="نام کاربری"
+                    className={s.userName}
                   />
                   {errors.number && touched.number ? (
                     <div className={s.error}>{errors.number}</div>
@@ -75,6 +76,11 @@ const InformationBox = () => {
                 <div className={s.line}></div>
 
                 <div className={s.passwordField}>
+                  <img
+                    src="/Images/Icons/lock.svg"
+                    alt="lock-icon"
+                    className={s.icon}
+                  />
                   <Field
                     id="password"
                     name="password"
@@ -82,12 +88,6 @@ const InformationBox = () => {
                     placeholder="رمز عبور"
                     className={s.password}
                   />
-                  <img
-                    src="/Images/Icons/lock.svg"
-                    alt="lock-icon"
-                    className={s.icon}
-                  />
-
                   {errors.password && touched.password ? (
                     <div className={s.error}>{errors.password}</div>
                   ) : null}
