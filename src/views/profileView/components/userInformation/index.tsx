@@ -1,8 +1,16 @@
 import React from "react";
 import s from "../../profile.module.scss";
 import { Field, Form, Formik } from "formik";
+import { getSingleUser } from "../../../../api/user";
+import { useQuery } from "react-query";
+import PrimaryButton from "../../../../components/buttons/primaryButton";
+import SecondaryButton from "../../../../components/buttons/secondaryButton";
 
 const UserInformationTab = () => {
+  const { data, isLoading } = useQuery("single-user-information", getSingleUser);
+
+  console.log(data)
+
   return (
     <div className={s.userInformationContainer}>
       <div className={s.topBox}>
@@ -43,12 +51,6 @@ const UserInformationTab = () => {
               {({ field }: any) => (
                 <div className={s.inputBox}>
                   <div className={s.label}>نقش</div>
-                  {/* <input
-                    type="text"
-                    {...field}
-                    placeholder="مدیر"
-                    className={s.input}
-                  /> */}
                   <select
                     className={s.select}
                     {...field}
@@ -78,12 +80,12 @@ const UserInformationTab = () => {
             </Field>
 
             <div className={s.btnBox}>
-              <button type="submit" className={s.saveBtn}>
+              <PrimaryButton type="submit" className={s.saveBtn} onClick={() => { }}>
                 ثبت
-              </button>
-              <button type="submit" className={s.cancelBtn}>
+              </PrimaryButton>
+              <SecondaryButton className={s.cancelBtn}>
                 لغو
-              </button>
+              </SecondaryButton>
             </div>
           </Form>
         </Formik>

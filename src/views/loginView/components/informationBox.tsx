@@ -19,7 +19,7 @@ const InformationBox = () => {
 
   const mutation = useMutation((e: LoginFields) => LoginService(e).then((res) => {
     Cookies.set("ems-token", res?.token?.access_token, { path: "/" })
-    dispatch(setToken(res?.data));
+    dispatch(setToken(res));
     navigate("/", { replace: true });
   }
   ));

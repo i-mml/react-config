@@ -38,8 +38,10 @@ const SupportCreateView = () => {
             sender: response?.user_id,
             ticket_id: response?.ID,
             type: "t"
-        }).then(res => console.log("post message res", res?.data))
+        }).then(res => navigate(`/support/${res?.data?.ID}`))
     }
+
+    console.log(user)
 
     const mutation = useMutation((e: FormInitialValueType) => postTicketSend({
         label: e.label,
