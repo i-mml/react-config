@@ -4,7 +4,7 @@ import axiosInstance from "../axiosConfig";
 export const getCameraAll = async () => {
   const response = await axiosInstance
     .get("/camera/all")
-    .then((res) => res?.data);
+    .then((res) => res?.data?.data);
 
   return response;
 };

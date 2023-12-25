@@ -7,7 +7,9 @@ import MiddleSliderItem from '../middleSliderItem';
 import DashboardConnectedDevices from '../dashboardConnectedDevices';
 import DashboardCameras from '../dashboardCameras';
 
-const DashboardMiddleBox = () => {
+const DashboardMiddleBox = ({ data }: any) => {
+
+
     return (
         <div className={s.container}>
             <div className={s.content}>
@@ -34,7 +36,7 @@ const DashboardMiddleBox = () => {
                         <DashboardConnectedDevices />
                     </div>
                     <div className={s.smallBox}>
-                        <DashboardCameras />
+                        <DashboardCameras camerasList={data?.camerasList} />
                     </div>
                 </div>
             </div >

@@ -1,5 +1,5 @@
-import { EditUserFields } from "../types/api/user";
-import axiosInstance from "./axiosConfig";
+import { EditUserFields } from "../../types/api/user";
+import axiosInstance from "../axiosConfig";
 
 export const getSingleUser = async () => {
   const response = await axiosInstance

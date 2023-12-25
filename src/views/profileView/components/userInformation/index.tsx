@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import s from "../../profile.module.scss";
 import { Field, Form, Formik } from "formik";
-import { getSingleUser, putUserUpdate } from "../../../../api/user";
+import { getSingleUser, putUserUpdate } from "../../../../api/services/user";
 import { useMutation, useQuery } from "react-query";
 import PrimaryButton from "../../../../components/buttons/primaryButton";
 import SecondaryButton from "../../../../components/buttons/secondaryButton";

@@ -9,9 +9,15 @@ import DashboardMobileLinkBox from './components/dashboardMobileLinkBox';
 import LineChart from '../../components/charts/lineCart';
 import auth from '../../redux/reducers/auth';
 import { useSelector } from 'react-redux';
+import { useQuery } from 'react-query';
+import { fetchDashboardData } from '../../api/services/dashboard';
 
 const DashboardView = () => {
     const user = useSelector((state: any) => state?.auth);
+
+    const { data, isLoading } = useQuery('allData', fetchDashboardData);
+    console.log(isLoading, data)
+
 
 
     return (
@@ -38,7 +44,7 @@ const DashboardView = () => {
                 </div> :
                     <DashboardMap />
             }
-            <DashboardMiddleBox />
+            <DashboardMiddleBox data={data} />
             <LineChart />
         </div>
     )

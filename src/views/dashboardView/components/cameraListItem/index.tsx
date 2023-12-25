@@ -2,7 +2,7 @@ import React from 'react'
 import s from './style.module.scss';
 
 
-const CameraListItem = ({ title = "", isLast = false }) => {
+const CameraListItem = ({ title = "", isLast = false, external_link = "" }) => {
 
     return (
         <div className={`${s.container} ${isLast ? s.isLast : ""}`}>
@@ -11,7 +11,11 @@ const CameraListItem = ({ title = "", isLast = false }) => {
 
             <div className={s.playLink}>
                 <img src='/images/icons/play.svg' className={s.playLinkIcon} />
-                <span className={s.link}>پخش</span>
+                <span className={s.link}>
+                    <a href={external_link || "#"} target='_blank'>
+                        پخش
+                    </a>
+                </span>
             </div>
         </div>
     )
