@@ -6,14 +6,14 @@ import s from "../login.module.scss";
 const CarouselPage = () => {
   return (
     <div className={s.carouselContainer}>
-      <Carousel>
-        <Carousel.Item interval={500}>
+      <Carousel interval={1000}>
+        <Carousel.Item >
           <img src="/images/slide1.png" alt="slide1" />
         </Carousel.Item>
-        <Carousel.Item interval={500}>
+        <Carousel.Item >
           <img src="/images/slide2.png" alt="slide2" />
         </Carousel.Item>
-        <Carousel.Item interval={500}>
+        <Carousel.Item >
           <img src="/images/slide3.png" alt="slide3" />
         </Carousel.Item>
       </Carousel>

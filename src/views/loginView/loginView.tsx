@@ -5,10 +5,13 @@ import s from "./login.module.scss";
 
 const loginView = () => {
   return (
-    <div className={s.container}>
-      <CarouselPage />
-      <InformationBox />
+    <div className={s.loginWrapper}>
+      <div className={s.container}>
+        <InformationBox />
+        <CarouselPage />
+      </div>
     </div>
+
   );
 };
 
