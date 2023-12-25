@@ -6,11 +6,15 @@ import { useQuery } from "react-query";
 import PrimaryButton from "../../../../components/buttons/primaryButton";
 import SecondaryButton from "../../../../components/buttons/secondaryButton";
 import { Value } from "sass";
+import { getCompanyById } from "../../../../api/services/company";
+import { useSelector } from "react-redux";
 
 const UserInformationTab = () => {
-  const { data, isLoading } = useQuery("single-user-information", getSingleUser);
+  const authData = useSelector((state: any) => state?.auth?.data)
+  const { data, isLoading } = useQuery("get-company-by-id", () => getCompanyById(authData?.admin?.company_Id));
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedFile, setSelectedFile] = useState("")
+  const [role, setRole] = useState(data?.admin?.role)
   const inputFileRef = useRef(null);
 
   const handleImageChange = (event: any) => {
@@ -20,9 +24,7 @@ const UserInformationTab = () => {
       setSelectedImage(URL.createObjectURL(event.target.files[0]));
     }
   };
-
   console.log(data)
-
   return (
     <div className={s.userInformationContainer}>
       <div className={s.topBox}>
@@ -59,7 +61,7 @@ const UserInformationTab = () => {
                     {...field}
                     placeholder="نام"
                     className={s.input}
-                    value={`${data?.first_name} ${data?.last_name}`}
+                    value={`${data?.admin?.first_name} ${data?.admin?.last_name}`}
                     disabled
                   />
                 </div>
@@ -73,8 +75,9 @@ const UserInformationTab = () => {
                   <select
                     className={s.select}
                     {...field}
-                    defaultValue={data?.role}
-                    value={data?.role}
+                    defaultValue={data?.admin?.role}
+                    value={role}
+                    onChange={(e) => setRole(e.target.value)}
                   >
                     <option value={0}>کارمند</option>
                     <option value={3}>ادمین</option>
@@ -93,7 +96,7 @@ const UserInformationTab = () => {
                     type="text"
                     {...field}
                     disabled
-                    value={data?.email}
+                    value={data?.admin?.email}
                     className={s.input}
                   />
                 </div>
