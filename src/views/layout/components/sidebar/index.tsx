@@ -6,10 +6,12 @@ import { LogoutService } from "../../../../api/services/auth";
 import MobileSideBarView from "../mobileSidebar";
 import { SidebarList } from "./sidebar.data";
 import MobileHeader from "../mobileHeader";
+import { useSelector } from "react-redux";
 
 const SideBarView = () => {
   let location = useLocation();
   const navigate = useNavigate()
+  const user = useSelector((state: any) => state?.auth?.data);
   const mutation = useMutation(() => LogoutService().finally(() => navigate("/login", { replace: true })));
 
   const removeToken = () => {
@@ -48,8 +50,8 @@ const SideBarView = () => {
         <div className={s.profileBox} onClick={removeToken}>
           <img src="/Images/Avatar.png" alt="profile" className={s.profileImg} />
           <div className={s.infoProfileBox}>
-            <div className={s.profileName}>سارا احمدی</div>
-            <div className={s.profileEmail}>sara@gmail.com</div>
+            <div className={s.profileName}>{user?.user?.first_name} {user?.user?.last_name}</div>
+            <div className={s.profileEmail}>{user?.user?.email}</div>
           </div>
 
           <img
