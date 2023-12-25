@@ -1,5 +1,6 @@
 .cameraTableItem {
   .name {
+    width: fit-content;
     .image {
       width: 20px;
       height: 20px;
@@ -8,5 +9,8 @@
     .nameValue {
       margin-right: 8px;
     }
+  }
+  & td {
+    width: 20%;
   }
 }

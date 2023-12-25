@@ -2,8 +2,12 @@ import React from 'react'
 import s from './style.module.scss';
 import TitleBox from '../dashboardView/components/titleBox';
 import CameraTableItem from './camerasTableItem';
+import { getCameraAll } from '../../api/services/camera';
+import { useQuery } from 'react-query';
 
 const CamerasView = () => {
+    const { data, isLoading } = useQuery('get-all-camearas', getCameraAll);
+    console.log(data)
     const devicesTableData = [
         {
             id: 1,
@@ -38,11 +42,12 @@ const CamerasView = () => {
                     <tr>
                         <th>نام دوربین</th>
                         <th>وضعیت</th>
+                        <th>لینک</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        devicesTableData?.map(item =>
+                        data?.map((item: any) =>
                             <CameraTableItem {...item} />
                         )
                     }

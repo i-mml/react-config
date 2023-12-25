@@ -1,0 +1,30 @@
+.statusBox {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  background-color: #ecfdf3;
+  padding: 2px 7px;
+  border-radius: 16px;
+  .statusBadge {
+    width: 6px;
+    height: 6px;
+    margin-left: 4px;
+    background-color: #36976a;
+    border-radius: 50%;
+  }
+  .status {
+    color: #36976a;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+  }
+}
+.statusBoxOffline {
+  background-color: #f1f2f6;
+  .statusBadge {
+    background-color: #b8b8b8;
+  }
+  .status {
+    color: #b8b8b8;
+  }
+}
