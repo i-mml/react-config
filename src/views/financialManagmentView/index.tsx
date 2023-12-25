@@ -1,22 +1,13 @@
 import React from "react";
 import s from "./financialManagment.module.scss";
+import RemainDate from "./components/RemainDate";
+import { getSubscription } from "../../api/services/subscription";
+import { useQuery } from "react-query";
 
-const RemainDate = ({ remainDay }: { remainDay: number }) => {
-  const packageSize = 40
-
-  return (
-    <div className={s.remainBox} style={{
-      background: `radial-gradient(closest-side, white 80%, transparent 80% 100%),conic-gradient(#003F80 ${(remainDay / packageSize) * 100}%, #e7e7e7 0)`
-    }}>
-      <div className={s.remainDayContent}>
-        <div className={s.remainDayCount}>{remainDay}</div>
-        <div className={s.remainDayText}>روز مانده</div>
-      </div>
-    </div>
-  )
-}
 
 const FinancialManagmentView = () => {
+  const { data } = useQuery("subscription-data", getSubscription);
+  console.log(data)
   const servisList = [
     {
       id: 1,
@@ -37,7 +28,7 @@ const FinancialManagmentView = () => {
       value: "1234567",
     },
   ];
-  const remainDay = 5;
+
 
   return (
     <div className={s.container}>
@@ -45,9 +36,11 @@ const FinancialManagmentView = () => {
         <div className={s.title}>وضعیت سرویس شما</div>
         <div className={s.date}>تاریخ امروز: 25 شهریور 1402(02 اکتبر 2023)</div>
       </div>
-      {remainDay > 0 ? (
+
+
+      {data?.data?.remain > 0 ? (
         <div className={s.statusBox}>
-          <RemainDate remainDay={remainDay} />
+          <RemainDate remainDay={data?.data?.remain} wholePeriod={data?.data?.hole} />
 
           <div className={s.reaminSubTitle}>
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
@@ -73,7 +66,8 @@ const FinancialManagmentView = () => {
         </div>
       ) : (
         <div className={s.statusBox}>
-          <RemainDate remainDay={remainDay} />
+          <RemainDate remainDay={data?.data?.remain} wholePeriod={data?.data?.hole} />
+
           <div className={s.renevalSubTitle}>
             برای تمدید اشتراک خود بر روی{" "}
             <span className={s.renevalSubTitleServis}>تمدید سرویس</span> کلیک
