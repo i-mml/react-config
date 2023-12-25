@@ -5,6 +5,7 @@ import { getSingleUser } from "../../../../api/user";
 import { useQuery } from "react-query";
 import PrimaryButton from "../../../../components/buttons/primaryButton";
 import SecondaryButton from "../../../../components/buttons/secondaryButton";
+import { Value } from "sass";
 
 const UserInformationTab = () => {
   const { data, isLoading } = useQuery("single-user-information", getSingleUser);
@@ -40,8 +41,10 @@ const UserInformationTab = () => {
                   <input
                     type="text"
                     {...field}
-                    placeholder="سارا احمدی"
+                    placeholder="نام"
                     className={s.input}
+                    value={`${data?.first_name} ${data?.last_name}`}
+                    disabled
                   />
                 </div>
               )}
@@ -54,12 +57,13 @@ const UserInformationTab = () => {
                   <select
                     className={s.select}
                     {...field}
-                    defaultValue="1"
-                    defaultChecked="1"
+                    defaultValue={data?.role}
+                    value={data?.role}
                   >
-                    <option value={1}>مدیر</option>
-                    <option value={2}>کارمند</option>
+                    <option value={0}>کارمند</option>
                     <option value={3}>ادمین</option>
+                    <option value={2}>مدیر</option>
+                    <option value={1}>مدیرعامل</option>
                   </select>
                 </div>
               )}
@@ -72,7 +76,8 @@ const UserInformationTab = () => {
                   <input
                     type="text"
                     {...field}
-                    placeholder="saraah@gmail.com"
+                    disabled
+                    value={data?.email}
                     className={s.input}
                   />
                 </div>
