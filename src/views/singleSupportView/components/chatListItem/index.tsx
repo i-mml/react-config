@@ -2,11 +2,12 @@ import React from 'react'
 import s from './style.module.scss';
 
 const ChatListItem = (props: any) => {
-    const { id, ticketId, userId, message, userFullName } = props
+    const { id, ticketId, userId, content, userFullName } = props
+
     return (
         <div className={`${s.chatWrapper} ${userId !== 184 && s.recievedWrapper}`} key={id}>
             <div className={`${s.chatItem} ${userId === 184 ? s.ownMsg : s.recievedMsg}`}>
-                {message}
+                {content}
             </div>
             {
                 userId === 184 &&

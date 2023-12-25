@@ -19,7 +19,7 @@ const SingleSupportView = () => {
         { id: 7, userFullName: "حمیدرضا", ticketId: 65233, userId: 184, message: "سلام این نسخه جواب آزمایشی می باشد .لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه د استفاده قرار گیرد." },
     ]
 
-    console.log(data)
+
     return (
         <div className={s.container}>
             <div className={s.chatNumber}>
@@ -30,7 +30,7 @@ const SingleSupportView = () => {
             </div>
 
             <div className={s.chatList}>
-                {data?.length > 0 ? data?.map((item: any) => <ChatListItem {...item} />) : <div className={s.notFound}>
+                {data?.data?.length > 0 ? data?.data?.map((item: any) => <ChatListItem {...item} />) : <div className={s.notFound}>
                     موردی یافت نشد.
                 </div>}
             </div>
