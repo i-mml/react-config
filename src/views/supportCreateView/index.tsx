@@ -33,12 +33,13 @@ const SupportCreateView = () => {
 
     const hanldeSendMessage = async (fields: FormInitialValueType, response: any) => {
         setLoading(true)
-        postMessageCreate({
-            content: fields.message,
-            sender: response?.user_id,
-            ticket_id: response?.ID,
-            type: "t"
-        }).then(res => navigate(`/support/${res?.data?.ID}`))
+        const formData = new FormData()
+        formData.append("content", fields.message)
+        formData.append("sender", response?.user_id)
+        formData.append("ticket_id", response?.ID)
+        formData.append("type", "t")
+
+        postMessageCreate(formData).then(res => navigate(`/support/${res?.data?.ID}`))
     }
 
     console.log(user)
