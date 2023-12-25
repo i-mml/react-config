@@ -1,6 +1,21 @@
 import React from "react";
 import s from "./financialManagment.module.scss";
 
+const RemainDate = ({ remainDay }: { remainDay: number }) => {
+  const packageSize = 40
+
+  return (
+    <div className={s.remainBox} style={{
+      background: `radial-gradient(closest-side, white 80%, transparent 80% 100%),conic-gradient(#003F80 ${(remainDay / packageSize) * 100}%, #e7e7e7 0)`
+    }}>
+      <div className={s.remainDayContent}>
+        <div className={s.remainDayCount}>{remainDay}</div>
+        <div className={s.remainDayText}>روز مانده</div>
+      </div>
+    </div>
+  )
+}
+
 const FinancialManagmentView = () => {
   const servisList = [
     {
@@ -22,7 +37,8 @@ const FinancialManagmentView = () => {
       value: "1234567",
     },
   ];
-  const remainDay = 4;
+  const remainDay = 5;
+
   return (
     <div className={s.container}>
       <div className={s.header}>
@@ -31,11 +47,7 @@ const FinancialManagmentView = () => {
       </div>
       {remainDay > 0 ? (
         <div className={s.statusBox}>
-          <img alt="remian-days" src="/images/Ring.svg" className={s.ringImg} />
-          <div className={s.remainDayContent}>
-            <div className={s.remainDayCount}>{remainDay}</div>
-            <div className={s.remainDayText}>روز مانده</div>
-          </div>
+          <RemainDate remainDay={remainDay} />
 
           <div className={s.reaminSubTitle}>
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
@@ -61,11 +73,7 @@ const FinancialManagmentView = () => {
         </div>
       ) : (
         <div className={s.statusBox}>
-          <img alt="remian-days" src="/images/Ring.svg" className={s.ringImg} />
-          <div className={s.remainDayContent}>
-            <div className={s.remainDayCount}>{remainDay}</div>
-            <div className={s.remainDayText}>روز مانده</div>
-          </div>
+          <RemainDate remainDay={remainDay} />
           <div className={s.renevalSubTitle}>
             برای تمدید اشتراک خود بر روی{" "}
             <span className={s.renevalSubTitleServis}>تمدید سرویس</span> کلیک
