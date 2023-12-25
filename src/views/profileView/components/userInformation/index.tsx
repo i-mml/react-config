@@ -1,21 +1,29 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import s from "../../profile.module.scss";
 import { Field, Form, Formik } from "formik";
-import { getSingleUser } from "../../../../api/user";
-import { useQuery } from "react-query";
+import { getSingleUser, putUserUpdate } from "../../../../api/user";
+import { useMutation, useQuery } from "react-query";
 import PrimaryButton from "../../../../components/buttons/primaryButton";
 import SecondaryButton from "../../../../components/buttons/secondaryButton";
 import { Value } from "sass";
-import { getCompanyById } from "../../../../api/services/company";
+import { getCompanyById, putCompanyEdit } from "../../../../api/services/company";
 import { useSelector } from "react-redux";
+import { CompanyEditFields } from "../../../../types/api/company";
+import { EditUserFields } from "../../../../types/api/user";
 
 const UserInformationTab = () => {
   const authData = useSelector((state: any) => state?.auth?.data)
-  const { data, isLoading } = useQuery("get-company-by-id", () => getCompanyById(authData?.admin?.company_Id));
+
+  const { data } = useQuery("get-company-by-id", () => getCompanyById(authData?.admin?.company_Id));
+  const updateLogoMutation = useMutation((e: any) => putCompanyEdit(e));
+  const updateUserMutation = useMutation((e: EditUserFields) => putUserUpdate(e));
+
+
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedFile, setSelectedFile] = useState("")
   const [role, setRole] = useState(data?.admin?.role)
   const inputFileRef = useRef(null);
+
 
   const handleImageChange = (event: any) => {
     if (event.target.files && event.target.files[0]) {
@@ -24,7 +32,25 @@ const UserInformationTab = () => {
       setSelectedImage(URL.createObjectURL(event.target.files[0]));
     }
   };
-  console.log(data)
+
+  const handleSubmit = async () => {
+    const formData = new FormData()
+    formData.append("logo", selectedFile)
+
+    if (+data?.admin?.admin !== +role) {
+      updateUserMutation.mutate({
+        role: role,
+      })
+    }
+    if (selectedFile !== "") {
+      updateLogoMutation.mutate(formData)
+    }
+  }
+
+  useEffect(() => {
+    setRole(data?.admin?.role)
+  }, [data?.admin?.role])
+
   return (
     <div className={s.userInformationContainer}>
       <div className={s.topBox}>
@@ -104,8 +130,9 @@ const UserInformationTab = () => {
             </Field>
 
             <div className={s.btnBox}>
-              <PrimaryButton type="submit" className={s.saveBtn} onClick={() => { }} disabled={selectedFile === ""}>
-                ثبت
+              <PrimaryButton type="button" className={s.saveBtn} onClick={handleSubmit} disabled={selectedFile === "" && role == data?.admin?.role}>
+                {
+                  updateUserMutation.isLoading || updateLogoMutation.isLoading ? "درحال انجام" : "ثبت"}
               </PrimaryButton>
               <SecondaryButton className={s.cancelBtn}>
                 لغو
