@@ -1,5 +1,5 @@
 export type EditUserFields = {
-  user_id?: string;
+  user_id: string;
   mobile?: string;
   national_code?: string;
   first_name?: string;

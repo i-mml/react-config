@@ -10,7 +10,9 @@ export const getSingleUser = async () => {
 };
 
 export const putUserUpdate = async (e: EditUserFields) => {
-  const response = await axiosInstance.get("/user").then((res) => res?.data);
+  const response = await axiosInstance
+    .put("/user/update", e)
+    .then((res) => res?.data);
 
   return response;
 };

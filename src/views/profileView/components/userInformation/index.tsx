@@ -32,13 +32,13 @@ const UserInformationTab = () => {
       setSelectedImage(URL.createObjectURL(event.target.files[0]));
     }
   };
-
   const handleSubmit = async () => {
     const formData = new FormData()
     formData.append("logo", selectedFile)
 
-    if (+data?.admin?.admin !== +role) {
+    if (+data?.admin?.role !== +role) {
       updateUserMutation.mutate({
+        user_id: authData?.admin?.user_id,
         role: role,
       })
     }
