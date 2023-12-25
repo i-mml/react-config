@@ -67,12 +67,16 @@
       display: flex;
       align-items: center;
 
-      .editedIcon {
+      .editedIcon,
+      .selectedImage {
         width: 48px;
         height: 48px;
         padding: 9px;
         border-radius: 1000px;
         margin-left: 16px;
+      }
+      .selectedImage {
+        padding: 0px;
       }
       .topBoxTitle {
         background-color: white;

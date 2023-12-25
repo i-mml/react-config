@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import s from "../../profile.module.scss";
 import { Field, Form, Formik } from "formik";
 import { getSingleUser } from "../../../../api/user";
@@ -9,6 +9,17 @@ import { Value } from "sass";
 
 const UserInformationTab = () => {
   const { data, isLoading } = useQuery("single-user-information", getSingleUser);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedFile, setSelectedFile] = useState("")
+  const inputFileRef = useRef(null);
+
+  const handleImageChange = (event: any) => {
+    if (event.target.files && event.target.files[0]) {
+      setSelectedFile(event.target.files[0])
+      // @ts-ignore
+      setSelectedImage(URL.createObjectURL(event.target.files[0]));
+    }
+  };
 
   console.log(data)
 
@@ -16,14 +27,19 @@ const UserInformationTab = () => {
     <div className={s.userInformationContainer}>
       <div className={s.topBox}>
         <div className={s.titleBox}>
-          <img
-            src="/images/icons/editor-icon.png"
-            alt="editor icon"
-            className={s.editedIcon}
-          />
+          {selectedImage ? <img src={selectedImage} alt="Selected" className={s.selectedImage} /> :
+            <img
+              src="/images/icons/editor-icon.png"
+              alt="editor icon"
+              className={s.editedIcon}
+            />
+          }
+
           <span className={s.topBoxTitle}>شرکت پردازش داده</span>
         </div>
-        <button className={s.uploadLogo}>آپلود لوگو</button>
+        <input type="file" accept="image/*" onChange={handleImageChange} hidden ref={inputFileRef} />
+        {/* @ts-ignore */}
+        <button onClick={() => inputFileRef.current.click()} className={s.uploadLogo}>آپلود لوگو</button>
       </div>
 
       <div className={s.form}>
@@ -85,7 +101,7 @@ const UserInformationTab = () => {
             </Field>
 
             <div className={s.btnBox}>
-              <PrimaryButton type="submit" className={s.saveBtn} onClick={() => { }}>
+              <PrimaryButton type="submit" className={s.saveBtn} onClick={() => { }} disabled={selectedFile === ""}>
                 ثبت
               </PrimaryButton>
               <SecondaryButton className={s.cancelBtn}>
@@ -119,7 +135,7 @@ const UserInformationTab = () => {
           قوانین و مقررات
         </a>
       </div>
-    </div>
+    </div >
   );
 };
 

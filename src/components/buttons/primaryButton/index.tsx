@@ -7,7 +7,8 @@ interface IProps {
 }
 
 const PrimaryButton = (props: IProps) => {
-    const { children = "", onClick = () => { }, className = "", type = "button", disabled = false } = props
+    console.log(props)
+    const { children = "", onClick = () => { }, className = "", type = "button", disabled } = props
     return (
         <button className={`${s.secondaryButton} ${className}`} onClick={onClick} type={type} disabled={disabled}>{children}</button>
     )

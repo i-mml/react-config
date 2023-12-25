@@ -14,6 +14,8 @@
   place-items: center;
   cursor: pointer;
   &:disabled {
-    background: #003b76;
+    background: #003b76 !important;
+    cursor: not-allowed;
+    color: #aaa !important;
   }
 }
