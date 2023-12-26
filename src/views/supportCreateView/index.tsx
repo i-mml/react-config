@@ -42,7 +42,6 @@ const SupportCreateView = () => {
         postMessageCreate(formData).then(res => navigate(`/support/${res?.data?.ID}`))
     }
 
-    console.log(user)
 
     const mutation = useMutation((e: FormInitialValueType) => postTicketSend({
         label: e.label,
@@ -53,7 +52,6 @@ const SupportCreateView = () => {
     }
     ));
 
-    console.log(mutation?.isLoading)
 
     const hanldeSubmitCreateTicket = (e: FormInitialValueType) => {
         setLoading(true);

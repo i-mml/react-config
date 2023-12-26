@@ -1,0 +1,10 @@
+.mapDeviceIcon {
+  position: absolute;
+  z-index: 888;
+  width: 29px;
+  height: 34px;
+  @media (max-width: 750px) {
+    width: 25px;
+    height: 29px;
+  }
+}

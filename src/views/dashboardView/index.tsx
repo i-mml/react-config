@@ -42,7 +42,7 @@ const DashboardView = () => {
                         title='دوربین‌ها'
                     />
                 </div> :
-                    <DashboardMap />
+                    <DashboardMap planList={data?.planList} />
             }
             <DashboardMiddleBox data={data} />
             <LineChart />

@@ -7,7 +7,6 @@ import { useQuery } from 'react-query';
 
 const CamerasView = () => {
     const { data, isLoading } = useQuery('get-all-camearas', getCameraAll);
-    console.log(data)
     const devicesTableData = [
         {
             id: 1,

@@ -11,7 +11,6 @@ interface ISupportViewProps {
 }
 
 const SupportView = (props: ISupportViewProps) => {
-  console.log(props?.data)
   const [currentTab, setCurrentTab] = useState("external-support");
   const navigate = useNavigate()
 

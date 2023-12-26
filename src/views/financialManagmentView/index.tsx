@@ -7,7 +7,6 @@ import { useQuery } from "react-query";
 
 const FinancialManagmentView = () => {
   const { data } = useQuery("subscription-data", getSubscription);
-  console.log(data)
   const servisList = [
     {
       id: 1,

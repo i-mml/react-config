@@ -5,7 +5,7 @@ import axiosInstance from "../axiosConfig";
 export const getPlanAll = async () => {
   const response = await axiosInstance
     .get("/plan/all")
-    .then((res) => res?.data);
+    .then((res) => res?.data?.data);
 
   return response;
 };

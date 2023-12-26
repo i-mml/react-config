@@ -1,7 +1,6 @@
 import s from '../financialManagment.module.scss';
 
 const RemainDate = ({ remainDay = 0, wholePeriod = 0 }: { remainDay: number, wholePeriod: number }) => {
-    console.log(`${(remainDay / wholePeriod)}`)
     const calculatedWdth = `${(wholePeriod - remainDay) / wholePeriod * 100}`
     return (
         <div className={s.remainBox} style={{
