@@ -5,7 +5,8 @@ import DeviceListItem from '../devicesListItem';
 import SecondaryButton from '../../../../components/buttons/secondaryButton';
 import { useNavigate } from 'react-router-dom';
 
-const DashboardConnectedDevices = () => {
+const DashboardConnectedDevices = ({ devices }: any) => {
+    console.log("devices", devices)
     const navigate = useNavigate()
     const devicesLise = [
         {
@@ -33,7 +34,7 @@ const DashboardConnectedDevices = () => {
         <div className={s.container}>
             <TitleBox title='دستگاه‌های متصل' icon='/images/icons/printer.svg' />
             {
-                devicesLise?.slice(0, 4)?.map((item, index) => <DeviceListItem key={item.id} name={item.name} isLast={index === 3} status={item.status} />)
+                devices?.sensorxref?.length > 0 && devices?.sensorxref?.slice(0, 4)?.map((item: any, index: number) => <DeviceListItem key={item.objid} name={item.name} isLast={index === 3} status={item.fold} />)
             }
             <SecondaryButton className={s.showAll} onClick={() => navigate("/devices")}>
                 مشاهده همه دستگاه ها

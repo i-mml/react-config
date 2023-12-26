@@ -33,7 +33,7 @@ const DashboardMiddleBox = ({ data }: any) => {
                 </div>
                 <div className={s.smallBoxWrapper}>
                     <div className={s.smallBox}>
-                        <DashboardConnectedDevices />
+                        <DashboardConnectedDevices devices={data?.devicesList} />
                     </div>
                     <div className={s.smallBox}>
                         <DashboardCameras camerasList={data?.camerasList} />
