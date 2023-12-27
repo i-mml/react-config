@@ -1,11 +1,19 @@
 import React from 'react'
 import s from './style.module.scss';
+import moment from 'moment-jalaali';
 
 const FinancialManagementHeader = ({ title = "" }) => {
+    const nowD = moment().format('jDD jMMM jYYYY (DD MMM YYYY)')
+
+    console.log(nowD)
     return (
         <div className={s.header}>
             <div className={s.title}>{title}</div>
-            <div className={s.date}>تاریخ امروز: 25 شهریور 1402(02 اکتبر 2023)</div>
+
+            <div className={s.date}>
+                تاریخ امروز : {nowD}
+
+            </div>
         </div>
 
     )
