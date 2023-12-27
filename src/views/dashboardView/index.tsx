@@ -16,7 +16,6 @@ const DashboardView = () => {
     const user = useSelector((state: any) => state?.auth);
 
     const { data, isLoading } = useQuery('dashboard-all-services', fetchDashboardData);
-    console.log(isLoading, data)
 
 
 
