@@ -1,5 +1,6 @@
 import React from "react";
 import s from "../financialManagment.module.scss";
+import FinancialManagementHeader from "./FinancialManagementHeader";
 
 const RenevalServis = () => {
   const informationList = [
@@ -27,10 +28,8 @@ const RenevalServis = () => {
 
   return (
     <div className={s.renevalContainer}>
-      <div className={s.header}>
-        <div className={s.title}>تمدید سرویس شما</div>
-        <div className={s.date}>تاریخ امروز: 25 شهریور 1402(02 اکتبر 2023)</div>
-      </div>
+      <FinancialManagementHeader title="تمدید سرویس شما" />
+
       <div className={s.informationContainer}>
         {informationList?.map((item) => (
           <div className={s.informationBox} key={item?.id}>

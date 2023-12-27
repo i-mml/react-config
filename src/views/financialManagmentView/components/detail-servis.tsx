@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import s from "../financialManagment.module.scss";
 import Modal from "../../../components/Modal";
+import FinancialManagementHeader from "./FinancialManagementHeader";
 
 const DetailServis = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -35,10 +36,8 @@ const DetailServis = () => {
 
   return (
     <div className={s.detailContainer}>
-      <div className={s.header}>
-        <div className={s.title}>جزئیات سرویس شما</div>
-        <div className={s.date}>تاریخ امروز: 25 شهریور 1402(02 اکتبر 2023)</div>
-      </div>
+      <FinancialManagementHeader title="جزئیات سرویس شما" />
+
       <div className={s.informationContainer}>
         {informationList?.map((item) => (
           <div className={s.informationBox} key={item?.id}>

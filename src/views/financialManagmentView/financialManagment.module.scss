@@ -9,27 +9,6 @@
     padding: 16px;
   }
 
-  .header {
-    display: flex;
-    justify-content: space-between;
-    background: white;
-    flex-wrap: wrap;
-
-    .title {
-      background: white;
-      color: #111;
-      font-size: 16px;
-      font-weight: 500;
-    }
-
-    .date {
-      color: #585858;
-      background: white;
-      font-size: 14px;
-      font-weight: 500;
-    }
-  }
-
   .statusBox {
     width: 579px;
     height: 497px;
@@ -170,27 +149,6 @@
     padding: 16px 20px;
   }
 
-  .header {
-    display: flex;
-    justify-content: space-between;
-    background: white;
-    flex-wrap: wrap;
-
-    .title {
-      background: white;
-      color: #111;
-      font-size: 16px;
-      font-weight: 500;
-    }
-
-    .date {
-      color: #585858;
-      background: white;
-      font-size: 14px;
-      font-weight: 500;
-    }
-  }
-
   .informationContainer {
     background: white;
     width: 579px;
@@ -250,27 +208,6 @@
   @media (max-width: 750px) {
     width: 100%;
     padding: 16px 20px;
-  }
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-    background: white;
-    flex-wrap: wrap;
-
-    .title {
-      background: white;
-      color: #111;
-      font-size: 16px;
-      font-weight: 500;
-    }
-
-    .date {
-      color: #585858;
-      background: white;
-      font-size: 14px;
-      font-weight: 500;
-    }
   }
 
   .informationContainer {

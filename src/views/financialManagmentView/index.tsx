@@ -3,6 +3,7 @@ import s from "./financialManagment.module.scss";
 import RemainDate from "./components/RemainDate";
 import { getSubscription } from "../../api/services/subscription";
 import { useQuery } from "react-query";
+import FinancialManagementHeader from "./components/FinancialManagementHeader";
 
 
 const FinancialManagmentView = () => {
@@ -31,11 +32,7 @@ const FinancialManagmentView = () => {
 
   return (
     <div className={s.container}>
-      <div className={s.header}>
-        <div className={s.title}>وضعیت سرویس شما</div>
-        <div className={s.date}>تاریخ امروز: 25 شهریور 1402(02 اکتبر 2023)</div>
-      </div>
-
+      <FinancialManagementHeader title="وضعیت سرویس شما" />
 
       {data?.data?.remain > 0 ? (
         <div className={s.statusBox}>
