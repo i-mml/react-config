@@ -24,7 +24,7 @@ const DetailServis = () => {
       title: "آدرس:",
       icon: "/Images/Icons/marker-pin.svg",
       value: " تهران،امیرآباد شمالی ، کوچه 20 ام.",
-      edit: "Images/Icons/edit.svg",
+      edit: "/Images/Icons/edit.svg",
     },
     {
       id: 4,
@@ -45,16 +45,14 @@ const DetailServis = () => {
             <div className={s.infoITitle}>{item?.title}</div>
             <div className={s.infoValue}>{item?.value}</div>
             {item?.edit ? (
-              <>
-                <img
-                  alt="info-icon"
-                  src={item?.edit}
-                  className={s.editIcon}
-                  onClick={() => {
-                    setOpenModal(true);
-                  }}
-                />
-              </>
+              <img
+                alt="info-icon"
+                src={item?.edit}
+                className={s.editIcon}
+                onClick={() => {
+                  setOpenModal(true);
+                }}
+              />
             ) : null}
           </div>
         ))}

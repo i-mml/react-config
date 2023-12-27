@@ -4,6 +4,7 @@ import RemainDate from "./components/RemainDate";
 import { getSubscription } from "../../api/services/subscription";
 import { useQuery } from "react-query";
 import FinancialManagementHeader from "./components/FinancialManagementHeader";
+import { Link } from "react-router-dom";
 
 
 const FinancialManagmentView = () => {
@@ -51,13 +52,17 @@ const FinancialManagmentView = () => {
           ))}
 
           <div className={s.btnBox}>
-            <button type="submit" className={s.detailBtn}>
-              جزئیات سرویس
-            </button>
+            <Link to="/financial-management/detail-service">
+              <button className={s.detailBtn}>
+                جزئیات سرویس
+              </button>
+            </Link>
+            <Link to="/financial-management/reneval-service">
+              <button className={s.renevalBtn}>
+                تمدید سرویس
+              </button>
+            </Link>
 
-            <button type="submit" className={s.renevalBtn}>
-              تمدید سرویس
-            </button>
           </div>
         </div>
       ) : (

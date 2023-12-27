@@ -5,7 +5,6 @@ import moment from 'moment-jalaali';
 const FinancialManagementHeader = ({ title = "" }) => {
     const nowD = moment().format('jDD jMMM jYYYY (DD MMM YYYY)')
 
-    console.log(nowD)
     return (
         <div className={s.header}>
             <div className={s.title}>{title}</div>

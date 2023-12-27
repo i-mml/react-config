@@ -60,7 +60,7 @@ const RoutingConfig = () => {
       />
 
       <Route
-        path="/financial-managment"
+        path="/financial-management"
         element={
           <PrivateRoute>
             <FinancialManagmentPage />
@@ -69,7 +69,7 @@ const RoutingConfig = () => {
       />
 
       <Route
-        path="/detail-servis"
+        path="/financial-management/detail-service"
         element={
           <PrivateRoute>
             <DetailServis />
@@ -78,7 +78,7 @@ const RoutingConfig = () => {
       />
 
       <Route
-        path="/reneval-servis"
+        path="/financial-management/reneval-service"
         element={
           <PrivateRoute>
             <RenevalServis />
