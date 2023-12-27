@@ -5,7 +5,7 @@ import NotifListItem from '../notificationItem';
 import SecondaryButton from '../../../../components/buttons/secondaryButton';
 import { useNavigate } from 'react-router-dom';
 
-const NotificationsBox = () => {
+const NotificationsBox = ({ notifications = [] }) => {
     const navigate = useNavigate()
 
     const notifs = [
@@ -23,7 +23,7 @@ const NotificationsBox = () => {
                 <TitleBox icon='/images/icons/bell.svg' title='اعلانات' />
                 <div className={s.readAll}>خواندن همه</div>
             </div>
-            {notifs?.slice(0, 7)?.map((item, index) => <NotifListItem {...item} defaultShow={index === 0} />)}
+            {notifications?.slice(0, 5)?.map((item: any, index) => <NotifListItem {...item} defaultShow={index === 0} />)}
             <SecondaryButton className={s.showAll} onClick={() => navigate("/notifications")}>
                 مشاهده همه
             </SecondaryButton>

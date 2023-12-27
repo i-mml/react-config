@@ -8,8 +8,7 @@ import DashboardConnectedDevices from '../dashboardConnectedDevices';
 import DashboardCameras from '../dashboardCameras';
 
 const DashboardMiddleBox = ({ data }: any) => {
-
-
+    console.log(data?.notificationsList?.sensors)
     return (
         <div className={s.container}>
             <div className={s.content}>
@@ -41,7 +40,7 @@ const DashboardMiddleBox = ({ data }: any) => {
                 </div>
             </div >
             <div className={s.notifications}>
-                <NotificationsBox />
+                <NotificationsBox notifications={data?.notificationsList?.sensors} />
             </div>
         </div >
     )
