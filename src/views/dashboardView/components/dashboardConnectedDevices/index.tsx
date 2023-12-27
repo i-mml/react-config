@@ -6,7 +6,6 @@ import SecondaryButton from '../../../../components/buttons/secondaryButton';
 import { useNavigate } from 'react-router-dom';
 
 const DashboardConnectedDevices = ({ devices }: any) => {
-    console.log("devices", devices)
     const navigate = useNavigate()
     const devicesLise = [
         {
