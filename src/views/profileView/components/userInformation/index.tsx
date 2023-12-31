@@ -1,14 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import s from "../../profile.module.scss";
 import { Field, Form, Formik } from "formik";
-import { getSingleUser, putUserUpdate } from "../../../../api/services/user";
+import { putUserUpdate } from "../../../../api/services/user";
 import { useMutation, useQuery } from "react-query";
 import PrimaryButton from "../../../../components/buttons/primaryButton";
 import SecondaryButton from "../../../../components/buttons/secondaryButton";
-import { Value } from "sass";
 import { getCompanyById, putCompanyEdit } from "../../../../api/services/company";
 import { useSelector } from "react-redux";
-import { CompanyEditFields } from "../../../../types/api/company";
 import { EditUserFields } from "../../../../types/api/user";
 
 const UserInformationTab = () => {
