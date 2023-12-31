@@ -28,6 +28,10 @@
       display: grid;
       place-items: center;
       border-radius: 50%;
+      & svg {
+        width: 20px;
+        height: 20px;
+      }
     }
     .title {
       color: #585858;
@@ -42,6 +46,11 @@
     }
     .iconBox {
       background-color: #198bff;
+      & svg {
+        & path {
+          stroke: #fff;
+        }
+      }
     }
     .icon {
       width: 20px;
