@@ -39,7 +39,7 @@ const InformationBox = () => {
   return (
     <div className={s.informationBoxContainer}>
       <div className={s.logoBox}>
-        <img src="/images/logo.svg" alt="Logo" className={s.logoImg} />
+        <img src="/images/Logo.svg" alt="Logo" className={s.logoImg} />
         <div className={s.logoText}>نام برند و لوگو</div>
       </div>
 

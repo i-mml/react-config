@@ -22,7 +22,7 @@ const SideBarView = () => {
     <>
       <div className={s.container}>
         <div className={s.logoBox}>
-          <img src="/images/logo.svg" alt="Logo" className={s.logoImg} />
+          <img src="/images/Logo.svg" alt="Logo" className={s.logoImg} />
           <div className={s.logoText}>نام برند و لوگو</div>
         </div>
         <div className={s.itemBox}>
