@@ -8,7 +8,6 @@ import DashboardConnectedDevices from '../dashboardConnectedDevices';
 import DashboardCameras from '../dashboardCameras';
 
 const DashboardMiddleBox = ({ data }: any) => {
-    console.log(data?.notificationsList?.sensors)
     return (
         <div className={s.container}>
             <div className={s.content}>

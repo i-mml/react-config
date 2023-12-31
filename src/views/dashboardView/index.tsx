@@ -18,7 +18,6 @@ const DashboardView = () => {
     const { data, isLoading } = useQuery('dashboard-all-services', fetchDashboardData);
 
 
-
     return (
         <div className={s.dashboardContainer}>
             <DashboardTopBox />
