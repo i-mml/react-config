@@ -33,9 +33,6 @@ const SupportView = (props: ISupportViewProps) => {
     }
   }
 
-  const statusGenerator: any = {
-    pending: "در حال بررسی"
-  }
 
 
   return (

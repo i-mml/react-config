@@ -17,9 +17,10 @@
     border-radius: 14px;
     border: 1px dashed #888888;
     @media (max-width: 750px) {
-      width: 90%;
+      width: 100%;
+      margin: 16px auto;
       height: auto;
-      margin: 18px auto;
+      padding: 0 5%;
     }
 
     .ringImg {
@@ -77,6 +78,10 @@
       margin-top: 56px;
       justify-content: center;
       flex-wrap: wrap;
+      @media (max-width: 750px) {
+        margin-bottom: 34px;
+        flex-direction: column;
+      }
 
       .renevalBtn {
         width: 132px;
@@ -91,7 +96,7 @@
         font-weight: 700;
         @media (max-width: 750px) {
           width: 100%;
-          margin: 16px;
+          margin-top: 16px;
         }
       }
       .detailBtn {
@@ -107,7 +112,7 @@
         margin-left: 16px;
         @media (max-width: 750px) {
           width: 100%;
-          margin: 0 16px;
+          margin-top: 16px;
         }
       }
     }
