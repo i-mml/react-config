@@ -39,7 +39,7 @@ const InformationBox = () => {
   return (
     <div className={s.informationBoxContainer}>
       <div className={s.logoBox}>
-        <img src="/Images/logo.svg" alt="Logo" className={s.logoImg} />
+        <img src="/images/logo.svg" alt="Logo" className={s.logoImg} />
         <div className={s.logoText}>نام برند و لوگو</div>
       </div>
 
@@ -59,7 +59,7 @@ const InformationBox = () => {
               <div className={s.loginInputBox}>
                 <div className={s.userNameField}>
                   <img
-                    src="/Images/Icons/user.svg"
+                    src="/images/icons/user.svg"
                     alt="user-icon"
                     className={s.icon}
                   />
@@ -77,7 +77,7 @@ const InformationBox = () => {
 
                 <div className={s.passwordField}>
                   <img
-                    src="/Images/Icons/lock.svg"
+                    src="/images/icons/lock.svg"
                     alt="lock-icon"
                     className={s.icon}
                   />
@@ -94,7 +94,7 @@ const InformationBox = () => {
 
                   <img
                     id="eye"
-                    src="/Images/Icons/eye.svg"
+                    src="/images/icons/eye.svg"
                     alt="eye-icon"
                     className={s.eye}
                     onClick={handleToggle}

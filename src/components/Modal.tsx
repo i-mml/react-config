@@ -8,7 +8,7 @@ const Modal = ({ closeModal }: any) => {
         <div className={s.header}>
           <div className={s.title}>ویرایش آدرس</div>
           <img
-            src="/Images/Icons/x-circle.svg"
+            src="/images/icons/x-circle.svg"
             alt="cross-icon"
             style={{ backgroundColor: "white" }}
             onClick={() => closeModal(false)}

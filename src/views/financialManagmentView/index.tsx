@@ -13,19 +13,19 @@ const FinancialManagmentView = () => {
     {
       id: 1,
       title: "شناسه سرویس:",
-      icon: "/Images/Icons/key.svg",
+      icon: "/images/icons/key.svg",
       value: "1234567",
     },
     {
       id: 2,
       title: "نصب حضوری سرویس",
-      icon: "/Images/Icons/location.svg",
+      icon: "/images/icons/location.svg",
       value: "",
     },
     {
       id: 3,
       title: "آدرس:",
-      icon: "/Images/Icons/marker-pin.svg",
+      icon: "/images/icons/marker-pin.svg",
       value: "1234567",
     },
   ];

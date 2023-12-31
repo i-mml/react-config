@@ -10,26 +10,26 @@ const DetailServis = () => {
     {
       id: 1,
       title: "شناسه سرویس:",
-      icon: "/Images/Icons/key.svg",
+      icon: "/images/icons/key.svg",
       value: "1234567",
     },
     {
       id: 2,
       title: "نصب حضوری سرویس",
-      icon: "/Images/Icons/location.svg",
+      icon: "/images/icons/location.svg",
       value: "",
     },
     {
       id: 3,
       title: "آدرس:",
-      icon: "/Images/Icons/marker-pin.svg",
+      icon: "/images/icons/marker-pin.svg",
       value: " تهران،امیرآباد شمالی ، کوچه 20 ام.",
-      edit: "/Images/Icons/edit.svg",
+      edit: "/images/icons/edit.svg",
     },
     {
       id: 4,
       title: "پایان تاریخ:",
-      icon: "/Images/Icons/calendar.svg",
+      icon: "/images/icons/calendar.svg",
       value: " 02 مهر 1402 (24 اکتبر 2023)",
     },
   ];

@@ -22,7 +22,7 @@ const SideBarView = () => {
     <>
       <div className={s.container}>
         <div className={s.logoBox}>
-          <img src="/Images/logo.svg" alt="Logo" className={s.logoImg} />
+          <img src="/images/logo.svg" alt="Logo" className={s.logoImg} />
           <div className={s.logoText}>نام برند و لوگو</div>
         </div>
         <div className={s.itemBox}>
@@ -48,14 +48,14 @@ const SideBarView = () => {
           )}
         </div>
         <div className={s.profileBox} onClick={removeToken}>
-          <img src="/Images/Avatar.png" alt="profile" className={s.profileImg} />
+          <img src="/images/Avatar.png" alt="profile" className={s.profileImg} />
           <div className={s.infoProfileBox}>
             <div className={s.profileName}>{user?.user?.first_name} {user?.user?.last_name}</div>
             <div className={s.profileEmail}>{user?.user?.email}</div>
           </div>
 
           <img
-            src="/Images/Icons/log-out.svg"
+            src="/images/icons/log-out.svg"
             alt="log out"
             className={s.logOut}
           />

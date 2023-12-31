@@ -2,7 +2,7 @@ export const SidebarList = [
   {
     id: 1,
     title: "صفحه اصلی",
-    icon: "/Images/Icons/home.svg",
+    icon: "/images/icons/home.svg",
     link: "/",
     subMenue: [],
   },
@@ -10,7 +10,7 @@ export const SidebarList = [
   {
     id: 2,
     title: "مدیریت مالی",
-    icon: "/Images/Icons/credit-card.svg",
+    icon: "/images/icons/credit-card.svg",
     link: "/financial-management",
     subMenue: [],
   },
@@ -18,7 +18,7 @@ export const SidebarList = [
   {
     id: 3,
     title: "پشتیبانی",
-    icon: "/Images/Icons/life-buoy.svg",
+    icon: "/images/icons/life-buoy.svg",
     link: "/support",
     subMenue: [],
   },
@@ -26,7 +26,7 @@ export const SidebarList = [
   {
     id: 4,
     title: "پروفایل",
-    icon: "/Images/Icons/user-circle.svg",
+    icon: "/images/icons/user-circle.svg",
     link: "/profile",
     subMenue: [],
   },
