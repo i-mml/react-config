@@ -13,8 +13,6 @@ import { useQuery } from 'react-query';
 import { fetchDashboardData } from '../../api/services/dashboard';
 
 const DashboardView = () => {
-    const user = useSelector((state: any) => state?.auth);
-
     const { data, isLoading } = useQuery('dashboard-all-services', fetchDashboardData);
 
 

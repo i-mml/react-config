@@ -1,16 +1,20 @@
 import React from 'react'
 import s from './style.module.scss';
 import UsedTraficItem from '../usedTrafixItem';
+import { rolesConsts } from '../../../../constants/user';
+import { useSelector } from 'react-redux';
 
 const DashboardTopBox = () => {
+    const user = useSelector((state: any) => state?.auth?.data?.user);
+
     return (
         <div className={s.dashboardTopBox}>
             <div className={s.right}>
                 <h3 className={s.title}>
-                    سارا عزیز، خوش آمدید.
+                    {rolesConsts[user?.role]?.name} عزیز، خوش آمدید.
                 </h3>
                 <div className={s.subTitle}>
-                    در پنل کاربری خود میتوانید آنالیز و ردیابی وسایل الکترونیکی خود را ببینید.
+                    در داشبورد نت پورت می توانید وضعیت شبکه خود را ببینید.
                 </div>
             </div>
             <div className={s.left}>
