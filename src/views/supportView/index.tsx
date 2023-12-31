@@ -11,56 +11,12 @@ interface ISupportViewProps {
 }
 
 const SupportView = (props: ISupportViewProps) => {
-  const [currentTab, setCurrentTab] = useState("external-support");
+  const [currentTab, setCurrentTab] = useState("external_support");
   const navigate = useNavigate()
-
   const tabsList = [
     { id: 1, faTitle: "پشتیبانی خارجی", title: "external_support" },
     { id: 3, faTitle: "پشتیبانی داخلی", title: "internal_support" },
   ];
-
-  // const tableData = [
-  //   {
-  //     id: 1,
-  //     title: "مشکل در سفارش",
-  //     ticket_id: "65232",
-  //     created_at: "1403/09/03",
-  //     label: "high",
-  //     status: "pending",
-  //     updated_at: "1403/0903",
-  //     updated_at_user: "علی احمدی",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "مشکل در سفارش",
-  //     ticket_id: "65232",
-  //     created_at: "1403/09/03",
-  //     label: "high",
-  //     status: "pending",
-  //     updated_at: "1403/0903",
-  //     updated_at_user: "علی احمدی",
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "مشکل در سفارش",
-  //     ticket_id: "65232",
-  //     created_at: "1403/09/03",
-  //     label: "medium",
-  //     status: "pending",
-  //     updated_at: "1403/0903",
-  //     updated_at_user: "علی احمدی",
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "مشکل در سفارش",
-  //     ticket_id: "65232",
-  //     created_at: "1403/09/03",
-  //     label: "low",
-  //     status: "pending",
-  //     updated_at: "1403/0903",
-  //     updated_at_user: "علی احمدی",
-  //   },
-  // ];
 
   const labelGenerator: any = {
     "فوری": {
@@ -148,7 +104,7 @@ const SupportView = (props: ISupportViewProps) => {
                       </div>}
                   </td>
                   <td className={s.mobileShow}>
-                    {statusGenerator[item?.status] ?? "-"}
+                    {item?.status ?? "-"}
                     <div className={`${s.onlyMobile} ${s.label} ${labelGenerator[item?.label]?.class} `}>
                       <span className={s.circle}></span>
                       <span className={s.labelValue}>
