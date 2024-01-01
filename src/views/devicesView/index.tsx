@@ -4,6 +4,7 @@ import TitleBox from '../dashboardView/components/titleBox';
 import DeviceTableItem from './devicesTableItem';
 import { useQuery } from 'react-query';
 import { getDeviceAll } from '../../api/services/devices';
+import InputSearch from '../../components/searchInput';
 
 const DevicesView = () => {
     const { data } = useQuery("get-all-device", getDeviceAll)
@@ -36,7 +37,7 @@ const DevicesView = () => {
         <div className={s.container}>
             <div className={s.titleWrappwer}>
                 <TitleBox icon='/images/icons/printer.svg' title='دستگاه‌های متصل' />
-                <input />
+                <InputSearch />
             </div>
             <table className={s.tableWrapper}>
                 <thead>
