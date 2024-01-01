@@ -35,7 +35,7 @@ const FinancialManagmentView = () => {
     <div className={s.container}>
       <FinancialManagementHeader title="وضعیت سرویس شما" />
 
-      {data?.data?.remain > 0 ? (
+      {!(data?.data?.remain > 0) ? (
         <div className={s.statusBox}>
           <RemainDate remainDay={data?.data?.remain} wholePeriod={data?.data?.hole} />
 

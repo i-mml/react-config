@@ -10,17 +10,19 @@
   }
 
   .statusBox {
-    width: 579px;
-    height: 497px;
+    width: 50.26%;
+    min-width: 288px;
     background: white;
     margin: 85px auto;
     border-radius: 14px;
     border: 1px dashed #888888;
+    padding: 0 0 44px;
+
     @media (max-width: 750px) {
       width: 100%;
       margin: 16px auto;
       height: auto;
-      padding: 0 5%;
+      padding: 0 5% 34px;
     }
 
     .ringImg {
@@ -33,15 +35,20 @@
 
     .reaminSubTitle,
     .renevalSubTitle {
+      @media (max-width: 750px) {
+        margin: 15px 5.85%;
+      }
       color: #111;
       background: white;
       font-size: 14px;
       font-weight: 500;
       text-align: center;
       margin-bottom: 25px;
+      padding: 0 19%;
     }
     .renevalSubTitle {
       margin-bottom: 150px;
+
       .renevalSubTitleServis {
         background: white;
         color: #007eff;
@@ -51,9 +58,9 @@
     .infoBox {
       background: white;
       display: flex;
-      margin: 15px 115px;
+      margin: 15px 19%;
       @media (max-width: 750px) {
-        margin: 15px 31px;
+        margin: 15px 5.85%;
       }
       .infoIcon {
         width: 24px;
