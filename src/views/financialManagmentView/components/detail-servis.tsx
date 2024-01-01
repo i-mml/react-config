@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import s from "../financialManagment.module.scss";
 import Modal from "../../../components/Modal";
 import FinancialManagementHeader from "./FinancialManagementHeader";
+import moment from "moment-jalaali";
+import { useQuery } from "react-query";
+import { getSubscription } from "../../../api/services/subscription";
 
 const DetailServis = () => {
+  const { data } = useQuery("subscription-data", getSubscription);
+
   const [openModal, setOpenModal] = useState(false);
 
   const informationList = [
@@ -30,7 +35,7 @@ const DetailServis = () => {
       id: 4,
       title: "پایان تاریخ:",
       icon: "/images/icons/calendar.svg",
-      value: " 02 مهر 1402 (24 اکتبر 2023)",
+      value: moment(data?.data?.expire_at).format('jDD jMMM jYYYY (DD MMM YYYY)'),
     },
   ];
 
