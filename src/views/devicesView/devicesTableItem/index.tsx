@@ -5,16 +5,9 @@ import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { ModalTitle } from 'react-bootstrap';
 import ModalHeaderTitle from '../../../components/modalTitle';
 
-interface IProps {
-    id: number,
-    name: string,
-    nameEng: string,
-    status: string,
-    sensorLink: string
-}
 
 
-const DeviceTableItem = ({ name, nameEng, status, sensorLink }: IProps) => {
+const DeviceTableItem = ({ name, icon, fold }: any) => {
     const [modal, setModal] = useState(false);
     const [backdrop, setBackdrop] = useState(true);
     const [keyboard, setKeyboard] = useState(true);
@@ -25,14 +18,14 @@ const DeviceTableItem = ({ name, nameEng, status, sensorLink }: IProps) => {
         <tr className={s.deviceTableItem}>
             <td>
                 <div className={s.name}>
-                    <img src={`/images/icons/${nameEng || 'printer'}.svg`} className={s.image} />
+                    <img src={process.env.REACT_APP_IMAGE_BASE_URL + icon || '/images/icons/printer.svg'} className={s.image} />
                     <span className={s.nameValue}>{name}</span>
                 </div>
             </td>
             <td>
-                <div className={`${s.statusBox} ${status === "OFFLINE" ? s.statusBoxOffline : ""}`}>
+                <div className={`${s.statusBox} ${!fold ? s.statusBoxOffline : ""}`}>
                     <div className={s.statusBadge}></div>
-                    <div className={s.status}>{status === "ONLINE" ? "آنلاین" : "آفلاین"}</div>
+                    <div className={s.status}>{fold ? "آنلاین" : "آفلاین"}</div>
                 </div>
             </td>
             <td>

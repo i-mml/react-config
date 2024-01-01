@@ -2,8 +2,12 @@ import React from 'react'
 import s from './style.module.scss';
 import TitleBox from '../dashboardView/components/titleBox';
 import DeviceTableItem from './devicesTableItem';
+import { useQuery } from 'react-query';
+import { getDeviceAll } from '../../api/services/devices';
 
 const DevicesView = () => {
+    const { data } = useQuery("get-all-device", getDeviceAll)
+
     const devicesTableData = [
         {
             id: 1,
@@ -27,6 +31,7 @@ const DevicesView = () => {
             sensorLink: "https://google.com/"
         }
     ]
+    console.log(data)
     return (
         <div className={s.container}>
             <div className={s.titleWrappwer}>
@@ -43,7 +48,7 @@ const DevicesView = () => {
                 </thead>
                 <tbody>
                     {
-                        devicesTableData?.map(item =>
+                        data?.sensorxref?.map((item: any) =>
                             <DeviceTableItem {...item} />
                         )
                     }
