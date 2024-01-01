@@ -13,8 +13,8 @@ const UserInformationTab = () => {
   const authData = useSelector((state: any) => state?.auth?.data)
 
   const { data } = useQuery("get-company-by-id", () => getCompanyById(authData?.admin?.company_Id));
-  const updateLogoMutation = useMutation((e: any) => putCompanyEdit(e));
   const updateUserMutation = useMutation((e: EditUserFields) => putUserUpdate(e));
+  const updateLogoMutation = useMutation((e: any) => putCompanyEdit(e));
 
 
   const [selectedImage, setSelectedImage] = useState(null);
@@ -33,6 +33,8 @@ const UserInformationTab = () => {
   const handleSubmit = async () => {
     const formData = new FormData()
     formData.append("logo", selectedFile)
+    formData.append("id", authData?.admin?.company_Id)
+
 
     if (+data?.admin?.role !== +role) {
       updateUserMutation.mutate({
@@ -55,7 +57,7 @@ const UserInformationTab = () => {
         <div className={s.titleBox}>
           {selectedImage ? <img src={selectedImage} alt="Selected" className={s.selectedImage} /> :
             <img
-              src="/images/icons/editor-icon.png"
+              src={data?.data?.logo ? process.env.REACT_APP_IMAGE_BASE_URL + data?.data?.logo : "/images/icons/editor-icon.png"}
               alt="editor icon"
               className={s.editedIcon}
             />
