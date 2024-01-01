@@ -32,7 +32,6 @@ const DevicesView = () => {
             sensorLink: "https://google.com/"
         }
     ]
-    console.log(data)
     return (
         <div className={s.container}>
             <div className={s.titleWrappwer}>
