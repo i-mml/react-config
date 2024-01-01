@@ -10,5 +10,10 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
+    @media (max-width: 750px) {
+      align-items: start;
+      flex-direction: column;
+      margin-bottom: 16px;
+    }
   }
 }

@@ -36,7 +36,7 @@ const NotificationsView = () => {
         <div className={s.container}>
             <div className={s.titleWrappwer}>
                 <TitleBox icon='/images/icons/printer.svg' title='اعلانات' />
-                <InputSearch hideMobile />
+                <InputSearch styles={{ marginTop: "16px" }} />
             </div>
             {
                 data?.sensors?.map((item: any) => <NotificationItem {...item} key={item.id} />)
