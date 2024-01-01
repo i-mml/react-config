@@ -1,13 +1,21 @@
 import React from 'react'
 import s from './style.module.scss';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getCompanyById } from '../../../../api/services/company';
+import { useQuery } from 'react-query';
 
 const MobileHeader = () => {
+    const authData = useSelector((state: any) => state?.auth?.data)
+    const { data } = useQuery("get-company-by-id", () => getCompanyById(authData?.admin?.company_Id));
+
     const navigate = useNavigate()
+
+
     return (
         <div className={s.mobileHeader} onClick={() => navigate('/notifications')}>
             <div className={s.contentBox}>
-                <img src='https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp'
+                <img src={data?.data?.logo ? process.env.REACT_APP_IMAGE_BASE_URL + data?.data?.logo : "/images/icons/editor-icon.png"}
                     className={s.profileImage}
                 />
                 <div className={s.notifIcon}>
