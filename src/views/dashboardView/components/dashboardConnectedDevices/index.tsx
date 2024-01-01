@@ -33,7 +33,7 @@ const DashboardConnectedDevices = ({ devices }: any) => {
         <div className={s.container}>
             <TitleBox title='دستگاه‌های متصل' icon='/images/icons/printer.svg' />
             {
-                devices?.sensorxref?.length > 0 && devices?.sensorxref?.slice(0, 4)?.map((item: any, index: number) => <DeviceListItem key={item.objid} name={item.name} isLast={index === 3} status={item.fold} />)
+                devices?.sensorxref?.length > 0 && devices?.sensorxref?.slice(0, 4)?.map((item: any, index: number) => <DeviceListItem key={item.objid} name={item.name} isLast={index === 3} status={item.fold} icon={item?.icon} />)
             }
             <SecondaryButton className={s.showAll} onClick={() => navigate("/devices")}>
                 مشاهده همه دستگاه ها
