@@ -1,0 +1,16 @@
+.smallBoxWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+
+  @media (max-width: 750px) {
+    display: none;
+  }
+}
+.smallBox {
+  width: 32%;
+  background-color: white;
+  border-radius: 14px;
+  padding: 19px 2% 3px;
+}

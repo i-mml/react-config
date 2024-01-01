@@ -11,6 +11,7 @@ import auth from '../../redux/reducers/auth';
 import { useSelector } from 'react-redux';
 import { useQuery } from 'react-query';
 import { fetchDashboardData } from '../../api/services/dashboard';
+import ChartsWrapper from './components/chartsWrapper';
 
 const DashboardView = () => {
     const { data, isLoading } = useQuery('dashboard-all-services', fetchDashboardData);
@@ -42,6 +43,7 @@ const DashboardView = () => {
             }
             <DashboardMiddleBox data={data} />
             <LineChart />
+            <ChartsWrapper />
         </div>
     )
 }
