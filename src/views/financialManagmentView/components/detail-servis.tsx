@@ -42,8 +42,7 @@ const DetailServis = () => {
         {informationList?.map((item) => (
           <div className={s.informationBox} key={item?.id}>
             <img alt="info-icon" src={item?.icon} className={s.infoIcon} />
-            <div className={s.infoITitle}>{item?.title}</div>
-            <div className={s.infoValue}>{item?.value}</div>
+            <div className={s.infoITitle}>{item?.title} {item?.value}</div>
             {item?.edit ? (
               <img
                 alt="info-icon"
