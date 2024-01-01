@@ -4,6 +4,7 @@ import s from './style.module.scss';
 import NotificationItem from './components/notficationsItem';
 import { useQuery } from 'react-query';
 import { getNotifications } from '../../api/services/notifications';
+import InputSearch from '../../components/searchInput';
 
 const NotificationsView = () => {
     const { data } = useQuery("get-notifications", getNotifications)
@@ -34,8 +35,8 @@ const NotificationsView = () => {
     return (
         <div className={s.container}>
             <div className={s.titleWrappwer}>
-                <TitleBox icon='/images/icons/printer.svg' title='دستگاه‌های متصل' />
-                <input />
+                <TitleBox icon='/images/icons/printer.svg' title='اعلانات' />
+                <InputSearch hideMobile />
             </div>
             {
                 data?.sensors?.map((item: any) => <NotificationItem {...item} key={item.id} />)
