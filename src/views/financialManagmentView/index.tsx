@@ -75,13 +75,16 @@ const FinancialManagmentView = () => {
             کنید.
           </div>
           <div className={s.btnBox}>
-            <button type="submit" className={s.detailBtn}>
-              جزئیات سرویس
-            </button>
-
-            <button type="submit" className={s.renevalBtn}>
-              تمدید سرویس
-            </button>
+            <Link to="/financial-management/detail-service">
+              <button className={s.detailBtn}>
+                جزئیات سرویس
+              </button>
+            </Link>
+            <Link to="/financial-management/reneval-service">
+              <button className={s.renevalBtn}>
+                تمدید سرویس
+              </button>
+            </Link>
           </div>
         </div>
       )}
