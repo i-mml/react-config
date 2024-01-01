@@ -40,11 +40,11 @@ const InformationBox = () => {
     <div className={s.informationBoxContainer}>
       <div className={s.logoBox}>
         <img src="/images/Logo.svg" alt="Logo" className={s.logoImg} />
-        <div className={s.logoText}>نام برند و لوگو</div>
+        <div className={s.logoText}>نت پورت</div>
       </div>
 
       <div className={s.form}>
-        <div className={s.welcome}>به سبیان خوش آمدید.</div>
+        <div className={s.welcome}>به نت پورت خوش آمدید.</div>
         <Formik
           initialValues={{
             number: "",
