@@ -2,8 +2,11 @@
   width: 100%;
   min-height: 80vh;
   background-color: #fff;
-  padding: 24px;
+  padding: 24px 2.2%;
   border-radius: 14px;
+  @media (max-width: 750px) {
+    padding: 18px 5.3%;
+  }
   .formBody {
     display: flex;
     align-items: center;
