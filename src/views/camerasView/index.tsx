@@ -5,6 +5,7 @@ import CameraTableItem from './camerasTableItem';
 import { getCameraAll } from '../../api/services/camera';
 import { useQuery } from 'react-query';
 import InputSearch from '../../components/searchInput';
+import { isMobile } from 'react-device-detect';
 
 const CamerasView = () => {
     const { data, isLoading } = useQuery('get-all-camearas', getCameraAll);
@@ -35,7 +36,7 @@ const CamerasView = () => {
         <div className={s.container}>
             <div className={s.titleWrappwer}>
                 <TitleBox icon='/images/icons/printer.svg' title='دوربین ها' />
-                <InputSearch />
+                <InputSearch hideMobile={isMobile} />
             </div>
             <table className={s.tableWrapper}>
                 <thead>
