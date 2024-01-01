@@ -4,6 +4,7 @@ import TitleBox from '../dashboardView/components/titleBox';
 import CameraTableItem from './camerasTableItem';
 import { getCameraAll } from '../../api/services/camera';
 import { useQuery } from 'react-query';
+import InputSearch from '../../components/searchInput';
 
 const CamerasView = () => {
     const { data, isLoading } = useQuery('get-all-camearas', getCameraAll);
@@ -33,15 +34,15 @@ const CamerasView = () => {
     return (
         <div className={s.container}>
             <div className={s.titleWrappwer}>
-                <TitleBox icon='/images/icons/printer.svg' title='دستگاه‌های متصل' />
-                <input />
+                <TitleBox icon='/images/icons/printer.svg' title='دوربین ها' />
+                <InputSearch />
             </div>
             <table className={s.tableWrapper}>
                 <thead>
                     <tr>
                         <th>نام دوربین</th>
                         <th>وضعیت</th>
-                        <th>لینک</th>
+                        <th>کانال</th>
                     </tr>
                 </thead>
                 <tbody>
