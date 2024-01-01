@@ -18,6 +18,15 @@
 .carouselContainer {
   width: 38%;
   margin-right: 32px;
+  max-width: 760px;
+  max-height: 850px;
+  @media (max-width: 1500px) {
+    width: 52%;
+  }
+  @media (min-width: 1500px) {
+    width: 43%;
+    min-width: 506px;
+  }
   @media (max-width: 900px) {
     display: none;
   }
