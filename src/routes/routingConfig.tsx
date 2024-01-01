@@ -7,8 +7,6 @@ import AbountUsPage from "../pages/about-us";
 import ProfilePage from "../pages/profile";
 import FinancialManagmentPage from "../pages/financial-managment";
 import Support from "../pages/support";
-import DetailServis from "../views/financialManagmentView/components/detail-servis";
-import RenevalServis from "../views/financialManagmentView/components/revenal-servis";
 import HomePage from "../pages/home";
 import SupportCreatePage from "../pages/supportCreate";
 import SingleSupportPage from "../pages/singleSupport";
@@ -16,6 +14,8 @@ import NotificationsPage from "../pages/notifications";
 import CamerasPage from "../pages/cameras";
 import DevicesPage from "../pages/devices";
 import Cookies from "js-cookie";
+import RenevalServicePage from "../pages/renevalService";
+import DetailServicePage from "../pages/detailService";
 
 const RoutingConfig = () => {
   const tokenValue = Cookies.get("ems-token")
@@ -72,7 +72,7 @@ const RoutingConfig = () => {
         path="/financial-management/detail-service"
         element={
           <PrivateRoute>
-            <DetailServis />
+            <DetailServicePage />
           </PrivateRoute>
         }
       />
@@ -81,7 +81,7 @@ const RoutingConfig = () => {
         path="/financial-management/reneval-service"
         element={
           <PrivateRoute>
-            <RenevalServis />
+            <RenevalServicePage />
           </PrivateRoute>
         }
       />

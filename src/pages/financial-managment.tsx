@@ -5,7 +5,7 @@ import MobileNaviagtorLine from "../components/mobileNaviagatorLine";
 const FinancialManagmentPage = () => {
   return (
     <>
-      <MobileNaviagtorLine title="جزئیات سرویس" hasLink={false} />
+      <MobileNaviagtorLine title="مدیریت مالی" hasLink={false} />
       <FinancialManagmentView />
     </>
   );
