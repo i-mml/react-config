@@ -1,6 +1,13 @@
 .cameraTableItem {
+  .nameTd {
+    width: 50%;
+  }
   .name {
     width: fit-content;
+    max-width: 95%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     .image {
       width: 20px;
       height: 20px;
