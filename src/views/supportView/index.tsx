@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import s from "./support.module.scss";
 import { useNavigate } from "react-router-dom";
 import moment from "moment-jalaali";
+import InputSearch from "../../components/searchInput";
 
 moment.loadPersian();
 
@@ -42,8 +43,10 @@ const SupportView = (props: ISupportViewProps) => {
       </div>
       <div className={s.container}>
         <div className={s.header}>
-          <div className={s.title}>تیکت ها</div>
-          <input type="search" placeholder="جستجو تیکت" className={s.SearchBox} />
+          <div className={s.right}>
+            <div className={s.title}>تیکت ها</div>
+            <InputSearch />
+          </div>
           <button className={s.sentTiketBtn} onClick={() => navigate("/support/create")}>ارسال تیکت</button>
         </div>
         <div className={s.tabContainer}>
