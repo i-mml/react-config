@@ -20,10 +20,10 @@ const DashboardView = () => {
         <div className={s.dashboardContainer}>
             <DashboardTopBox />
             <div className={s.statusesBox}>
-                <StatusCartItem title='تعداد کل کاربران' value={60} icon="users" />
-                <StatusCartItem title='کاربران فعال' value={33} icon="zap" hasArrow arrowType="up" />
-                <StatusCartItem title='کاربران غیر فعال' value={0} icon="zap-off" hasArrow arrowType="down" />
-                <StatusCartItem title='نمونه' value={0} icon="zap-off" />
+                <StatusCartItem title='کل دستگاه ها' value={60} icon="users" />
+                <StatusCartItem title='تعداد کاربران wifi' value={33} icon="zap" hasArrow arrowType="up" />
+                <StatusCartItem title='UPTIMEدستگاه های مدیریتی' value={0} icon="zap-off" hasArrow arrowType="down" />
+                <StatusCartItem title='وضعیت اتصال به ISP' value={0} icon="zap-off" />
             </div>
             {
                 isMobile ? <div className={s.mobileLinkWrapper}>
