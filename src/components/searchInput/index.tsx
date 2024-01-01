@@ -9,7 +9,7 @@ interface IProps {
 const InputSearch = (props: IProps) => {
     const { placeholder = 'جستجو', hideMobile = false } = props
     return (
-        <div className={s.inputSearchBox} style={{ display: hideMobile ? "none" : "" }}>
+        <div className={`${s.inputSearchBox} ${hideMobile ? s.hideMobile : ""}`}  >
             <img src='/images/icons/search.svg' className={s.icon} />
             <input className={s.input} placeholder={placeholder} />
         </div>

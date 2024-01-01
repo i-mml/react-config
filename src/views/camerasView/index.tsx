@@ -36,7 +36,7 @@ const CamerasView = () => {
         <div className={s.container}>
             <div className={s.titleWrappwer}>
                 <TitleBox icon='/images/icons/printer.svg' title='دوربین ها' />
-                <InputSearch hideMobile={isMobile} />
+                <InputSearch hideMobile={true} />
             </div>
             <table className={s.tableWrapper}>
                 <thead>
