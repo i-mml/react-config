@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from './style.module.scss';
 import ReactEcharts from "echarts-for-react";
+import TitleBox from '../../../views/dashboardView/components/titleBox';
 
 const LineChart = () => {
+    const [currentTab, setCurrentTab] = useState(1)
+    const tabs = [
+        { id: 1, title: "روزانه", value: "daily" },
+        { id: 2, title: "کاربران", value: "users" },
+        { id: 3, title: "کل شبکه", value: "all network" },
+    ]
+
     const option = {
         xAxis: {
             type: 'category',
@@ -80,8 +88,21 @@ const LineChart = () => {
     };
     return (
         <div className={s.container}>
+            <div className={s.topBox}>
+                <TitleBox title='ترافیک شبکه' icon='/images/icons/trending-up.svg' />
+                <div className={s.tabs}>
+                    {tabs?.map((item) =>
+                        <div
+                            className={`${s.tab} ${item?.id === currentTab ? s.activeTab : ""}`}
+                            onClick={() => setCurrentTab(item.id)}
+                        >
+                            {item.title}
+                        </div>
+                    )}
+                </div>
+            </div>
             <ReactEcharts option={option} />
-        </div>
+        </div >
     )
 }
 
