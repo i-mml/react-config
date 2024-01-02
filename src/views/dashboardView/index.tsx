@@ -21,7 +21,7 @@ const DashboardView = () => {
             <DashboardTopBox />
             <div className={s.statusesBox}>
                 <AllDeviceReportBox title='کل دستگاه ها' offlineCount={60} onlineCount={33} />
-                <StatusCartItem title='تعداد کاربران wifi' value={33} icon="zap" hasArrow arrowType="up" />
+                <StatusCartItem title='تعداد کاربران wifi' value={33} icon="wifi" hasArrow arrowTitle='Ping' arrowType="up" />
                 <StatusCartItem title='UPTIMEدستگاه های مدیریتی' value={0} icon="zap-off" hasArrow arrowType="down" />
                 <StatusCartItem title='وضعیت اتصال به ISP' value={0} icon="zap-off" />
             </div>
