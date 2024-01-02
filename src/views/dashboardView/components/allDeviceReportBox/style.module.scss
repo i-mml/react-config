@@ -1,0 +1,50 @@
+.container {
+  background-color: white;
+  width: 23.43%;
+  border-radius: 14px;
+  padding: 16px;
+  margin-top: 24px;
+  @media (max-width: 750px) {
+    width: 48%;
+  }
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .arrow {
+  }
+  .bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .title {
+    color: #b8b8b8;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+  .allDeviceBox {
+    display: flex;
+    align-items: center;
+
+    & div:first-child {
+      padding-left: 8px;
+    }
+    & div {
+      text-align: center;
+      & p {
+        margin: 0;
+        margin-top: 7px;
+        color: #111;
+        font-size: 16px;
+        line-height: 16px;
+      }
+    }
+  }
+}

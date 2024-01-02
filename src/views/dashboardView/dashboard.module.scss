@@ -3,7 +3,7 @@
   min-height: 100vh;
   .statusesBox {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
     width: 100%;
     @media (max-width: 750px) {
