@@ -5,6 +5,7 @@ export const SidebarList = [
     icon: "/images/icons/home.svg",
     link: "/",
     subMenue: [],
+    supportedLinks: ["/", "/cameras", "/devices", "/notifications"],
   },
 
   {
@@ -13,6 +14,11 @@ export const SidebarList = [
     icon: "/images/icons/credit-card.svg",
     link: "/financial-management",
     subMenue: [],
+    supportedLinks: [
+      "/financial-management",
+      "/financial-management/detail-service",
+      "/financial-management/reneval-service",
+    ],
   },
 
   {
@@ -21,6 +27,7 @@ export const SidebarList = [
     icon: "/images/icons/life-buoy.svg",
     link: "/support",
     subMenue: [],
+    supportedLinks: ["/support", "/support/create", "/support/:id"],
   },
 
   {
@@ -29,5 +36,6 @@ export const SidebarList = [
     icon: "/images/icons/user-circle.svg",
     link: "/profile",
     subMenue: [],
+    supportedLinks: ["/profile"],
   },
 ];

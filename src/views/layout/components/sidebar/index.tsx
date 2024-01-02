@@ -33,8 +33,9 @@ const SideBarView = () => {
               link: string;
               icon: string;
               subMenue: any[];
+              supportedLinks: string[]
             }) => (
-              <a href={item?.link} className={`${s.sidebarLink} ${location?.pathname === item?.link && s.active}`}>
+              <a href={item?.link} className={`${s.sidebarLink} ${item?.supportedLinks.includes(location?.pathname) && s.active}`}>
                 <div
                   className={s.sidebarItem}
                 >
