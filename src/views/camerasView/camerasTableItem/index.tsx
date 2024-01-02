@@ -14,7 +14,7 @@ interface IProps {
 const CameraTableItem = ({ ID, title, active, external_link }: IProps) => {
     return (
         <tr className={s.cameraTableItem} key={ID}>
-            <td className={s.nameTd}>
+            <td>
                 <div className={s.name}>
                     <img src={`/images/icons/webcam.svg`} className={s.image} />
                     <span className={s.nameValue}>{title}</span>
