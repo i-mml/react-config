@@ -33,3 +33,37 @@
     }
   }
 }
+
+.years {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 38px;
+  .year {
+    color: #888;
+    font-size: 14px;
+    margin-left: 13px;
+    display: flex;
+    align-items: baseline;
+
+    &:last-child {
+      margin-left: 0;
+    }
+    .badge {
+      width: 8px;
+      height: 8px;
+      display: inline-block;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    .topYear {
+      background-color: #80bfff;
+    }
+    .bottomYear {
+      background-color: #4ca5ff;
+    }
+    .middleYear {
+      background-color: #007eff;
+    }
+  }
+}
