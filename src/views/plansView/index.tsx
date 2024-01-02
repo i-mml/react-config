@@ -137,19 +137,18 @@ const PlansView = () => {
             </div>
 
             <div className={s.container}>
-                {planList2?.map((item: any) =>
-                    <div>
-                        <img src={`${process.env.REACT_APP_IMAGE_BASE_URL}${selectedPlan?.plan?.image}`} className={s.image} />
-                        <div className={s.devicesListWrapper}>
-                            {
-                                selectedPlan?.devices?.map((node: any) =>
-                                    <MapDeviceIcon key={node?.ID} style={{ bottom: `${node?.y_position}%`, left: `${node?.x_position}%` }} />
-                                )
-                            }
-                        </div>
-                    </div>
 
-                )}
+                <div className={s.imageContainer}>
+                    <img src={`${process.env.REACT_APP_IMAGE_BASE_URL}${selectedPlan?.plan?.image}`} className={s.image} />
+                    <div className={s.devicesListWrapper}>
+                        {
+                            selectedPlan?.devices?.map((node: any) =>
+                                <MapDeviceIcon key={node?.ID} style={{ bottom: `${node?.y_position}%`, left: `${node?.x_position}%` }} />
+                            )
+                        }
+                    </div>
+                </div>
+
 
 
             </div >
