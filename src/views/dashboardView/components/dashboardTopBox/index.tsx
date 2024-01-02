@@ -18,8 +18,8 @@ const DashboardTopBox = () => {
                 </div>
             </div>
             <div className={s.left}>
-                <UsedTraficItem />
-                <UsedTraficItem />
+                <UsedTraficItem title="پیام‌ها و هشدارهای مهم" value={24} increased={true} />
+                <UsedTraficItem title='سلامت شبکه' value={24} increased={false} />
             </div>
         </div>
     )
