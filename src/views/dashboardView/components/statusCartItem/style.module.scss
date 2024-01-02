@@ -6,6 +6,7 @@
   margin-top: 24px;
   @media (max-width: 750px) {
     width: 48%;
+    padding: 8px;
   }
   .icon {
     width: 20px;
@@ -16,6 +17,9 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 25px;
+    @media (max-width: 750px) {
+      margin-bottom: 8px;
+    }
   }
   .arrowBox {
     height: 20px;
@@ -27,16 +31,41 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 750px) {
+      display: block;
+    }
   }
   .title {
     color: #b8b8b8;
     font-size: 14px;
     font-weight: 500;
     line-height: 16px;
+    @media (max-width: 750px) {
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
   }
   .value {
     font-size: 16px;
     font-weight: 400;
     line-height: 16px;
+
+    @media (max-width: 750px) {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  .arrowBox {
+    @media (max-width: 750px) {
+      display: none;
+    }
+  }
+  .arrowBottom {
+    display: none;
+    @media (max-width: 750px) {
+      display: block;
+    }
   }
 }

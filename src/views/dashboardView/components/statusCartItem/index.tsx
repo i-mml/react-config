@@ -33,7 +33,14 @@ const StatusCartItem = (props: Iprops) => {
                 </div>
 
                 <div className={s.value}>
-                    {value}
+                    <span>
+                        {value}
+                    </span>
+                    {hasArrow &&
+                        <div className={s.arrowBottom}>
+                            <img className={s.icon} src={`/images/icons/arrow-${arrowType}.svg`} />
+                        </div>
+                    }
                 </div>
             </div>
 

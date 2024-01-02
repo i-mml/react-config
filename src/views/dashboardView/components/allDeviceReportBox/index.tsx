@@ -21,11 +21,11 @@ const AllDeviceReportBox = (props: Iprops) => {
                 </div>
 
                 <div className={s.allDeviceBox}>
-                    <div>
+                    <div className={s.offline}>
                         <StatusBox active={false} title='آفلاین' />
                         <p>60 نفر</p>
                     </div>
-                    <div>
+                    <div className={s.online}>
                         <StatusBox active={true} title='آنلاین' />
                         <p>33 نفر</p>
                     </div>
