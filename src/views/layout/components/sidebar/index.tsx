@@ -23,7 +23,7 @@ const SideBarView = () => {
       <div className={s.container}>
         <div className={s.logoBox}>
           <img src="/images/Logo.svg" alt="Logo" className={s.logoImg} />
-          <div className={s.logoText}>نام برند و لوگو</div>
+          <div className={s.logoText}>نت پورت</div>
         </div>
         <div className={s.itemBox}>
           {SidebarList?.map(
