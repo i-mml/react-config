@@ -88,17 +88,18 @@ const InformationBox = () => {
                     placeholder="رمز عبور"
                     className={s.password}
                   />
-                  {errors.password && touched.password ? (
-                    <div className={s.error}>{errors.password}</div>
-                  ) : null}
-
                   <img
                     id="eye"
-                    src="/images/icons/eye.svg"
+                    src={`/images/icons/eye${type === "password" ? "" : "-off"}.svg`}
                     alt="eye-icon"
                     className={s.eye}
                     onClick={handleToggle}
                   />
+                  {errors.password && touched.password ? (
+                    <div className={s.error}>{errors.password}</div>
+                  ) : null}
+
+
                 </div>
               </div>
 
