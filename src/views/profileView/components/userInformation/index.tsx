@@ -8,8 +8,10 @@ import SecondaryButton from "../../../../components/buttons/secondaryButton";
 import { getCompanyById, putCompanyEdit } from "../../../../api/services/company";
 import { useSelector } from "react-redux";
 import { EditUserFields } from "../../../../types/api/user";
+import { Link, useNavigate } from "react-router-dom";
 
 const UserInformationTab = () => {
+  const navigate = useNavigate()
   const authData = useSelector((state: any) => state?.auth?.data)
 
   const { data } = useQuery("get-company-by-id", () => getCompanyById(authData?.admin?.company_Id));
@@ -134,9 +136,11 @@ const UserInformationTab = () => {
                 {
                   updateUserMutation.isLoading || updateLogoMutation.isLoading ? "درحال انجام" : "ثبت"}
               </PrimaryButton>
-              <SecondaryButton className={s.cancelBtn}>
+
+              <SecondaryButton className={s.cancelBtn} onClick={() => navigate("/")}>
                 لغو
               </SecondaryButton>
+
             </div>
           </Form>
         </Formik>
