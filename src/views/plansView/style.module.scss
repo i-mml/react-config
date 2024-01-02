@@ -1,0 +1,51 @@
+.container {
+  width: 100%;
+  min-height: 60vh;
+  background-color: #fff;
+  padding: 24px 2.2%;
+  border-radius: 14px;
+
+  .sliderBox {
+    width: 100%;
+    color: #200;
+
+    .image {
+      width: 100%;
+      margin: 0 auto;
+      display: block;
+      max-height: 80vh;
+      position: relative;
+    }
+    .devicesListWrapper {
+      width: 100%;
+      height: 100%;
+      background-color: red;
+    }
+
+    h1 {
+      font-size: 50px;
+    }
+  }
+}
+
+.planTopBox {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .title {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .select {
+    width: 142px;
+    appearance: none;
+    background: transparent;
+    background-image: url("../../../public/images/icons/chevron-down-blue.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-position-x: 14px;
+    stroke: blue;
+    fill: blue;
+  }
+}
