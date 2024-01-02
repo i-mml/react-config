@@ -1,16 +1,18 @@
 import React from 'react'
 import s from './style.module.scss';
+import { useSelector } from 'react-redux';
 
 const ChatListItem = (props: any) => {
-    const { id, ticketId, userId, content, userFullName } = props
+    const auth = useSelector((state: any) => state?.auth?.data?.user)
+    const { id, ticketId, sender, content, userFullName } = props
 
     return (
-        <div className={`${s.chatWrapper} ${userId !== 184 && s.recievedWrapper}`} key={id}>
-            <div className={`${s.chatItem} ${userId === 184 ? s.ownMsg : s.recievedMsg}`}>
+        <div className={`${s.chatWrapper} ${auth?.user_id === sender && s.recievedWrapper}`} key={id}>
+            <div className={`${s.chatItem} ${auth?.user_id !== sender ? s.ownMsg : s.recievedMsg}`}>
                 {content}
             </div>
             {
-                userId === 184 &&
+                auth?.user_id !== sender &&
                 <div className={s.username}>
                     ارسال شده از طرف {userFullName}
                 </div>

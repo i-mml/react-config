@@ -4,6 +4,7 @@ import ChatListItem from './components/chatListItem';
 import { useQuery } from 'react-query';
 import { getMessageAll } from '../../api/services/messages';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const SingleSupportView = () => {
     const params = useParams()
@@ -26,7 +27,7 @@ const SingleSupportView = () => {
                 تیکت شماره {params?.id}
             </div>
             <div className={s.subTitle}>
-                این سابقه گفتگوی شما با سبیان می باشد - این نسخه تنها جهت اطلاع رسانی است.
+                این سابقه گفتگوی شما با نت پورت می باشد
             </div>
 
             <div className={s.chatList}>
