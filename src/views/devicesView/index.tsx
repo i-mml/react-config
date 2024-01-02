@@ -41,7 +41,7 @@ const DevicesView = () => {
             <table className={s.tableWrapper}>
                 <thead>
                     <tr>
-                        <th>نام دستگاه</th>
+                        <th className={s.deviceTh}>نام دستگاه</th>
                         <th>وضعیت</th>
                         <th>سنسور</th>
                     </tr>
