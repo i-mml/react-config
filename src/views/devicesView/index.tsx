@@ -36,13 +36,13 @@ const DevicesView = () => {
         <div className={s.container}>
             <div className={s.titleWrappwer}>
                 <TitleBox icon='/images/icons/printer.svg' title='دستگاه‌های متصل' />
-                <InputSearch hideMobile />
+                <InputSearch hideMobile placeholder='جستجو دستگاه' />
             </div>
             <table className={s.tableWrapper}>
                 <thead>
                     <tr>
-                        <th>وضعیت</th>
                         <th>نام دستگاه</th>
+                        <th>وضعیت</th>
                         <th>سنسور</th>
                     </tr>
                 </thead>
