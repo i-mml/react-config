@@ -39,7 +39,7 @@ const SupportCreateView = () => {
         formData.append("ticket_id", response?.ID)
         formData.append("type", "t")
 
-        postMessageCreate(formData).then(res => navigate(`/support/${res?.data?.ID}`))
+        postMessageCreate(formData).then(res => navigate(`/support/${res?.data?.ticket_id}`))
     }
 
 
