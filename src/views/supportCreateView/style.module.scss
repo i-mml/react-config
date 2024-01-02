@@ -54,6 +54,12 @@
     }
     .select {
       width: 100%;
+      appearance: none;
+      background: transparent;
+      background-image: url("../../../public/images/icons/chevron-down-black.svg");
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-position-x: 14px;
     }
     .textareaBox {
       width: 100%;
