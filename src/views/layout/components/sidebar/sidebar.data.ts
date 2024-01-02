@@ -6,6 +6,7 @@ export const SidebarList = [
     link: "/",
     subMenue: [],
     supportedLinks: ["/", "/cameras", "/devices", "/notifications"],
+    allowedRoles: [1, 2, 3],
   },
 
   {
@@ -19,6 +20,7 @@ export const SidebarList = [
       "/financial-management/detail-service",
       "/financial-management/reneval-service",
     ],
+    allowedRoles: [2, 3],
   },
 
   {
@@ -28,6 +30,7 @@ export const SidebarList = [
     link: "/support",
     subMenue: [],
     supportedLinks: ["/support", "/support/create", "/support/:id"],
+    allowedRoles: [1, 2, 3],
   },
 
   {
@@ -37,5 +40,6 @@ export const SidebarList = [
     link: "/profile",
     subMenue: [],
     supportedLinks: ["/profile"],
+    allowedRoles: [1, 2, 3],
   },
 ];

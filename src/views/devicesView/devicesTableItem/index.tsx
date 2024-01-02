@@ -18,7 +18,7 @@ const DeviceTableItem = ({ name, icon, fold }: any) => {
         <tr className={s.deviceTableItem}>
             <td>
                 <div className={s.name}>
-                    <img src={process.env.REACT_APP_IMAGE_BASE_URL + icon || '/images/icons/printer.svg'} className={s.image} />
+                    <img src={'/images/icons/monitor.svg'} className={s.image} />
                     <span className={s.nameValue}>{name}</span>
                 </div>
             </td>

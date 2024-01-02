@@ -8,7 +8,8 @@ const NotifListItem = ({ device_raw = "", subTitle = "", status = 0, date = "", 
 
     return (
         <div className={s.notifItem} onClick={() => setIsOpened(prevState => !prevState)}>
-            <div className={`${s.circle} ${status ? s.offCircle : ""}`}></div>
+            {/* ${status ? s.offCircle : ""} */}
+            <div className={`${s.circle} `}></div>
             <div className={s.content}>
                 <div className={s.titleBox}>
                     <div className={s.title}>
