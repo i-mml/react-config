@@ -13,12 +13,13 @@ const MobileHeader = () => {
 
 
     return (
-        <div className={s.mobileHeader} onClick={() => navigate('/notifications')}>
+        <div className={s.mobileHeader} >
             <div className={s.contentBox}>
                 <img src={data?.data?.logo ? process.env.REACT_APP_IMAGE_BASE_URL + data?.data?.logo : "/images/icons/editor-icon.png"}
                     className={s.profileImage}
+                    onClick={() => navigate('/profile')}
                 />
-                <div className={s.notifIcon}>
+                <div className={s.notifIcon} onClick={() => navigate('/notifications')}>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
                         className={s.icon}
                     >
