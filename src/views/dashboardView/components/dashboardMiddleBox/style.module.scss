@@ -1,7 +1,7 @@
 .container {
   display: flex;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: start;
   flex-wrap: wrap;
   margin-top: 16px;
 
@@ -55,7 +55,8 @@
       display: none;
     }
   }
-  .speedTest {
+  .speedTest,
+  .diskHealth {
     width: 100%;
     background-color: white;
     border-radius: 14px;
@@ -101,5 +102,9 @@
   }
   .smallBox {
     width: 48.6%;
+  }
+  .diskHealth {
+    margin-bottom: 0;
+    margin-top: 16px;
   }
 }

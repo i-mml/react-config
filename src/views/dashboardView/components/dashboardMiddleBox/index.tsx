@@ -81,6 +81,41 @@ const DashboardMiddleBox = ({ data }: any) => {
         ],
 
     };
+    const pieOptions = {
+        title: {
+            show: false
+        },
+        legend: {
+            bottom: 0,
+            left: 'center',
+            data: ['Direct', 'Email', 'Affiliate', 'Video Ads', 'Search']
+        },
+        series: [{
+            type: 'pie',
+            radius: '65%',
+            selectedMode: "single",
+            center: ['50%', '40%'],
+            data: [
+                { value: 335, name: 'Direct' },
+                { value: 310, name: 'Email' },
+                { value: 234, name: 'Affiliate' },
+                { value: 135, name: 'Video Ads' },
+                { value: 1548, name: 'Search' }
+            ],
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            },
+            label: { show: false },
+            labelLine: {
+                show: false
+            }
+        }],
+
+    };
 
     return (
         <div className={s.container}>
@@ -119,17 +154,28 @@ const DashboardMiddleBox = ({ data }: any) => {
                     <ReactECharts option={option} />
                     <div className={s.speedBottom}>
                         <div className={s.section}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="63" height="14" viewBox="0 0 63 14" fill="none">
+                                <path d="M62.4492 0.813152C53.7433 1.95925 50.9021 6.36578 42.0234 6.86332C33.8377 7.32204 29.7232 3.09327 21.5977 3.83824C11.744 4.74164 11.1275 12.5858 1.17187 12.9135" stroke="#FE9B0E" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
                             <p className={s.title}>Upload Mpbs</p>
                             <p className={s.value}>48.2</p>
                         </div>
                         <div className={s.section}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="14" viewBox="0 0 60 14" fill="none">
+                                <path d="M59.2227 0.813152C50.9313 1.95925 48.2254 6.36578 39.7695 6.86332C31.9736 7.32204 28.055 3.09327 20.3164 3.83824C10.932 4.74164 10.3448 12.5858 0.863281 12.9135" stroke="#007EFF" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
                             <p className={s.title}>Download Mpbs</p>
                             <p className={s.value}>48.2</p>
                         </div>
                     </div>
                 </div>
                 <NotificationsBox notifications={data?.notificationsList?.sensors} />
+                <div className={s.diskHealth}>
+                    <TitleBox title='سلامت دیسک ها' />
+                    <ReactECharts option={pieOptions} />
+                </div>
             </div>
+
         </div >
     )
 }
