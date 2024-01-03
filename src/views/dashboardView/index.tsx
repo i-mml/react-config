@@ -26,7 +26,7 @@ const DashboardView = () => {
                 <StatusCartItem title='وضعیت اتصال به ISP' value={0} icon="zap-off" />
             </div>
             {
-                isMobile ? <div className={s.mobileLinkWrapper}>
+                isMobile && <div className={s.mobileLinkWrapper}>
                     <DashboardMobileLinkBox
                         icon='/images/Computer.png'
                         link='/devices'
@@ -37,8 +37,7 @@ const DashboardView = () => {
                         link='/cameras'
                         title='دوربین‌ها'
                     />
-                </div> :
-                    <DashboardMap planList={data?.planList} />
+                </div>
             }
             <DashboardMiddleBox data={data} />
             <LineChart />
