@@ -17,7 +17,7 @@ const SideBarView = () => {
   const removeToken = () => {
     mutation.mutate();
   }
-
+  console.log(user?.user)
   return (
     <>
       <div className={s.container}>
@@ -26,7 +26,7 @@ const SideBarView = () => {
           <div className={s.logoText}>نت پورت</div>
         </div>
         <div className={s.itemBox}>
-          {SidebarList?.map(
+          {SidebarList?.filter(node => node?.allowedRoles?.includes(user?.user?.role))?.map(
             (item: {
               id: number;
               title: string;
