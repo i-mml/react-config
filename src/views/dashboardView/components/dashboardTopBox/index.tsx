@@ -17,10 +17,11 @@ const DashboardTopBox = () => {
                     در داشبورد نت پورت می توانید وضعیت شبکه خود را ببینید.
                 </div>
             </div>
-            <div className={s.left}>
-                <UsedTraficItem title="پیام‌ها و هشدارهای مهم" value={24} increased={true} />
-                <UsedTraficItem title='سلامت شبکه' value={24} increased={false} />
-            </div>
+            {user?.role !== 1 &&
+                <div className={s.left}>
+                    <UsedTraficItem title="پیام‌ها و هشدارهای مهم" value={24} increased={true} />
+                    <UsedTraficItem title='سلامت شبکه' value={24} increased={false} />
+                </div>}
         </div>
     )
 }

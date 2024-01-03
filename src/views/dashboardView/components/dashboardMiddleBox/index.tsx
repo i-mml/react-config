@@ -10,8 +10,11 @@ import DashboardMap from '../dashboardMap';
 import { isMobile } from 'react-device-detect';
 import ReactECharts from 'echarts-for-react';
 import TitleBox from '../titleBox';
+import { useSelector } from 'react-redux';
 
 const DashboardMiddleBox = ({ data }: any) => {
+    const user = useSelector((state: any) => state?.auth?.data?.user);
+
     const option = {
         series: [
             {
@@ -119,62 +122,86 @@ const DashboardMiddleBox = ({ data }: any) => {
 
     return (
         <div className={s.container}>
-            <div className={s.content}>
-                {!isMobile && <DashboardMap planList={data?.planList} />}
-                <div className={s.middleSlider}>
-                    <Swiper
-                        slidesPerView={1}
-                        pagination={true}
-                        modules={[Pagination]}
-                        className={s.slider}
-                    >
-                        {
-                            data?.bannersList?.length > 0 && data?.bannersList?.map((item: any) => (
-                                <SwiperSlide key={item?.id}>
-                                    <MiddleSliderItem  {...item} />
-                                </SwiperSlide>
-                            ))}
+            {
+                user?.role === 1 &&
+                <div className={s.contentSupoerAdmin}>
+                    <div className={s.middleSlider}>
+                        <Swiper
+                            slidesPerView={1}
+                            pagination={true}
+                            modules={[Pagination]}
+                            className={s.slider}
+                        >
+                            {
+                                data?.bannersList?.length > 0 && data?.bannersList?.map((item: any) => (
+                                    <SwiperSlide key={item?.id}>
+                                        <MiddleSliderItem  {...item} />
+                                    </SwiperSlide>
+                                ))}
 
-                    </Swiper>
-                </div>
-                <div className={s.smallBoxWrapper}>
-                    <div className={s.smallBox}>
-                        <DashboardConnectedDevices devices={data?.devicesList} />
-                    </div>
-                    <div className={s.smallBox}>
-                        <DashboardCameras camerasList={data?.camerasList} />
+                        </Swiper>
                     </div>
                 </div>
-            </div >
-            <div className={s.notifications}>
-                <div className={s.speedTest}>
-                    <div className={s.titleBoxContainer}>
-                        <TitleBox title='سرعت اینترنت' />
+            }
+            {user?.role !== 1 &&
+                <div className={s.content}>
+                    {!isMobile && <DashboardMap planList={data?.planList} />}
+                    <div className={s.middleSlider}>
+                        <Swiper
+                            slidesPerView={1}
+                            pagination={true}
+                            modules={[Pagination]}
+                            className={s.slider}
+                        >
+                            {
+                                data?.bannersList?.length > 0 && data?.bannersList?.map((item: any) => (
+                                    <SwiperSlide key={item?.id}>
+                                        <MiddleSliderItem  {...item} />
+                                    </SwiperSlide>
+                                ))}
+
+                        </Swiper>
                     </div>
-                    <ReactECharts option={option} />
-                    <div className={s.speedBottom}>
-                        <div className={s.section}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="63" height="14" viewBox="0 0 63 14" fill="none">
-                                <path d="M62.4492 0.813152C53.7433 1.95925 50.9021 6.36578 42.0234 6.86332C33.8377 7.32204 29.7232 3.09327 21.5977 3.83824C11.744 4.74164 11.1275 12.5858 1.17187 12.9135" stroke="#FE9B0E" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                            <p className={s.title}>Upload Mpbs</p>
-                            <p className={s.value}>48.2</p>
+                    <div className={s.smallBoxWrapper}>
+                        <div className={s.smallBox}>
+                            <DashboardConnectedDevices devices={data?.devicesList} />
                         </div>
-                        <div className={s.section}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="14" viewBox="0 0 60 14" fill="none">
-                                <path d="M59.2227 0.813152C50.9313 1.95925 48.2254 6.36578 39.7695 6.86332C31.9736 7.32204 28.055 3.09327 20.3164 3.83824C10.932 4.74164 10.3448 12.5858 0.863281 12.9135" stroke="#007EFF" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                            <p className={s.title}>Download Mpbs</p>
-                            <p className={s.value}>48.2</p>
+                        <div className={s.smallBox}>
+                            <DashboardCameras camerasList={data?.camerasList} />
                         </div>
                     </div>
-                </div>
-                <NotificationsBox notifications={data?.notificationsList?.sensors} />
-                <div className={s.diskHealth}>
-                    <TitleBox title='سلامت دیسک ها' />
-                    <ReactECharts option={pieOptions} />
-                </div>
-            </div>
+                </div >
+            }
+            {user?.role !== 1 &&
+                <div className={s.notifications}>
+                    <div className={s.speedTest}>
+                        <div className={s.titleBoxContainer}>
+                            <TitleBox title='سرعت اینترنت' />
+                        </div>
+                        <ReactECharts option={option} />
+                        <div className={s.speedBottom}>
+                            <div className={s.section}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="63" height="14" viewBox="0 0 63 14" fill="none">
+                                    <path d="M62.4492 0.813152C53.7433 1.95925 50.9021 6.36578 42.0234 6.86332C33.8377 7.32204 29.7232 3.09327 21.5977 3.83824C11.744 4.74164 11.1275 12.5858 1.17187 12.9135" stroke="#FE9B0E" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <p className={s.title}>Upload Mpbs</p>
+                                <p className={s.value}>48.2</p>
+                            </div>
+                            <div className={s.section}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="14" viewBox="0 0 60 14" fill="none">
+                                    <path d="M59.2227 0.813152C50.9313 1.95925 48.2254 6.36578 39.7695 6.86332C31.9736 7.32204 28.055 3.09327 20.3164 3.83824C10.932 4.74164 10.3448 12.5858 0.863281 12.9135" stroke="#007EFF" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <p className={s.title}>Download Mpbs</p>
+                                <p className={s.value}>48.2</p>
+                            </div>
+                        </div>
+                    </div>
+                    <NotificationsBox notifications={data?.notificationsList?.sensors} />
+                    <div className={s.diskHealth}>
+                        <TitleBox title='سلامت دیسک ها' />
+                        <ReactECharts option={pieOptions} />
+                    </div>
+                </div>}
 
         </div >
     )

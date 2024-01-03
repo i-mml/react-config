@@ -5,7 +5,8 @@
   flex-wrap: wrap;
   margin-top: 16px;
 
-  .content {
+  .content,
+  .contentSupoerAdmin {
     width: 74.47%;
     @media (max-width: 750px) {
       width: 100%;
@@ -49,6 +50,10 @@
       }
     }
   }
+  .contentSupoerAdmin {
+    width: 100%;
+  }
+
   .notifications {
     width: 23.43%;
     @media (max-width: 750px) {
