@@ -18,6 +18,7 @@ import RenevalServicePage from "../pages/renevalService";
 import DetailServicePage from "../pages/detailService";
 import PlansPage from "../pages/plans";
 import CreateCompnayPage from "../pages/createCompnay";
+import CompaniesPage from "../pages/companies";
 
 const RoutingConfig = () => {
   const tokenValue = Cookies.get("ems-token")
@@ -142,6 +143,14 @@ const RoutingConfig = () => {
         element={
           <PrivateRoute>
             <PlansPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/companies"
+        element={
+          <PrivateRoute>
+            <CompaniesPage />
           </PrivateRoute>
         }
       />

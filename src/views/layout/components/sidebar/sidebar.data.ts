@@ -5,7 +5,14 @@ export const SidebarList = [
     icon: "/images/icons/home.svg",
     link: "/",
     subMenue: [],
-    supportedLinks: ["/", "/cameras", "/devices", "/notifications"],
+    supportedLinks: [
+      "/",
+      "/cameras",
+      "/devices",
+      "/notifications",
+      "/companies",
+      "/company/create",
+    ],
     allowedRoles: [1, 2, 3],
   },
 
