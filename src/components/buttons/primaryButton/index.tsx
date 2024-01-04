@@ -3,7 +3,7 @@ import s from './style.module.scss';
 import { string } from 'yup';
 
 interface IProps {
-    children: ReactNode, onClick: () => void, className?: string; type: "button" | "reset" | "submit", disabled?: boolean
+    children: ReactNode, onClick?: () => void, className?: string; type: "button" | "reset" | "submit", disabled?: boolean
 }
 
 const PrimaryButton = (props: IProps) => {

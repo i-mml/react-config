@@ -5,7 +5,7 @@ import {
 } from "../../types/api/company";
 import axiosInstance from "../axiosConfig";
 
-export const postCompanyCreate = async (e: CompanyCreateFields) => {
+export const postCompanyCreate = async (e: any) => {
   const response = await axiosInstance
     .post("/company/create", e)
     .then((res) => res?.data);
