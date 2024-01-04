@@ -12,6 +12,7 @@ import { fetchDashboardData, fetchSuperAdminData } from '../../api/services/dash
 import ChartsWrapper from './components/chartsWrapper';
 import AllDeviceReportBox from './components/allDeviceReportBox';
 import { useSelector } from 'react-redux';
+import DashboardCompaniesList from './components/dashboardCompaniesList';
 
 const DashboardView = () => {
     const user = useSelector((state: any) => state?.auth?.data?.user);
@@ -20,12 +21,11 @@ const DashboardView = () => {
 
     const { data, isLoading } = useQuery(queryKey, queryFunc as any)
 
-
-
-
     return (
         <div className={s.dashboardContainer}>
             <DashboardTopBox />
+            {/* @ts-ignore */}
+            {user?.role === 1 && <DashboardCompaniesList companies={data?.companiesList?.data} />}
             {user?.role !== 1 &&
                 <div className={s.statusesBox}>
                     <AllDeviceReportBox title='کل دستگاه ها' offlineCount={60} onlineCount={33} />
