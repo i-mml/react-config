@@ -48,7 +48,7 @@ const DetailServis = () => {
           <div className={s.informationBox} key={item?.id}>
             <img alt="info-icon" src={item?.icon} className={s.infoIcon} />
             <div className={s.infoITitle}>{item?.title} {item?.value}</div>
-            {item?.edit ? (
+            {/* {item?.edit ? (
               <img
                 alt="info-icon"
                 src={item?.edit}
@@ -57,7 +57,7 @@ const DetailServis = () => {
                   setOpenModal(true);
                 }}
               />
-            ) : null}
+            ) : null} */}
           </div>
         ))}
       </div>
