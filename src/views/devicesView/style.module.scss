@@ -22,10 +22,11 @@
       font-size: 16px;
       font-weight: 600;
       line-height: 16px;
-      width: 25%;
+      width: 15%;
     }
     .deviceTh {
-      width: 40% !important;
+      width: 10% !important;
+      overflow: hidden;
     }
     & tbody tr {
       border-bottom: 1px solid #e7e7e7;
