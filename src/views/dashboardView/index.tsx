@@ -19,7 +19,9 @@ const DashboardView = () => {
     const queryKey = user?.role !== 1 ? 'dashboard-all-services' : 'super-admin-all-services'
     const queryFunc = user?.role !== 1 ? fetchDashboardData : fetchSuperAdminData
 
-    const { data, isLoading } = useQuery(queryKey, queryFunc as any)
+    const { data, isLoading } = useQuery<any>(queryKey, queryFunc as any)
+
+    const upTimeValue = data?.upTime?.data?.channels?.find((item: any) => item?.name === "System Uptime")?.lastvalue
 
     return (
         <div className={s.dashboardContainer}>
@@ -30,7 +32,7 @@ const DashboardView = () => {
                 <div className={s.statusesBox}>
                     <AllDeviceReportBox title='کل دستگاه ها' offlineCount={60} onlineCount={33} />
                     <StatusCartItem title='تعداد کاربران wifi' value={33} icon="wifi" hasArrow arrowTitle='Ping' arrowType="up" />
-                    <StatusCartItem title='UPTIMEدستگاه های مدیریتی' value={0} icon="zap-off" hasArrow arrowType="down" />
+                    <StatusCartItem title='UPTIMEدستگاه های مدیریتی' value={upTimeValue} icon="zap-off" hasArrow arrowType="down" />
                     <StatusCartItem title='وضعیت اتصال به ISP' value={0} icon="zap-off" />
                 </div>}
             {

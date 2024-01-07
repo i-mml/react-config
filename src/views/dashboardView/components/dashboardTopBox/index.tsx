@@ -4,7 +4,7 @@ import UsedTraficItem from '../usedTrafixItem';
 import { rolesConsts } from '../../../../constants/user';
 import { useSelector } from 'react-redux';
 
-const DashboardTopBox = () => {
+const DashboardTopBox = ({ data }: any) => {
     const user = useSelector((state: any) => state?.auth?.data?.user);
 
     return (
@@ -19,7 +19,7 @@ const DashboardTopBox = () => {
             </div>
             {user?.role !== 1 &&
                 <div className={s.left}>
-                    <UsedTraficItem title="پیام‌ها و هشدارهای مهم" value={24} increased={true} />
+                    <UsedTraficItem title="پیام‌ها و هشدارهای مهم" value={data?.notificationsList?.treesize || ''} increased={true} />
                     <UsedTraficItem title='سلامت شبکه' value={24} increased={false} />
                 </div>}
         </div>
