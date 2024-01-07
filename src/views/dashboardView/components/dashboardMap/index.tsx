@@ -13,7 +13,7 @@ const DashboardMap = ({ planList = [] }: any) => {
         },
     };
 
-    const [swiper, setSwiper] = useState(null);
+    const [swiper, setSwiper] = useState<any>(null);
     const [currentIndex, setCurrentIndex] = useState(0)
     const swipers = useSwiper();
 
@@ -65,8 +65,6 @@ const DashboardMap = ({ planList = [] }: any) => {
                                         <MapDeviceIcon key={node?.ID} style={{ bottom: `${node?.y_position}%`, left: `${node?.x_position}%` }} {...node} />
                                     )
                                 }
-                                {/* <MapDeviceIcon style={{ bottom: "71%", left: "31%" }} />
-                                <MapDeviceIcon style={{ bottom: "71%", left: "85%" }} /> */}
                             </div>
                         </SwiperSlide>
                     )}
@@ -76,7 +74,7 @@ const DashboardMap = ({ planList = [] }: any) => {
                         <img src='/images/icons/paginationArrow.svg' />
                     </div>
                     {planList?.map((item: any, index: number) => (
-                        <div onClick={() => swipers.slideTo(index)} className={`${s.paginationItem} ${index === currentIndex && s.activePaginationItem}`}>{index + 1}</div>
+                        <div onClick={() => swiper?.slideTo(index)} className={`${s.paginationItem} ${index === currentIndex && s.activePaginationItem}`}>{index + 1}</div>
                     ))}
                     <div className={s.swiper_button_prev_unique} onClick={goNext}>
                         <img src='/images/icons/paginationArrow.svg' />
