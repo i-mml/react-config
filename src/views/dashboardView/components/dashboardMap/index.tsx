@@ -32,7 +32,7 @@ const DashboardMap = ({ planList = [] }: any) => {
                             <div className={s.devicesListWrapper}>
                                 {
                                     item?.devices?.map((node: any) =>
-                                        <MapDeviceIcon key={node?.ID} style={{ bottom: `${node?.y_position}%`, left: `${node?.x_position}%` }} />
+                                        <MapDeviceIcon key={node?.ID} style={{ bottom: `${node?.y_position}%`, left: `${node?.x_position}%` }} {...node} />
                                     )
                                 }
                                 {/* <MapDeviceIcon style={{ bottom: "71%", left: "31%" }} />
