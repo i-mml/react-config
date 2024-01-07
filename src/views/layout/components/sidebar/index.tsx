@@ -1,23 +1,25 @@
 // import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import s from "./sideBar.module.scss";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { LogoutService } from "../../../../api/services/auth";
 import MobileSideBarView from "../mobileSidebar";
 import { SidebarList } from "./sidebar.data";
 import MobileHeader from "../mobileHeader";
 import { useSelector } from "react-redux";
+import { getCompanyById } from "../../../../api/services/company";
 
 const SideBarView = () => {
   let location = useLocation();
   const navigate = useNavigate()
   const user = useSelector((state: any) => state?.auth?.data);
+  const { data } = useQuery("get-company-by-id", () => getCompanyById(user?.admin?.company_Id));
   const mutation = useMutation(() => LogoutService().finally(() => navigate("/login", { replace: true })));
 
   const removeToken = () => {
     mutation.mutate();
   }
-  console.log(user?.user)
+  console.log(data?.data?.logo)
   return (
     <>
       <div className={s.container}>
@@ -49,7 +51,8 @@ const SideBarView = () => {
           )}
         </div>
         <div className={s.profileBox} onClick={removeToken}>
-          <img src="/images/Avatar.png" alt="profile" className={s.profileImg} />
+
+          <img src={data ? process.env.REACT_APP_IMAGE_BASE_URL + data?.data?.logo : ""} alt="profile" className={s.profileImg} />
           <div className={s.infoProfileBox}>
             <div className={s.profileName}>{user?.user?.first_name} {user?.user?.last_name}</div>
             <div className={s.profileEmail}>{user?.user?.email}</div>

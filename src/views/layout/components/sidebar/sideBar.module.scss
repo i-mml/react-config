@@ -115,15 +115,15 @@
 
   .profileBox {
     background: #e8f3fe;
-    padding: 24px 0 32px;
+    padding: 24px 12px 32px;
     border-top: 1px solid var(--colors-primary-primary-300, #80bfff);
     display: flex;
     align-items: center;
     cursor: pointer;
     .profileImg {
-      width: 18%;
-      border-radius: 200px;
-      margin-right: 4px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
     }
 
     .infoProfileBox {
@@ -140,7 +140,7 @@
       .profileEmail {
         background: #e8f3fe;
         color: var(--colors-neutral-500, #585858);
-        font-size: 14px;
+        font-size: 12px;
         word-break: break-all;
       }
     }
