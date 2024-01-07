@@ -8,7 +8,7 @@ const ChatListItem = (props: any) => {
 
     return (
         <div className={`${s.chatWrapper} ${auth?.user_id === sender && s.recievedWrapper}`} key={id}>
-            <div className={`${s.chatItem} ${auth?.user_id !== sender ? s.ownMsg : s.recievedMsg}`}>
+            <div className={`${s.chatItem} ${auth?.user_id !== sender ? s.recievedMsg : s.ownMsg}`}>
                 {content}
             </div>
             {
