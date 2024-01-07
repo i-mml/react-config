@@ -31,7 +31,7 @@ const SingleSupportView = () => {
             </div>
 
             <div className={s.chatList}>
-                {data?.data?.length > 0 ? data?.data?.map((item: any) => <ChatListItem {...item} />) : <div className={s.notFound}>
+                {data?.data?.length > 0 ? data?.data?.map((item: any) => <ChatListItem {...item} userFullName={data?.info?.user_name} />) : <div className={s.notFound}>
                     موردی یافت نشد.
                 </div>}
             </div>
