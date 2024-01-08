@@ -8,6 +8,7 @@ import { SidebarList } from "./sidebar.data";
 import MobileHeader from "../mobileHeader";
 import { useSelector } from "react-redux";
 import { getCompanyById } from "../../../../api/services/company";
+import { useParams } from "react-router-dom";
 
 const SideBarView = () => {
   let location = useLocation();
@@ -15,10 +16,23 @@ const SideBarView = () => {
   const user = useSelector((state: any) => state?.auth?.data);
   const { data } = useQuery("get-company-by-id", () => getCompanyById(user?.admin?.company_Id));
   const mutation = useMutation(() => LogoutService().finally(() => navigate("/login", { replace: true })));
-
+  const params = useParams()
+  console.log(params)
   const removeToken = () => {
     mutation.mutate();
   }
+
+  const activeClassName = (supportedLinks: string[]) => {
+    if (supportedLinks.includes(location?.pathname)) {
+      return s.active
+    }
+    if (location.pathname?.includes("/support/") && supportedLinks.includes("/support")) {
+      return s.active
+    }
+
+    return ''
+  }
+
   return (
     <>
       <div className={s.container}>
@@ -36,7 +50,7 @@ const SideBarView = () => {
               subMenue: any[];
               supportedLinks: string[]
             }) => (
-              <a href={item?.link} className={`${s.sidebarLink} ${item?.supportedLinks.includes(location?.pathname) && s.active}`}>
+              <a href={item?.link} className={`${s.sidebarLink} ${activeClassName(item?.supportedLinks)}`}>
                 <div
                   className={s.sidebarItem}
                 >

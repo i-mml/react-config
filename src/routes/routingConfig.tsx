@@ -106,7 +106,7 @@ const RoutingConfig = () => {
         }
       />
       <Route
-        path="/support/:id"
+        path="/support/:chatId"
         element={
           <PrivateRoute>
             <SingleSupportPage />

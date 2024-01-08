@@ -18,7 +18,14 @@ const MobileSideBarView = () => {
         </g>
       </svg>,
       link: "/",
-      subMenue: [],
+      supportedLinks: [
+        "/",
+        "/cameras",
+        "/devices",
+        "/notifications",
+        "/companies",
+        "/company/create",
+      ],
     },
 
     {
@@ -36,7 +43,11 @@ const MobileSideBarView = () => {
       </svg>
       ,
       link: "/financial-management",
-      subMenue: [],
+      supportedLinks: [
+        "/financial-management",
+        "/financial-management/detail-service",
+        "/financial-management/reneval-service",
+      ],
     },
 
     {
@@ -49,7 +60,7 @@ const MobileSideBarView = () => {
       </svg>
       ,
       link: "/support",
-      subMenue: [],
+      supportedLinks: ["/support", "/support/create", "/support/:id"],
     },
 
     {
@@ -66,9 +77,22 @@ const MobileSideBarView = () => {
         </defs>
       </svg>,
       link: "/plans",
-      subMenue: [],
+      supportedLinks: ["/plans"],
     },
   ];
+
+  const activeClassName = (supportedLinks: string[]) => {
+    if (supportedLinks.includes(location?.pathname)) {
+      return s.active
+    }
+    if (location.pathname?.includes("/support/") && supportedLinks.includes("/support")) {
+      return s.active
+    }
+
+
+    return ''
+  }
+
 
   return (
     <div className={s.container}>
@@ -79,9 +103,9 @@ const MobileSideBarView = () => {
             title: string;
             link: string;
             icon: any;
-            subMenue: any[];
+            supportedLinks: any[];
           }) => (
-            <a href={item?.link} className={`${s.sidebarLink}  ${location?.pathname === item?.link && s.active}`}>
+            <a href={item?.link} className={`${s.sidebarLink}  ${activeClassName(item?.supportedLinks)}`}>
               <div className={s.iconBox}>
                 {item?.icon}
               </div>
