@@ -13,3 +13,9 @@ export const getChartHealthStatus = async () => {
 
   return response;
 };
+
+export const getChartNetStatus = async () => {
+  const response = await axiosInstance.get("/chart/netstatus");
+
+  return response;
+};
