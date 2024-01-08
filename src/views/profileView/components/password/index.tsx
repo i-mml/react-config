@@ -91,7 +91,7 @@ const PasswordTab = () => {
               <button type="submit" className={s.saveBtn}>
                 ثبت
               </button>
-              <button type="submit" className={s.cancelBtn}>
+              <button className={s.cancelBtn} onClick={() => navigate("/")}>
                 لغو
               </button>
             </div>
