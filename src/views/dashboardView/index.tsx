@@ -25,7 +25,7 @@ const DashboardView = () => {
 
     return (
         <div className={s.dashboardContainer}>
-            <DashboardTopBox />
+            <DashboardTopBox data={data} />
             {/* @ts-ignore */}
             {user?.role === 1 && <DashboardCompaniesList companies={data?.companiesList?.data} />}
             {user?.role !== 1 &&

@@ -19,7 +19,7 @@ const DashboardTopBox = ({ data }: any) => {
             </div>
             {user?.role !== 1 &&
                 <div className={s.left}>
-                    <UsedTraficItem title="پیام‌ها و هشدارهای مهم" value={data?.notificationsList?.treesize || ''} increased={true} />
+                    <UsedTraficItem title="پیام‌ها و هشدارهای مهم" value={data?.notificationsList?.treesize || 0} increased={true} />
                     <UsedTraficItem title='سلامت شبکه' value={24} increased={false} />
                 </div>}
         </div>
