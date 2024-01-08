@@ -6,23 +6,28 @@ const RenevalServis = () => {
   const informationList = [
     {
       id: 1,
-      title: "اشتراک نصب دوربین",
-      value: "32,300,002 ریال",
+      title: "اشتراک سرویس مانیتورینگ شبکه",
+      value: "۱۰۶ میلیون تومان",
     },
     {
       id: 2,
       title: "دوره اشتراک",
-      value: "3ماهه",
+      value: "12 ماهه",
     },
     {
       id: 3,
-      title: "9% مالیت و ارزش افزوده",
-      value: "300,002 ریال",
+      title: "پرداخت ۱ مرحله ای (۲۷.۸ درصد تخفیف)",
+      value: "۷۸ میلیون تومان (ماهانه ۶.۵ میلیون تومان)",
     },
     {
       id: 4,
-      title: "مبلغ قابل پرداخت",
-      value: "32,300,502 ریال",
+      title: "پرداخت ۲ مرحله ای (۱۱.۲ درصد تخفیف)",
+      value: "۹۶ میلیون تومان (ماهانه ۸ میلیون تومان)",
+    },
+    {
+      id: 5,
+      title: "پرداخت ۴ مرحله ای",
+      value: "۱۰۶ میلیون تومان (ماهانه ۹ میلیون تومان)",
     },
   ];
 
@@ -34,7 +39,7 @@ const RenevalServis = () => {
         {informationList?.map((item) => (
           <div className={s.informationBox} key={item?.id}>
             <div className={s.renevalInfoTitle}>{item?.title}</div>
-            {/* <div className={s.divider}></div> */}
+            <div className={s.divider}><div className={s.dashed}></div></div>
             <div className={s.renevalInfoValue}>{item?.value}</div>
           </div>
         ))}
