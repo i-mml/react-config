@@ -1,9 +1,9 @@
 import { TicketEditFields, TicketSendFields } from "../../types/api/ticket";
 import axiosInstance from "../axiosConfig";
 
-export const getTicketAll = async () => {
+export const getTicketAll = async (internal: boolean) => {
   const response = await axiosInstance
-    .get("/ticket/all")
+    .get(`/ticket/all?internal=${internal}`)
     .then((res) => res?.data);
 
   return response;

@@ -5,15 +5,17 @@ import moment from "moment-jalaali";
 import InputSearch from "../../components/searchInput";
 import { useQuery } from "react-query";
 import { getTicketAll } from "../../api/services/ticket";
+import { Spinner } from "reactstrap";
+
 
 moment.loadPersian();
 
 
 
 const SupportView = () => {
-  const { data: tickets, isLoading } = useQuery("tickets-list", getTicketAll);
-
   const [currentTab, setCurrentTab] = useState("external_support");
+  const { data: tickets, isLoading } = useQuery(["tickets-list", currentTab], () => getTicketAll(currentTab === "external_support" ? false : true));
+
   const navigate = useNavigate()
   const tabsList = [
     { id: 1, faTitle: "پشتیبانی خارجی", title: "external_support" },
@@ -63,72 +65,77 @@ const SupportView = () => {
           </div>
         </div>
 
-        <table className={s.tableWrapper}>
-          <thead>
-            <tr>
-              <th className={s.mobileShow}>شماره تیکت</th>
-              <th>تاریخ ایجاد</th>
-              <th>درجه اهمیت</th>
-              <th className={s.mobileShow}>وضعیت</th>
-              <th>آخرین آپدیت</th>
-            </tr>
-          </thead>
-          <tbody className={s.tableBody}>
-            {
-              tickets?.data?.map((item: any) =>
-                <tr key={item.id} onClick={() => navigate(`/support/${item?.ID}`)}>
-                  <td className={s.mobileShow}>
-                    <div className={s.ticketId}>
-                      <img src="/images/ticket_tag.png" className={s.ticketIcon} />
-                      <div>
-                        <div className={s.ticketIdNumber}>#{item?.ID}</div>
-                        <div className={s.ticketTitle}>
-                          {item?.title}
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    {
-                      moment(item?.CreatedAt).format("jYYYY/jMM/jDD")
-                    }
-                  </td>
-                  <td>
-                    {item?.label === "" ? "-" :
-                      <div className={`${s.label} ${labelGenerator[item?.label]?.class}`}>
-                        <span className={s.circle}></span>
-                        <span className={s.labelValue}>
-                          {labelGenerator[item?.label]?.title}
-                        </span>
-                      </div>}
-                  </td>
-                  <td className={s.mobileShow}>
-                    {item?.status ?? "-"}
-                    <div className={`${s.onlyMobile} ${s.label} ${labelGenerator[item?.label]?.class} `}>
-                      <span className={s.circle}></span>
-                      <span className={s.labelValue}>
-                        {labelGenerator[item?.label]?.title}
-                      </span>
-                    </div>
-                  </td>
-                  <td>
-                    <div className={s.updatedAt}>
-                      <div className={s.date}>
-                        {
-                          moment(item?.UpdatedAt).format("jYYYY/jMM/jDD")
-                        }
-                      </div>
-                      <div className={s.updatedUser}>
-                        {item?.updated_at_user}
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              )
-            }
-          </tbody>
-        </table>
+        {
+          isLoading ? <div className={s.spinnerBox}><Spinner color="primary" className={s.spinner} /></div> :
 
+            <table className={s.tableWrapper}>
+              <thead>
+                <tr>
+                  <th className={s.mobileShow}>شماره تیکت</th>
+                  <th>تاریخ ایجاد</th>
+                  <th>درجه اهمیت</th>
+                  <th className={s.mobileShow}>وضعیت</th>
+                  <th>آخرین آپدیت</th>
+                </tr>
+              </thead>
+
+              <tbody className={s.tableBody}>
+                {
+                  tickets?.data?.map((item: any) =>
+                    <tr key={item.id} onClick={() => navigate(`/support/${item?.ID}`)}>
+                      <td className={s.mobileShow}>
+                        <div className={s.ticketId}>
+                          <img src="/images/ticket_tag.png" className={s.ticketIcon} />
+                          <div>
+                            <div className={s.ticketIdNumber}>#{item?.ID}</div>
+                            <div className={s.ticketTitle}>
+                              {item?.title}
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        {
+                          moment(item?.CreatedAt).format("jYYYY/jMM/jDD")
+                        }
+                      </td>
+                      <td>
+                        {item?.label === "" ? "-" :
+                          <div className={`${s.label} ${labelGenerator[item?.label]?.class}`}>
+                            <span className={s.circle}></span>
+                            <span className={s.labelValue}>
+                              {labelGenerator[item?.label]?.title}
+                            </span>
+                          </div>}
+                      </td>
+                      <td className={s.mobileShow}>
+                        {item?.status ?? "-"}
+                        <div className={`${s.onlyMobile} ${s.label} ${labelGenerator[item?.label]?.class} `}>
+                          <span className={s.circle}></span>
+                          <span className={s.labelValue}>
+                            {labelGenerator[item?.label]?.title}
+                          </span>
+                        </div>
+                      </td>
+                      <td>
+                        <div className={s.updatedAt}>
+                          <div className={s.date}>
+                            {
+                              moment(item?.UpdatedAt).format("jYYYY/jMM/jDD")
+                            }
+                          </div>
+                          <div className={s.updatedUser}>
+                            {item?.updated_at_user}
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  )
+                }
+              </tbody>
+
+            </table>
+        }
 
       </div>
     </div>
