@@ -14,7 +14,6 @@ const CompaniesListItem = (props: any) => {
         title,
         isLast
     } = props
-    console.log(props)
     return (
         <div className={`${s.container} ${isLast ? s.isLast : ""}`}>
             <img src={process.env.REACT_APP_IMAGE_BASE_URL + logo} className={s.image} />

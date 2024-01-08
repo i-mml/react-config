@@ -19,7 +19,6 @@ const SideBarView = () => {
   const removeToken = () => {
     mutation.mutate();
   }
-  console.log(data?.data?.logo)
   return (
     <>
       <div className={s.container}>

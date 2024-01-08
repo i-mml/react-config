@@ -73,7 +73,6 @@ const CreateCompnayView = () => {
                 <Formik
                     initialValues={{}}
                     onSubmit={(value: any) => {
-                        console.log("submitted value", value)
                         handleSubmit(value)
                     }}
                 >
