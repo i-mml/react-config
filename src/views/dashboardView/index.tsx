@@ -30,7 +30,7 @@ const DashboardView = () => {
             {user?.role === 1 && <DashboardCompaniesList companies={data?.companiesList?.data} />}
             {user?.role !== 1 &&
                 <div className={s.statusesBox}>
-                    <AllDeviceReportBox title='کل دستگاه ها' offlineCount={60} onlineCount={33} />
+                    <AllDeviceReportBox title='کل دستگاه ها' offlineCount={60} onlineCount={33} data={data} />
                     <StatusCartItem title='تعداد کاربران wifi' value={33} icon="wifi" hasArrow arrowTitle='Ping' arrowType="up" />
                     <StatusCartItem title='UPTIMEدستگاه های مدیریتی' value={upTimeValue} icon="zap-off" hasArrow arrowType="down" />
                     <StatusCartItem title='وضعیت اتصال به ISP' value={data?.netSTatus?.data?.data?.channels?.find((item: any) => item?.name === "Traffic Total")?.info?.data[0]?.lastvalue} icon="zap-off" />

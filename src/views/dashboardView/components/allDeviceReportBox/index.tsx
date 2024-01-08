@@ -5,11 +5,12 @@ import StatusBox from '../../../../components/statusBox';
 interface Iprops {
     title: string,
     onlineCount: number,
-    offlineCount: number
+    offlineCount: number,
+    data: any
 }
 
 const AllDeviceReportBox = (props: Iprops) => {
-    const { title, onlineCount, offlineCount } = props
+    const { title, data } = props
     return (
         <div className={s.container}>
             <div className={s.top}>
@@ -23,11 +24,11 @@ const AllDeviceReportBox = (props: Iprops) => {
                 <div className={s.allDeviceBox}>
                     <div className={s.offline}>
                         <StatusBox active={false} title='آفلاین' />
-                        <p>60 نفر</p>
+                        <p>{data?.devicesList?.sensorxref?.filter((item: any) => !item?.fold)?.length || 0} نفر</p>
                     </div>
                     <div className={s.online}>
                         <StatusBox active={true} title='آنلاین' />
-                        <p>33 نفر</p>
+                        <p>{data?.devicesList?.sensorxref?.filter((item: any) => item?.fold)?.length || 0}  نفر</p>
                     </div>
                 </div>
             </div>
