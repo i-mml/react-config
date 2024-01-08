@@ -1,6 +1,6 @@
 import { getBannerAll } from "./banner";
 import { getCameraAll } from "./camera";
-import { getChartUptime } from "./chart";
+import { getChartHealthStatus, getChartUptime } from "./chart";
 import { getCompanyAll } from "./company";
 import { getDeviceAll } from "./devices";
 import { getNotifications } from "./notifications";
@@ -14,6 +14,7 @@ export const fetchDashboardData = async () => {
     notificationsList,
     bannersList,
     upTime,
+    healthStatus,
   ] = await Promise.all([
     getCameraAll().catch((err) => err),
     getPlanAll().catch((err) => err),
@@ -21,6 +22,7 @@ export const fetchDashboardData = async () => {
     getNotifications().catch((err) => err),
     getBannerAll().catch((err) => err),
     getChartUptime().catch((err) => err),
+    getChartHealthStatus().catch((err) => err),
   ]);
   return {
     camerasList,
@@ -29,6 +31,7 @@ export const fetchDashboardData = async () => {
     notificationsList,
     bannersList,
     upTime,
+    healthStatus,
   };
 };
 

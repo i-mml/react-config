@@ -7,3 +7,9 @@ export const getChartUptime = async () => {
 
   return response;
 };
+
+export const getChartHealthStatus = async () => {
+  const response = await axiosInstance.get("/chart/health/status");
+
+  return response;
+};
