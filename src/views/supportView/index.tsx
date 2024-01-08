@@ -3,15 +3,16 @@ import s from "./support.module.scss";
 import { useNavigate } from "react-router-dom";
 import moment from "moment-jalaali";
 import InputSearch from "../../components/searchInput";
+import { useQuery } from "react-query";
+import { getTicketAll } from "../../api/services/ticket";
 
 moment.loadPersian();
 
-interface ISupportViewProps {
-  loading: boolean,
-  data: any[]
-}
 
-const SupportView = (props: ISupportViewProps) => {
+
+const SupportView = () => {
+  const { data: tickets, isLoading } = useQuery("tickets-list", getTicketAll);
+
   const [currentTab, setCurrentTab] = useState("external_support");
   const navigate = useNavigate()
   const tabsList = [
@@ -33,8 +34,6 @@ const SupportView = (props: ISupportViewProps) => {
       title: "کم"
     }
   }
-
-
 
   return (
     <div className={s.supportWrapper}>
@@ -76,7 +75,7 @@ const SupportView = (props: ISupportViewProps) => {
           </thead>
           <tbody className={s.tableBody}>
             {
-              props.data?.map(item =>
+              tickets?.data?.map((item: any) =>
                 <tr key={item.id} onClick={() => navigate(`/support/${item?.ID}`)}>
                   <td className={s.mobileShow}>
                     <div className={s.ticketId}>
