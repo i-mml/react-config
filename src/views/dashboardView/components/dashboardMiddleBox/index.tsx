@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import s from './style.module.scss';
 import NotificationsBox from '../notificationsBox';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,6 +15,8 @@ import { useSelector } from 'react-redux';
 const DashboardMiddleBox = ({ data }: any) => {
     const user = useSelector((state: any) => state?.auth?.data?.user);
 
+    const [donwloadValue, setDownloadValue] = useState(0)
+
     const option = {
         series: [
             {
@@ -23,8 +25,8 @@ const DashboardMiddleBox = ({ data }: any) => {
                 startAngle: 220,
                 endAngle: -40,
                 min: 0,
-                max: 60,
-                splitNumber: 12,
+                max: 30000,
+                splitNumber: 10,
                 itemStyle: {
                     color: '#007EFF',
                 },
@@ -68,15 +70,15 @@ const DashboardMiddleBox = ({ data }: any) => {
                     width: '80%',
                     lineHeight: 20,
                     borderRadius: 8,
-                    offsetCenter: [0, '-15%'],
-                    fontSize: 20,
-                    fontWeight: 'bolder',
-                    formatter: `{value}` + `Mbps`,
+                    offsetCenter: [0, '-8%'],
+                    fontSize: 17,
+                    fontWeight: 'bold',
+                    formatter: `{value}` + `Kbps`,
                     color: '#000',
                 },
                 data: [
                     {
-                        value: 20
+                        value: donwloadValue
                     }
                 ],
             },
@@ -119,6 +121,10 @@ const DashboardMiddleBox = ({ data }: any) => {
         }],
 
     };
+
+    useEffect(() => {
+        setDownloadValue(+data?.netSTatus?.data?.data?.channels?.find((item: any) => item?.name === "Traffic In")?.lastvalue.split(" ")[0]?.split(",")?.join("") || 0)
+    }, [data?.netSTatus])
 
     return (
         <div className={s.container}>
