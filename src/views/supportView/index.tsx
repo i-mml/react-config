@@ -6,6 +6,7 @@ import InputSearch from "../../components/searchInput";
 import { useQuery } from "react-query";
 import { getTicketAll } from "../../api/services/ticket";
 import { Spinner } from "reactstrap";
+import TablePagination from "../../components/pagination";
 
 
 moment.loadPersian();
@@ -15,7 +16,10 @@ moment.loadPersian();
 const SupportView = () => {
   const [currentTab, setCurrentTab] = useState("external_support");
   const { data: tickets, isLoading } = useQuery(["tickets-list", currentTab], () => getTicketAll(currentTab === "external_support" ? false : true));
-  const [value, setValue] = useState('')
+  const pageSize = 30;
+  const [page, setPage] = useState(0)
+  const [value, setValue] = useState("")
+
   const navigate = useNavigate()
   const tabsList = [
     { id: 1, faTitle: "پشتیبانی خارجی", title: "external_support" },
@@ -82,7 +86,7 @@ const SupportView = () => {
 
               <tbody className={s.tableBody}>
                 {
-                  tickets?.data?.map((item: any) =>
+                  tickets?.data?.filter((item: any) => item?.ID?.toString()?.toUpperCase()?.includes(value.toUpperCase()))?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) =>
                     <tr key={item.id} onClick={() => navigate(`/support/${item?.ID}`)}>
                       <td className={s.mobileShow}>
                         <div className={s.ticketId}>
@@ -137,7 +141,7 @@ const SupportView = () => {
 
             </table>
         }
-
+        <TablePagination dataLength={tickets?.data?.filter((item: any) => item?.ID?.toString()?.toUpperCase()?.includes(value.toUpperCase()))?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
       </div>
     </div>
 

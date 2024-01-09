@@ -31,13 +31,13 @@ const CamerasView = () => {
                 </thead>
                 <tbody>
                     {
-                        data?.filter()?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) =>
+                        data?.filter((item: any) => item?.title?.toUpperCase()?.includes(value.toUpperCase()))?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) =>
                             <CameraTableItem {...item} />
                         )
                     }
                 </tbody>
             </table>
-            <TablePagination dataLength={data?.filter((item: any) => item?.title?.includes(value))?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
+            <TablePagination dataLength={data?.filter((item: any) => item?.title?.toUpperCase()?.includes(value.toUpperCase()))?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
         </div>
     )
 }
