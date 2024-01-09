@@ -7,11 +7,12 @@
   .imageContainer {
     position: relative;
     width: 100%;
-    transform: rotate(90deg) translateX(30vh);
+    transform: rotate(90deg) translateX(19%) translateY(-30%);
+    width: 480px;
     .image {
-      width: 100%;
-      min-width: 480px;
+      width: 480px;
       margin: 0 auto;
+      border-radius: 14px;
     }
   }
 }
