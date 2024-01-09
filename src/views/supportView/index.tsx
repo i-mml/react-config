@@ -15,7 +15,7 @@ moment.loadPersian();
 const SupportView = () => {
   const [currentTab, setCurrentTab] = useState("external_support");
   const { data: tickets, isLoading } = useQuery(["tickets-list", currentTab], () => getTicketAll(currentTab === "external_support" ? false : true));
-
+  const [value, setValue] = useState('')
   const navigate = useNavigate()
   const tabsList = [
     { id: 1, faTitle: "پشتیبانی خارجی", title: "external_support" },
@@ -46,7 +46,8 @@ const SupportView = () => {
         <div className={s.header}>
           <div className={s.right}>
             <div className={s.title}>تیکت ها</div>
-            <InputSearch />
+            <InputSearch value={value} setValue={setValue} />
+
           </div>
           <button className={s.sentTiketBtn} onClick={() => navigate("/support/create")}>ارسال تیکت</button>
         </div>

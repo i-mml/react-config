@@ -11,12 +11,14 @@ const NotificationsView = () => {
     const { data } = useQuery("get-notifications", getNotifications)
     const pageSize = 30;
     const [page, setPage] = useState(0)
+    const [value, setValue] = useState("")
 
     return (
         <div className={s.container}>
             <div className={s.titleWrappwer}>
                 <TitleBox icon='/images/icons/printer.svg' title='اعلانات' />
-                <InputSearch styles={{ marginTop: "16px" }} />
+                <InputSearch styles={{ marginTop: "16px" }} value={value} setValue={setValue} />
+
             </div>
             {
                 data?.sensors?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) => <NotificationItem {...item} key={item.id} />)

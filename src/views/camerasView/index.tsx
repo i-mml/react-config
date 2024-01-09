@@ -12,13 +12,14 @@ const CamerasView = () => {
     const { data, isLoading } = useQuery('get-all-camearas', getCameraAll);
     const pageSize = 20;
     const [page, setPage] = useState(0)
+    const [value, setValue] = useState("")
 
 
     return (
         <div className={s.container}>
             <div className={s.titleWrappwer}>
                 <TitleBox icon='/images/icons/printer.svg' title='دوربین ها' />
-                <InputSearch hideMobile={true} placeholder='جستجو دوربین' />
+                <InputSearch hideMobile={true} placeholder='جستجو دوربین' value={value} setValue={setValue} />
             </div>
             <table className={s.tableWrapper}>
                 <thead>
@@ -30,13 +31,13 @@ const CamerasView = () => {
                 </thead>
                 <tbody>
                     {
-                        data?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) =>
+                        data?.filter()?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) =>
                             <CameraTableItem {...item} />
                         )
                     }
                 </tbody>
             </table>
-            <TablePagination dataLength={data?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
+            <TablePagination dataLength={data?.filter((item: any) => item?.title?.includes(value))?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
         </div>
     )
 }

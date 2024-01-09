@@ -11,12 +11,13 @@ const DevicesView = () => {
     const { data } = useQuery("get-all-device", getDeviceAll)
     const pageSize = 20;
     const [page, setPage] = useState(0)
-
+    const [value, setValue] = useState('')
+    console.log(value?.toLowerCase())
     return (
         <div className={s.container}>
             <div className={s.titleWrappwer}>
                 <TitleBox icon='/images/icons/printer.svg' title='دستگاه‌های متصل' />
-                <InputSearch hideMobile placeholder='جستجو دستگاه' />
+                <InputSearch hideMobile placeholder='جستجو دستگاه' value={value} setValue={setValue} />
             </div>
             <table className={s.tableWrapper}>
                 <thead>
@@ -28,13 +29,13 @@ const DevicesView = () => {
                 </thead>
                 <tbody>
                     {
-                        data?.sensorxref?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) =>
+                        data?.sensorxref?.filter((item: any) => item?.name?.toUpperCase()?.includes(value.toUpperCase()))?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) =>
                             <DeviceTableItem {...item} />
                         )
                     }
                 </tbody>
             </table>
-            <TablePagination dataLength={data?.sensorxref?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
+            <TablePagination dataLength={data?.sensorxref?.filter((item: any) => item?.name?.toUpperCase()?.includes(value.toUpperCase()))?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
         </div>
     )
 }

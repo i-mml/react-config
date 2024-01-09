@@ -3,7 +3,7 @@ import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import s from './style.module.scss';
 
 const TablePagination = ({ dataLength, page, setPage, pageSize }: { dataLength: number, page: number, setPage: React.Dispatch<React.SetStateAction<number>>, pageSize: number }) => {
-    const [maxPage, setMaxPage] = useState(6)
+    const [maxPage, setMaxPage] = useState(1)
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, index: number) => {
         e.preventDefault();
         setPage(index)
@@ -12,6 +12,10 @@ const TablePagination = ({ dataLength, page, setPage, pageSize }: { dataLength: 
     useEffect(() => {
         setMaxPage(Math.ceil(dataLength / pageSize))
     }, [dataLength])
+
+    if (maxPage === 0) {
+        return <></>
+    }
 
     return (
         <div className={s.container}>
