@@ -17,7 +17,6 @@ const SideBarView = () => {
   const { data } = useQuery("get-company-by-id", () => getCompanyById(user?.admin?.company_Id));
   const mutation = useMutation(() => LogoutService().finally(() => navigate("/login", { replace: true })));
   const params = useParams()
-  console.log(params)
   const removeToken = () => {
     mutation.mutate();
   }

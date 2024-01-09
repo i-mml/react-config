@@ -12,7 +12,6 @@ const DevicesView = () => {
     const pageSize = 20;
     const [page, setPage] = useState(0)
     const [value, setValue] = useState('')
-    console.log(value?.toLowerCase())
     return (
         <div className={s.container}>
             <div className={s.titleWrappwer}>

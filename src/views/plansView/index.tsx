@@ -8,7 +8,6 @@ import { getPlanAll } from '../../api/services/plan';
 
 const PlansView = () => {
     const { data: planList = [] } = useQuery("get-all-plan", getPlanAll)
-    const [selectedItem, setSelectedItem] = useState<any>(planList[0]?.plan?.ID)
     const [selectedPlan, setSelectedPlan] = useState<any>()
 
     const planList2 = [
@@ -110,15 +109,11 @@ const PlansView = () => {
         }
     ]
 
-
     useEffect(() => {
-        const foundSelected = planList?.find((item: any) => item?.plan?.ID === selectedItem)
-        setSelectedPlan(foundSelected)
-    }, [selectedItem])
-
-    useEffect(() => {
-        setSelectedItem(planList[0]?.plan?.ID)
+        setSelectedPlan(planList[0])
     }, [planList])
+
+    console.log(planList)
 
     return (
         <>
@@ -128,6 +123,9 @@ const PlansView = () => {
                 </div>
                 <select
                     className={s.select}
+                    onChange={(e) => {
+                        setSelectedPlan(planList?.find((item: any) => +item?.plan?.ID === +e.target.value))
+                    }}
                 >
                     {planList?.map((item: any) =>
                         <option value={item?.plan?.ID}>{item?.plan?.title}</option>
@@ -143,7 +141,7 @@ const PlansView = () => {
                     <div className={s.devicesListWrapper}>
                         {
                             selectedPlan?.devices?.map((node: any) =>
-                                <MapDeviceIcon key={node?.ID} style={{ bottom: `${node?.y_position}%`, left: `${node?.x_position}%` }} />
+                                <MapDeviceIcon key={node?.ID} style={{ bottom: `${node?.y_position}%`, left: `${node?.x_position}%` }} {...node} />
                             )
                         }
                     </div>
