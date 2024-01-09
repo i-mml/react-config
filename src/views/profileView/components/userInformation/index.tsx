@@ -16,7 +16,7 @@ const UserInformationTab = () => {
 
   const { data } = useQuery("get-company-by-id", () => getCompanyById(authData?.admin?.company_Id));
   const updateUserMutation = useMutation((e: EditUserFields) => putUserUpdate(e));
-  const updateLogoMutation = useMutation((e: any) => putCompanyEdit(e));
+  const updateLogoMutation = useMutation((e: any) => putCompanyEdit(e).then(res => window.location.reload()));
 
 
   const [selectedImage, setSelectedImage] = useState(null);
@@ -38,6 +38,8 @@ const UserInformationTab = () => {
     formData.append("id", authData?.admin?.company_Id)
 
 
+
+
     if (+data?.admin?.role !== +role) {
       updateUserMutation.mutate({
         user_id: authData?.admin?.user_id,
@@ -47,6 +49,8 @@ const UserInformationTab = () => {
     if (selectedFile !== "") {
       updateLogoMutation.mutate(formData)
     }
+
+
   }
 
   useEffect(() => {
