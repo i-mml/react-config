@@ -14,16 +14,16 @@ moment.loadPersian();
 
 
 const SupportView = () => {
-  const [currentTab, setCurrentTab] = useState("external_support");
-  const { data: tickets, isLoading } = useQuery(["tickets-list", currentTab], () => getTicketAll(currentTab === "external_support" ? false : true));
+  const [internal, setInternal] = useState(false)
+  const { data: tickets, isLoading } = useQuery("tickets-list", getTicketAll);
   const pageSize = 30;
   const [page, setPage] = useState(0)
   const [value, setValue] = useState("")
 
   const navigate = useNavigate()
   const tabsList = [
-    { id: 1, faTitle: "پشتیبانی خارجی", title: "external_support" },
-    { id: 3, faTitle: "پشتیبانی داخلی", title: "internal_support" },
+    { id: 1, faTitle: "پشتیبانی خارجی", isInternal: false },
+    { id: 3, faTitle: "پشتیبانی داخلی", isInternal: true },
   ];
 
   const labelGenerator: any = {
@@ -60,11 +60,11 @@ const SupportView = () => {
         </div>
         <div className={s.tabContainer}>
           <div className={s.TabsBox}>
-            {tabsList?.map(({ faTitle, id, title }) => (
+            {tabsList?.map(({ faTitle, id, isInternal }) => (
               <div
-                className={`${s.profileTab} ${currentTab === title && s.profileActiveTab
+                className={`${s.profileTab} ${isInternal === internal && s.profileActiveTab
                   }`}
-                onClick={() => setCurrentTab(title)}
+                onClick={() => setInternal(isInternal)}
                 key={id}
               >
                 {faTitle}
@@ -89,7 +89,7 @@ const SupportView = () => {
 
               <tbody className={s.tableBody}>
                 {
-                  tickets?.data?.filter((item: any) => item?.ID?.toString()?.toUpperCase()?.includes(value.toUpperCase()))?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) =>
+                  tickets?.data?.filter((node: any) => node?.internal === internal)?.filter((item: any) => item?.ID?.toString()?.toUpperCase()?.includes(value.toUpperCase()))?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) =>
                     <tr key={item.id} onClick={() => navigate(`/support/${item?.ID}`)}>
                       <td className={s.mobileShow}>
                         <div className={s.ticketId}>
@@ -144,7 +144,7 @@ const SupportView = () => {
 
             </table>
         }
-        <TablePagination dataLength={tickets?.data?.filter((item: any) => item?.ID?.toString()?.toUpperCase()?.includes(value.toUpperCase()))?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
+        <TablePagination dataLength={tickets?.data?.filter((node: any) => node?.internal === internal)?.filter((item: any) => item?.ID?.toString()?.toUpperCase()?.includes(value.toUpperCase()))?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
       </div>
     </div>
 
