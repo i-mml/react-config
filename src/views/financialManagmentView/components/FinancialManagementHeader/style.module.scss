@@ -3,6 +3,9 @@
   justify-content: space-between;
   background: white;
   flex-wrap: wrap;
+  @media (max-width: 750px) {
+    flex-direction: column;
+  }
 
   .title {
     background: white;
@@ -16,5 +19,8 @@
     background: white;
     font-size: 14px;
     font-weight: 500;
+    @media (max-width: 750px) {
+      margin-top: 8px;
+    }
   }
 }
