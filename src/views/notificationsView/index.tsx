@@ -1,36 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TitleBox from '../dashboardView/components/titleBox'
 import s from './style.module.scss';
 import NotificationItem from './components/notficationsItem';
 import { useQuery } from 'react-query';
 import { getNotifications } from '../../api/services/notifications';
 import InputSearch from '../../components/searchInput';
+import TablePagination from '../../components/pagination';
 
 const NotificationsView = () => {
     const { data } = useQuery("get-notifications", getNotifications)
-    const notifs = [
-        {
-            id: 1,
-            title: "دوربین شماره 2",
-            cameraName: "دوربین شماره یک",
-            date: "25 شهریور 1402",
-            description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه د استفاده قرار گیرد.چاپگرها و متون بلکه روزنامه د استفاده قرار گیرد."
-        },
-        {
-            id: 2,
-            title: "دوربین شماره 2",
-            cameraName: "دوربین شماره یک",
-            date: "25 شهریور 1402",
-            description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه د استفاده قرار گیرد.چاپگرها و متون بلکه روزنامه د استفاده قرار گیرد."
-        },
-        {
-            id: 3,
-            title: "دوربین شماره 2",
-            cameraName: "دوربین شماره یک",
-            date: "25 شهریور 1402",
-            description: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه د استفاده قرار گیرد.چاپگرها و متون بلکه روزنامه د استفاده قرار گیرد."
-        }
-    ]
+    const pageSize = 30;
+    const [page, setPage] = useState(0)
 
     return (
         <div className={s.container}>
@@ -39,8 +19,10 @@ const NotificationsView = () => {
                 <InputSearch styles={{ marginTop: "16px" }} />
             </div>
             {
-                data?.sensors?.map((item: any) => <NotificationItem {...item} key={item.id} />)
+                data?.sensors?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) => <NotificationItem {...item} key={item.id} />)
             }
+            <TablePagination dataLength={data?.sensors?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
+
         </div >
     )
 }
