@@ -28,7 +28,7 @@ const DevicesView = () => {
                 </thead>
                 <tbody>
                     {
-                        data?.sensorxref?.filter((item: any) => item?.name?.toUpperCase()?.includes(value.toUpperCase()))?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) =>
+                        data?.sensorxref?.filter((node: any) => node?.basetype !== "group")?.filter((item: any) => item?.name?.toUpperCase()?.includes(value.toUpperCase()))?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) =>
                             <DeviceTableItem {...item} />
                         )
                     }

@@ -7,3 +7,11 @@ export const getDeviceAll = async () => {
 
   return response;
 };
+
+export const getDeviceByDeviceId = async (id: number) => {
+  const response = await axiosInstance
+    .get(`/device?device_id=${id}`)
+    .then((res) => res?.data);
+
+  return response;
+};
