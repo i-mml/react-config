@@ -16,7 +16,7 @@ const DeviceTableItem = ({ name, icon, fold }: any) => {
     const toggle = () => setModal(!modal);
 
     return (
-        <tr className={s.deviceTableItem}>
+        <tr className={s.deviceTableItem} key={name}>
             <td>
                 <div className={s.name}>
                     <img src={'/images/icons/monitor.svg'} className={s.image} />

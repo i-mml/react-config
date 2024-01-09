@@ -1,37 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from './style.module.scss';
 import TitleBox from '../dashboardView/components/titleBox';
 import DeviceTableItem from './devicesTableItem';
 import { useQuery } from 'react-query';
 import { getDeviceAll } from '../../api/services/devices';
 import InputSearch from '../../components/searchInput';
+import TablePagination from '../../components/pagination';
 
 const DevicesView = () => {
     const { data } = useQuery("get-all-device", getDeviceAll)
+    const pageSize = 20;
+    const [page, setPage] = useState(0)
 
-    const devicesTableData = [
-        {
-            id: 1,
-            name: "پرینتر",
-            nameEng: "printer",
-            status: "ONLINE",
-            sensorLink: "https://google.com/"
-        },
-        {
-            id: 2,
-            name: "پرینتر",
-            nameEng: "printer",
-            status: "ONLINE",
-            sensorLink: "https://google.com/"
-        },
-        {
-            id: 3,
-            name: "پرینتر",
-            nameEng: "printer",
-            status: "OFFLINE",
-            sensorLink: "https://google.com/"
-        }
-    ]
     return (
         <div className={s.container}>
             <div className={s.titleWrappwer}>
@@ -48,12 +28,13 @@ const DevicesView = () => {
                 </thead>
                 <tbody>
                     {
-                        data?.sensorxref?.map((item: any) =>
+                        data?.sensorxref?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) =>
                             <DeviceTableItem {...item} />
                         )
                     }
                 </tbody>
             </table>
+            <TablePagination dataLength={data?.sensorxref?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
         </div>
     )
 }

@@ -27,7 +27,7 @@ const TablePagination = ({ dataLength, page, setPage, pageSize }: { dataLength: 
                     </PaginationLink>
                 </PaginationItem>
                 {[...Array(maxPage)].map((p, i) =>
-                    <PaginationItem active={i === page} key={i} className={s.item}>
+                    <PaginationItem active={i === page} key={p} className={s.item}>
                         <PaginationLink onClick={e => handleClick(e, i)} href="#">
                             {i + 1}
                         </PaginationLink>
