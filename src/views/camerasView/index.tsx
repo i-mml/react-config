@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import s from './style.module.scss';
 import TitleBox from '../dashboardView/components/titleBox';
 import CameraTableItem from './camerasTableItem';
@@ -10,6 +10,9 @@ import TablePagination from '../../components/pagination';
 
 const CamerasView = () => {
     const { data, isLoading } = useQuery('get-all-camearas', getCameraAll);
+    const pageSize = 20;
+    const [page, setPage] = useState(0)
+
 
     return (
         <div className={s.container}>
@@ -27,13 +30,13 @@ const CamerasView = () => {
                 </thead>
                 <tbody>
                     {
-                        data?.map((item: any) =>
+                        data?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) =>
                             <CameraTableItem {...item} />
                         )
                     }
                 </tbody>
             </table>
-            <TablePagination dataLength={data?.length || 0} />
+            <TablePagination dataLength={data?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
         </div>
     )
 }

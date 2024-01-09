@@ -2,11 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import s from './style.module.scss';
 
-const TablePagination = ({ dataLength }: { dataLength: number }) => {
-    const pageSize = 20;
-    const [page, setPage] = useState(0)
+const TablePagination = ({ dataLength, page, setPage, pageSize }: { dataLength: number, page: number, setPage: React.Dispatch<React.SetStateAction<number>>, pageSize: number }) => {
     const [maxPage, setMaxPage] = useState(6)
-
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, index: number) => {
         e.preventDefault();
         setPage(index)
