@@ -40,7 +40,10 @@ const SupportView = () => {
       title: "کم"
     }
   }
-
+  const statusGenerator: any = {
+    DONE: "انجام شده",
+    INPROCESS: "در حال بررسی"
+  }
   return (
     <div className={s.supportWrapper}>
       <div className={s.mobileSearchBox}>
@@ -114,7 +117,7 @@ const SupportView = () => {
                           </div>}
                       </td>
                       <td className={s.mobileShow}>
-                        {item?.status ?? "-"}
+                        {item?.status ? statusGenerator[item?.status] : "-"}
                         <div className={`${s.onlyMobile} ${s.label} ${labelGenerator[item?.label]?.class} `}>
                           <span className={s.circle}></span>
                           <span className={s.labelValue}>
