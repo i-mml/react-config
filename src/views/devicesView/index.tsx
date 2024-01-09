@@ -34,7 +34,7 @@ const DevicesView = () => {
                     }
                 </tbody>
             </table>
-            <TablePagination dataLength={data?.sensorxref?.filter((item: any) => item?.name?.toUpperCase()?.includes(value.toUpperCase()))?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
+            <TablePagination dataLength={data?.sensorxref?.filter((node: any) => node?.basetype !== "group")?.filter((item: any) => item?.name?.toUpperCase()?.includes(value.toUpperCase()))?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
         </div>
     )
 }
