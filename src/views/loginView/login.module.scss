@@ -28,7 +28,9 @@
     }
   }
   @media (max-width: 1500px) {
-    width: 52%;
+    width: 47%;
+    max-width: 630px;
+    max-height: 697px;
   }
   @media (min-width: 1500px) {
     width: 43%;
