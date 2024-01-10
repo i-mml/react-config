@@ -14,7 +14,7 @@ moment.loadPersian();
 
 
 const SupportView = () => {
-  const [internal, setInternal] = useState(false)
+  const [internal, setInternal] = useState(true)
   const { data: tickets, isLoading } = useQuery("tickets-list", getTicketAll);
   const pageSize = 30;
   const [page, setPage] = useState(0)
@@ -22,8 +22,8 @@ const SupportView = () => {
 
   const navigate = useNavigate()
   const tabsList = [
-    { id: 1, faTitle: "پشتیبانی خارجی", isInternal: false },
     { id: 3, faTitle: "پشتیبانی داخلی", isInternal: true },
+    { id: 1, faTitle: "پشتیبانی خارجی", isInternal: false },
   ];
 
   const labelGenerator: any = {
