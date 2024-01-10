@@ -12,7 +12,12 @@ const RenevalServis = () => {
     {
       id: 2,
       title: "دوره اشتراک",
-      value: "12 ماهه",
+      value: "۱۲ ماهه",
+    },
+    {
+      id: 6,
+      title: "انواع پرداخت ها",
+      value: "",
     },
     {
       id: 3,
@@ -36,13 +41,18 @@ const RenevalServis = () => {
       <FinancialManagementHeader title="تمدید سرویس شما" />
 
       <div className={s.informationContainer}>
-        {informationList?.map((item) => (
-          <div className={s.informationBox} key={item?.id}>
-            <div className={s.renevalInfoTitle}>{item?.title}</div>
-            <div className={s.divider}><div className={s.dashed}></div></div>
-            <div className={s.renevalInfoValue}>{item?.value}</div>
-          </div>
-        ))}
+        {informationList?.map((item) =>
+          item.id === 6 ?
+            (
+              <div className={s.renevalSectionTitle}>{item?.title}</div>
+            )
+            : (
+              <div className={s.informationBox} key={item?.id}>
+                <div className={s.renevalInfoTitle}>{item?.title}</div>
+                <div className={s.divider}><div className={s.dashed}></div></div>
+                <div className={s.renevalInfoValue}>{item?.value}</div>
+              </div>
+            ))}
         <button type="submit" className={s.payBtn}>
           پرداخت
         </button>
