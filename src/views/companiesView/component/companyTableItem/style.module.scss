@@ -72,3 +72,15 @@
 }
 .modalBody {
 }
+
+.w6 {
+  width: 6%;
+}
+.w10 {
+  width: 10%;
+}
+.hideMobile {
+  @media (max-width: 750px) {
+    display: none;
+  }
+}

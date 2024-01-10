@@ -22,10 +22,13 @@ const CompaniesView = ({ limitShow = false }: { limitShow?: boolean }) => {
             <table className={s.tableWrapper}>
                 <thead>
                     <tr>
-                        <th style={{ width: "6%" }}>لوگو</th>
-                        <th style={{ width: "15%" }}>نام شرکت</th>
-                        <th style={{ width: "10%" }}>وضعیت</th>
-                        <th  >تاریخ ایجاد</th>
+                        <th className={`${s.w6}`}>لوگو</th>
+                        <th className={`${s.w15}`}>نام شرکت</th>
+                        <th className={`${s.w10}`}>وضعیت</th>
+                        <th className={`${s.w10} ${s.hideMobile}`}>تاریخ ایجاد</th>
+                        <th className={`${s.w10} ${s.hideMobile}`}>افزودن دوربین</th>
+                        <th className={`${s.w10} ${s.hideMobile}`}>افزودن دستگاه</th>
+                        <th className={`${s.w10} ${s.hideMobile}`}>غیرفعال سازی</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -22,11 +22,8 @@
       font-size: 16px;
       font-weight: 600;
       line-height: 16px;
-      width: 25%;
     }
-    .deviceTh {
-      width: 40% !important;
-    }
+
     & tbody tr {
       border-bottom: 1px solid #e7e7e7;
     }
@@ -50,4 +47,18 @@
 .showAll {
   margin: 24px auto 0;
   width: 100%;
+}
+.w6 {
+  width: 6%;
+}
+.w10 {
+  width: 10%;
+}
+.w15 {
+  width: 15%;
+}
+.hideMobile {
+  @media (max-width: 750px) {
+    display: none;
+  }
 }

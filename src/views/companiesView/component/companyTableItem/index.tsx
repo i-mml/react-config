@@ -19,7 +19,7 @@ const CompanyTableItem = (props: any) => {
 
   return (
     <tr className={s.deviceTableItem}>
-      <td>
+      <td >
         <img src={process.env.REACT_APP_IMAGE_BASE_URL + logo} className={s.image} />
       </td>
       <td>
@@ -30,7 +30,7 @@ const CompanyTableItem = (props: any) => {
       <td>
         <StatusBox active={active} title={active ? "فعال" : "غیرفعال"} />
       </td>
-      <td>
+      <td className={`${s.hideMobile}`}>
         <div className={s.date}  >
           {moment(CreatedAt).format('jYYYY/jMM/jDD')}
         </div>
