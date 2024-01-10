@@ -27,7 +27,7 @@ const DashboardMiddleBox = ({ data }: any) => {
                 startAngle: 220,
                 endAngle: -40,
                 min: 0,
-                max: 30000,
+                max: 10000,
                 splitNumber: 10,
                 itemStyle: {
                     color: '#007EFF',
