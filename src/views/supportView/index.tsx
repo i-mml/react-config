@@ -89,7 +89,7 @@ const SupportView = () => {
 
               <tbody className={s.tableBody}>
                 {
-                  tickets?.data?.filter((node: any) => node?.internal === internal)?.filter((item: any) => item?.ID?.toString()?.toUpperCase()?.includes(value.toUpperCase()))?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) =>
+                  tickets?.data?.filter((node: any) => node?.internal === internal)?.filter((item: any) => item?.title?.toString()?.toUpperCase()?.includes(value.toUpperCase()))?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) =>
                     <tr key={item.id} onClick={() => navigate(`/support/${item?.ID}`)}>
                       <td className={s.mobileShow}>
                         <div className={s.ticketId}>
@@ -144,7 +144,7 @@ const SupportView = () => {
 
             </table>
         }
-        <TablePagination dataLength={tickets?.data?.filter((node: any) => node?.internal === internal)?.filter((item: any) => item?.ID?.toString()?.toUpperCase()?.includes(value.toUpperCase()))?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
+        <TablePagination dataLength={tickets?.data?.filter((node: any) => node?.internal === internal)?.filter((item: any) => item?.title?.toString()?.toUpperCase()?.includes(value.toUpperCase()))?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
       </div>
     </div>
 
