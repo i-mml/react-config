@@ -38,8 +38,16 @@
     }
   }
 }
+.limitContainer {
+  min-height: unset;
+  margin-top: 24px;
+}
 .createCompany {
   width: 30%;
   min-width: 140px;
   max-width: 200px;
+}
+.showAll {
+  margin: 24px auto 0;
+  width: 100%;
 }

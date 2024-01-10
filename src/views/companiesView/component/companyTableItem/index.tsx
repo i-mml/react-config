@@ -20,8 +20,10 @@ const CompanyTableItem = (props: any) => {
   return (
     <tr className={s.deviceTableItem}>
       <td>
+        <img src={process.env.REACT_APP_IMAGE_BASE_URL + logo} className={s.image} />
+      </td>
+      <td>
         <div className={s.name}>
-          <img src={'/images/icons/monitor.svg'} className={s.image} />
           <span className={s.nameValue}>{title}</span>
         </div>
       </td>
@@ -34,7 +36,7 @@ const CompanyTableItem = (props: any) => {
         </div>
       </td>
 
-    </tr>
+    </tr >
   )
 }
 

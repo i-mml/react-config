@@ -7,13 +7,14 @@ import s from './style.module.scss';
 import CompanyTableItem from './component/companyTableItem'
 import PrimaryButton from '../../components/buttons/primaryButton'
 import { useNavigate } from 'react-router-dom'
+import SecondaryButton from '../../components/buttons/secondaryButton'
 
-const CompaniesView = () => {
+const CompaniesView = ({ limitShow = false }: { limitShow?: boolean }) => {
     const { data } = useQuery("get-all-companies", getCompanyAll)
     const navigate = useNavigate()
 
     return (
-        <div className={s.container}>
+        <div className={`${s.container} ${limitShow && s.limitContainer}`}>
             <div className={s.titleWrappwer}>
                 <TitleBox icon='/images/icons/printer.svg' title='شرکت ها' />
                 <PrimaryButton className={s.createCompany} onClick={() => navigate("/company/create")} type="button">ایجاد شرکت</PrimaryButton>
@@ -21,19 +22,27 @@ const CompaniesView = () => {
             <table className={s.tableWrapper}>
                 <thead>
                     <tr>
-                        <th className={s.deviceTh}>نام شرکت</th>
-                        <th>وضعیت</th>
-                        <th>تاریخ ایجاد</th>
+                        <th style={{ width: "6%" }}>لوگو</th>
+                        <th style={{ width: "15%" }}>نام شرکت</th>
+                        <th style={{ width: "10%" }}>وضعیت</th>
+                        <th  >تاریخ ایجاد</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        data?.data?.map((item: any) =>
-                            <CompanyTableItem {...item} />
-                        )
+                        limitShow ?
+                            data?.data?.slice(0, 5)?.map((item: any) =>
+                                <CompanyTableItem {...item} />
+                            ) :
+                            data?.data?.map((item: any) =>
+                                <CompanyTableItem {...item} />
+                            )
                     }
                 </tbody>
             </table>
+            {limitShow && <SecondaryButton className={s.showAll} onClick={() => navigate("/companies")}>
+                مشاهده همه شرکت ها
+            </SecondaryButton>}
         </div>
     )
 }

@@ -13,6 +13,7 @@ import ChartsWrapper from './components/chartsWrapper';
 import AllDeviceReportBox from './components/allDeviceReportBox';
 import { useSelector } from 'react-redux';
 import DashboardCompaniesList from './components/dashboardCompaniesList';
+import CompaniesView from '../companiesView';
 
 const DashboardView = () => {
     const user = useSelector((state: any) => state?.auth?.data?.user);
@@ -27,7 +28,7 @@ const DashboardView = () => {
         <div className={s.dashboardContainer}>
             <DashboardTopBox data={data} />
             {/* @ts-ignore */}
-            {user?.role === 1 && <DashboardCompaniesList companies={data?.companiesList?.data} />}
+            {user?.role === 1 && <CompaniesView limitShow />}
             {user?.role !== 1 &&
                 <div className={s.statusesBox}>
                     <AllDeviceReportBox title='کل دستگاه ها' offlineCount={60} onlineCount={33} data={data} />

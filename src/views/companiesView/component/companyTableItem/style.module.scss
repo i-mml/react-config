@@ -1,13 +1,9 @@
 .deviceTableItem {
-  .name {
-    .image {
-      width: 20px;
-      height: 20px;
-      opacity: 0.5;
-    }
-    .nameValue {
-      margin-right: 8px;
-    }
+  .image {
+    width: 40px;
+    height: 40px;
+    opacity: 0.5;
+    border-radius: 50%;
   }
   .statusBox {
     display: flex;
