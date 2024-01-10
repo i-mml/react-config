@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import s from "./style.module.scss"
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
-import { Pagination, Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 import TitleBox from '../titleBox';
 import MapDeviceIcon from '../../../../components/mapDeviceIcon';
+import SensorsModal from '../../../devicesView/sensorsModal';
 
 const DashboardMap = ({ planList = [] }: any) => {
+    const [modal, setModal] = useState(false);
+    const toggle = () => setModal(!modal);
+
     const pagination = {
         clickable: true,
         renderBullet: function (index: number, className: string) {
@@ -15,7 +19,7 @@ const DashboardMap = ({ planList = [] }: any) => {
 
     const [swiper, setSwiper] = useState<any>(null);
     const [currentIndex, setCurrentIndex] = useState(0)
-    const swipers = useSwiper();
+
 
     useEffect(() => {
         if (swiper) {
@@ -39,7 +43,6 @@ const DashboardMap = ({ planList = [] }: any) => {
         }
     };
 
-
     return (
         <div className={s.dashboardMapContainer}>
             <TitleBox title='نقشه' icon='/images/icons/blackMap.svg' />
@@ -62,7 +65,7 @@ const DashboardMap = ({ planList = [] }: any) => {
                             <div className={s.devicesListWrapper}>
                                 {
                                     item?.devices?.map((node: any) =>
-                                        <MapDeviceIcon key={node?.ID} style={{ bottom: `${node?.y_position}%`, left: `${node?.x_position}%` }} {...node} />
+                                        <MapDeviceIcon key={node?.ID} style={{ bottom: `${node?.y_position}%`, left: `${node?.x_position}%` }} {...node} onClick={toggle} />
                                     )
                                 }
                             </div>
@@ -81,8 +84,7 @@ const DashboardMap = ({ planList = [] }: any) => {
                     </div>
                     <div className={s.paginationText}>طبقات</div>
                 </div>
-
-
+                <SensorsModal toggle={toggle} modal={modal} objid={40} />
             </div>
         </div>
     )
