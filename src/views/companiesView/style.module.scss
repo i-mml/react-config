@@ -22,6 +22,10 @@
       font-size: 16px;
       font-weight: 600;
       line-height: 16px;
+
+      &:nth-last-child(-n + 3) {
+        text-align: center;
+      }
     }
 
     & tbody tr {
@@ -33,11 +37,21 @@
       font-weight: 400;
       padding: 18px 0;
     }
+    & td {
+      &:nth-last-child(-n + 3) {
+        text-align: center;
+      }
+    }
   }
 }
 .limitContainer {
   min-height: unset;
   margin-top: 24px;
+  & td {
+    &:nth-last-child(-n + 3) {
+      background-color: unset;
+    }
+  }
 }
 .createCompany {
   width: 30%;
@@ -56,6 +70,9 @@
 }
 .w15 {
   width: 15%;
+}
+.w7 {
+  width: 7%;
 }
 .hideMobile {
   @media (max-width: 750px) {

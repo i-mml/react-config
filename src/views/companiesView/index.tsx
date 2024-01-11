@@ -26,9 +26,9 @@ const CompaniesView = ({ limitShow = false }: { limitShow?: boolean }) => {
                         <th className={`${s.w15}`}>نام شرکت</th>
                         <th className={`${s.w10}`}>وضعیت</th>
                         <th className={`${s.w10} ${s.hideMobile}`}>تاریخ ایجاد</th>
-                        <th className={`${s.w10} ${s.hideMobile}`}>افزودن دوربین</th>
-                        <th className={`${s.w10} ${s.hideMobile}`}>افزودن دستگاه</th>
-                        <th className={`${s.w10} ${s.hideMobile}`}>غیرفعال سازی</th>
+                        <th className={`${s.w7} ${s.hideMobile}`}>افزودن دوربین</th>
+                        <th className={`${s.w7} ${s.hideMobile}`}>افزودن دستگاه</th>
+                        <th className={`${s.w7} ${s.hideMobile}`}>غیرفعال سازی</th>
                     </tr>
                 </thead>
                 <tbody>

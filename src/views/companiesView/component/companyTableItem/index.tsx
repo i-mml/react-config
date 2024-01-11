@@ -35,8 +35,16 @@ const CompanyTableItem = (props: any) => {
           {moment(CreatedAt).format('jYYYY/jMM/jDD')}
         </div>
       </td>
-
-    </tr >
+      <td className={`${s.hideMobile}`} >
+        <img src='/images/icons/add.svg' className={s.actionIcon} />
+      </td>
+      <td className={`${s.hideMobile}`}>
+        <img src='/images/icons/webcam.svg' className={s.actionIcon} />
+      </td>
+      <td className={`${s.hideMobile}`}>
+        <img src='/images/icons/cancle.svg' className={s.actionIcon} />
+      </td>
+    </tr>
   )
 }
 
