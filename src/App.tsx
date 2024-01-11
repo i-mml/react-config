@@ -7,6 +7,7 @@ import { store, persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import { Suspense } from 'react';
 
 const queryClient = new QueryClient();
 
@@ -16,8 +17,10 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <QueryClientProvider client={queryClient}>
-            <RoutingConfig />
-            <ToastContainer />
+            <Suspense fallback={false}>
+              <RoutingConfig />
+              <ToastContainer />
+            </Suspense>
           </QueryClientProvider>
         </BrowserRouter>
 

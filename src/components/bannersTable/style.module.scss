@@ -1,0 +1,65 @@
+.container {
+  width: 100%;
+  min-height: 80vh;
+  background-color: #fff;
+  padding: 24px 2.2%;
+  border-radius: 14px;
+  margin-top: 16px;
+  @media (max-width: 750px) {
+    padding: 18px 5.3%;
+  }
+  .titleWrappwer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .tableWrapper {
+    margin-top: 34px;
+    width: 100%;
+
+    & th {
+      color: #888888;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 16px;
+    }
+
+    & tbody tr {
+      border-bottom: 1px solid #e7e7e7;
+    }
+    & td {
+      color: #111;
+      font-size: 16px;
+      font-weight: 400;
+      padding: 18px 0;
+    }
+  }
+}
+
+.createCompany {
+  width: 30%;
+  min-width: 140px;
+  max-width: 200px;
+}
+.showAll {
+  margin: 24px auto 0;
+  width: 100%;
+}
+.w6 {
+  width: 6%;
+}
+.w10 {
+  width: 10%;
+}
+.w15 {
+  width: 15%;
+}
+.w7 {
+  width: 7%;
+}
+.hideMobile {
+  @media (max-width: 750px) {
+    display: none;
+  }
+}

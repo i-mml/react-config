@@ -1,19 +1,21 @@
-
+import { lazy } from 'react';
 import s from './dashboard.module.scss';
 import DashboardTopBox from './components/dashboardTopBox';
 import StatusCartItem from './components/statusCartItem';
-import DashboardMap from './components/dashboardMap';
-import DashboardMiddleBox from './components/dashboardMiddleBox';
 import { isMobile } from 'react-device-detect';
-import DashboardMobileLinkBox from './components/dashboardMobileLinkBox';
-import LineChart from '../../components/charts/lineCart';
 import { useQuery } from 'react-query';
 import { fetchDashboardData, fetchSuperAdminData } from '../../api/services/dashboard';
-import ChartsWrapper from './components/chartsWrapper';
-import AllDeviceReportBox from './components/allDeviceReportBox';
 import { useSelector } from 'react-redux';
-import DashboardCompaniesList from './components/dashboardCompaniesList';
-import CompaniesView from '../companiesView';
+
+const CompaniesView = lazy(() => import('../companiesView'));
+const BannersTable = lazy(() => import('../../components/bannersTable'));
+const AllDeviceReportBox = lazy(() => import('./components/allDeviceReportBox'));
+const ChartsWrapper = lazy(() => import('./components/chartsWrapper'));
+const DashboardMobileLinkBox = lazy(() => import('./components/dashboardMobileLinkBox'));
+const LineChart = lazy(() => import('../../components/charts/lineCart'));
+const DashboardMiddleBox = lazy(() => import('./components/dashboardMiddleBox'));
+
+
 
 const DashboardView = () => {
     const user = useSelector((state: any) => state?.auth?.data?.user);
@@ -27,8 +29,8 @@ const DashboardView = () => {
     return (
         <div className={s.dashboardContainer}>
             <DashboardTopBox data={data} />
-            {/* @ts-ignore */}
             {user?.role === 1 && <CompaniesView limitShow />}
+            {user?.role === 1 && <BannersTable />}
             {user?.role !== 1 &&
                 <div className={s.statusesBox}>
                     <AllDeviceReportBox title='کل دستگاه ها' offlineCount={60} onlineCount={33} data={data} />
@@ -50,7 +52,7 @@ const DashboardView = () => {
                     />
                 </div>
             }
-            <DashboardMiddleBox data={data} />
+            {user?.role !== 1 && < DashboardMiddleBox data={data} />}
             {user?.role !== 1 &&
                 <>
                     <LineChart />
