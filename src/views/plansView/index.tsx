@@ -113,7 +113,6 @@ const PlansView = () => {
         setSelectedPlan(planList[0])
     }, [planList])
 
-    console.log(planList)
 
     return (
         <>

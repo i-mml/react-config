@@ -13,7 +13,6 @@ const DevicesModal = ({ modal, toggle, onItemClick }: { modal: boolean, toggle: 
         setLoding(true)
         await getDeviceAll()
             .then(res => {
-                console.log(res?.sensorxref?.filter((node: any) => node?.basetype !== "group"));
                 setDevices(res?.sensorxref?.filter((node: any) => node?.basetype !== "group"))
             })?.catch(err => {
                 console.log(err)

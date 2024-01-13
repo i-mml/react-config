@@ -12,7 +12,6 @@ const SensorsModal = ({ modal, toggle, objid }: { modal: boolean, toggle: any, o
         setLoding(true)
         await getDeviceByDeviceId(objid)
             .then(res => {
-                console.log(res?.data?.sensors);
                 setSensors(res?.data?.sensors)
 
             })?.catch(err => {
@@ -23,7 +22,6 @@ const SensorsModal = ({ modal, toggle, objid }: { modal: boolean, toggle: any, o
 
     useEffect(() => {
         if (modal) {
-            console.log("what the hell", objid)
             getDeviceSensors()
         }
     }, [modal])

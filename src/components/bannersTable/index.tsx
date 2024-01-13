@@ -12,7 +12,6 @@ const BannersTable = () => {
     const { data } = useQuery("get-all-banners", getBannerAll)
     const navigate = useNavigate()
 
-    console.log(data)
 
     return (
         <div className={s.container}>

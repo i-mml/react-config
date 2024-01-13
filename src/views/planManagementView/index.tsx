@@ -16,7 +16,6 @@ const PlanManagementView = () => {
     const { data: planList = [] } = useQuery("get-all-plan", getPlanAll)
     const [searchParams] = useSearchParams();
     const ref = useRef<any>()
-    console.log(planList, searchParams.get('companyId'))
 
 
     const handleClick = (event: any) => {
@@ -28,7 +27,6 @@ const PlanManagementView = () => {
     }
 
     const handleCreatePlanManagement = async (item: any) => {
-        console.log(tags[tags?.length - 1])
         const body = {
             device_id: item?.objid,
             plan_id: 1,
