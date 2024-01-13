@@ -2,6 +2,7 @@ import React from 'react'
 import s from './style.module.scss';
 import StatusBox from '../../../../components/statusBox';
 import moment from 'moment-jalaali';
+import { useNavigate } from 'react-router-dom';
 
 const CompanyTableItem = (props: any) => {
   const {
@@ -16,6 +17,8 @@ const CompanyTableItem = (props: any) => {
     title,
     isLast
   } = props
+
+  const navigate = useNavigate()
 
   return (
     <tr className={s.deviceTableItem}>
@@ -36,10 +39,11 @@ const CompanyTableItem = (props: any) => {
         </div>
       </td>
       <td className={`${s.hideMobile}`} >
-        <img src='/images/icons/add.svg' className={s.actionIcon} />
-      </td>
-      <td className={`${s.hideMobile}`}>
         <img src='/images/icons/webcam.svg' className={s.actionIcon} />
+
+      </td>
+      <td className={`${s.hideMobile}`} onClick={() => navigate('/plan/management')}>
+        <img src='/images/icons/add.svg' className={s.actionIcon} />
       </td>
       <td className={`${s.hideMobile}`}>
         <img src='/images/icons/cancle.svg' className={s.actionIcon} />

@@ -25,6 +25,8 @@ const MobileSideBarView = () => {
         "/notifications",
         "/companies",
         "/company/create",
+        "/plan/management",
+        "/banner/create",
       ],
     },
 

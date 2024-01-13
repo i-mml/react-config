@@ -12,6 +12,8 @@ export const SidebarList = [
       "/notifications",
       "/companies",
       "/company/create",
+      "/plan/management",
+      "/banner/create",
     ],
     allowedRoles: [1, 2, 3],
   },
