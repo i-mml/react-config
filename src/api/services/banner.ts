@@ -7,3 +7,9 @@ export const getBannerAll = async () => {
 
   return response;
 };
+
+export const postBannerCreate = async (e: any) => {
+  const response = await axiosInstance.post("/banner/create", e);
+
+  return response;
+};

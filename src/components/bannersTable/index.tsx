@@ -18,7 +18,7 @@ const BannersTable = () => {
         <div className={s.container}>
             <div className={s.titleWrappwer}>
                 <TitleBox icon='/images/icons/printer.svg' title='بنر ها' />
-                <PrimaryButton className={s.createCompany} onClick={() => navigate("/company/create")} type="button">ایجاد بنر جدید</PrimaryButton>
+                <PrimaryButton className={s.createCompany} onClick={() => navigate("/banner/create")} type="button">ایجاد بنر جدید</PrimaryButton>
             </div>
             <table className={s.tableWrapper}>
                 <thead>
