@@ -9,6 +9,9 @@
     -2px 4px 4px 1px rgba(172, 198, 202, 0.28);
   display: none;
   flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
 
   @media (min-width: 1100px) {
     display: flex;
