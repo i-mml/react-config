@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+  min-height: 80vh;
+  background-color: #fff;
+  padding: 24px 2.2%;
+  border-radius: 14px;
+  @media (max-width: 750px) {
+    padding: 18px 5.3%;
+  }
+  .titleWrappwer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    @media (max-width: 750px) {
+      align-items: start;
+      flex-direction: column;
+      margin-bottom: 16px;
+    }
+  }
+}
