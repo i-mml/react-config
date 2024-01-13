@@ -17,7 +17,7 @@ const CreateCompnayView = () => {
     const authData = useSelector((state: any) => state?.auth?.data)
     const { data } = useQuery("get-company-by-id", () => getCompanyById(authData?.admin?.company_Id));
     const createNewCompanyMutation = useMutation((e: any) => postCompanyCreate(e).then(res => handleCreateAdmin(res?.data?.ID)).catch(err => err));
-    const createNewAdminMutation = useMutation((e: any) => postAdminRegister(e).catch(err => err));
+    const createNewAdminMutation = useMutation((e: any) => postAdminRegister(e).then(() => { toast.success("ایجاد شرکت و ادمین با موفقیت انجام شد."); navigate("/") }).catch(err => err));
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedFile, setSelectedFile] = useState("")
     const [role, setRole] = useState(data?.admin?.role)
@@ -259,9 +259,9 @@ const CreateCompnayView = () => {
 
 
                         <div className={s.btnBox}>
-                            <PrimaryButton type="submit" className={s.saveBtn} disabled={selectedFile === "" && createNewCompanyMutation.isLoading}>
+                            <PrimaryButton type="submit" className={s.saveBtn} disabled={selectedFile === "" && createNewCompanyMutation.isLoading || createNewAdminMutation.isLoading}>
                                 {
-                                    createNewCompanyMutation.isLoading ? "درحال انجام" : "ایجاد"}
+                                    createNewAdminMutation.isLoading || createNewCompanyMutation.isLoading ? "درحال انجام" : "ایجاد"}
                             </PrimaryButton>
 
                             <SecondaryButton className={s.cancelBtn} onClick={() => navigate("/")} disabled={createNewCompanyMutation.isLoading} >
