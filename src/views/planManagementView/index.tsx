@@ -5,10 +5,15 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { getPlanAll } from '../../api/services/plan';
 import MapDeviceIcon from '../../components/mapDeviceIcon';
+import DevicesModal from '../devicesView/devicesModal';
+import { postPlanManagementCreate } from '../../api/services/planManagement';
 
 const PlanManagementView = () => {
-    const { data: planList = [] } = useQuery("get-all-plan", getPlanAll)
+    const [modal, setModal] = useState(false);
+    const toggle = () => setModal(!modal);
     const [tags, setTags] = useState<any>([])
+
+    const { data: planList = [] } = useQuery("get-all-plan", getPlanAll)
     const [searchParams] = useSearchParams();
     const ref = useRef<any>()
     console.log(planList, searchParams.get('companyId'))
@@ -19,6 +24,19 @@ const PlanManagementView = () => {
         const x = event.clientX - rect.left - 11;
         const y = event.clientY - rect.top - 11;
         setTags((prev: any) => [...prev, { x_position: Math.ceil((x / ref.current?.clientWidth) * 100), y_position: Math.ceil((y / ref.current?.clientHeight) * 100) }])
+        toggle()
+    }
+
+    const handleCreatePlanManagement = async (item: any) => {
+        console.log(tags[tags?.length - 1])
+        const body = {
+            device_id: item?.objid,
+            plan_id: 1,
+            active: item?.fold,
+            ...tags[tags?.length - 1]
+        }
+        console.log(body)
+        // await postPlanManagementCreate()
     }
 
     return (
@@ -36,6 +54,7 @@ const PlanManagementView = () => {
                         )
                     }
                 </div>
+                <DevicesModal modal={modal} toggle={toggle} onItemClick={(e: number) => handleCreatePlanManagement(e)} />
             </div>
         </div>
     )

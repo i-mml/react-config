@@ -1,0 +1,61 @@
+.sensorsList {
+  padding: 18px;
+  border-radius: 14px;
+  background: #f1f2f6;
+  .listHeader,
+  .listItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .listHeader {
+    & span {
+      color: #888;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 16px;
+      margin-bottom: 16px;
+      &:first-child {
+        width: 60%;
+      }
+      &:last-child {
+        width: 20%;
+        text-align: center;
+      }
+    }
+  }
+  .listItem {
+    border-bottom: 1px solid #e7e7e7;
+    padding: 8px 0;
+    cursor: pointer;
+
+    & span {
+      color: #111;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 16px;
+
+      &:first-child {
+        width: 60%;
+      }
+      &:nth-child(2) {
+        width: 20%;
+        display: grid;
+        place-items: center;
+      }
+      &:last-child {
+        width: 20%;
+        text-align: center;
+      }
+    }
+  }
+}
+.modalContainer {
+  top: 17%;
+}
+.modalBody {
+}
+.spinner {
+  width: 100%;
+  text-align: center;
+}

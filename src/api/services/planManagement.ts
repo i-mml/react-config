@@ -7,3 +7,12 @@ export const getPlanManagementById = async (id: number) => {
 
   return response;
 };
+
+export const postPlanManagementCreate = async (e: any) => {
+  const response = await axiosInstance
+    .post(`/plan_management/create`, e)
+    .then((res) => res?.data?.data)
+    .catch((err) => console.log(err));
+
+  return response;
+};
