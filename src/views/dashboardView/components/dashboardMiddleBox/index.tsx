@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import s from './style.module.scss';
 import NotificationsBox from '../notificationsBox';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 import MiddleSliderItem from '../middleSliderItem';
 import DashboardConnectedDevices from '../dashboardConnectedDevices';
 import DashboardCameras from '../dashboardCameras';
@@ -159,8 +159,10 @@ const DashboardMiddleBox = ({ data }: any) => {
                         <Swiper
                             slidesPerView={1}
                             pagination={true}
-                            modules={[Pagination]}
+                            modules={[Pagination, Autoplay]}
                             className={s.slider}
+                            autoplay={{ delay: 2000 }}
+                            speed={500}
                         >
                             {
                                 data?.bannersList?.length > 0 && data?.bannersList?.map((item: any) => (

@@ -2,11 +2,11 @@ import React from 'react'
 import s from './style.module.scss';
 
 interface IProps {
-    title: string, value: number, increased: boolean
+    title: string, value: number, increased: boolean, hasPercent?: boolean
 }
 
 const UsedTraficItem = (props: IProps) => {
-    const { title, value, increased } = props
+    const { title, value, increased, hasPercent = false } = props
     return (
         <div className={s.usedTraficItem}>
             <div className={s.top}>
@@ -25,7 +25,7 @@ const UsedTraficItem = (props: IProps) => {
                 </div>
             </div>
             <div className={`${s.percentNumber} ${increased ? s.red : s.green}`}>
-                {value}
+                {hasPercent && "%"} {value}
             </div>
             <div className={s.percentSlider} >
                 <div className={`${s.percentSlierBar} ${increased ? s.redBg : s.greenBg}`} style={{ width: `${value / 1000 * 100}%` }}></div>
