@@ -9,20 +9,22 @@ import { CompanyCreateFields } from "../../types/api/company";
 import PrimaryButton from "../../components/buttons/primaryButton";
 import SecondaryButton from "../../components/buttons/secondaryButton";
 import TitleBox from "../dashboardView/components/titleBox";
+import { postAdminRegister } from "../../api/services/admin";
+import { toast } from "react-toastify";
 
 const CreateCompnayView = () => {
     const navigate = useNavigate()
     const authData = useSelector((state: any) => state?.auth?.data)
-
     const { data } = useQuery("get-company-by-id", () => getCompanyById(authData?.admin?.company_Id));
-    const createNewCompanyMutation = useMutation((e: any) => postCompanyCreate(e).catch(err => err));
+    const createNewCompanyMutation = useMutation((e: any) => postCompanyCreate(e).then(res => handleCreateAdmin(res?.data?.ID)).catch(err => err));
+    const createNewAdminMutation = useMutation((e: any) => postAdminRegister(e).catch(err => err));
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedFile, setSelectedFile] = useState("")
     const [role, setRole] = useState(data?.admin?.role)
     const inputFileRef = useRef(null);
+    const formRef = useRef<any>(null);
 
     const [title, setTitle] = useState("")
-
 
     const handleImageChange = (event: any) => {
         if (event.target.files && event.target.files[0]) {
@@ -31,8 +33,36 @@ const CreateCompnayView = () => {
             setSelectedImage(URL.createObjectURL(event.target.files[0]));
         }
     };
-    const handleSubmit = async (values: any) => {
 
+    const handleCreateAdmin = async (company_id: any) => {
+        console.log(company_id)
+        const values = formRef?.current?.values
+
+        const body = {
+            user: {
+                last_name: values?.last_name,
+                first_name: values?.first_name,
+                mobile: values?.mobile,
+                national_code: values?.national_code,
+                email: values?.email,
+                is_active: true,
+                login: false,
+                password: values?.password,
+                phone_registered: true,
+                role: 2,
+            },
+            admin: {
+                user_id: "",
+                role_id: 2,
+                telephone: values?.mobile,
+                company_id
+            }
+        }
+        console.log("runed", body)
+        await createNewAdminMutation.mutate(body)
+    }
+
+    const handleSubmit = async (values: any) => {
         const formData = new FormData()
         formData.append("title", title)
         formData.append("ems_password", values?.ems_password)
@@ -41,6 +71,7 @@ const CreateCompnayView = () => {
         formData.append("description", values?.description)
         formData.append("sub_title", values?.sub_title)
         formData.append("logo", selectedFile)
+
 
         await createNewCompanyMutation.mutate(formData)
     }
@@ -72,6 +103,7 @@ const CreateCompnayView = () => {
             <div className={s.form}>
                 <Formik
                     initialValues={{}}
+                    innerRef={formRef}
                     onSubmit={(value: any) => {
                         handleSubmit(value)
                     }}
@@ -126,7 +158,6 @@ const CreateCompnayView = () => {
                                         {...field}
                                         className={s.input}
                                         placeholder="رمز عبور"
-
                                     />
                                 </div>
                             )}
@@ -144,6 +175,88 @@ const CreateCompnayView = () => {
                                 </div>
                             )}
                         </Field>
+
+                        <div style={{ width: "100%", marginBottom: "32px" }}>
+                            <TitleBox title="اطلاعات ادمین" />
+                        </div>
+                        <Field name="first_name">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>نام</div>
+                                    <input
+                                        type="text"
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="نام"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="last_name">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>نام خانوادگی</div>
+                                    <input
+                                        type="text"
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="نام خانوادگی"
+                                    />
+
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="mobile">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>شماره همراه</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="شماره همراه"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="national_code">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>کد ملی</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="کد ملی"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="email">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>ایمیل</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="ایمیل"
+                                        type="email"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="password">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>رمز عبور</div>
+                                    <input
+                                        type="password"
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="رمز عبور"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+
 
                         <div className={s.btnBox}>
                             <PrimaryButton type="submit" className={s.saveBtn} disabled={selectedFile === "" && createNewCompanyMutation.isLoading}>
