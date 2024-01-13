@@ -34,7 +34,7 @@ const DevicesModal = ({ modal, toggle, onItemClick }: { modal: boolean, toggle: 
             keyboard
         >
             <ModalBody className={s.modalBody}>
-                <ModalHeaderTitle title='سنسورها' handleClose={() => { }} />
+                <ModalHeaderTitle title='دستگاه‌ ها' handleClose={() => { }} />
                 {
                     loading ? <div className={s.spinner}><Spinner /></div> :
                         devices?.length > 0 ? <div className={s.sensorsList}>

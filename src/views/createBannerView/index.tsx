@@ -42,7 +42,7 @@ const CreateBannerView = () => {
 
     return (
         <div className={s.userInformationContainer}>
-            <TitleBox title="ایجاد شرکت جدید" />
+            <TitleBox title="ایجاد بنر جدید" />
             <div className={s.topBox}>
                 <div className={s.titleBox}>
                     {selectedImage ? <img src={selectedImage} alt="Selected" className={s.selectedImage} /> :
