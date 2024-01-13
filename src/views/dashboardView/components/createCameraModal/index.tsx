@@ -12,7 +12,7 @@ const CreateCameraModal = ({ modal, toggle }: { modal: boolean, toggle: any }) =
     const createCameraMutation = useMutation((e: any) => postCameraCreate(e).then(() => toggle()).catch(err => err));
 
     const handleSubmit = (e: any) => {
-        console.log(e)
+        createCameraMutation.mutate({ ...e, active: !!e.active })
     }
 
     return (
@@ -24,8 +24,7 @@ const CreateCameraModal = ({ modal, toggle }: { modal: boolean, toggle: any }) =
             keyboard
         >
             <ModalBody className={s.modalBody}>
-                <ModalHeaderTitle title='سنسورها' handleClose={toggle} />
-
+                <ModalHeaderTitle title='افزودن دوربین' handleClose={toggle} />
                 <div className={s.form}>
                     <Formik
                         initialValues={{}}
@@ -55,6 +54,7 @@ const CreateCameraModal = ({ modal, toggle }: { modal: boolean, toggle: any }) =
                                             {...field}
                                             placeholder="وضعیت"
                                         >
+                                            <option hidden>وضعیت</option>
                                             <option value={1}>فعال</option>
                                             <option value={0}>غیرفعال</option>
                                         </select>
@@ -76,7 +76,7 @@ const CreateCameraModal = ({ modal, toggle }: { modal: boolean, toggle: any }) =
 
                             <Field name="external_link">
                                 {({ field }: any) => (
-                                    <div className={s.inputBox}>
+                                    <div className={s.inputBoxFull}>
                                         <div className={s.label}>لینک</div>
                                         <input
                                             type="text"

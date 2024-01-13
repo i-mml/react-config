@@ -19,7 +19,7 @@ export const putCompanyEdit = async (e: CameraEditFields) => {
 
 export const postCameraCreate = async (e: CameraCreateFields) => {
   const response = await axiosInstance
-    .post("/company/create", e)
+    .post("/camera/create", e)
     .then((res) => res?.data);
 
   return response;

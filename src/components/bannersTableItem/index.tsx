@@ -4,7 +4,6 @@ import s from './style.module.scss';
 
 const BannersTableItem = (props: any) => {
     const { active, ID, title, position, image } = props
-    console.log(props)
     return (
         <tr>
             <td>
