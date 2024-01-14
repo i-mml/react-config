@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import s from './style.module.scss';
 import { Modal, ModalBody } from 'reactstrap';
-import { useMutation, } from 'react-query';
+import { useMutation, useQueryClient, } from 'react-query';
 import { Field, Form, Formik } from "formik";
 import ModalHeaderTitle from '../../../../components/modalTitle';
 import PrimaryButton from '../../../../components/buttons/primaryButton';
@@ -14,7 +14,7 @@ const EditBannerModal = ({ modal, toggle, bannerInfo }: { modal: boolean, toggle
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedFile, setSelectedFile] = useState("")
   const inputFileRef = useRef(null);
-
+  const queryClient = useQueryClient()
 
   const handleImageChange = (event: any) => {
     if (event.target.files && event.target.files[0]) {
@@ -24,10 +24,23 @@ const EditBannerModal = ({ modal, toggle, bannerInfo }: { modal: boolean, toggle
     }
   };
 
-  const editBannerMutation = useMutation((e: any) => putBannerEdit(e).then(() => { toast.success("بنر با موفقیت ویرایش شد."); toggle() }).catch(err => err));
+  const editBannerMutation = useMutation((e: any) => putBannerEdit(e).then(() => { toast.success("بنر با موفقیت ویرایش شد."); toggle(); queryClient.invalidateQueries("get-all-banners") }).catch(err => err));
 
   const handleSubmit = (e: any) => {
-    editBannerMutation.mutate({ ...e, active: !!e.active, position: +e?.position })
+
+    const formData = new FormData()
+
+    formData.append("id", bannerInfo?.ID)
+    formData.append("title", e?.title)
+    formData.append("sub_title", e?.sub_title)
+    formData.append("position", e?.position)
+    formData.append("external_link", e?.external_link)
+    formData.append("description", e?.description)
+    formData.append("active", e?.active)
+    formData.append("image", selectedFile || bannerInfo?.image)
+
+
+    editBannerMutation.mutate(formData)
   }
 
   return (
