@@ -59,7 +59,7 @@ const DashboardMap = ({ planList = [] }: any) => {
                     navigation={true}
                     initialSlide={currentIndex}
                 >
-                    {planList?.map((item: any) =>
+                    {planList?.length > 0 && planList?.map((item: any) =>
                         <SwiperSlide key={item?.ID}>
                             <img src={`${process.env.REACT_APP_IMAGE_BASE_URL}${item?.plan?.image}`} className={s.image} />
                             <div className={s.devicesListWrapper}>
@@ -76,7 +76,7 @@ const DashboardMap = ({ planList = [] }: any) => {
                     <div className={s.swiper_button_next_unique} onClick={goPrev}>
                         <img src='/images/icons/paginationArrow.svg' />
                     </div>
-                    {planList?.map((item: any, index: number) => (
+                    {planList?.length > 0 && planList?.map((item: any, index: number) => (
                         <div onClick={() => swiper?.slideTo(index)} className={`${s.paginationItem} ${index === currentIndex && s.activePaginationItem}`}>{index + 1}</div>
                     ))}
                     <div className={s.swiper_button_prev_unique} onClick={goNext}>

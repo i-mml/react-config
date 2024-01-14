@@ -126,7 +126,7 @@ const PlansView = () => {
                         setSelectedPlan(planList?.find((item: any) => +item?.plan?.ID === +e.target.value))
                     }}
                 >
-                    {planList?.map((item: any) =>
+                    {planList?.length > 0 && planList?.map((item: any) =>
                         <option value={item?.plan?.ID}>{item?.plan?.title}</option>
                     )}
                 </select>
