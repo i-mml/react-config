@@ -39,4 +39,26 @@
     width: 100%;
     text-align: center;
   }
+  .sendInputBox {
+    width: calc(100% - 24px);
+    border-radius: 8px;
+    border: 1px solid var(--Colors-Neutral-200, #e7e7e7);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    .textArea {
+      resize: none;
+      width: 90%;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+    }
+    .sendbtn {
+      background-color: #e5f2ff;
+      padding: 6px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
 }
