@@ -19,8 +19,9 @@ const DashboardMiddleBox = lazy(() => import('./components/dashboardMiddleBox'))
 
 const DashboardView = () => {
     const user = useSelector((state: any) => state?.auth?.data?.user);
+    const authData = useSelector((state: any) => state?.auth?.data);
     const queryKey = user?.role !== 1 ? 'dashboard-all-services' : 'super-admin-all-services'
-    const queryFunc = user?.role !== 1 ? fetchDashboardData : fetchSuperAdminData
+    const queryFunc = user?.role !== 1 ? () => fetchDashboardData(authData?.admin?.company_Id) : fetchSuperAdminData
 
     const { data, isLoading } = useQuery<any>(queryKey, queryFunc as any)
 

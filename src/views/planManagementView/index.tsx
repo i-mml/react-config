@@ -7,13 +7,16 @@ import { getPlanAll } from '../../api/services/plan';
 import MapDeviceIcon from '../../components/mapDeviceIcon';
 import DevicesModal from '../devicesView/devicesModal';
 import { postPlanManagementCreate } from '../../api/services/planManagement';
+import { useSelector } from 'react-redux';
 
 const PlanManagementView = () => {
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
     const [tags, setTags] = useState<any>([])
+    const authData = useSelector((state: any) => state?.auth?.data)
 
-    const { data: planList = [] } = useQuery("get-all-plan", getPlanAll)
+
+    const { data: planList = [] } = useQuery("get-all-plan", () => getPlanAll(authData?.admin?.company_Id))
     const [searchParams] = useSearchParams();
     const ref = useRef<any>()
 

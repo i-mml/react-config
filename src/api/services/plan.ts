@@ -2,9 +2,9 @@ import { CameraCreateFields, CameraEditFields } from "../../types/api/camera";
 import { CreatePlanFields, PlanEditFields } from "../../types/api/plan";
 import axiosInstance from "../axiosConfig";
 
-export const getPlanAll = async () => {
+export const getPlanAll = async (companyId: number) => {
   const response = await axiosInstance
-    .get("/plan/all")
+    .get(`/plan/all/${companyId}`)
     .then((res) => res?.data?.data);
 
   return response;

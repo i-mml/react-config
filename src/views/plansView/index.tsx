@@ -5,9 +5,11 @@ import { Pagination, Navigation } from 'swiper/modules';
 import MapDeviceIcon from '../../components/mapDeviceIcon';
 import { useQuery } from 'react-query';
 import { getPlanAll } from '../../api/services/plan';
+import { useSelector } from 'react-redux';
 
 const PlansView = () => {
-    const { data: planList = [] } = useQuery("get-all-plan", getPlanAll)
+    const authData = useSelector((state: any) => state?.auth?.data)
+    const { data: planList = [] } = useQuery("get-all-plan", () => getPlanAll(authData?.admin?.company_Id))
     const [selectedPlan, setSelectedPlan] = useState<any>()
 
     const planList2 = [

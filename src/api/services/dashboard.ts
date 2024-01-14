@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { getBannerAll } from "./banner";
 import { getCameraAll } from "./camera";
 import {
@@ -10,7 +11,7 @@ import { getDeviceAll } from "./devices";
 import { getNotifications } from "./notifications";
 import { getPlanAll } from "./plan";
 
-export const fetchDashboardData = async () => {
+export const fetchDashboardData = async (company_Id: number) => {
   const [
     camerasList,
     planList,
@@ -22,7 +23,7 @@ export const fetchDashboardData = async () => {
     netSTatus,
   ] = await Promise.all([
     getCameraAll().catch((err) => err),
-    getPlanAll().catch((err) => err),
+    getPlanAll(company_Id).catch((err) => err),
     getDeviceAll().catch((err) => err),
     getNotifications().catch((err) => err),
     getBannerAll().catch((err) => err),
