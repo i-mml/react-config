@@ -34,6 +34,7 @@ const CreateBannerView = () => {
         formData.append("sub_title", values?.sub_title)
         formData.append("position", data?.length + 1)
         formData.append("external_link", values?.external_link)
+        formData.append("description", values?.description)
         formData.append("image", selectedFile)
 
         await createBannerMutation.mutate(formData)
@@ -121,6 +122,19 @@ const CreateBannerView = () => {
                                 </div>
                             )}
                         </Field>
+                        <Field name="description">
+                            {({ field }: any) => (
+                                <div className={s.textAreaBox}>
+                                    <div className={s.label}>توضیحات</div>
+                                    <textarea
+                                        {...field}
+                                        className={s.textarea}
+                                        placeholder="توضیحات"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+
                         <div className={s.btnBox}>
                             <PrimaryButton type="submit" className={s.saveBtn} disabled={selectedFile === "" && createBannerMutation.isLoading}>
                                 {

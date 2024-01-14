@@ -198,7 +198,7 @@ const CreateCompnayView = () => {
                         </Field>
 
                         <div style={{ width: "100%", marginBottom: "32px" }}>
-                            <TitleBox title="اطلاعات ادمین" />
+                            <TitleBox title="اطلاعات مدیرعامل شرکت" />
                         </div>
                         <Field name="first_name">
                             {({ field }: any) => (
