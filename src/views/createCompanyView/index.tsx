@@ -17,7 +17,8 @@ const CreateCompnayView = () => {
     const authData = useSelector((state: any) => state?.auth?.data)
     const { data } = useQuery("get-company-by-id", () => getCompanyById(authData?.admin?.company_Id));
     const createNewCompanyMutation = useMutation((e: any) => postCompanyCreate(e).then(res => handleCreateAdmin(res?.data?.ID)).catch(err => err));
-    const createNewAdminMutation = useMutation((e: any) => postAdminRegister(e).then(() => { toast.success("ایجاد شرکت و ادمین با موفقیت انجام شد."); navigate("/") }).catch(err => err));
+    const createNewAdminMutation = useMutation((e: any) => postAdminRegister(e).catch(err => err));
+    const createNewItManMutation = useMutation((e: any) => postAdminRegister(e).then(() => { toast.success("ایجاد شرکت و ادمین ها با موفقیت انجام شد."); navigate("/") }).catch(err => err));
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedFile, setSelectedFile] = useState("")
     const [role, setRole] = useState(data?.admin?.role)
@@ -35,7 +36,6 @@ const CreateCompnayView = () => {
     };
 
     const handleCreateAdmin = async (company_id: any) => {
-        console.log(company_id)
         const values = formRef?.current?.values
 
         const body = {
@@ -58,8 +58,29 @@ const CreateCompnayView = () => {
                 company_id
             }
         }
-        console.log("runed", body)
+        const itManBody = {
+            user: {
+                last_name: values?.it_last_name,
+                first_name: values?.it_first_name,
+                mobile: values?.it_mobile,
+                national_code: values?.it_national_code,
+                email: values?.it_email,
+                is_active: true,
+                login: false,
+                password: values?.it_password,
+                phone_registered: true,
+                role: 3,
+            },
+            admin: {
+                user_id: "",
+                role_id: 3,
+                telephone: values?.it_mobile,
+                company_id
+            }
+        }
         await createNewAdminMutation.mutate(body)
+        await createNewItManMutation.mutate(itManBody)
+
     }
 
     const handleSubmit = async (values: any) => {
@@ -256,6 +277,88 @@ const CreateCompnayView = () => {
                                 </div>
                             )}
                         </Field>
+
+                        <div style={{ width: "100%", marginBottom: "32px" }}>
+                            <TitleBox title="اطلاعات مدیر فنی" />
+                        </div>
+                        <Field name="it_first_name">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>نام</div>
+                                    <input
+                                        type="text"
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="نام"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="it_last_name">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>نام خانوادگی</div>
+                                    <input
+                                        type="text"
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="نام خانوادگی"
+                                    />
+
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="it_mobile">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>شماره همراه</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="شماره همراه"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="it_national_code">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>کد ملی</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="کد ملی"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="it_email">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>ایمیل</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="ایمیل"
+                                        type="email"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="it_password">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>رمز عبور</div>
+                                    <input
+                                        type="password"
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="رمز عبور"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+
 
 
                         <div className={s.btnBox}>
