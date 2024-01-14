@@ -26,6 +26,7 @@ const BannersTable = () => {
                         <th className={`${s.w10}`}>عنوان</th>
                         <th className={`${s.w7}`} >وضعیت</th>
                         <th className={`${s.w7}`}>جایگاه</th>
+                        <th className={`${s.w7}`}>ویرایش</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -7,9 +7,19 @@ export const getBannerAll = async () => {
 
   return response;
 };
+export const getSingleBanner = async (e: number) => {
+  const response = await axiosInstance.get(`/banner/${e}`);
+
+  return response;
+};
 
 export const postBannerCreate = async (e: any) => {
   const response = await axiosInstance.post("/banner/create", e);
 
+  return response;
+};
+
+export const putBannerEdit = async (e: any) => {
+  const response = await axiosInstance.put("banner/edit", e);
   return response;
 };
