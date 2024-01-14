@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import s from './style.module.scss';
-import { Spinner, Modal, ModalBody } from 'reactstrap';
-import { useMutation, useQuery } from 'react-query';
+import { Modal, ModalBody } from 'reactstrap';
+import { useMutation, } from 'react-query';
 import { Field, Form, Formik } from "formik";
 import ModalHeaderTitle from '../../../../components/modalTitle';
-import { postCameraCreate } from '../../../../api/services/camera';
 import PrimaryButton from '../../../../components/buttons/primaryButton';
 import SecondaryButton from '../../../../components/buttons/secondaryButton';
-import { getSingleBanner, putBannerEdit } from '../../../../api/services/banner';
+import { putBannerEdit } from '../../../../api/services/banner';
 import { toast } from 'react-toastify';
 
 
 const EditBannerModal = ({ modal, toggle, bannerInfo }: { modal: boolean, toggle: any, bannerInfo: any }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedFile, setSelectedFile] = useState("")
+  const inputFileRef = useRef(null);
 
 
   const handleImageChange = (event: any) => {
@@ -27,9 +27,9 @@ const EditBannerModal = ({ modal, toggle, bannerInfo }: { modal: boolean, toggle
   const editBannerMutation = useMutation((e: any) => putBannerEdit(e).then(() => { toast.success("بنر با موفقیت ویرایش شد."); toggle() }).catch(err => err));
 
   const handleSubmit = (e: any) => {
-    editBannerMutation.mutate({ ...e, active: !!e.active })
+    editBannerMutation.mutate({ ...e, active: !!e.active, position: +e?.position })
   }
-  console.log(bannerInfo)
+
   return (
     <Modal
       isOpen={modal}
@@ -40,18 +40,19 @@ const EditBannerModal = ({ modal, toggle, bannerInfo }: { modal: boolean, toggle
     >
       <ModalBody className={s.modalBody}>
         <ModalHeaderTitle title='ویرایش بنر' handleClose={toggle} />
-        {selectedImage ? <img src={selectedImage} alt="Selected" className={s.selectedImage} /> :
-          <img
-            src={"/images/icons/editor-icon.png"}
-            alt="editor icon"
-            className={s.editedIcon}
-          />
-        }
+        <div className={s.flex}>
+          {selectedImage ? <img src={selectedImage} alt="Selected" className={s.image} /> :
+            <img src={process.env.REACT_APP_IMAGE_BASE_URL + bannerInfo?.image} className={s.image} />
+          }
+          <input type="file" accept="image/*" onChange={handleImageChange} hidden ref={inputFileRef} />
+          {/* @ts-ignore */}
+          <SecondaryButton onClick={() => inputFileRef.current.click()} className={s.uploadLogo}>انتخاب عکس</SecondaryButton>
+        </div>
 
         <div className={s.form}>
           <Formik
             initialValues={
-              { ...bannerInfo }
+              { ...bannerInfo, active: bannerInfo?.active ? 1 : 0 }
             }
             onSubmit={(value: any) => {
               handleSubmit(value)
@@ -97,6 +98,22 @@ const EditBannerModal = ({ modal, toggle, bannerInfo }: { modal: boolean, toggle
                   </div>
                 )}
               </Field>
+              <Field name="active">
+                {({ field }: any) => (
+                  <div className={s.inputBox}>
+                    <div className={s.label}>وضعیت</div>
+                    <select
+                      className={s.select}
+                      {...field}
+                      placeholder="وضعیت"
+                    >
+                      <option hidden>وضعیت</option>
+                      <option value={1}>فعال</option>
+                      <option value={0}>غیرفعال</option>
+                    </select>
+                  </div>
+                )}
+              </Field>
               <Field name="position">
                 {({ field }: any) => (
                   <div className={s.inputBox}>
@@ -125,7 +142,7 @@ const EditBannerModal = ({ modal, toggle, bannerInfo }: { modal: boolean, toggle
               <div className={s.btnBox}>
                 <PrimaryButton type="submit" className={s.saveBtn} disabled={selectedFile === "" && editBannerMutation.isLoading}>
                   {
-                    editBannerMutation.isLoading ? "درحال انجام" : "ایجاد"}
+                    editBannerMutation.isLoading ? "درحال انجام" : "ویرایش"}
                 </PrimaryButton>
 
                 <SecondaryButton className={s.cancelBtn} onClick={() => toggle()} disabled={editBannerMutation.isLoading} >

@@ -1,23 +1,38 @@
 .modalContainer {
-  top: 17%;
+  top: 5%;
 }
 .modalBody {
+  padding: 22px 17px;
+  @media (max-width: 750px) {
+    padding: 8px 0 6px;
+  }
 }
 .spinner {
   width: 100%;
   text-align: center;
 }
+.flex {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  .image {
+    width: 90px;
+    height: 90px;
+    border-radius: 14px;
+  }
+  .uploadLogo {
+    width: 100px;
+    margin-right: 50px;
+  }
+}
+
 .form {
   background-color: white;
-  margin: 32px 24px;
-  @media (max-width: 750px) {
-    margin: 16px 0 32px;
-  }
-
   .formBody {
     background-color: white;
     display: flex;
     flex-wrap: wrap;
+    align-items: top;
     justify-content: space-between;
     @media (max-width: 750px) {
       border-bottom: unset;
@@ -29,13 +44,7 @@
       background-color: white;
       width: 48%;
       margin-bottom: 16px;
-      .label {
-        background-color: white;
-        color: var(--colors-neutral-500, #585858);
-        font-size: 14px;
-        font-weight: 500;
-        margin-bottom: 8px;
-      }
+
       .select {
         width: 100%;
         border-radius: 8px;
@@ -72,12 +81,19 @@
         background: #fff;
       }
     }
+    .label {
+      background-color: white;
+      color: var(--colors-neutral-500, #585858);
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
     .inputBoxFull {
       width: 100%;
     }
     .textAreaBox {
       background-color: white;
-      width: 100%;
+      width: 48%;
       margin-bottom: 16px;
       .textarea {
         width: 100%;
