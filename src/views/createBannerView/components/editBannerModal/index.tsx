@@ -27,7 +27,6 @@ const EditBannerModal = ({ modal, toggle, bannerInfo }: { modal: boolean, toggle
   const editBannerMutation = useMutation((e: any) => putBannerEdit(e).then(() => { toast.success("بنر با موفقیت ویرایش شد."); toggle(); queryClient.invalidateQueries("get-all-banners") }).catch(err => err));
 
   const handleSubmit = (e: any) => {
-
     const formData = new FormData()
 
     formData.append("id", bannerInfo?.ID)
@@ -36,9 +35,8 @@ const EditBannerModal = ({ modal, toggle, bannerInfo }: { modal: boolean, toggle
     formData.append("position", e?.position)
     formData.append("external_link", e?.external_link)
     formData.append("description", e?.description)
-    formData.append("active", e?.active)
+    formData.append("active", `${!!+e?.active}`)
     formData.append("image", selectedFile || bannerInfo?.image)
-
 
     editBannerMutation.mutate(formData)
   }
