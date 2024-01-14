@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from './style.module.scss';
+import SensorsModal from '../../views/devicesView/sensorsModal';
 
 const MapDeviceIcon = (props: any) => {
+    const [modal, setModal] = useState(false);
+    const toggle = () => setModal(!modal);
+
     const imgSrc: any = {
         "#1025": <svg className={s.icon} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <g clipPath="url(#clip0_315_13027)">
@@ -19,13 +23,15 @@ const MapDeviceIcon = (props: any) => {
     }
 
     return (
-        <div className={s.mapDeviceIcon} {...props}  >
+        <div className={s.mapDeviceIcon} onClick={toggle} {...props}  >
             <svg xmlns="http://www.w3.org/2000/svg" width="29" height="34" viewBox="0 0 29 34" fill="none" className={s.svgIcon} >
                 <path d="M14.5 33.5C18.125 26.8 29 22.4756 29 13.4C29 5.99938 22.5081 0 14.5 0C6.49187 0 0 5.99938 0 13.4C0 22.4756 10.875 26.8 14.5 33.5Z" fill="#208B59" />
                 <circle cx="14.5" cy="13.5" r="10.5" fill="#E5F2FF" />
             </svg>
             {/* <img className={s.icon} src={} /> */}
             <img className={s.icon} src={"/images/icons/monitorBlue.svg"} />
+            {modal &&
+                <SensorsModal toggle={toggle} modal={modal} sensors={props?.sensors?.sensors} />}
 
         </div>
     )

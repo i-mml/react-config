@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import TitleBox from '../titleBox';
 import MapDeviceIcon from '../../../../components/mapDeviceIcon';
-import SensorsModal from '../../../devicesView/sensorsModal';
+
 
 const DashboardMap = ({ planList = [] }: any) => {
     const [modal, setModal] = useState(false);
@@ -65,7 +65,7 @@ const DashboardMap = ({ planList = [] }: any) => {
                             <div className={s.devicesListWrapper}>
                                 {
                                     item?.devices?.map((node: any) =>
-                                        <MapDeviceIcon key={node?.ID} style={{ bottom: `${node?.y_position}%`, left: `${node?.x_position}%` }} {...node} onClick={toggle} />
+                                        <MapDeviceIcon key={node?.ID} style={{ bottom: `${node?.y_position}%`, left: `${node?.x_position}%` }} {...node} />
                                     )
                                 }
                             </div>
@@ -84,7 +84,6 @@ const DashboardMap = ({ planList = [] }: any) => {
                     </div>
                     <div className={s.paginationText}>طبقات</div>
                 </div>
-                <SensorsModal toggle={toggle} modal={modal} objid={40} />
             </div>
         </div>
     )
