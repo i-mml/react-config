@@ -4,6 +4,10 @@ import StatusBox from '../../../../components/statusBox';
 import moment from 'moment-jalaali';
 import { useNavigate } from 'react-router-dom';
 import CreateCameraModal from '../../../dashboardView/components/createCameraModal';
+import { useMutation, useQueryClient } from 'react-query';
+import { patchCompanyActive } from '../../../../api/services/company';
+import { toast } from 'react-toastify';
+import { Spinner } from 'reactstrap';
 
 const CompanyTableItem = (props: any) => {
   const {
@@ -18,6 +22,10 @@ const CompanyTableItem = (props: any) => {
     title,
     isLast
   } = props
+
+  const queryClient = useQueryClient()
+  const deactiveCompanyMutation = useMutation((e: any) => patchCompanyActive(e).then(() => { queryClient.invalidateQueries("get-all-companies"); toast.success("ویرایش با موفقیت انجام شد.") }).catch(err => err));
+
 
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -50,7 +58,9 @@ const CompanyTableItem = (props: any) => {
         <img src='/images/icons/add.svg' className={s.actionIcon} />
       </td>
       <td className={`${s.hideMobile}`}>
-        <img src='/images/icons/cancle.svg' className={s.actionIcon} />
+        {deactiveCompanyMutation.isLoading ? <Spinner color='info' /> :
+          <img src='/images/icons/cancle.svg' className={s.actionIcon} onClick={() => deactiveCompanyMutation.mutate(ID)} />
+        }
       </td>
       {
         modal && <CreateCameraModal modal={modal} toggle={toggle} />

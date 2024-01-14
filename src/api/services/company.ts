@@ -44,3 +44,11 @@ export const putCompanyChangePassword = async (e: CompanyChangePassword) => {
 
   return response;
 };
+
+export const patchCompanyActive = async (companyId: number) => {
+  const response = await axiosInstance
+    .patch(`/company/active/${companyId}`)
+    .then((res) => res?.data);
+
+  return response;
+};

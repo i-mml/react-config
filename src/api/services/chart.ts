@@ -19,3 +19,9 @@ export const getChartNetStatus = async () => {
 
   return response;
 };
+
+export const getChartHealthStorage = async () => {
+  const response = await axiosInstance.get("/chart/health/storage");
+
+  return response;
+};
