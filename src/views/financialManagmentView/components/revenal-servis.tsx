@@ -1,8 +1,13 @@
 import React from "react";
 import s from "../financialManagment.module.scss";
 import FinancialManagementHeader from "./FinancialManagementHeader";
+import { useMutation } from "react-query";
+import { postPaymentRequest } from "../../../api/services/payment";
+import { useSelector } from "react-redux";
 
 const RenevalServis = () => {
+  const authData = useSelector((state: any) => state?.auth?.data)
+
   const informationList = [
     {
       id: 1,
@@ -36,6 +41,31 @@ const RenevalServis = () => {
     },
   ];
 
+  const handleCallGateway = (response: any) => {
+    let a = document.createElement("a");
+    a.href = response?.payment_url;
+    a.rel = "noopener"
+    a.click()
+  }
+
+  const postPaymentRequestMutation = useMutation((e: any) => postPaymentRequest(e).then((res) => handleCallGateway(res?.data)).catch(err => err));
+
+  const handlePayment = async () => {
+    const params = {
+      "user_id": authData?.admin?.user_id,
+      "price": 100000,
+      "authority": "",
+      "refid": "",
+      "status": "paymentURL",
+      "gateway": "monitoring",
+      "company_id": authData?.admin?.company_Id,
+      "product_id": 1,
+      "description": "test"
+    }
+
+    postPaymentRequestMutation.mutate(params)
+  }
+
   return (
     <div className={s.renevalContainer}>
       <FinancialManagementHeader title="تمدید سرویس شما" />
@@ -53,8 +83,10 @@ const RenevalServis = () => {
                 <div className={s.renevalInfoValue}>{item?.value}</div>
               </div>
             ))}
-        <button type="submit" className={s.payBtn}>
-          پرداخت
+        <button className={s.payBtn} onClick={handlePayment} disabled={postPaymentRequestMutation.isLoading}>
+          {
+            postPaymentRequestMutation?.isLoading ? "درحال انجام" : "پرداخت"
+          }
         </button>
       </div>
     </div>
