@@ -15,18 +15,21 @@ const PlanManagementView = () => {
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
     const [tags, setTags] = useState<any>([])
+    const [swiper, setSwiper] = useState<any>(null);
+    const [currentIndex, setCurrentIndex] = useState(0)
+
     const authData = useSelector((state: any) => state?.auth?.data)
-
-
     const [searchParams] = useSearchParams();
+
     const { data: planList = [], isLoading } = useQuery("get-all-plan", () => getPlanAll(Number(searchParams?.get("companyId"))))
+
     const ref = useRef<any>()
 
     useEffect(() => {
         if (planList?.length > 0) {
-            setTags(planList[0]?.devices)
+            setTags(planList[swiper?.activeIndex]?.devices)
         }
-    }, [isLoading])
+    }, [isLoading, swiper?.activeIndex])
 
     const handleClick = (event: any) => {
         const rect = event.target?.getBoundingClientRect();
@@ -47,16 +50,12 @@ const PlanManagementView = () => {
         // await postPlanManagementCreate()
     }
 
-    const pagination = {
-        clickable: true,
-        renderBullet: function (index: number, className: string) {
-            return '<span class="' + className + '">' + (index + 1) + '</span>';
-        },
-    };
-
-    const [swiper, setSwiper] = useState<any>(null);
-    const [currentIndex, setCurrentIndex] = useState(0)
-
+    // const pagination = {
+    //     clickable: true,
+    //     renderBullet: function (index: number, className: string) {
+    //         return '<span class="' + className + '">' + (index + 1) + '</span>';
+    //     },
+    // };
 
     useEffect(() => {
         if (swiper) {
@@ -64,7 +63,6 @@ const PlanManagementView = () => {
             swiper.update();
         }
     }, [swiper]);
-
 
     const goNext = () => {
         if (swiper) {
@@ -80,7 +78,6 @@ const PlanManagementView = () => {
         }
     };
 
-    console.log(tags)
     return (
         <div className={s.container}>
             <div className={s.titleWrappwer}>
@@ -114,8 +111,6 @@ const PlanManagementView = () => {
                         {planList?.length > 0 && planList?.map((item: any) =>
                             <SwiperSlide key={item?.ID}>
                                 <img ref={ref} src={`${process.env.REACT_APP_IMAGE_BASE_URL}${item?.plan?.image}`} className={s.image} onClick={handleClick} />
-
-
                                 <div className={s.devicesListWrapper}>
                                     {
                                         tags?.map((node: any) =>
