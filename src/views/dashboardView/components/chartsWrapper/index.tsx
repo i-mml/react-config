@@ -6,7 +6,6 @@ import TitleBox from '../titleBox';
 
 const ChartsWrapper = ({ data }: any) => {
     const healthStorage = data?.healthStorage?.data?.data
-    console.log(healthStorage?.map((item: any) => +item?.sensordata?.uptime?.split("%")[0]))
     const option = {
         title: {
             show: false
@@ -29,10 +28,11 @@ const ChartsWrapper = ({ data }: any) => {
                     shadowColor: 'rgba(0, 0, 0, 0.5)'
                 }
             },
-            label: { show: false },
-            labelLine: {
-                show: false
-            }
+            label: {
+                show: true,
+                position: 'inside',
+                formatter: '% {c}'
+            },
         }],
 
     };
