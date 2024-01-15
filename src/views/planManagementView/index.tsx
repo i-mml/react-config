@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import s from './style.module.scss';
 import TitleBox from '../dashboardView/components/titleBox';
 import { useSearchParams } from 'react-router-dom';
-import { useQuery } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { getPlanAll } from '../../api/services/plan';
 import MapDeviceIcon from '../../components/mapDeviceIcon';
 import DevicesModal from '../devicesView/devicesModal';
@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { Spinner } from 'reactstrap';
+import { postPlanManagementCreate } from '../../api/services/planManagement';
 
 const PlanManagementView = () => {
     const [modal, setModal] = useState(false);
@@ -22,6 +23,7 @@ const PlanManagementView = () => {
     const [searchParams] = useSearchParams();
 
     const { data: planList = [], isLoading } = useQuery("get-all-plan", () => getPlanAll(Number(searchParams?.get("companyId"))))
+    const createPlanManagementMutation = useMutation((e: any) => postPlanManagementCreate(e).then(() => toggle()).catch(err => err));
 
     const ref = useRef<any>()
 
@@ -38,16 +40,15 @@ const PlanManagementView = () => {
         setTags((prev: any) => [...prev, { x_position: Math.ceil((x / ref.current?.clientWidth) * 100), y_position: Math.ceil((y / ref.current?.clientHeight) * 100) }])
         toggle()
     }
-
     const handleCreatePlanManagement = async (item: any) => {
         const body = {
-            device_id: item?.objid,
-            plan_id: 1,
+            device_id: `${item?.objid}`,
+            plan_id: swiper?.activeIndex + 1,
             active: item?.fold,
             ...tags[tags?.length - 1]
         }
-        console.log(body)
-        // await postPlanManagementCreate()
+        console.log("this is body", body)
+        await createPlanManagementMutation.mutate(body)
     }
 
     // const pagination = {
@@ -77,6 +78,7 @@ const PlanManagementView = () => {
             swiper.slidePrev();
         }
     };
+
 
     return (
         <div className={s.container}>
