@@ -30,7 +30,7 @@ const SingleSupportView = () => {
         })?.catch(err => console.log(err))
 
     }
-    console.log(data)
+
     return (
         <div className={s.container}>
             <div className={s.chatNumber}>

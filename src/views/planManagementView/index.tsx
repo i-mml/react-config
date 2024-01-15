@@ -47,7 +47,7 @@ const PlanManagementView = () => {
             active: item?.fold,
             ...tags[tags?.length - 1]
         }
-        console.log("this is body", body)
+
         await createPlanManagementMutation.mutate(body)
     }
 

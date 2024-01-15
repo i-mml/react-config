@@ -73,9 +73,6 @@ const ChartsWrapper = ({ data }: any) => {
         }],
 
     };
-    cpusStatus?.find((item: any) => item?.name === "WINSRV2022")?.channels?.map((node: any) => parseFloat(node?.info?.data[0]?.lastvalue?.replace(/[^0-9.]/g, "")))
-    console.log(cpusStatus?.find((item: any) => item?.name === "Ubuntu-Akaam")?.channels?.map((item: any) => item?.info?.data[0]?.lastvalue))
-    const product3Data = [Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10];
     const barOption = {
         legend: {
             bottom: 0,

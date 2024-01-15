@@ -44,19 +44,13 @@ export const getChartGraph = async () => {
   return response;
 };
 
-export const fetchDashboardData = async (company_Id: number) => {
-  const [healthStatus, netSTatus, healthStorage, cpusStatus, virtualMachines] =
-    await Promise.all([
-      getChartUptime().catch((err) => err),
-      getChartHealthStatus().catch((err) => err),
-      getChartNetStatus().catch((err) => err),
-      getChartHealthStorage()?.catch((err) => err),
-      getChartCpus()?.catch((err) => err),
-      getChartVirtualMachines()?.catch((err) => err),
-    ]);
+export const fetchChartsData = async () => {
+  const [healthStorage, cpusStatus, virtualMachines] = await Promise.all([
+    getChartHealthStorage()?.catch((err) => err),
+    getChartCpus()?.catch((err) => err),
+    getChartVirtualMachines()?.catch((err) => err),
+  ]);
   return {
-    healthStatus,
-    netSTatus,
     healthStorage,
     cpusStatus,
     virtualMachines,

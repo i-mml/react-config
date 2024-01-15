@@ -17,7 +17,8 @@ const YearItem = ({ value, color }: { value: string, color: string }) => {
     )
 }
 
-const LineChart = () => {
+const LineChart = ({ data }: any) => {
+    console.log(data)
     const [currentTab, setCurrentTab] = useState(1)
     const tabs = [
         { id: 1, title: "روزانه", value: "daily" },

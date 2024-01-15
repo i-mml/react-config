@@ -6,6 +6,7 @@ import { isMobile } from 'react-device-detect';
 import { useQuery } from 'react-query';
 import { fetchDashboardData, fetchSuperAdminData } from '../../api/services/dashboard';
 import { useSelector } from 'react-redux';
+import { fetchChartsData } from '../../api/services/chart';
 
 const CompaniesView = lazy(() => import('../companiesView'));
 const BannersTable = lazy(() => import('../../components/bannersTable'));
@@ -24,9 +25,9 @@ const DashboardView = () => {
     const queryFunc = user?.role !== 1 ? () => fetchDashboardData(authData?.admin?.company_Id) : fetchSuperAdminData
 
     const { data, isLoading } = useQuery<any>(queryKey, queryFunc as any)
+    const { data: ChartsData, isLoading: chartLoading } = useQuery<any>('get-charts-data', user?.role !== 1 ? fetchChartsData : () => { })
 
     const upTimeValue = data?.upTime?.data?.channels?.find((item: any) => item?.name === "System Uptime")?.lastvalue
-
     return (
         <div className={s.dashboardContainer}>
             <DashboardTopBox data={data} />
@@ -56,8 +57,8 @@ const DashboardView = () => {
             {user?.role !== 1 && < DashboardMiddleBox data={data} />}
             {user?.role !== 1 &&
                 <>
-                    <LineChart />
-                    <ChartsWrapper data={data} />
+                    <LineChart data={ChartsData} />
+                    <ChartsWrapper data={ChartsData} />
                 </>
             }
         </div>
