@@ -4,7 +4,9 @@ import ReactEcharts from "echarts-for-react";
 import TitleBox from '../titleBox';
 
 
-const ChartsWrapper = () => {
+const ChartsWrapper = ({ data }: any) => {
+    const healthStorage = data?.healthStorage?.data?.data
+    console.log(healthStorage?.map((item: any) => +item?.sensordata?.uptime?.split("%")[0]))
     const option = {
         title: {
             show: false
@@ -12,20 +14,14 @@ const ChartsWrapper = () => {
         legend: {
             bottom: 0,
             left: 'center',
-            data: ['Direct', 'Email', 'Affiliate', 'Video Ads', 'Search']
+            data: healthStorage ? healthStorage?.map((item: any) => item?.sensordata?.name) : []
         },
         series: [{
             type: 'pie',
             radius: '65%',
             selectedMode: "single",
             center: ['50%', '40%'],
-            data: [
-                { value: 335, name: 'Direct' },
-                { value: 310, name: 'Email' },
-                { value: 234, name: 'Affiliate' },
-                { value: 135, name: 'Video Ads' },
-                { value: 1548, name: 'Search' }
-            ],
+            data: healthStorage ? healthStorage?.map((item: any) => ({ value: +item?.sensordata?.uptime?.split("%")[0], name: item?.sensordata?.name })) : [],
             emphasis: {
                 itemStyle: {
                     shadowBlur: 10,

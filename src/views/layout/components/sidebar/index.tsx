@@ -21,7 +21,6 @@ const SideBarView = () => {
     mutation.mutate();
   }
 
-
   const activeClassName = (supportedLinks: string[]) => {
     if (supportedLinks.includes(location?.pathname)) {
       return s.active
@@ -67,8 +66,8 @@ const SideBarView = () => {
 
           <img src={data ? process.env.REACT_APP_IMAGE_BASE_URL + data?.data?.logo : ""} alt="profile" className={s.profileImg} />
           <div className={s.infoProfileBox}>
-            <div className={s.profileName}>{data?.admins[0]?.first_name} {data?.admins[0]?.last_name}</div>
-            <div className={s.profileEmail}>{user?.user?.email || '-'}</div>
+            <div className={s.profileName}>{user?.user?.first_name} {user?.user?.last_name}</div>
+            <div className={s.profileEmail}>{user?.user?.email}</div>
           </div>
 
           <img
