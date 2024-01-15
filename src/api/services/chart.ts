@@ -25,3 +25,15 @@ export const getChartHealthStorage = async () => {
 
   return response;
 };
+
+export const getChartCpus = async () => {
+  const response = await axiosInstance.get("/chart/cpus");
+
+  return response;
+};
+
+export const getChartVirtualMachines = async () => {
+  const response = await axiosInstance.get("/chart/virtual/machines");
+
+  return response;
+};

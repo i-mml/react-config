@@ -6,6 +6,8 @@ import {
   getChartNetStatus,
   getChartUptime,
   getChartHealthStorage,
+  getChartCpus,
+  getChartVirtualMachines,
 } from "./chart";
 import { getCompanyAll } from "./company";
 import { getDeviceAll } from "./devices";
@@ -23,6 +25,8 @@ export const fetchDashboardData = async (company_Id: number) => {
     healthStatus,
     netSTatus,
     healthStorage,
+    cpusStatus,
+    virtualMachines,
   ] = await Promise.all([
     getCameraAll().catch((err) => err),
     getPlanAll(company_Id).catch((err) => err),
@@ -33,6 +37,8 @@ export const fetchDashboardData = async (company_Id: number) => {
     getChartHealthStatus().catch((err) => err),
     getChartNetStatus().catch((err) => err),
     getChartHealthStorage()?.catch((err) => err),
+    getChartCpus()?.catch((err) => err),
+    getChartVirtualMachines()?.catch((err) => err),
   ]);
   return {
     camerasList,
@@ -44,6 +50,8 @@ export const fetchDashboardData = async (company_Id: number) => {
     healthStatus,
     netSTatus,
     healthStorage,
+    cpusStatus,
+    virtualMachines,
   };
 };
 
