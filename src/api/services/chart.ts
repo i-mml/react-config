@@ -39,20 +39,23 @@ export const getChartVirtualMachines = async () => {
 };
 
 export const getChartGraph = async () => {
-  const response = await axiosInstance.get("/chart/virtual/machines");
+  const response = await axiosInstance.get("/chart/graph");
 
   return response;
 };
 
 export const fetchChartsData = async () => {
-  const [healthStorage, cpusStatus, virtualMachines] = await Promise.all([
-    getChartHealthStorage()?.catch((err) => err),
-    getChartCpus()?.catch((err) => err),
-    getChartVirtualMachines()?.catch((err) => err),
-  ]);
+  const [healthStorage, cpusStatus, virtualMachines, chartGraph] =
+    await Promise.all([
+      getChartHealthStorage()?.catch((err) => err),
+      getChartCpus()?.catch((err) => err),
+      getChartVirtualMachines()?.catch((err) => err),
+      getChartGraph()?.catch((err) => err),
+    ]);
   return {
     healthStorage,
     cpusStatus,
     virtualMachines,
+    chartGraph,
   };
 };

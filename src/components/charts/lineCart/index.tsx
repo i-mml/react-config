@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import s from './style.module.scss';
 import ReactEcharts from "echarts-for-react";
 import TitleBox from '../../../views/dashboardView/components/titleBox';
+import moment from 'moment-jalaali';
 
 const YearItem = ({ value, color }: { value: string, color: string }) => {
     const colorClasses: any = {
@@ -18,7 +19,9 @@ const YearItem = ({ value, color }: { value: string, color: string }) => {
 }
 
 const LineChart = ({ data }: any) => {
-    console.log(data)
+    const chartGraphData = data?.chartGraph?.data?.data
+    console.log(data?.chartGraph?.data?.data)
+    console.log(chartGraphData?.values?.slice(0, 10)?.map((item: any) => item?.['Traffic Total (volume)']))
     const [currentTab, setCurrentTab] = useState(1)
     const tabs = [
         { id: 1, title: "روزانه", value: "daily" },
@@ -28,9 +31,8 @@ const LineChart = ({ data }: any) => {
 
     const option = {
         xAxis: {
-
             type: 'category',
-            data: ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', "آبان", "آذر", "دی", "بهمن", "اسفند"]
+            data: []
         },
         yAxis: {
             type: 'value'
@@ -38,7 +40,7 @@ const LineChart = ({ data }: any) => {
         center: ['60%', '40%'],
         series: [
             {
-                data: [5, 20, 36, 10, 10, 20, 80, 65, 44, 180, 150, 120, 115, 189, 197, 148, 150, 150],
+                data: chartGraphData?.values?.slice(-50)?.map((item: any) => item?.['Traffic Total (volume)']),
                 lineStyle: {
                     color: '#4CA5FF' // Gray line color for shadow
                 },
@@ -51,15 +53,15 @@ const LineChart = ({ data }: any) => {
                 type: 'line',
                 datasetId: 'dataset_since_1950_of_germany',
                 showSymbol: false,
-                encode: {
-                    x: 'Year',
-                    y: 'Income',
-                    itemName: 'Year',
-                    tooltip: ['Income']
-                }
+                // encode: {
+                //     x: 'Year',
+                //     y: 'Income',
+                //     itemName: 'Year',
+                //     tooltip: ['Income']
+                // }
             },
             {
-                data: [120, 200, 150, 80, 70, 110, 130, 110, 40, 80, 97, 155, 210, 100],
+                data: chartGraphData?.values?.slice(-50)?.map((item: any) => item?.['Traffic In (volume)']),
                 lineStyle: {
                     color: '#80BFFF' // Gray line color for shadow
                 },
@@ -80,7 +82,7 @@ const LineChart = ({ data }: any) => {
                 }
             },
             {
-                data: [140, 120, 88, 120, 130, 180, 60, 200, 190, 175, 164, 188, 191, 146,],
+                data: chartGraphData?.values?.slice(-50)?.map((item: any) => item?.['Traffic Out (volume)']),
                 lineStyle: {
                     color: '#007eff' // Gray line color for shadow
                 },
@@ -118,11 +120,11 @@ const LineChart = ({ data }: any) => {
                     )}
                 </div>
             </div>
-            <div className={s.years}>
+            {/* <div className={s.years}>
                 <YearItem color='4CA5FF' value='1400' />
                 <YearItem color='80BFFF' value='1401' />
                 <YearItem color='007eff' value='1402' />
-            </div>
+            </div> */}
             {/* @ts-ignore */}
             <ReactEcharts option={option} style={{ width: "100%", }}
             />
