@@ -20,8 +20,6 @@ const YearItem = ({ value, color }: { value: string, color: string }) => {
 
 const LineChart = ({ data }: any) => {
     const chartGraphData = data?.chartGraph?.data?.data
-    console.log(data?.chartGraph?.data?.data)
-    console.log(chartGraphData?.values?.slice(0, 10)?.map((item: any) => item?.['Traffic Total (volume)']))
     const [currentTab, setCurrentTab] = useState(1)
     const tabs = [
         { id: 1, title: "روزانه", value: "daily" },
