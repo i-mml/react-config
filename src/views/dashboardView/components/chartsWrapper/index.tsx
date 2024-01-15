@@ -73,33 +73,44 @@ const ChartsWrapper = ({ data }: any) => {
         }],
 
     };
-
-    const product1Data = [Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10];
-    const product2Data = [Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10];
+    cpusStatus?.find((item: any) => item?.name === "WINSRV2022")?.channels?.map((node: any) => parseFloat(node?.info?.data[0]?.lastvalue?.replace(/[^0-9.]/g, "")))
+    console.log(cpusStatus?.find((item: any) => item?.name === "Ubuntu-Akaam")?.channels?.map((item: any) => item?.info?.data[0]?.lastvalue))
     const product3Data = [Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10, Math.random() * 10];
-
     const barOption = {
         legend: {
             bottom: 0,
             left: 'center',
-            data: ['Product 1', 'Product 2', 'Product 3']
+            data: ['WINSRV2022', "Ubuntu-Akaam", 'Product 3'],
+            selected: {
+                'Series 1': true,
+            },
+            selectedMode: 'single'
         },
         tooltip: {},
         series: [{
-            data: product1Data,
+            data: cpusStatus?.find((item: any) => item?.name === "WINSRV2022")?.channels?.map((node: any) => parseFloat(node?.info?.data[0]?.lastvalue?.replace(/[^0-9.]/g, ""))),
             type: 'bar',
-            name: 'Product 1'
+            name: 'WINSRV2022',
+            barMinHeight: 5
         }, {
-            data: product2Data,
+            data: cpusStatus?.find((item: any) => item?.name === "Ubuntu-Akaam")?.channels?.map((node: any) => parseFloat(node?.info?.data[0]?.lastvalue?.replace(/[^0-9.]/g, ""))),
             type: 'bar',
-            name: 'Product 2'
+            name: "Ubuntu-Akaam"
         }, {
-            data: product3Data,
+            data: cpusStatus?.find((item: any) => item?.name === "PRTG-Core")?.channels?.map((node: any) => parseFloat(node?.info?.data[0]?.lastvalue?.replace(/[^0-9.]/g, ""))),
             type: 'bar',
             name: 'Product 3'
         }],
-        xAxis: { type: 'category' },
-        yAxis: {},
+        xAxis: {
+            type: 'category',
+        },
+        yAxis: {
+            type: 'value',
+            axisLabel: {
+                rotate: 90,
+                fontSize: 10
+            }
+        },
         // Declare several bar series, each will be mapped
         // to a column of dataset.source by default.
         // series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]

@@ -37,3 +37,28 @@ export const getChartVirtualMachines = async () => {
 
   return response;
 };
+
+export const getChartGraph = async () => {
+  const response = await axiosInstance.get("/chart/virtual/machines");
+
+  return response;
+};
+
+export const fetchDashboardData = async (company_Id: number) => {
+  const [healthStatus, netSTatus, healthStorage, cpusStatus, virtualMachines] =
+    await Promise.all([
+      getChartUptime().catch((err) => err),
+      getChartHealthStatus().catch((err) => err),
+      getChartNetStatus().catch((err) => err),
+      getChartHealthStorage()?.catch((err) => err),
+      getChartCpus()?.catch((err) => err),
+      getChartVirtualMachines()?.catch((err) => err),
+    ]);
+  return {
+    healthStatus,
+    netSTatus,
+    healthStorage,
+    cpusStatus,
+    virtualMachines,
+  };
+};
