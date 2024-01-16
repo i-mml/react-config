@@ -1,10 +1,22 @@
 import React, { useState } from 'react'
 import s from './style.module.scss';
 import SensorsModal from '../../views/devicesView/sensorsModal';
+import { Modal, ModalBody } from 'reactstrap';
+import ModalHeaderTitle from '../modalTitle';
+import SecondaryButton from '../buttons/secondaryButton';
+import PrimaryButton from '../buttons/primaryButton';
+import { useMutation, useQueryClient } from 'react-query';
+import { toast } from 'react-toastify';
+import { deletePlanManagementByDeviceId } from '../../api/services/planManagement';
+
 
 const MapDeviceIcon = (props: any) => {
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
+
+    const queryClient = useQueryClient()
+    const deletePlanManagementMutation = useMutation((e: any) => deletePlanManagementByDeviceId(e).then(() => { queryClient.invalidateQueries("get-all-plan"); toast.success("دستگاه با موفقیت حذف شد."); toggle() }).catch(err => { toggle(); toast.error("حذف دستگاه با خطا مواجه شد.") }));
+
 
     const imgSrc: any = {
         "#1025": <svg className={s.icon} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -30,9 +42,27 @@ const MapDeviceIcon = (props: any) => {
             </svg>
             {/* <img className={s.icon} src={} /> */}
             <img className={s.icon} src={"/images/icons/monitorBlue.svg"} />
-            {modal &&
+            {!props?.deleteMode && modal &&
                 <SensorsModal toggle={toggle} modal={modal} sensors={props?.sensors?.sensors} />}
+            {
+                props?.deleteMode && modal && <Modal
+                    isOpen={modal}
+                    toggle={toggle}
+                    className={s.modalContainer}
+                    backdrop
+                    keyboard
+                >
+                    <ModalBody className={s.modalBody}>
+                        <ModalHeaderTitle title='حذف دستگاه' handleClose={toggle} />
+                        <p className={s.promptStyle}>آیا از حذف این دستگاه اطمینان دارید؟</p>
 
+                        <div className={s.buttons}>
+                            <SecondaryButton onClick={() => deletePlanManagementMutation.mutate(props?.device_id)}>بله</SecondaryButton>
+                            <PrimaryButton type='button' onClick={toggle}>خیر</PrimaryButton>
+                        </div>
+                    </ModalBody>
+                </Modal >
+            }
         </div>
     )
 }

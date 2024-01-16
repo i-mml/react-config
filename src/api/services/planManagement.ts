@@ -16,3 +16,11 @@ export const postPlanManagementCreate = async (e: any) => {
 
   return response;
 };
+
+export const deletePlanManagementByDeviceId = async (deviceId: number) => {
+  const response = await axiosInstance.delete(
+    `/plan_management/delete?device_id=${deviceId}`
+  );
+
+  return response;
+};

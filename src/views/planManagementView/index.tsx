@@ -116,7 +116,7 @@ const PlanManagementView = () => {
                                 <div className={s.devicesListWrapper}>
                                     {
                                         tags?.map((node: any) =>
-                                            <MapDeviceIcon key={node?.ID} style={{ top: `${node?.y_position}%`, left: `${node?.x_position}%` }} {...node} />
+                                            <MapDeviceIcon key={node?.ID} style={{ top: `${node?.y_position}%`, left: `${node?.x_position}%` }} deleteMode {...node} />
                                         )
                                     }
                                 </div>

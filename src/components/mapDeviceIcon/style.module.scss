@@ -21,3 +21,22 @@
     left: 3px;
   }
 }
+
+.modalContainer {
+  top: 5%;
+}
+.modalBody {
+  padding: 22px 17px;
+  @media (max-width: 750px) {
+    padding: 8px 0 6px;
+  }
+  .promptStyle {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .buttons {
+    display: flex;
+    align-items: center;
+    gap: 5%;
+  }
+}
