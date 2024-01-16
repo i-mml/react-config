@@ -12,13 +12,15 @@ import ReactECharts from 'echarts-for-react';
 import TitleBox from '../titleBox';
 import { useSelector } from 'react-redux';
 
-const DashboardMiddleBox = ({ data }: any) => {
+const DashboardMiddleBox = ({ data, chartsData }: any) => {
     const user = useSelector((state: any) => state?.auth?.data?.user);
+    const cpusStatus = chartsData?.cpusStatus?.data?.data
 
     const [donwloadValue, setDownloadValue] = useState(0)
     const [uploadValue, setUploadValue] = useState(0)
-
-
+    console.log(chartsData)
+    console.log(cpusStatus?.find((item: any) => item?.name === "Veeam-BK2"))
+    console.log(cpusStatus?.find((item: any) => item?.name === "CUCM")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum || 0)
     const option = {
         series: [
             {
@@ -88,6 +90,8 @@ const DashboardMiddleBox = ({ data }: any) => {
         ],
 
     };
+
+
     const pieOptions = {
         title: {
             show: false
@@ -95,20 +99,18 @@ const DashboardMiddleBox = ({ data }: any) => {
         legend: {
             bottom: 0,
             left: 'center',
-            data: ['Direct', 'Email', 'Affiliate', 'Video Ads', 'Search']
+            data: ["Veeam-BK1", "Veeam-BK2", "DNS-Nport", "CUCM"]
         },
         series: [{
             type: 'pie',
-            radius: '65%',
-            selectedMode: "single",
-            center: ['50%', '40%'],
-            data: [
-                { value: 335, name: 'Direct' },
-                { value: 310, name: 'Email' },
-                { value: 234, name: 'Affiliate' },
-                { value: 135, name: 'Video Ads' },
-                { value: 1548, name: 'Search' }
-            ],
+            radius: '70%',
+            center: ['50%', '38%'],
+            data: cpusStatus ?
+                [{ name: "Veeam-BK1", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "Veeam-BK1")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
+                { name: "Veeam-BK2", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "Veeam-BK2")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
+                { name: "DNS-Nport", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "CUCM")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
+                { name: "CUCM", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "DNS-Nport")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) }
+                ] : [],
             emphasis: {
                 itemStyle: {
                     shadowBlur: 10,
@@ -116,10 +118,12 @@ const DashboardMiddleBox = ({ data }: any) => {
                     shadowColor: 'rgba(0, 0, 0, 0.5)'
                 }
             },
-            label: { show: false },
-            labelLine: {
-                show: false
-            }
+            label: {
+                show: true,
+                position: 'inside',
+                formatter: '% {c}',
+                fontSize: "11px",
+            },
         }],
 
     };
@@ -209,7 +213,7 @@ const DashboardMiddleBox = ({ data }: any) => {
                     </div>
                     <NotificationsBox notifications={data?.notificationsList?.sensors} />
                     <div className={s.diskHealth}>
-                        <TitleBox title='سلامت دیسک ها' />
+                        <TitleBox title='سلامت سرور مجازی' />
                         <ReactECharts option={pieOptions} />
                     </div>
                 </div>}
