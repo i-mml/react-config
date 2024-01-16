@@ -15,8 +15,7 @@ const MapDeviceIcon = (props: any) => {
     const toggle = () => setModal(!modal);
 
     const queryClient = useQueryClient()
-    const deletePlanManagementMutation = useMutation((e: any) => deletePlanManagementByDeviceId(e).then(() => { queryClient.invalidateQueries("get-all-plan"); toast.success("دستگاه با موفقیت حذف شد."); toggle() }).catch(err => { toggle(); toast.error("حذف دستگاه با خطا مواجه شد.") }));
-
+    const deletePlanManagementMutation = useMutation((e: any) => deletePlanManagementByDeviceId(e).then(() => { toast.success("دستگاه با موفقیت حذف شد."); window?.location?.reload(); }).catch(err => { toggle(); toast.error("حذف دستگاه با خطا مواجه شد.") }));
 
     const imgSrc: any = {
         "#1025": <svg className={s.icon} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -57,7 +56,7 @@ const MapDeviceIcon = (props: any) => {
                         <p className={s.promptStyle}>آیا از حذف این دستگاه اطمینان دارید؟</p>
 
                         <div className={s.buttons}>
-                            <SecondaryButton onClick={() => deletePlanManagementMutation.mutate(props?.device_id)}>بله</SecondaryButton>
+                            <SecondaryButton onClick={() => deletePlanManagementMutation.mutate(props?.ID)}>بله</SecondaryButton>
                             <PrimaryButton type='button' onClick={toggle}>خیر</PrimaryButton>
                         </div>
                     </ModalBody>
