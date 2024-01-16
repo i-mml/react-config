@@ -15,7 +15,7 @@ import { postPlanManagementCreate } from '../../api/services/planManagement';
 const PlanManagementView = () => {
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
-    const [tags, setTags] = useState<any>([])
+    const [tags, setTags] = useState<any[]>([])
     const [swiper, setSwiper] = useState<any>(null);
     const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -26,7 +26,7 @@ const PlanManagementView = () => {
     const createPlanManagementMutation = useMutation((e: any) => postPlanManagementCreate(e).then(() => toggle()).catch(err => err));
 
     const ref = useRef<any>()
-
+    console.log(planList[swiper?.activeIndex]?.plan?.ID)
     useEffect(() => {
         if (planList?.length > 0) {
             setTags(planList[swiper?.activeIndex]?.devices)
@@ -37,13 +37,17 @@ const PlanManagementView = () => {
         const rect = event.target?.getBoundingClientRect();
         const x = event.clientX - rect.left - 11;
         const y = event.clientY - rect.top - 11;
-        setTags((prev: any) => [...prev, { x_position: Math.ceil((x / ref.current?.clientWidth) * 100), y_position: Math.ceil((y / ref.current?.clientHeight) * 100) }])
+        if (tags?.length > 0) {
+            setTags((prev: any[]) => [...prev, { x_position: Math.ceil((x / ref.current?.clientWidth) * 100), y_position: Math.ceil((y / ref.current?.clientHeight) * 100) }])
+        } else {
+            setTags([{ x_position: Math.ceil((x / ref.current?.clientWidth) * 100), y_position: Math.ceil((y / ref.current?.clientHeight) * 100) }])
+        }
         toggle()
     }
     const handleCreatePlanManagement = async (item: any) => {
         const body = {
             device_id: `${item?.objid}`,
-            plan_id: swiper?.activeIndex + 1,
+            plan_id: planList[swiper?.activeIndex]?.plan?.ID,
             active: item?.fold,
             ...tags[tags?.length - 1]
         }
