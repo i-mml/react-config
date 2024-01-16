@@ -45,7 +45,7 @@ const SensorsModal = ({ modal, toggle, sensors = [], objid }: { modal: boolean, 
                         {sensorsData?.map((item: any) =>
                             <div className={s.listItem}>
                                 <span>{item?.sensor}</span>
-                                <span>{item?.objid}</span>
+                                <span>{item?.lastvalue}</span>
                             </div>
                         )}
                     </div> : <div>موردی یافت نشد!</div>
