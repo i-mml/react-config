@@ -107,7 +107,7 @@ const LineChart = ({ data }: any) => {
         <div className={s.container}>
             <div className={s.topBox}>
                 <TitleBox title='ترافیک شبکه' icon='/images/icons/trending-up.svg' />
-                <div className={s.tabs}>
+                {/* <div className={s.tabs}>
                     {tabs?.map((item) =>
                         <div
                             className={`${s.tab} ${item?.id === currentTab ? s.activeTab : ""}`}
@@ -116,13 +116,14 @@ const LineChart = ({ data }: any) => {
                             {item.title}
                         </div>
                     )}
+                </div> */}
+                <div className={s.tabs}>
+                    <YearItem color='80BFFF' value='Traffic Total (volume)' />
+                    <YearItem color='4CA5FF' value='Traffic In (volume)' />
+                    <YearItem color='007eff' value='Traffic Out (volume)' />
                 </div>
             </div>
-            {/* <div className={s.years}>
-                <YearItem color='4CA5FF' value='1400' />
-                <YearItem color='80BFFF' value='1401' />
-                <YearItem color='007eff' value='1402' />
-            </div> */}
+
             {/* @ts-ignore */}
             <ReactEcharts option={option} style={{ width: "100%", }}
             />
