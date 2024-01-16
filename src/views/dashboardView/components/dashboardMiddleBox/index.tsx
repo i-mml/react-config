@@ -18,9 +18,7 @@ const DashboardMiddleBox = ({ data, chartsData }: any) => {
 
     const [donwloadValue, setDownloadValue] = useState(0)
     const [uploadValue, setUploadValue] = useState(0)
-    console.log(chartsData)
-    console.log(cpusStatus?.find((item: any) => item?.name === "Veeam-BK2"))
-    console.log(cpusStatus?.find((item: any) => item?.name === "CUCM")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum || 0)
+
     const option = {
         series: [
             {
