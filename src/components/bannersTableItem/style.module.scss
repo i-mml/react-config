@@ -8,3 +8,8 @@
   height: 25px;
   cursor: pointer;
 }
+.hideMobile {
+  @media (max-width: 750px) {
+    display: none;
+  }
+}

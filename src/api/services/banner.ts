@@ -23,3 +23,9 @@ export const putBannerEdit = async (e: any) => {
   const response = await axiosInstance.put("banner/edit", e);
   return response;
 };
+
+export const pathDeactiveBanner = async (bannerId: number) => {
+  const response = await axiosInstance.patch(`/banner/active?id=${bannerId}`);
+
+  return response;
+};
