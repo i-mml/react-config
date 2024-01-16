@@ -15,3 +15,11 @@ export const getDeviceByDeviceId = async (id: number) => {
 
   return response;
 };
+
+export const getDeviceSystemInformation = async (objid: number) => {
+  const response = await axiosInstance.get(
+    `/device/system/information?device_id=${objid}`
+  );
+
+  return response;
+};

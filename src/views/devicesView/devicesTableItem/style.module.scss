@@ -57,4 +57,27 @@
     color: #007eff;
     text-decoration: underline;
   }
+  .systemInfoList {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2%;
+    & span {
+      display: block;
+      width: 25%;
+      text-align: center;
+      margin-top: 6px;
+      &:hover {
+        color: #007eff;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.hideMobile {
+  @media (max-width: 750px) {
+    display: none;
+  }
 }

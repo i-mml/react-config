@@ -24,6 +24,7 @@ const DevicesView = () => {
                         <th className={s.deviceTh}>نام دستگاه</th>
                         <th>وضعیت</th>
                         <th>سنسور</th>
+                        <th className={s.hideMobile} style={{ width: "40%", textAlign: "center" }}>اطلاعات سیستم</th>
                     </tr>
                 </thead>
                 <tbody>
