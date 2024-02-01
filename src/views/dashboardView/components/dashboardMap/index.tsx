@@ -9,6 +9,7 @@ import MapDeviceIcon from '../../../../components/mapDeviceIcon';
 const DashboardMap = ({ planList = [] }: any) => {
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
+    const [zoomValue, setZoomValue] = useState(1)
 
     const pagination = {
         clickable: true,
@@ -42,12 +43,14 @@ const DashboardMap = ({ planList = [] }: any) => {
             swiper.slidePrev();
         }
     };
-
+    console.log(zoomValue)
     return (
         <div className={s.dashboardMapContainer}>
             <TitleBox title='نقشه' icon='/images/icons/blackMap.svg' />
 
-            <div className={s.sliderBox}>
+            <div className={s.sliderBox} style={{
+                transform: `scale(${zoomValue})`
+            }}>
                 <Swiper
                     // @ts-ignore
                     onSwiper={setSwiper}
@@ -72,17 +75,22 @@ const DashboardMap = ({ planList = [] }: any) => {
                         </SwiperSlide>
                     )}
                 </Swiper>
-                <div className={s.pagination}>
-                    <div className={s.swiper_button_next_unique} onClick={goPrev}>
-                        <img src='/images/icons/paginationArrow.svg' />
-                    </div>
-                    {planList?.length > 0 && planList?.map((item: any, index: number) => (
-                        <div onClick={() => swiper?.slideTo(index)} className={`${s.paginationItem} ${index === currentIndex && s.activePaginationItem}`}>{index + 1}</div>
-                    ))}
-                    <div className={s.swiper_button_prev_unique} onClick={goNext}>
-                        <img src='/images/icons/paginationArrow.svg' />
-                    </div>
-                    <div className={s.paginationText}>طبقات</div>
+            </div>
+            <div className={s.pagination}>
+
+                <div className={s.swiper_button_next_unique} onClick={goPrev}>
+                    <img src='/images/icons/paginationArrow.svg' />
+                </div>
+                {planList?.length > 0 && planList?.map((item: any, index: number) => (
+                    <div onClick={() => swiper?.slideTo(index)} className={`${s.paginationItem} ${index === currentIndex && s.activePaginationItem}`}>{index + 1}</div>
+                ))}
+                <div className={s.swiper_button_prev_unique} onClick={goNext}>
+                    <img src='/images/icons/paginationArrow.svg' />
+                </div>
+                <div className={s.paginationText}>طبقات</div>
+                <div className={s.zoomBox}>
+                    <button onClick={() => setZoomValue(prev => prev + 0.1)} disabled={zoomValue > 1.4}>+</button>
+                    <button onClick={() => setZoomValue(prev => prev - 0.1)} disabled={zoomValue < 0.6}>-</button>
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@
   background-color: #fff;
   padding: 20px 18px 48px;
   border-radius: 14px;
+  overflow: hidden;
   .mapTitleBox {
     display: flex;
     align-items: center;
@@ -78,6 +79,8 @@
     flex-direction: row-reverse;
     width: 100%;
     justify-content: center;
+    position: relative;
+    z-index: 50;
     .paginationItem {
       margin: 0 8px;
       border-radius: 4px;
@@ -135,5 +138,9 @@
     img {
       transform: rotate(180deg);
     }
+  }
+  .zoomBox {
+    position: absolute;
+    right: 0;
   }
 }
