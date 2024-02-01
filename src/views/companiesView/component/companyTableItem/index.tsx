@@ -63,7 +63,7 @@ const CompanyTableItem = (props: any) => {
         }
       </td>
       {
-        modal && <CreateCameraModal modal={modal} toggle={toggle} />
+        modal && <CreateCameraModal modal={modal} toggle={toggle} companyId={ID} />
       }
     </tr>
   )

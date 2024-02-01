@@ -8,11 +8,11 @@ import { postCameraCreate } from '../../../../api/services/camera';
 import PrimaryButton from '../../../../components/buttons/primaryButton';
 import SecondaryButton from '../../../../components/buttons/secondaryButton';
 
-const CreateCameraModal = ({ modal, toggle }: { modal: boolean, toggle: any }) => {
+const CreateCameraModal = ({ modal, toggle, companyId }: { modal: boolean, toggle: any, companyId: number }) => {
     const createCameraMutation = useMutation((e: any) => postCameraCreate(e).then(() => toggle()).catch(err => err));
 
     const handleSubmit = (e: any) => {
-        createCameraMutation.mutate({ ...e, active: !!e.active })
+        createCameraMutation.mutate({ ...e, active: !!e.active, company_id: companyId })
     }
 
     return (
