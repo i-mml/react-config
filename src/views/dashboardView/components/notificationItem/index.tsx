@@ -15,7 +15,7 @@ const NotifListItem = ({ device_raw = "", subTitle = "", status = 0, date = "", 
                     <div className={s.title}>
                         {device_raw}
                     </div>
-                    <img src='/images/icons/chevron-down.svg' className={`${s.collapseIcon} ${isOpened ? s.opened : ""}`} />
+                    <img src='/images/icons/chevron-down.svg' className={`${s.collapseIcon} ${isOpened ? "" : s.opened}`} />
                 </div>
                 <div className={s.subTitleBox}>
                     <div className={s.subTitle}>
