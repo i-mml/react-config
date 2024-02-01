@@ -7,8 +7,11 @@ const axiosInstance = axios.create({ baseURL: process.env.REACT_APP_BASE_URL });
 
 axiosInstance.interceptors.request.use(function (config) {
   const tokenValue = Cookies.get("ems-token");
+
   if (tokenValue) {
     config.headers["Authorization"] = tokenValue;
+    config.headers["x_api_key"] = tokenValue;
+    config.headers["x-api-key"] = tokenValue;
   }
   return config;
 });
