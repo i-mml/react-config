@@ -95,9 +95,17 @@ const CreateCompnayView = () => {
 
         await createNewAdminMutation.mutate(body)
         await createNewItManMutation.mutate(itManBody)
-        await createPlanMutation.mutate(planCreateBody)
-    }
 
+        selectedPlanFiles?.map((item: any, index: number) => {
+            const planCreateBody = new FormData()
+            planCreateBody.append("company_id", company_id)
+            planCreateBody.append("position", `${index + 1}`)
+            planCreateBody.append("image", item)
+            planCreateBody.append("title", "")
+            createPlanMutation.mutate(planCreateBody)
+        })
+    }
+    console.log(selectedPlanFiles)
     const handleSubmit = async (values: any) => {
         const formData = new FormData()
         formData.append("title", title)
@@ -236,18 +244,14 @@ const CreateCompnayView = () => {
                         {/* upload plan images */}
                         <div className={s.label}>تصویر پلن‌</div>
                         <div className="w-100 flex">
-                            {/* add multiple attiribute */}
-                            <input type="file" accept="image/*" onChange={selectFiles} hidden ref={inputPlaneRef} />
+                            <input type="file" multiple accept="image/*" onChange={selectFiles} hidden ref={inputPlaneRef} />
                             {/* @ts-ignore */}
-                            {
-                                selectedPlanFiles?.length === 0 &&
-                                // @ts-ignore 
-                                <PrimaryButton onClick={() => inputPlaneRef.current.click()}
-                                    type="button"
-                                    className={s.uploadPlanBtn}
-                                >
-                                    آپلود پلن شرکت
-                                </PrimaryButton>}
+                            <PrimaryButton onClick={() => inputPlaneRef.current.click()}
+                                type="button"
+                                className={s.uploadPlanBtn}
+                            >
+                                آپلود پلن شرکت
+                            </PrimaryButton>
                         </div>
                         <div className={s.selectedPlanImageList} >
                             {previews.map((preview: any, index: number) => (

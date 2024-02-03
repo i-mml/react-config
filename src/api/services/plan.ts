@@ -20,7 +20,7 @@ export const putPlanEdit = async (e: PlanEditFields) => {
 
 export const postPlanCreate = async (e: CreatePlanFields) => {
   const response = await axiosInstance
-    .post("/pln/create", e)
+    .post("/plan/create", e)
     .then((res) => res?.data);
 
   return response;
