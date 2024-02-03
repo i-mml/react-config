@@ -45,7 +45,7 @@ const SystemInformationModal = ({ modal, toggle, objid, systemType }: { modal: b
                         </div>
                         {systemInfomations?.[systemType?.value]?.sysinfo?.map((item: any) =>
                             <div className={s.listItem}>
-                                <span>{item?.value || "-"}</span>
+                                <span>{item?.key || "-"}</span>
                                 <span>{item?.value || "-"}</span>
                             </div>
                         )}
