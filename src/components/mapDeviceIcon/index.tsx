@@ -33,7 +33,7 @@ const MapDeviceIcon = (props: any) => {
         </svg>,
     }
 
-    console.log(props?.sensors?.sensors?.find((node: any) => node?.sensor === "Ping")?.lastvalue === "0 msec")
+    // console.log(props?.sensors?.sensors?.find((node: any) => node?.sensor === "Ping")?.lastvalue === "0 msec")
     return (
         <div className={s.mapDeviceIcon} onClick={toggle} {...props}  >
             <svg xmlns="http://www.w3.org/2000/svg" width="29" height="34" viewBox="0 0 29 34" fill="none" className={s.svgIcon} >

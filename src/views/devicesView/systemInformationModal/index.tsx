@@ -25,7 +25,7 @@ const SystemInformationModal = ({ modal, toggle, objid, systemType }: { modal: b
         }
     }, [modal])
 
-    console.log(systemInfomations?.[systemType?.value]?.sysinfo)
+    // console.log(systemInfomations?.[systemType?.value]?.sysinfo)
 
     return (
         <Modal

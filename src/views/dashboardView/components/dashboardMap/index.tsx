@@ -43,6 +43,7 @@ const DashboardMap = ({ planList = [] }: any) => {
             swiper.slidePrev();
         }
     };
+    const zoomsList = [0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5]
     console.log(zoomValue)
     return (
         <div className={s.dashboardMapContainer}>
@@ -89,11 +90,34 @@ const DashboardMap = ({ planList = [] }: any) => {
                 </div>
                 <div className={s.paginationText}>طبقات</div>
                 <div className={s.zoomBox}>
-                    <button onClick={() => setZoomValue(prev => prev + 0.1)} disabled={zoomValue > 1.4}>+</button>
-                    <button onClick={() => setZoomValue(prev => prev - 0.1)} disabled={zoomValue < 0.6}>-</button>
+                    <button onClick={() => setZoomValue(prev => +Math.abs(prev + 0.1)?.toFixed(1))} disabled={zoomValue > 1.4} className={s.zoomBtn}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <g id="plus-circle">
+                                <path id="Icon" d="M12 8V16M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#B8B8B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </g>
+                        </svg>
+                    </button>
+                    <select
+                        className={s.select}
+                        onChange={(e) => {
+                            setZoomValue((+e.target.value))
+                        }}
+                        value={+Math.abs(zoomValue)?.toFixed(1)}
+                    >
+                        {
+                            zoomsList?.map(item => <option value={item} key={item}>{+Math.abs(item * 100)?.toFixed(1)}</option>)
+                        }
+                    </select>
+                    <button onClick={() => setZoomValue(prev => +Math.abs(prev - 0.1)?.toFixed(1))} disabled={zoomValue < 0.6} className={s.zoomBtn}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <g id="minus-circle">
+                                <path id="Icon" d="M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#B8B8B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </g>
+                        </svg>
+                    </button>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

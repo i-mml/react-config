@@ -144,3 +144,23 @@
     right: 0;
   }
 }
+.select {
+  width: 66px;
+  appearance: none;
+  background: transparent;
+  background-image: url("../../../../../public/images/icons/chevron-down-blue.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-position-x: 14px;
+  border-radius: 8px;
+  border: 1px solid #80bfff;
+  outline: 1px solid #80bfff;
+  background-color: #e5f2ff;
+  padding: 6px 8px;
+}
+
+.zoomBtn {
+  background-color: unset;
+  border: none;
+  outline: none;
+}
