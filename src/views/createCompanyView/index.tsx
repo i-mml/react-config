@@ -11,14 +11,17 @@ import SecondaryButton from "../../components/buttons/secondaryButton";
 import TitleBox from "../dashboardView/components/titleBox";
 import { postAdminRegister } from "../../api/services/admin";
 import { toast } from "react-toastify";
+import { postPlanCreate } from "../../api/services/plan";
 
 const CreateCompnayView = () => {
     const navigate = useNavigate()
     const authData = useSelector((state: any) => state?.auth?.data)
     const { data } = useQuery("get-company-by-id", () => getCompanyById(authData?.admin?.company_Id));
-    const createNewCompanyMutation = useMutation((e: any) => postCompanyCreate(e).then(res => handleCreateAdmin(res?.data?.ID)).catch(err => err));
+    const createNewCompanyMutation = useMutation((e: any) => postCompanyCreate(e).then(res => { handleCreateAdmin(res?.data?.ID) }).catch(err => err));
     const createNewAdminMutation = useMutation((e: any) => postAdminRegister(e).catch(err => err));
-    const createNewItManMutation = useMutation((e: any) => postAdminRegister(e).then(() => { toast.success("ایجاد شرکت و ادمین ها با موفقیت انجام شد."); navigate("/") }).catch(err => err));
+    const createNewItManMutation = useMutation((e: any) => postAdminRegister(e).then(() => { toast.success("ایجاد شرکت و ادمین ها با موفقیت انجام شد.") }).catch(err => err));
+    const createPlanMutation = useMutation((e: any) => postPlanCreate(e).then(() => { toast.success("پلن با موفقیت آپلود شد.") }).catch(err => err));
+
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedFile, setSelectedFile] = useState("");
     const [selectedPlanFiles, setSelectedPlanFiles] = useState<any>([]);
@@ -84,9 +87,15 @@ const CreateCompnayView = () => {
                 company_id
             }
         }
+        const planCreateBody = new FormData()
+        planCreateBody.append("company_id", company_id)
+        planCreateBody.append("position", "1")
+        planCreateBody.append("image", selectedPlanFiles[0])
+        planCreateBody.append("title", "")
+
         await createNewAdminMutation.mutate(body)
         await createNewItManMutation.mutate(itManBody)
-
+        await createPlanMutation.mutate(planCreateBody)
     }
 
     const handleSubmit = async (values: any) => {
@@ -101,14 +110,8 @@ const CreateCompnayView = () => {
         await createNewCompanyMutation.mutate(formData)
     }
 
-
-
-
     const selectFiles = (event: any) => {
         setSelectedPlanFiles([...event.target.files]);
-    };
-    const uploadImages = () => {
-        // Implement the logic to upload the images
     };
 
     useEffect(() => {
@@ -231,16 +234,20 @@ const CreateCompnayView = () => {
                         </Field>
 
                         {/* upload plan images */}
-                        <div className={s.label}>تصویر پلن‌ها</div>
+                        <div className={s.label}>تصویر پلن‌</div>
                         <div className="w-100 flex">
-                            <input type="file" multiple accept="image/*" onChange={selectFiles} hidden ref={inputPlaneRef} />
+                            {/* add multiple attiribute */}
+                            <input type="file" accept="image/*" onChange={selectFiles} hidden ref={inputPlaneRef} />
                             {/* @ts-ignore */}
-                            <PrimaryButton onClick={() => inputPlaneRef.current.click()}
-                                type="button"
-                                className={s.uploadPlanBtn}
-                            >
-                                آپلود پلن شرکت
-                            </PrimaryButton>
+                            {
+                                selectedPlanFiles?.length === 0 &&
+                                // @ts-ignore 
+                                <PrimaryButton onClick={() => inputPlaneRef.current.click()}
+                                    type="button"
+                                    className={s.uploadPlanBtn}
+                                >
+                                    آپلود پلن شرکت
+                                </PrimaryButton>}
                         </div>
                         <div className={s.selectedPlanImageList} >
                             {previews.map((preview: any, index: number) => (
