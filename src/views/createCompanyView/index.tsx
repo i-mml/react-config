@@ -20,10 +20,16 @@ const CreateCompnayView = () => {
     const createNewAdminMutation = useMutation((e: any) => postAdminRegister(e).catch(err => err));
     const createNewItManMutation = useMutation((e: any) => postAdminRegister(e).then(() => { toast.success("ایجاد شرکت و ادمین ها با موفقیت انجام شد."); navigate("/") }).catch(err => err));
     const [selectedImage, setSelectedImage] = useState(null);
-    const [selectedFile, setSelectedFile] = useState("")
+    const [selectedFile, setSelectedFile] = useState("");
+    const [selectedPlanFiles, setSelectedPlanFiles] = useState<any>([]);
+    const [selectedPlanImages, setSelectedPlanImages] = useState(null);
+    const [previews, setPreviews] = useState<any>([]);
     const [role, setRole] = useState(data?.admin?.role)
     const inputFileRef = useRef(null);
+    const inputPlaneRef = useRef(null);
+
     const formRef = useRef<any>(null);
+
 
     const [title, setTitle] = useState("")
 
@@ -92,10 +98,37 @@ const CreateCompnayView = () => {
         formData.append("description", values?.description)
         formData.append("sub_title", values?.sub_title)
         formData.append("logo", selectedFile)
-
-
         await createNewCompanyMutation.mutate(formData)
     }
+
+
+
+
+    const selectFiles = (event: any) => {
+        setSelectedPlanFiles([...event.target.files]);
+    };
+    const uploadImages = () => {
+        // Implement the logic to upload the images
+    };
+
+    useEffect(() => {
+        const fileReaders = selectedPlanFiles.map((file: any, index: number) => {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setPreviews((prevPreviews: any) => [...prevPreviews, reader.result]);
+            };
+            reader.readAsDataURL(file);
+            return reader;
+        });
+
+        return () => {
+            fileReaders.forEach((reader: any) => {
+                if (reader.readyState === 1) {
+                    reader.abort();
+                }
+            });
+        };
+    }, [selectedPlanFiles]);
 
     useEffect(() => {
         setRole(data?.admin?.role)
@@ -196,6 +229,24 @@ const CreateCompnayView = () => {
                                 </div>
                             )}
                         </Field>
+
+                        {/* upload plan images */}
+                        <div className={s.label}>تصویر پلن‌ها</div>
+                        <div className="w-100 flex">
+                            <input type="file" multiple accept="image/*" onChange={selectFiles} hidden ref={inputPlaneRef} />
+                            {/* @ts-ignore */}
+                            <PrimaryButton onClick={() => inputPlaneRef.current.click()}
+                                type="button"
+                                className={s.uploadPlanBtn}
+                            >
+                                آپلود پلن شرکت
+                            </PrimaryButton>
+                        </div>
+                        <div className={s.selectedPlanImageList} >
+                            {previews.map((preview: any, index: number) => (
+                                <img key={index} src={preview} alt="preview" className={s.selectedPlanImage} />
+                            ))}
+                        </div>
 
                         <div style={{ width: "100%", marginBottom: "32px" }}>
                             <TitleBox title="اطلاعات مدیرعامل شرکت" />
