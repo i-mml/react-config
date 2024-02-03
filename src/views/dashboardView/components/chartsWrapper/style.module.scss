@@ -3,9 +3,10 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 16px;
-
   @media (max-width: 750px) {
-    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
   }
 }
 .smallBox {
@@ -13,4 +14,7 @@
   background-color: white;
   border-radius: 14px;
   padding: 19px 2% 3px;
+  @media (max-width: 750px) {
+    width: 100%;
+  }
 }
