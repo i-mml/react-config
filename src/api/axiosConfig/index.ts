@@ -10,7 +10,6 @@ axiosInstance.interceptors.request.use(function (config) {
 
   if (tokenValue) {
     config.headers["Authorization"] = tokenValue;
-    config.headers["x_api_key"] = tokenValue;
     config.headers["x-api-key"] = tokenValue;
   }
   return config;
