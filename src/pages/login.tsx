@@ -9,7 +9,7 @@ const LoginPage = () => {
   // set token in LocalStorage (search it)
   // set user infos in redux (read redux hint in redux folder)
 
-  const tokenValue = Cookies.get("ems-token")
+  const tokenValue = Cookies.get("access-token")
 
   if (tokenValue && tokenValue !== '') {
     return <Navigate to='/' replace />

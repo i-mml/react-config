@@ -23,7 +23,7 @@ import CreateBannerPage from "../pages/CreateBanner";
 import PlanManagementPage from "../pages/planManaement";
 
 const RoutingConfig = () => {
-  const tokenValue = Cookies.get("ems-token")
+  const tokenValue = Cookies.get("access-token")
   const navigate = useNavigate()
 
   useEffect(() => {

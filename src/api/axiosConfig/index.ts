@@ -6,11 +6,12 @@ import Cookies from "js-cookie";
 const axiosInstance = axios.create({ baseURL: process.env.REACT_APP_BASE_URL });
 
 axiosInstance.interceptors.request.use(function (config) {
-  const tokenValue = Cookies.get("ems-token");
+  const accessTokenValue = Cookies.get("access-token");
+  const emsTokenValue = Cookies.get("ems-token");
 
-  if (tokenValue) {
-    config.headers["Authorization"] = tokenValue;
-    config.headers["x-api-key"] = tokenValue;
+  if (accessTokenValue) {
+    config.headers["Authorization"] = accessTokenValue;
+    config.headers["x-api-key"] = emsTokenValue;
   }
   return config;
 });

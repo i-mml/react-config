@@ -19,7 +19,9 @@ const InformationBox = () => {
   const dispatch = useDispatch()
 
   const mutation = useMutation((e: LoginFields) => LoginService(e).then((res) => {
-    Cookies.set("ems-token", res?.payload?.access_token, { path: "/" })
+    Cookies.set("access-token", res?.payload?.access_token, { path: "/" })
+    Cookies.set("ems-token", res?.ems_token, { path: "/" })
+
     dispatch(setToken(res));
     toast.success("با موفقیت وارد شدید")
     navigate("/", { replace: true });

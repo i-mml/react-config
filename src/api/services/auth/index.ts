@@ -14,5 +14,6 @@ export const LoginService = async (e: LoginFields) => {
 export const LogoutService = async () => {
   await axiosInstance("/user/logout").finally(() => {
     Cookies.remove("ems-token");
+    Cookies.remove("access-token");
   });
 };

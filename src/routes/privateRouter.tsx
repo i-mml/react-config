@@ -8,7 +8,7 @@ import Layout from "../views/layout/layout";
 
 
 function PrivateRoute({ children }: { children: ReactElement }) {
-  const tokenValue = Cookies.get("ems-token")
+  const tokenValue = Cookies.get("access-token")
 
   if (!tokenValue || tokenValue === "") { return <Navigate to='/login' replace /> };
 
