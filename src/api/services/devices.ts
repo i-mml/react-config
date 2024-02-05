@@ -8,9 +8,9 @@ export const getDeviceAll = async () => {
   return response;
 };
 
-export const getDeviceByDeviceId = async (id: number) => {
+export const getDeviceByDeviceId = async (id: number, tags: string) => {
   const response = await axiosInstance
-    .get(`/device?device_id=${id}&tag=winserver`)
+    .get(`/device?device_id=${id}&tag=${tags}`)
     .then((res) => res?.data);
 
   return response;

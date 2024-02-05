@@ -3,7 +3,7 @@ import s from './style.module.scss';
 import SensorsModal from '../sensorsModal';
 import SystemInformationModal from '../systemInformationModal';
 
-const DeviceTableItem = ({ name, icon, fold, objid }: any) => {
+const DeviceTableItem = ({ name, icon, fold, objid, tags }: any) => {
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
 
@@ -42,7 +42,7 @@ const DeviceTableItem = ({ name, icon, fold, objid }: any) => {
                 </div>
             </td>
             {modal &&
-                <SensorsModal toggle={toggle} modal={modal} objid={objid} />
+                <SensorsModal toggle={toggle} modal={modal} objid={objid} tags={tags} />
             }
             {
                 systemInfoModal &&

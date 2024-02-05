@@ -4,13 +4,13 @@ import { Spinner, Modal, ModalBody } from 'reactstrap';
 import ModalHeaderTitle from '../../../components/modalTitle';
 import { getDeviceByDeviceId } from '../../../api/services/devices';
 
-const SensorsModal = ({ modal, toggle, sensors = [], objid }: { modal: boolean, toggle: any, sensors?: any[], objid?: number }) => {
+const SensorsModal = ({ modal, toggle, sensors = [], objid, tags }: { modal: boolean, toggle: any, sensors?: any[], objid?: number, tags?: string }) => {
     const [loading, setLoding] = useState(false)
     const [sensorsData, setSensorsData] = useState(sensors)
 
     const getDeviceSensors = async () => {
         setLoding(true)
-        await getDeviceByDeviceId(objid || 0)
+        await getDeviceByDeviceId(objid || 0, tags || "")
             .then(res => {
                 setSensorsData(res?.data?.sensors)
 
