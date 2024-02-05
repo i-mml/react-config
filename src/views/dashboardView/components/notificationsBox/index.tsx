@@ -23,7 +23,7 @@ const NotificationsBox = ({ notifications = [] }) => {
                 <TitleBox icon='/images/icons/bell.svg' title='اعلانات' />
                 <div className={s.readAll}>خواندن همه</div>
             </div>
-            {notifications?.slice(0, 6)?.map((item: any, index) => <NotifListItem {...item} defaultShow={index === 0} key={index} />)}
+            {notifications?.slice(0, 5)?.map((item: any, index) => <NotifListItem {...item} defaultShow={index === 0} key={index} />)}
             <SecondaryButton className={s.showAll} onClick={() => navigate("/notifications")}>
                 مشاهده همه
             </SecondaryButton>
