@@ -41,7 +41,6 @@ const SupportCreateView = () => {
 
     const { data, isLoading } = useQuery<any>(queryKey, queryFunc as any)
 
-    console.log(data)
 
     const hanldeSendMessage = async (fields: FormInitialValueType, response: any) => {
         setLoading(true)
@@ -50,6 +49,7 @@ const SupportCreateView = () => {
         formData.append("sender", response?.user_id)
         formData.append("ticket_id", response?.ID)
         formData.append("type", "t")
+        formData.append(user?.role !== 1 ? "device_id" : "companeyId", user?.role !== 1 ? fields.device_id : fields.companeyId as any)
 
         postMessageCreate(formData).then(res => navigate(`/support/${res?.data?.ticket_id}`))
     }
