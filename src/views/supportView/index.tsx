@@ -7,6 +7,7 @@ import { useQuery } from "react-query";
 import { getTicketAll } from "../../api/services/ticket";
 import { Spinner } from "reactstrap";
 import TablePagination from "../../components/pagination";
+import { useSelector } from "react-redux";
 
 
 moment.loadPersian();
@@ -19,12 +20,17 @@ const SupportView = () => {
   const pageSize = 30;
   const [page, setPage] = useState(0)
   const [value, setValue] = useState("")
+  const user = useSelector((state: any) => state?.auth?.data?.user);
+
 
   const navigate = useNavigate()
-  const tabsList = [
+  const tabsList = user?.role === 1 ? [
     { id: 3, faTitle: "پشتیبانی داخلی", isInternal: true },
     { id: 1, faTitle: "پشتیبانی خارجی", isInternal: false },
-  ];
+  ] :
+    [
+      { id: 3, faTitle: "پشتیبانی داخلی", isInternal: true },
+    ];
 
   const labelGenerator: any = {
     "فوری": {
