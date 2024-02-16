@@ -11,23 +11,26 @@ import { useSelector } from 'react-redux';
 import { postMessageCreate } from '../../api/services/messages';
 
 interface FormInitialValueType {
-    full_name: string,
     email: string,
     title: string,
     label: string,
     message: string,
+    device_id?: string,
+    internal: "internal" | "external"
 }
 
 const SupportCreateView = () => {
     const initialValues: FormInitialValueType = {
-        full_name: "",
         email: "",
         title: "",
         label: "فوری",
-        message: ""
+        message: "",
+        device_id: "",
+        internal: "internal"
     }
 
     const [loading, setLoading] = useState(false);
+    const [internal, setInternal] = useState(initialValues?.internal);
     const navigate = useNavigate()
     const user = useSelector((state: any) => state?.auth?.data?.user);
 
@@ -87,19 +90,22 @@ const SupportCreateView = () => {
                                 </div>
                             )}
                         </Field>
-                        <Field name="full_name">
-                            {({ field }: any) => (
-                                <div className={s.inputBox}>
-                                    <div className={s.label}>نام و نام خانوادگی</div>
-                                    <input
-                                        type="text"
-                                        {...field}
-                                        className={s.input}
-                                    // disabled
-                                    />
-                                </div>
-                            )}
-                        </Field>
+                        {
+                            internal === "internal" &&
+                            <Field name="device_id">
+                                {({ field }: any) => (
+                                    <div className={s.inputBox}>
+                                        <div className={s.label}>دستگاه</div>
+                                        <input
+                                            type="text"
+                                            {...field}
+                                            className={s.input}
+                                        // disabled
+                                        />
+                                    </div>
+                                )}
+                            </Field>
+                        }
                         <Field name="title">
                             {({ field }: any) => (
                                 <div className={s.inputBox}>
@@ -136,6 +142,22 @@ const SupportCreateView = () => {
                                         className={s.textarea}
                                         rows="8"
                                     />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="internal">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>نوع تیکت</div>
+                                    <select
+                                        className={s.select}
+                                        {...field}
+                                        value={internal}
+                                        onChange={(e) => setInternal(e.target.value as FormInitialValueType["internal"])}
+                                    >
+                                        <option value={"internal"}>داخلی</option>
+                                        <option value={"external"}>خارجی</option>
+                                    </select>
                                 </div>
                             )}
                         </Field>
