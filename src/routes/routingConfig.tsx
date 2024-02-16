@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import LoginPage from "../pages/login";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import PrivateRoute from "./privateRouter";
 import NotFound from "../pages/notFound";
 import AbountUsPage from "../pages/about-us";
@@ -21,13 +21,17 @@ import CreateCompnayPage from "../pages/createCompnay";
 import CompaniesPage from "../pages/companies";
 import CreateBannerPage from "../pages/CreateBanner";
 import PlanManagementPage from "../pages/planManaement";
+import { useSelector } from "react-redux";
 
 const RoutingConfig = () => {
-  const tokenValue = Cookies.get("access-token")
+  const tokenValue = Cookies.get("access-token");
+  const user = useSelector((state: any) => state?.auth?.data?.user);
+  const location = useLocation()
   const navigate = useNavigate()
 
   useEffect(() => {
     if (!tokenValue || tokenValue === "") { return navigate('/login') };
+    if (user?.role === 3 && location.pathname === "/") { return navigate('/support') };
   }, [])
 
   return (
