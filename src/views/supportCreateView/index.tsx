@@ -5,10 +5,13 @@ import { Field, Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import SecondaryButton from '../../components/buttons/secondaryButton';
 import PrimaryButton from '../../components/buttons/primaryButton';
-import { useMutation } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { postTicketSend } from '../../api/services/ticket';
 import { useSelector } from 'react-redux';
 import { postMessageCreate } from '../../api/services/messages';
+import { getCompanyAll } from '../../api/services/company';
+import { getDeviceAll } from '../../api/services/devices';
+import { Spinner } from 'reactstrap';
 
 interface FormInitialValueType {
     email: string,
@@ -16,7 +19,7 @@ interface FormInitialValueType {
     label: string,
     message: string,
     device_id?: string,
-    internal: "internal" | "external"
+    companeyId?: ""
 }
 
 const SupportCreateView = () => {
@@ -26,13 +29,19 @@ const SupportCreateView = () => {
         label: "فوری",
         message: "",
         device_id: "",
-        internal: "internal"
+        companeyId: ""
     }
 
     const [loading, setLoading] = useState(false);
-    const [internal, setInternal] = useState(initialValues?.internal);
     const navigate = useNavigate()
     const user = useSelector((state: any) => state?.auth?.data?.user);
+
+    const queryKey = user?.role === 1 ? "get-all-companies" : "get-all-device"
+    const queryFunc = user?.role === 1 ? getCompanyAll : getDeviceAll
+
+    const { data, isLoading } = useQuery<any>(queryKey, queryFunc as any)
+
+    console.log(data)
 
     const hanldeSendMessage = async (fields: FormInitialValueType, response: any) => {
         setLoading(true)
@@ -76,6 +85,7 @@ const SupportCreateView = () => {
                     onSubmit={hanldeSubmitCreateTicket}
                 >
                     <Form className={s.formBody}>
+
                         <Field name="email">
                             {({ field }: any) => (
                                 <div className={s.inputBox}>
@@ -91,17 +101,36 @@ const SupportCreateView = () => {
                             )}
                         </Field>
                         {
-                            internal === "internal" &&
+                            user?.role !== 1 &&
                             <Field name="device_id">
                                 {({ field }: any) => (
                                     <div className={s.inputBox}>
                                         <div className={s.label}>دستگاه</div>
-                                        <input
-                                            type="text"
+                                        <select
+                                            className={s.select}
                                             {...field}
-                                            className={s.input}
-                                        // disabled
-                                        />
+                                        >
+                                            {
+                                                data?.devices?.map((item: any) => <option value={`${item?.objid}`} key={item?.objid}>{item?.name || "-"}</option>)
+                                            }
+                                        </select>
+                                    </div>
+                                )}
+                            </Field>
+                        }
+                        {user?.role === 1 &&
+                            <Field name="companeyId">
+                                {({ field }: any) => (
+                                    <div className={s.inputBox}>
+                                        <div className={s.label}>شرکت</div>
+                                        <select
+                                            className={s.select}
+                                            {...field}
+                                        >
+                                            {
+                                                data?.data?.map((item: any) => <option value={`${item?.ID}`} key={item?.Id}>{item?.title || "-"}</option>)
+                                            }
+                                        </select>
                                     </div>
                                 )}
                             </Field>
@@ -145,22 +174,7 @@ const SupportCreateView = () => {
                                 </div>
                             )}
                         </Field>
-                        <Field name="internal">
-                            {({ field }: any) => (
-                                <div className={s.inputBox}>
-                                    <div className={s.label}>نوع تیکت</div>
-                                    <select
-                                        className={s.select}
-                                        {...field}
-                                        value={internal}
-                                        onChange={(e) => setInternal(e.target.value as FormInitialValueType["internal"])}
-                                    >
-                                        <option value={"internal"}>داخلی</option>
-                                        <option value={"external"}>خارجی</option>
-                                    </select>
-                                </div>
-                            )}
-                        </Field>
+
 
                         <div className={s.buttons}>
                             <PrimaryButton onClick={() => { }} type="submit" className={s.saveBtn} disabled={mutation.isLoading || loading}>
