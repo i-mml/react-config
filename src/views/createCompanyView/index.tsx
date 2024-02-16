@@ -78,12 +78,32 @@ const CreateCompnayView = () => {
                 login: false,
                 password: values?.it_password,
                 phone_registered: true,
+                role: 2,
+            },
+            admin: {
+                user_id: "",
+                role_id: 2,
+                telephone: values?.it_mobile,
+                company_id
+            }
+        }
+        const employeeBody = {
+            user: {
+                last_name: values?.employee_last_name,
+                first_name: values?.employee_first_name,
+                mobile: values?.employee_mobile,
+                national_code: values?.employee_national_code,
+                email: values?.employee_email,
+                is_active: true,
+                login: false,
+                password: values?.employee_password,
+                phone_registered: true,
                 role: 3,
             },
             admin: {
                 user_id: "",
                 role_id: 3,
-                telephone: values?.it_mobile,
+                telephone: values?.employee_mobile,
                 company_id
             }
         }
@@ -95,6 +115,8 @@ const CreateCompnayView = () => {
 
         await createNewAdminMutation.mutate(body)
         await createNewItManMutation.mutate(itManBody)
+        await createNewItManMutation.mutate(employeeBody)
+
 
         selectedPlanFiles?.map((item: any, index: number) => {
             const planCreateBody = new FormData()
@@ -105,7 +127,6 @@ const CreateCompnayView = () => {
             createPlanMutation.mutate(planCreateBody)
         })
     }
-    console.log(selectedPlanFiles)
     const handleSubmit = async (values: any) => {
         const formData = new FormData()
         formData.append("title", title)
@@ -421,7 +442,86 @@ const CreateCompnayView = () => {
                             )}
                         </Field>
 
+                        <div style={{ width: "100%", marginBottom: "32px" }}>
+                            <TitleBox title="اطلاعات کارمند" />
+                        </div>
+                        <Field name="employee_first_name">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>نام</div>
+                                    <input
+                                        type="text"
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="نام"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="employee_last_name">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>نام خانوادگی</div>
+                                    <input
+                                        type="text"
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="نام خانوادگی"
+                                    />
 
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="employee_mobile">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>شماره همراه</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="شماره همراه"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="employee_national_code">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>کد ملی</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="کد ملی"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="employee_email">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>ایمیل</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="ایمیل"
+                                        type="email"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="employee_password">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>رمز عبور</div>
+                                    <input
+                                        type="password"
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="رمز عبور"
+                                    />
+                                </div>
+                            )}
+                        </Field>
 
                         <div className={s.btnBox}>
                             <PrimaryButton type="submit" className={s.saveBtn} disabled={selectedFile === "" && createNewCompanyMutation.isLoading || createNewAdminMutation.isLoading}>
