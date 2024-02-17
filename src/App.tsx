@@ -19,7 +19,11 @@ function App() {
           <QueryClientProvider client={queryClient}>
             <Suspense fallback={false}>
               <RoutingConfig />
-              <ToastContainer />
+              <ToastContainer
+                toastStyle={{
+                  fontFamily: "Vazirmmatn"
+                }}
+              />
             </Suspense>
           </QueryClientProvider>
         </BrowserRouter>
