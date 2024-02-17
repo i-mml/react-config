@@ -11,6 +11,10 @@ import { getCompanyById } from "../../../../api/services/company";
 import { useParams } from "react-router-dom";
 import LogoutModal from "../../../../components/logoutModal";
 import { useState } from "react";
+import HomeIcon from "../../../../components/icons/Home";
+import CreditCardIcon from "../../../../components/icons/CreditCard";
+import UserCircleIcon from "../../../../components/icons/UserCircle";
+import LifeBouyIcon from "../../../../components/icons/LifeBouy";
 
 const SideBarView = () => {
   let location = useLocation();
@@ -20,6 +24,13 @@ const SideBarView = () => {
 
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+
+  const iconsTranslation: any = {
+    "homeIcon": <HomeIcon className={s.icon} />,
+    "creditCardIcon": <CreditCardIcon className={s.icon} />,
+    "userCircleIcon": <UserCircleIcon className={s.icon} />,
+    "lifeBouyIcon": <LifeBouyIcon className={s.icon} />
+  }
 
 
 
@@ -56,7 +67,7 @@ const SideBarView = () => {
                   className={s.sidebarItem}
                 >
                   <div className={s.iconBox}>
-                    <img src={item?.icon} alt="sideBar icon" className={s.icon} />
+                    {iconsTranslation[item?.icon]}
                   </div>
                   <div className={s.title}>{item.title}</div>
                 </div>
