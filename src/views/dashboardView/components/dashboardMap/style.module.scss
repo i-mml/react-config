@@ -153,10 +153,14 @@
   background-position: left center;
   background-position-x: 14px;
   border-radius: 8px;
-  border: 1px solid #80bfff;
-  outline: 1px solid #80bfff;
   background-color: #e5f2ff;
   padding: 6px 8px;
+  border: none;
+  outline: none;
+  &:focus {
+    border: 1px solid #80bfff;
+    outline: 1px solid #80bfff;
+  }
 }
 
 .zoomBtn {
