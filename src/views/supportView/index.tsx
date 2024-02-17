@@ -88,10 +88,15 @@ const SupportView = () => {
                 <tr>
                   <th className={s.mobileShow}>شماره تیکت</th>
                   {
-                    !internal &&
-                    <th>
-                      {"نام شرکت"}
-                    </th>
+                    !internal ?
+                      <th>
+                        نام شرکت
+                      </th>
+                      :
+                      <th>
+                        دستگاه
+                      </th>
+
                   }
                   <th>تاریخ ایجاد</th>
                   <th>درجه اهمیت</th>
@@ -116,10 +121,14 @@ const SupportView = () => {
                         </div>
                       </td>
                       {
-                        !internal &&
-                        <td>
-                          {item?.company_name || '-'}
-                        </td>
+                        !internal ?
+                          <td>
+                            {item?.company_name || '-'}
+                          </td>
+                          :
+                          <td>
+                            {item?.device_id || '-'}
+                          </td>
                       }
                       <td>
                         {
