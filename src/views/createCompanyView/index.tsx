@@ -136,6 +136,10 @@ const CreateCompnayView = () => {
         formData.append("description", values?.description)
         formData.append("sub_title", values?.sub_title)
         formData.append("sub_scription", values?.sub_scription)
+        formData.append("id_1", values?.id1)
+        formData.append("id_2", values?.id2)
+        formData.append("id_3", values?.id3?.split(","))
+
         formData.append("logo", selectedFile)
 
         await createNewCompanyMutation.mutate(formData)
@@ -258,6 +262,42 @@ const CreateCompnayView = () => {
                                         {...field}
                                         className={s.input}
                                         placeholder="رمز عبور"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="id1">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>id 1</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="id 1"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="id2">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>id 2</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="id 2"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="id3">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>id 3</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="2540,478,680"
                                     />
                                 </div>
                             )}
