@@ -1,0 +1,199 @@
+.userInformationContainer {
+  background-color: white;
+  padding: 24px;
+  border-radius: 14px;
+
+  .topBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: auto;
+    padding: 24px;
+    background-color: white;
+    border-radius: 24px;
+    border: 1px dashed var(--colors-neutral-300, #b8b8b8);
+    margin-top: 32px;
+
+    .titleBox {
+      background-color: white;
+      display: flex;
+      align-items: center;
+      .editedIcon,
+      .selectedImage {
+        width: 48px;
+        height: 48px;
+        border-radius: 1000px;
+        margin-left: 16px;
+      }
+      .selectedImage {
+        padding: 0px;
+      }
+      .topBoxTitle {
+        background-color: white;
+        color: var(--colors-neutral-500, #585858);
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        outline: none;
+      }
+    }
+
+    .uploadLogo {
+      border-radius: 10px;
+      border: none;
+      background: var(--colors-primary-primary-200, #e5f2ff);
+      width: 132px;
+      height: 48px;
+      color: #007eff;
+      color: #007eff;
+      font-size: 16px;
+      font-weight: 700;
+      @media (max-width: 750px) {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  .form {
+    background-color: white;
+    margin: 32px 24px;
+    @media (max-width: 750px) {
+      margin: 16px 0 32px;
+    }
+
+    .formBody {
+      background-color: white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      border-bottom: 1px solid #e7e7e7;
+      padding-bottom: 38px;
+      @media (max-width: 750px) {
+        border-bottom: unset;
+        padding-bottom: unset;
+      }
+
+      .inputBox {
+        background-color: white;
+        width: 48%;
+        margin-bottom: 32px;
+
+        .select {
+          width: 100%;
+          border-radius: 8px;
+          border: 1px solid var(--colors-neutral-200, #e7e7e7);
+          background: #fff;
+          outline: none;
+          box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+          padding: 10px 14px;
+          margin-bottom: 32px;
+
+          // select icon
+          appearance: none;
+          background: transparent;
+          background-image: url("../../../public/images/icons/chevron-down-black.svg");
+          background-repeat: no-repeat;
+          background-position: left center;
+          background-position-x: 14px;
+
+          @media (max-width: 750px) {
+            margin-bottom: 16px;
+          }
+        }
+        .input {
+          background-color: white;
+          width: 100%;
+          height: 44px;
+          padding: 10px 14px;
+          @media (max-width: 750px) {
+            margin-bottom: 16px;
+          }
+          border-radius: 8px;
+          border: 1px solid var(--Colors-Neutral-200, #e7e7e7);
+          background: #fff;
+        }
+      }
+      .textAreaBox {
+        background-color: white;
+        width: 100%;
+        margin-bottom: 32px;
+        .textarea {
+          width: 100%;
+          resize: none;
+          padding: 10px;
+          border-radius: 8px;
+          border: 1px solid var(--Colors-Neutral-200, #e7e7e7);
+          background: #fff;
+        }
+      }
+
+      .btnBox {
+        display: flex;
+        background-color: white;
+        margin-bottom: 16px;
+        .saveBtn {
+          width: 132px;
+          height: 48px;
+          border-radius: 10px;
+          background: #007eff;
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1) inset,
+            0px -4px 4px 0px rgba(0, 0, 0, 0.1) inset;
+          border: none;
+          color: white;
+          margin-left: 16px;
+        }
+        .cancelBtn {
+          border-radius: 10px;
+          background: var(--colors-primary-primary-200, #e5f2ff);
+          width: 132px;
+          height: 48px;
+          border: none;
+          color: #007eff;
+        }
+      }
+    }
+  }
+
+  .linksBox {
+    display: flex;
+    background-color: white;
+    margin-right: 24px;
+    .infoIcon {
+      background-color: white;
+      margin-left: 8px;
+    }
+    .rules {
+      background-color: white;
+      color: var(--colors-primary-primary-500, #007eff);
+      font-size: 16px;
+      text-decoration-line: underline;
+    }
+  }
+}
+.label {
+  background-color: white;
+  color: #585858;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 8px 0 0;
+}
+.uploadPlanBtn {
+  width: 50%;
+  min-width: 150px;
+  margin: 20px 0;
+}
+.selectedPlanImageList {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5%;
+  margin: 20px 5%;
+  width: 100%;
+
+  .selectedPlanImage {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+  }
+}

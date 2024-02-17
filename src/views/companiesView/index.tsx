@@ -30,6 +30,7 @@ const CompaniesView = ({ limitShow = false }: { limitShow?: boolean }) => {
                         <th className={`${s.w7} ${s.hideMobile}`}>افزودن دوربین</th>
                         <th className={`${s.w7} ${s.hideMobile}`}>افزودن دستگاه</th>
                         <th className={`${s.w7} ${s.hideMobile}`}>غیرفعال سازی</th>
+                        <th className={`${s.w6} ${s.hideMobile}`}>ویرایش</th>
                     </tr>
                 </thead>
                 <tbody>

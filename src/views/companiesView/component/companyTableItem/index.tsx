@@ -65,6 +65,9 @@ const CompanyTableItem = (props: any) => {
           <img src='/images/icons/cancle.svg' className={s.actionIcon} onClick={() => deactiveCompanyMutation.mutate(ID)} />
         }
       </td>
+      <td className={`${s.hideMobile}`}>
+        <img src='/images/icons/edit.svg' className={s.actionIcon} onClick={() => navigate(`/company/edit/${ID}`)} />
+      </td>
       {
         modal && <CreateCameraModal modal={modal} toggle={toggle} companyId={ID} />
       }

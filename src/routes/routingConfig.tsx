@@ -22,6 +22,7 @@ import CompaniesPage from "../pages/companies";
 import CreateBannerPage from "../pages/CreateBanner";
 import PlanManagementPage from "../pages/planManaement";
 import { useSelector } from "react-redux";
+import EditCompanyPage from "../pages/editCompany";
 
 const RoutingConfig = () => {
   const tokenValue = Cookies.get("access-token");
@@ -165,6 +166,14 @@ const RoutingConfig = () => {
         element={
           <PrivateRoute>
             <CreateCompnayPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/company/edit/:id"
+        element={
+          <PrivateRoute>
+            <EditCompanyPage />
           </PrivateRoute>
         }
       />
