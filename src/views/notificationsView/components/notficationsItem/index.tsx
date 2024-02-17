@@ -1,16 +1,11 @@
 import React, { useState } from 'react'
 import s from './style.module.scss';
 import moment from 'moment-jalaali';
+import StatusBox from '../../../../components/statusBox';
 
-interface IProps {
-    id: number,
-    device_raw: string,
-    message_raw: string,
 
-}
-
-const NotificationItem = (props: IProps) => {
-    const { device_raw, message_raw } = props
+const NotificationItem = (props: any) => {
+    const { status, message_raw, sensor, priority } = props
     const nowD = moment().format('jYYYY/jMM/jDD')
     const [isOpened, toggle] = useState(false)
 
@@ -18,14 +13,14 @@ const NotificationItem = (props: IProps) => {
         <div className={s.notifItemContainer} >
             <div className={s.titleBox} onClick={() => toggle(pre => !pre)}>
                 <div className={s.title}>
-                    {device_raw}
+                    {sensor} {priority === "5" && <StatusBox title='فوری' erorr />}
                 </div>
                 <img src='/images/icons/chevron-down.svg' className={`${s.collapseIcon} ${isOpened ? s.opened : ""}`} />
             </div>
 
             <div className={s.subTitleBox}>
                 <div className={s.subTitle}>
-                    {device_raw}
+                    {status}
                 </div>
                 <div className={s.date}>
                     {nowD}

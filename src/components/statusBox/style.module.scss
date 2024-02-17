@@ -28,3 +28,12 @@
     color: #b8b8b8;
   }
 }
+.statusBoxError {
+  background-color: #f9e7e7;
+  .statusBadge {
+    background-color: #c92b2b;
+  }
+  .status {
+    color: #c92b2b;
+  }
+}

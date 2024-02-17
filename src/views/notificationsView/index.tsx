@@ -21,7 +21,7 @@ const NotificationsView = () => {
 
             </div>
             {
-                data?.sensors?.filter((item: any) => item?.device_raw?.toUpperCase()?.includes(value.toUpperCase()))?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) => <NotificationItem {...item} key={item.id} />)
+                data?.sensors?.filter((item: any) => item?.sensor?.toUpperCase()?.includes(value.toUpperCase()))?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) => <NotificationItem {...item} key={item.id} />)
             }
             <TablePagination dataLength={data?.sensors?.filter((item: any) => item?.device_raw?.toUpperCase()?.includes(value.toUpperCase()))?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
 
