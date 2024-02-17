@@ -3,6 +3,7 @@ import s from './style.module.scss';
 import { Spinner, Modal, ModalBody } from 'reactstrap';
 import ModalHeaderTitle from '../../../components/modalTitle';
 import { getDeviceByDeviceId } from '../../../api/services/devices';
+import NotFoundBox from '../../../components/notFound';
 
 const SensorsModal = ({ modal, toggle, sensors = [], objid, tags }: { modal: boolean, toggle: any, sensors?: any[], objid?: number, tags?: string }) => {
     const [loading, setLoding] = useState(false)
@@ -48,7 +49,7 @@ const SensorsModal = ({ modal, toggle, sensors = [], objid, tags }: { modal: boo
                                 <span>{item?.lastvalue}</span>
                             </div>
                         )}
-                    </div> : <div>موردی یافت نشد!</div>
+                    </div> : <NotFoundBox />
                 }
             </ModalBody>
         </Modal>

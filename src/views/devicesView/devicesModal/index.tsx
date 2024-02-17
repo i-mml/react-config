@@ -4,6 +4,7 @@ import { Spinner, Modal, ModalBody } from 'reactstrap';
 import ModalHeaderTitle from '../../../components/modalTitle';
 import { getDeviceAll, getDeviceByDeviceId } from '../../../api/services/devices';
 import StatusBox from '../../../components/statusBox';
+import NotFoundBox from '../../../components/notFound';
 
 const DevicesModal = ({ modal, toggle, onItemClick }: { modal: boolean, toggle: any, onItemClick: (e: number) => void }) => {
     const [loading, setLoding] = useState(false)
@@ -50,7 +51,7 @@ const DevicesModal = ({ modal, toggle, onItemClick }: { modal: boolean, toggle: 
                                     <span>{item?.objid}</span>
                                 </div>
                             )}
-                        </div> : <div>موردی یافت نشد!</div>}
+                        </div> : <NotFoundBox />}
             </ModalBody>
         </Modal >
     )

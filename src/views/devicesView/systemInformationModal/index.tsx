@@ -3,6 +3,7 @@ import { getDeviceSystemInformation } from '../../../api/services/devices'
 import { Spinner, Modal, ModalBody } from 'reactstrap';
 import ModalHeaderTitle from '../../../components/modalTitle';
 import s from './style.module.scss';
+import NotFoundBox from '../../../components/notFound';
 
 const SystemInformationModal = ({ modal, toggle, objid, systemType }: { modal: boolean, toggle: any, objid?: number, systemType: { title: string, value: string } }) => {
     const [loading, setLoding] = useState(false)
@@ -49,7 +50,7 @@ const SystemInformationModal = ({ modal, toggle, objid, systemType }: { modal: b
                                 <span>{item?.value || "-"}</span>
                             </div>
                         )}
-                    </div> : <div>موردی یافت نشد!</div>
+                    </div> : <NotFoundBox />
                 }
             </ModalBody>
         </Modal>

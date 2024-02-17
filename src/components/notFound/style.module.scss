@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+  .text {
+    font-size: 15px;
+    font-weight: 600;
+    color: #b7b7b7;
+  }
+}

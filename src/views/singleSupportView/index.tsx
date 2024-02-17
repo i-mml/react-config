@@ -6,6 +6,7 @@ import { getMessageAll, postMessageCreate } from '../../api/services/messages';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Spinner } from 'reactstrap';
+import NotFoundBox from '../../components/notFound';
 
 const SingleSupportView = () => {
     const params = useParams()
@@ -42,7 +43,7 @@ const SingleSupportView = () => {
 
             <div className={s.chatList}>
                 {isLoading ? <div className={s.spinnerBox}><Spinner color='primary' /></div> : data?.data?.length > 0 ? data?.data?.map((item: any) => <ChatListItem {...item} userFullName={data?.info?.user_name} />) : <div className={s.notFound}>
-                    موردی یافت نشد.
+                    <NotFoundBox />
                 </div>}
             </div>
             <div className={s.sendInputBox}>
