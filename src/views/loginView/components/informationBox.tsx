@@ -116,6 +116,9 @@ const InformationBox = () => {
             </Form>
           )}
         </Formik>
+        {
+          <div className={s.version}>نسخه {process.env.REACT_APP_VERSION_NUMBER || "1.1"}</div>
+        }
       </div>
     </div>
   );
