@@ -110,7 +110,7 @@ const InformationBox = () => {
 
               <button type="submit" className={s.button} disabled={mutation.isLoading}>
                 {
-                  mutation.isLoading ? "درحال ورود" : "ورود"
+                  mutation.isLoading ? <img src='/images/icons/loadingLines.svg' /> : "ورود"
                 }
               </button>
             </Form>

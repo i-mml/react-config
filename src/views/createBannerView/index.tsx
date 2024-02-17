@@ -138,7 +138,9 @@ const CreateBannerView = () => {
                         <div className={s.btnBox}>
                             <PrimaryButton type="submit" className={s.saveBtn} disabled={selectedFile === "" && createBannerMutation.isLoading}>
                                 {
-                                    createBannerMutation.isLoading ? "درحال انجام" : "ایجاد"}
+                                    !createBannerMutation.isLoading ? "ایجاد" :
+                                        <img src='/images/icons/loadingLines.svg' />
+                                }
                             </PrimaryButton>
 
                             <SecondaryButton className={s.cancelBtn} onClick={() => navigate("/")} disabled={createBannerMutation.isLoading} >

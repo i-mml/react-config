@@ -557,7 +557,7 @@ const EditCompnayView = ({ data, plans, id }: any) => {
                         <div className={s.btnBox}>
                             <PrimaryButton type="submit" className={s.saveBtn} disabled={selectedFile === "" && createNewCompanyMutation.isLoading || createNewAdminMutation.isLoading}>
                                 {
-                                    createNewAdminMutation.isLoading || createNewCompanyMutation.isLoading ? "درحال انجام" : "ایجاد"}
+                                    createNewAdminMutation.isLoading || createNewCompanyMutation.isLoading ? <img src='/images/icons/loadingLines.svg' /> : "ایجاد"}
                             </PrimaryButton>
 
                             <SecondaryButton className={s.cancelBtn} onClick={() => navigate("/")} disabled={createNewCompanyMutation.isLoading} >

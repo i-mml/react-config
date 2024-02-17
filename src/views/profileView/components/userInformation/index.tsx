@@ -138,7 +138,7 @@ const UserInformationTab = () => {
             <div className={s.btnBox}>
               <PrimaryButton type="button" className={s.saveBtn} onClick={handleSubmit} disabled={selectedFile === "" && role == data?.admin?.role}>
                 {
-                  updateUserMutation.isLoading || updateLogoMutation.isLoading ? "درحال انجام" : "ثبت"}
+                  updateUserMutation.isLoading || updateLogoMutation.isLoading ? <img src='/images/icons/loadingLines.svg' /> : "ثبت"}
               </PrimaryButton>
 
               <SecondaryButton className={s.cancelBtn} onClick={() => navigate("/")}>

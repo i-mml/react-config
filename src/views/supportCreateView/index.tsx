@@ -178,7 +178,7 @@ const SupportCreateView = () => {
 
                         <div className={s.buttons}>
                             <PrimaryButton onClick={() => { }} type="submit" className={s.saveBtn} disabled={mutation.isLoading || loading}>
-                                {mutation?.isLoading || loading ? "در حال ثبت" : "ثبت"}
+                                {mutation?.isLoading || loading ? <img src='/images/icons/loadingLines.svg' /> : "ثبت"}
                             </PrimaryButton>
                             <SecondaryButton onClick={() => navigate('/support')} className={s.cancelBtn} disabled={mutation.isLoading || loading}>
                                 لغو

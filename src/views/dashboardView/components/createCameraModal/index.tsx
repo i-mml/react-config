@@ -91,7 +91,7 @@ const CreateCameraModal = ({ modal, toggle, companyId }: { modal: boolean, toggl
                             <div className={s.btnBox}>
                                 <PrimaryButton type="submit" className={s.saveBtn} disabled={createCameraMutation.isLoading}>
                                     {
-                                        createCameraMutation.isLoading || createCameraMutation.isLoading ? "درحال انجام" : "ثبت"}
+                                        createCameraMutation.isLoading || createCameraMutation.isLoading ? <img src='/images/icons/loadingLines.svg' /> : "ثبت"}
                                 </PrimaryButton>
 
                                 <SecondaryButton className={s.cancelBtn} onClick={() => toggle()}>

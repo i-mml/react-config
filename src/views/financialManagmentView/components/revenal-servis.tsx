@@ -85,7 +85,7 @@ const RenevalServis = () => {
             ))}
         <button className={s.payBtn} onClick={handlePayment} disabled={postPaymentRequestMutation.isLoading}>
           {
-            postPaymentRequestMutation?.isLoading ? "درحال انجام" : "پرداخت"
+            postPaymentRequestMutation?.isLoading ? <img src='/images/icons/loadingLines.svg' /> : "پرداخت"
           }
         </button>
       </div>
