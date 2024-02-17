@@ -39,7 +39,7 @@ export const SidebarList = [
     link: "/support",
     subMenue: [],
     supportedLinks: ["/support", "/support/create", "/support/:id"],
-    allowedRoles: [2, 3],
+    allowedRoles: [1, 2, 3],
   },
 
   {
