@@ -28,7 +28,7 @@ const EditCompanyPage = () => {
             <MobileNaviagtorLine title="ایجاد شرکت" link='/' linkTitle='صفحه اصلی' />
             {
                 data &&
-                <EditCompnayView data={data} plans={plan} />
+                <EditCompnayView id={id} data={data} plans={plan} />
             }
         </>
     )

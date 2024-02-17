@@ -3,7 +3,7 @@ import s from "./style.module.scss";
 import { Field, Form, Formik } from "formik";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { getCompanyById, postCompanyCreate } from "../../api/services/company";
+import { getCompanyById, postCompanyCreate, putCompanyEdit } from "../../api/services/company";
 
 import PrimaryButton from "../../components/buttons/primaryButton";
 import SecondaryButton from "../../components/buttons/secondaryButton";
@@ -12,10 +12,10 @@ import { postAdminRegister } from "../../api/services/admin";
 import { toast } from "react-toastify";
 import { postPlanCreate } from "../../api/services/plan";
 
-const EditCompnayView = ({ data, plans }: any) => {
+const EditCompnayView = ({ data, plans, id }: any) => {
     const navigate = useNavigate()
 
-    const createNewCompanyMutation = useMutation((e: any) => postCompanyCreate(e).then(res => { handleCreateAdmin(res?.data?.ID) }).catch(err => err));
+    const createNewCompanyMutation = useMutation((e: any) => putCompanyEdit(e).then(res => { handleCreateAdmin(res?.data?.ID) }).catch(err => err));
     const createNewAdminMutation = useMutation((e: any) => postAdminRegister(e).catch(err => err));
     const createNewItManMutation = useMutation((e: any) => postAdminRegister(e).then(() => { toast.success("ایجاد شرکت و ادمین ها با موفقیت انجام شد.") }).catch(err => err));
     const createPlanMutation = useMutation((e: any) => postPlanCreate(e).then(() => { toast.success("پلن با موفقیت آپلود شد.") }).catch(err => err));
@@ -112,8 +112,8 @@ const EditCompnayView = ({ data, plans }: any) => {
         planCreateBody.append("title", "")
 
         await createNewAdminMutation.mutate(body)
-        await createNewItManMutation.mutate(itManBody)
-        await createNewItManMutation.mutate(employeeBody)
+        // await createNewItManMutation.mutate(itManBody)
+        // await createNewItManMutation.mutate(employeeBody)
 
 
         selectedPlanFiles?.map((item: any, index: number) => {
@@ -127,6 +127,7 @@ const EditCompnayView = ({ data, plans }: any) => {
     }
     const handleSubmit = async (values: any) => {
         const formData = new FormData()
+        formData.append("id", id)
         formData.append("title", title)
         formData.append("english_name", values?.english_name)
         formData.append("description", values?.description)
