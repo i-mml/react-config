@@ -4,6 +4,7 @@ import MobileNaviagtorLine from "../components/mobileNaviagatorLine";
 import { useMutation } from "react-query";
 import { LogoutService } from "../api/services/auth";
 import { useNavigate, useParams } from "react-router-dom";
+import { isMobile } from "react-device-detect";
 
 const ProfilePage = () => {
   const navigate = useNavigate()
@@ -27,7 +28,8 @@ const ProfilePage = () => {
           color: "#C31414",
           textAlign: "center",
           width: "100%",
-          marginTop: '40px'
+          marginTop: '40px',
+          display: isMobile ? "" : "none"
         }}>
         خروج از حساب کاربری
       </div>
