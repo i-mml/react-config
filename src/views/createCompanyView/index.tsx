@@ -135,7 +135,9 @@ const CreateCompnayView = () => {
         formData.append("english_name", values?.english_name)
         formData.append("description", values?.description)
         formData.append("sub_title", values?.sub_title)
+        formData.append("sub_scription", values?.sub_scription)
         formData.append("logo", selectedFile)
+
         await createNewCompanyMutation.mutate(formData)
     }
 
@@ -221,7 +223,19 @@ const CreateCompnayView = () => {
                                 </div>
                             )}
                         </Field>
-
+                        <Field name="sub_scription">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>مبلغ تمدید</div>
+                                    <input
+                                        type="number"
+                                        {...field}
+                                        placeholder="مبلغ تمدید"
+                                        className={s.input}
+                                    />
+                                </div>
+                            )}
+                        </Field>
                         <Field name="ems_username">
                             {({ field }: any) => (
                                 <div className={s.inputBox}>

@@ -20,7 +20,7 @@ const CompanyTableItem = (props: any) => {
     logo,
     sub_title,
     title,
-    isLast
+    isLast, sub_scription
   } = props
 
   const queryClient = useQueryClient()
@@ -49,6 +49,9 @@ const CompanyTableItem = (props: any) => {
         <div className={s.date}  >
           {moment(CreatedAt).format('jYYYY/jMM/jDD')}
         </div>
+      </td>
+      <td>
+        {sub_scription ?? "-"}
       </td>
       <td className={`${s.hideMobile}`} >
         <img src='/images/icons/webcam.svg' className={s.actionIcon} onClick={toggle} />
