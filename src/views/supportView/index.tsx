@@ -29,6 +29,7 @@ const SupportView = () => {
     { id: 1, faTitle: "پشتیبانی خارجی", isInternal: false },
   ] :
     [
+      { id: 1, faTitle: "پشتیبانی خارجی", isInternal: false },
       { id: 3, faTitle: "پشتیبانی داخلی", isInternal: true },
     ];
 
@@ -86,6 +87,12 @@ const SupportView = () => {
               <thead>
                 <tr>
                   <th className={s.mobileShow}>شماره تیکت</th>
+                  {
+                    !internal &&
+                    <th>
+                      {"نام شرکت"}
+                    </th>
+                  }
                   <th>تاریخ ایجاد</th>
                   <th>درجه اهمیت</th>
                   <th className={s.mobileShow}>وضعیت</th>
@@ -108,6 +115,12 @@ const SupportView = () => {
                           </div>
                         </div>
                       </td>
+                      {
+                        !internal &&
+                        <td>
+                          {item?.company_name || '-'}
+                        </td>
+                      }
                       <td>
                         {
                           moment(item?.CreatedAt).format("jYYYY/jMM/jDD")
