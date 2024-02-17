@@ -1,27 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import ProfileView from "../views/profileView";
 import MobileNaviagtorLine from "../components/mobileNaviagatorLine";
-import { useMutation } from "react-query";
-import { LogoutService } from "../api/services/auth";
-import { useNavigate, useParams } from "react-router-dom";
 import { isMobile } from "react-device-detect";
+import LogoutModal from "../components/logoutModal";
 
 const ProfilePage = () => {
-  const navigate = useNavigate()
-  const mutation = useMutation(() => LogoutService().finally(() => navigate("/login", { replace: true })));
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
 
-  const params = useParams()
-
-  const removeToken = () => {
-    mutation.mutate();
-  }
 
   return (
     <>
       <MobileNaviagtorLine title="حساب کاربری" hasLink={false} />
       <ProfileView />
       <div
-        onClick={removeToken}
+        onClick={toggle}
         style={{
           fontSize: "16px",
           fontWeight: "600",
@@ -33,6 +26,10 @@ const ProfilePage = () => {
         }}>
         خروج از حساب کاربری
       </div>
+
+      {
+        modal && <LogoutModal open={modal} toggle={toggle} />
+      }
     </>
   );
 };

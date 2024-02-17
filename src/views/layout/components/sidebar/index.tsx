@@ -9,17 +9,19 @@ import MobileHeader from "../mobileHeader";
 import { useSelector } from "react-redux";
 import { getCompanyById } from "../../../../api/services/company";
 import { useParams } from "react-router-dom";
+import LogoutModal from "../../../../components/logoutModal";
+import { useState } from "react";
 
 const SideBarView = () => {
   let location = useLocation();
   const navigate = useNavigate()
   const user = useSelector((state: any) => state?.auth?.data);
   const { data } = useQuery("get-company-by-id", () => getCompanyById(user?.admin?.company_Id));
-  const mutation = useMutation(() => LogoutService().finally(() => navigate("/login", { replace: true })));
-  const params = useParams()
-  const removeToken = () => {
-    mutation.mutate();
-  }
+
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+
+
 
   const activeClassName = (supportedLinks: string[]) => {
     if (supportedLinks.includes(location?.pathname)) {
@@ -62,7 +64,7 @@ const SideBarView = () => {
             )
           )}
         </div>
-        <div className={s.profileBox} onClick={removeToken}>
+        <div className={s.profileBox} onClick={toggle}>
 
           <img src={data ? process.env.REACT_APP_IMAGE_BASE_URL + data?.data?.logo : ""} alt="profile" className={s.profileImg} />
           <div className={s.infoProfileBox}>
@@ -79,6 +81,9 @@ const SideBarView = () => {
       </div>
       <MobileHeader />
       <MobileSideBarView />
+      {
+        modal && <LogoutModal open={modal} toggle={toggle} />
+      }
     </>
   );
 };
