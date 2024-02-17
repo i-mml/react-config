@@ -19,8 +19,8 @@ const DashboardTopBox = ({ data }: any) => {
             </div>
             {user?.role !== 1 &&
                 <div className={s.left}>
-                    <UsedTraficItem title="پیام‌ها و هشدارهای مهم" value={data?.notificationsList?.treesize || 0} increased={true} hasPercent={false} />
-                    <UsedTraficItem title='سلامت شبکه' value={data?.healthStatus?.data?.data?.Alarms || 0} increased={false} hasPercent />
+                    <UsedTraficItem id={1} title="پیام‌ها و هشدارهای مهم" value={data?.notificationsList?.treesize || 0} increased={true} hasPercent={false} />
+                    <UsedTraficItem id={2} title='سلامت شبکه' value={data?.healthStatus?.data?.data?.Alarms || 0} increased={false} hasPercent />
                 </div>}
         </div>
     )

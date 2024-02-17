@@ -14,7 +14,7 @@ const AllDeviceReportBox = (props: Iprops) => {
     return (
         <div className={s.container}>
             <div className={s.top}>
-                <img className={s.icon} src="/images/icons/users.svg" />
+                <img className={s.icon} src="/images/icons/laptop-02.svg" />
             </div>
             <div className={s.bottom}>
                 <div className={s.title}>
