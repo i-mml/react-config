@@ -17,7 +17,6 @@ const DeviceTableItem = ({ name, icon, fold, objid, tags, group }: any) => {
         { title: "Hardware", value: "hard_ware" }, { title: "System", value: "system" }, { title: "Users", value: "users" }, { title: "Software", value: "soft_ware" }, { title: "Services", value: "services" }, { title: "Processes", value: "processes" }
     ]
 
-    console.log(group)
 
     return (
         <tr className={s.deviceTableItem} key={name}>

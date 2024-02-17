@@ -40,7 +40,7 @@ const ChartsWrapper = ({ data }: any) => {
         }],
 
     };
-    console.log(virtualMachines)
+
 
     const diskUsageOption = {
         title: {

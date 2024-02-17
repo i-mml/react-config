@@ -165,7 +165,6 @@ const EditCompnayView = ({ data, plans, id }: any) => {
         };
     }, [selectedPlanFiles]);
 
-    useEffect(() => { console.log("namosan update shod", plans) }, [data])
 
     return (
         <div className={s.userInformationContainer}>

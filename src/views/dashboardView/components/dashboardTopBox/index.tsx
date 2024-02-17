@@ -6,12 +6,12 @@ import { useSelector } from 'react-redux';
 
 const DashboardTopBox = ({ data }: any) => {
     const user = useSelector((state: any) => state?.auth?.data?.user);
-
+    console.log(user)
     return (
         <div className={s.dashboardTopBox}>
             <div className={s.right}>
                 <h3 className={s.title}>
-                    {rolesConsts[user?.role]?.name} عزیز، خوش آمدید.
+                    {`${user?.first_name || ""} ${user?.last_name || ""}`} عزیز، خوش آمدید.
                 </h3>
                 <div className={s.subTitle}>
                     در داشبورد نت پورت می توانید وضعیت شبکه خود را ببینید.
