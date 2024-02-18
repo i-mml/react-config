@@ -5,7 +5,7 @@ import StatusBox from '../../../../components/statusBox';
 
 
 const NotificationItem = (props: any) => {
-    const { status, message_raw, sensor, priority } = props
+    const { status, message_raw, sensor, priority, downtimesince } = props
     const nowD = moment().format('jYYYY/jMM/jDD')
     const [isOpened, toggle] = useState(false)
 
@@ -29,7 +29,7 @@ const NotificationItem = (props: any) => {
             {
                 isOpened &&
                 <div className={s.description}>
-                    {message_raw}
+                    downtimesince: {downtimesince}
                 </div>
             }
         </div>
