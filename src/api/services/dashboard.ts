@@ -23,6 +23,18 @@ export const getActiveDevices = async () => {
   return response;
 };
 
+export const getDashboardNetStatus = async () => {
+  const response = await axiosInstance.get("/dashboard/net/status");
+
+  return response;
+};
+
+export const getDashboardVlanConnection = async () => {
+  const response = await axiosInstance.get("/dashboard/vlan/connection");
+
+  return response;
+};
+
 export const fetchDashboardData = async (company_Id: number) => {
   const [
     camerasList,
@@ -34,6 +46,8 @@ export const fetchDashboardData = async (company_Id: number) => {
     upTime,
     healthStatus,
     netSTatus,
+    dashboardNetStatus,
+    dashboardVlanConnection,
   ] = await Promise.all([
     getCameraAll().catch((err) => err),
     getPlanAll(company_Id).catch((err) => err),
@@ -44,6 +58,8 @@ export const fetchDashboardData = async (company_Id: number) => {
     getChartUptime().catch((err) => err),
     getChartHealthStatus().catch((err) => err),
     getChartNetStatus().catch((err) => err),
+    getDashboardNetStatus().catch((err) => err),
+    getDashboardVlanConnection().catch((err) => err),
   ]);
   return {
     camerasList,
@@ -55,6 +71,8 @@ export const fetchDashboardData = async (company_Id: number) => {
     upTime,
     healthStatus,
     netSTatus,
+    dashboardNetStatus,
+    dashboardVlanConnection,
   };
 };
 

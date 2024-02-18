@@ -12,7 +12,7 @@ interface Iprops {
 
 const StatusCartItem = (props: Iprops) => {
     const { title, value, icon, hasArrow, arrowType, arrowTitle } = props
-    console.log(hasArrow)
+
     return (
         <div className={s.container}>
             <div className={s.top}>

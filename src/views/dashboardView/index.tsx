@@ -26,8 +26,6 @@ const DashboardView = () => {
 
     const { data, isLoading } = useQuery<any>(queryKey, queryFunc as any)
     const { data: ChartsData, isLoading: chartLoading } = useQuery<any>('get-charts-data', user?.role !== 1 ? fetchChartsData : () => { })
-
-    const upTimeValue = data?.upTime?.data?.channels?.find((item: any) => item?.name === "System Uptime")?.lastvalue
     return (
         <div className={s.dashboardContainer}>
             <DashboardTopBox data={data} />
@@ -36,8 +34,8 @@ const DashboardView = () => {
             {user?.role !== 1 &&
                 <div className={s.statusesBox}>
                     <AllDeviceReportBox title='کل دستگاه ها' offlineCount={60} onlineCount={33} data={data} />
-                    <StatusCartItem title='ترافیک پهنا باند' value={33} icon="wifi" hasArrow />
-                    <StatusCartItem title='وضعیت اتصال VLANS ها' value={upTimeValue} icon="zap-off" />
+                    <StatusCartItem title='ترافیک پهنا باند' value={data?.dashboardNetStatus?.data?.data?.sensors?.[0]?.lastvalue} icon="wifi" hasArrow />
+                    <StatusCartItem title='وضعیت اتصال VLANS ها' value={data?.dashboardVlanConnection?.data?.online?.sensors?.filter((item: any) => item?.status === "Up")?.length || 0} icon="zap-off" />
                     <StatusCartItem title='وضعیت اتصال به ISP' value={data?.netSTatus?.data?.data?.channels?.find((item: any) => item?.name === "Traffic Total")?.info?.data[0]?.lastvalue} icon="zap-off" />
                 </div>}
             {

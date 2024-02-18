@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 const DashboardTopBox = ({ data }: any) => {
     const user = useSelector((state: any) => state?.auth?.data?.user);
-    console.log(user)
+
     return (
         <div className={s.dashboardTopBox}>
             <div className={s.right}>
