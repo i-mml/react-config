@@ -12,19 +12,11 @@ interface Iprops {
 
 const StatusCartItem = (props: Iprops) => {
     const { title, value, icon, hasArrow, arrowType, arrowTitle } = props
+    console.log(hasArrow)
     return (
         <div className={s.container}>
             <div className={s.top}>
                 <img className={s.icon} src={`/images/icons/${icon}.svg`} />
-                {hasArrow &&
-                    <div className={s.arrowBox}>
-                        {arrowTitle &&
-                            <div className={s.arrowTitle}>Ping</div>
-                        }
-                        <img className={s.icon} src={`/images/icons/arrow-${arrowType}.svg`} />
-                    </div>
-                }
-
             </div>
 
             <div className={s.bottom}>
@@ -33,14 +25,17 @@ const StatusCartItem = (props: Iprops) => {
                 </div>
 
                 <div className={s.value}>
-                    <span>
-                        {value}
-                    </span>
-                    {hasArrow &&
-                        <div className={s.arrowBottom}>
-                            <img className={s.icon} src={`/images/icons/arrow-${arrowType}.svg`} />
-                        </div>
-                    }
+
+                    <div className={s.arrows}>
+                        {
+                            hasArrow &&
+                            <div className={s.arrows}>
+                                <img className={s.icon} src={`/images/icons/arrow-down.svg`} />
+                                <img className={s.icon} src={`/images/icons/arrow-up.svg`} />
+                            </div>
+                        }
+                        <span>{value}</span>
+                    </div>
                 </div>
             </div>
 

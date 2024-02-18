@@ -36,8 +36,8 @@ const DashboardView = () => {
             {user?.role !== 1 &&
                 <div className={s.statusesBox}>
                     <AllDeviceReportBox title='کل دستگاه ها' offlineCount={60} onlineCount={33} data={data} />
-                    <StatusCartItem title='ترافیک پهنا باند' value={33} icon="wifi" hasArrow arrowTitle='Ping' arrowType="up" />
-                    <StatusCartItem title='وضعیت اتصال VLANS ها' value={upTimeValue} icon="zap-off" hasArrow arrowType="down" />
+                    <StatusCartItem title='ترافیک پهنا باند' value={33} icon="wifi" hasArrow />
+                    <StatusCartItem title='وضعیت اتصال VLANS ها' value={upTimeValue} icon="zap-off" />
                     <StatusCartItem title='وضعیت اتصال به ISP' value={data?.netSTatus?.data?.data?.channels?.find((item: any) => item?.name === "Traffic Total")?.info?.data[0]?.lastvalue} icon="zap-off" />
                 </div>}
             {

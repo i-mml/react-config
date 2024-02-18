@@ -52,6 +52,13 @@
     width: 26%;
     text-align: left;
 
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    .arrows {
+      display: flex;
+      align-items: center;
+    }
     @media (max-width: 750px) {
       width: 100%;
       display: flex;
