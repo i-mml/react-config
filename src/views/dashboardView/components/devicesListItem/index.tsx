@@ -4,18 +4,19 @@ import { iconsTranslation } from '../../../../components/icons/iconsTranslation'
 import MonitorIcon from '../../../../components/icons/Monitor';
 
 
-const DeviceListItem = ({ name = "", isLast = false, status = false, icon = "", group = "" }) => {
+const DeviceListItem = ({
+    name = "", isLast = false, status = "", group = "", icon = '' }) => {
 
     return (
-        <div className={`${s.container} ${isLast ? s.isLast : ""}`}>
+        <div className={`${s.container} ${isLast ? s.isLast : ""}`} >
             {iconsTranslation[group] || <MonitorIcon />}
-            <div className={s.title}>{name}</div>
+            < div className={s.title} > {name}</div>
 
-            <div className={`${s.statusBox} ${!status ? s.statusBoxOffline : ""}`}>
+            <div className={`${s.statusBox} ${status === "UP" ? s.statusBoxOffline : ""}`}>
                 <div className={s.statusBadge}></div>
-                <div className={s.status}>{status ? "آنلاین" : "آفلاین"}</div>
+                <div className={s.status}>{status !== "UP" ? "آنلاین" : "آفلاین"}</div>
             </div>
-        </div>
+        </div >
     )
 }
 

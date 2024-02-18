@@ -5,7 +5,7 @@ import SystemInformationModal from '../systemInformationModal';
 import MonitorIcon from '../../../components/icons/Monitor';
 import { iconsTranslation } from '../../../components/icons/iconsTranslation';
 
-const DeviceTableItem = ({ name, icon, fold, objid, tags, group }: any) => {
+const DeviceTableItem = ({ name, icon, fold, objid, tags, group, status }: any) => {
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
 
@@ -17,7 +17,6 @@ const DeviceTableItem = ({ name, icon, fold, objid, tags, group }: any) => {
         { title: "Hardware", value: "hard_ware" }, { title: "System", value: "system" }, { title: "Users", value: "users" }, { title: "Software", value: "soft_ware" }, { title: "Services", value: "services" }, { title: "Processes", value: "processes" }
     ]
 
-
     return (
         <tr className={s.deviceTableItem} key={name}>
             <td>
@@ -27,9 +26,9 @@ const DeviceTableItem = ({ name, icon, fold, objid, tags, group }: any) => {
                 </div>
             </td>
             <td>
-                <div className={`${s.statusBox} ${!fold ? s.statusBoxOffline : ""}`}>
+                <div className={`${s.statusBox} ${status !== "Up" ? s.statusBoxOffline : ""}`}>
                     <div className={s.statusBadge}></div>
-                    <div className={s.status}>{fold ? "آنلاین" : "آفلاین"}</div>
+                    <div className={s.status}>{status === "Up" ? "آنلاین" : "آفلاین"}</div>
                 </div>
             </td>
             <td>
