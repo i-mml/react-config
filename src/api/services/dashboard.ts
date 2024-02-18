@@ -13,12 +13,22 @@ import { getCompanyAll } from "./company";
 import { getDeviceAll } from "./devices";
 import { getNotifications } from "./notifications";
 import { getPlanAll } from "./plan";
+import axiosInstance from "../axiosConfig";
+
+export const getActiveDevices = async () => {
+  const response = await axiosInstance
+    .get("/dashboard/active/devices")
+    .then((res) => res?.data);
+
+  return response;
+};
 
 export const fetchDashboardData = async (company_Id: number) => {
   const [
     camerasList,
     planList,
     devicesList,
+    activeDevices,
     notificationsList,
     bannersList,
     upTime,
@@ -28,6 +38,7 @@ export const fetchDashboardData = async (company_Id: number) => {
     getCameraAll().catch((err) => err),
     getPlanAll(company_Id).catch((err) => err),
     getDeviceAll().catch((err) => err),
+    getActiveDevices().catch((err) => err),
     getNotifications().catch((err) => err),
     getBannerAll().catch((err) => err),
     getChartUptime().catch((err) => err),
@@ -38,6 +49,7 @@ export const fetchDashboardData = async (company_Id: number) => {
     camerasList,
     planList,
     devicesList,
+    activeDevices,
     notificationsList,
     bannersList,
     upTime,
