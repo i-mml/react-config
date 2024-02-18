@@ -20,7 +20,7 @@ const NotificationsBox = ({ notifications = [] }) => {
     return (
         <div className={s.container}>
             <div className={s.top}>
-                <TitleBox icon='/images/icons/bell.svg' title='اعلانات' />
+                <TitleBox icon='/images/icons/bell.svg' title='هشدار قطع اتصال' />
                 <div className={s.readAll}>خواندن همه</div>
             </div>
             {notifications?.slice(0, 5)?.map((item: any, index) => <NotifListItem {...item} defaultShow={index === 0} key={index} />)}

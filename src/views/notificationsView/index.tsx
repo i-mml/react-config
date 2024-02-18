@@ -16,7 +16,7 @@ const NotificationsView = () => {
     return (
         <div className={s.container}>
             <div className={s.titleWrappwer}>
-                <TitleBox icon='/images/icons/printer.svg' title='اعلانات' />
+                <TitleBox icon='/images/icons/printer.svg' title='هشدار قطع اتصال' />
                 <InputSearch styles={{ marginTop: "16px" }} value={value} setValue={setValue} />
 
             </div>

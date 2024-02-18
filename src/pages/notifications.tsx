@@ -5,7 +5,7 @@ import MobileNaviagtorLine from '../components/mobileNaviagatorLine'
 const NotificationsPage = () => {
     return (
         <>
-            <MobileNaviagtorLine title="اعلانات" link='/' linkTitle='صفحه اصلی' />
+            <MobileNaviagtorLine title="هشدار قطع اتصال" link='/' linkTitle='صفحه اصلی' />
             <NotificationsView />
         </>
     )

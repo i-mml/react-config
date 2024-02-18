@@ -14,7 +14,10 @@ const NotifListItem = ({ device = "", status = "", priority = "", downtimesince 
             <div className={s.content}>
                 <div className={s.titleBox}>
                     <div className={s.title}>
-                        {device} {priority === "5" && <StatusBox title='فوری' erorr />}
+                        <span className={s.titleValue}>
+                            {device}
+                        </span>
+                        {priority === "5" && <StatusBox title='فوری' erorr />}
                     </div>
                     <img src='/images/icons/chevron-down.svg' className={`${s.collapseIcon} ${isOpened ? "" : s.opened}`} />
                 </div>
