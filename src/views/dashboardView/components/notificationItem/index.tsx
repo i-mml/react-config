@@ -3,7 +3,7 @@ import s from './style.module.scss';
 import moment from 'moment-jalaali';
 import StatusBox from '../../../../components/statusBox';
 
-const NotifListItem = ({ sensor = "", status = "", priority = "", message_raw = "", defaultShow = false }) => {
+const NotifListItem = ({ device = "", status = "", priority = "", downtimesince = "", defaultShow = false }) => {
     const [isOpened, setIsOpened] = useState(defaultShow)
     const nowD = moment().format('jYYYY/jMM/jDD')
 
@@ -14,7 +14,7 @@ const NotifListItem = ({ sensor = "", status = "", priority = "", message_raw = 
             <div className={s.content}>
                 <div className={s.titleBox}>
                     <div className={s.title}>
-                        {sensor} {priority === "5" && <StatusBox title='فوری' erorr />}
+                        {device} {priority === "5" && <StatusBox title='فوری' erorr />}
                     </div>
                     <img src='/images/icons/chevron-down.svg' className={`${s.collapseIcon} ${isOpened ? "" : s.opened}`} />
                 </div>
@@ -28,7 +28,7 @@ const NotifListItem = ({ sensor = "", status = "", priority = "", message_raw = 
                 </div>
                 {isOpened &&
                     <div className={s.description}>
-                        {message_raw}
+                        downtimesince: {downtimesince}
                     </div>
                 }
             </div>
