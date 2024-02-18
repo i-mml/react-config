@@ -35,6 +35,11 @@ export const getDashboardVlanConnection = async () => {
   return response;
 };
 
+export const getDashboardPing = async () => {
+  const response = await axiosInstance.get("/dashboard/ping");
+  return response;
+};
+
 export const fetchDashboardData = async (company_Id: number) => {
   const [
     camerasList,
@@ -48,6 +53,7 @@ export const fetchDashboardData = async (company_Id: number) => {
     netSTatus,
     dashboardNetStatus,
     dashboardVlanConnection,
+    dashboardPing,
   ] = await Promise.all([
     getCameraAll().catch((err) => err),
     getPlanAll(company_Id).catch((err) => err),
@@ -60,6 +66,7 @@ export const fetchDashboardData = async (company_Id: number) => {
     getChartNetStatus().catch((err) => err),
     getDashboardNetStatus().catch((err) => err),
     getDashboardVlanConnection().catch((err) => err),
+    getDashboardPing().catch((err) => err),
   ]);
   return {
     camerasList,
@@ -73,6 +80,7 @@ export const fetchDashboardData = async (company_Id: number) => {
     netSTatus,
     dashboardNetStatus,
     dashboardVlanConnection,
+    dashboardPing,
   };
 };
 
