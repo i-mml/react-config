@@ -28,7 +28,8 @@
       align-items: start;
     }
   }
-  .offline {
+  .offline,
+  .online {
     @media (max-width: 750px) {
       width: 100%;
       display: flex;
@@ -36,12 +37,13 @@
       flex-direction: row-reverse;
       justify-content: space-between;
       margin-top: 12px;
+      padding: 0 !important;
     }
   }
   .online {
-    @media (max-width: 750px) {
-      display: none;
-    }
+    // @media (max-width: 750px) {
+    //   display: none;
+    // }
   }
   .title {
     color: #b8b8b8;

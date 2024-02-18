@@ -24,11 +24,11 @@ const AllDeviceReportBox = (props: Iprops) => {
                 <div className={s.allDeviceBox}>
                     <div className={s.offline}>
                         <StatusBox active={false} title='آفلاین' />
-                        <p>{data?.devicesList?.sensorxref?.filter((item: any) => !item?.fold)?.length || 0} نفر</p>
+                        <p>{data?.devicesList?.sensorxref?.filter((item: any) => !item?.fold)?.length || 0}</p>
                     </div>
                     <div className={s.online}>
                         <StatusBox active={true} title='آنلاین' />
-                        <p>{data?.devicesList?.sensorxref?.filter((item: any) => item?.fold)?.length || 0}  نفر</p>
+                        <p>{data?.devicesList?.sensorxref?.filter((item: any) => item?.fold)?.length || 0}</p>
                     </div>
                 </div>
             </div>
