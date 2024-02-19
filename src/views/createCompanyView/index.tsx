@@ -136,9 +136,9 @@ const CreateCompnayView = () => {
         formData.append("description", values?.description)
         formData.append("sub_title", values?.sub_title)
         formData.append("sub_scription", values?.sub_scription)
-        formData.append("id_1", values?.id1)
-        formData.append("id_2", values?.id2)
-        formData.append("id_3", values?.id3?.split(","))
+        formData.append("ping_device_id", values?.ping_device_id)
+        formData.append("graph_device_id", values?.graph_device_id)
+        values?.id3?.split(",")?.map((item: string, index: number) => formData.append(`health_device_id_${index + 1}`, item))
 
         formData.append("logo", selectedFile)
 
@@ -243,7 +243,7 @@ const CreateCompnayView = () => {
                         <Field name="ems_username">
                             {({ field }: any) => (
                                 <div className={s.inputBox}>
-                                    <div className={s.label}>نام کاربری</div>
+                                    <div className={s.label}>نام کاربری {'(ems_username)'}</div>
                                     <input
                                         type="text"
                                         {...field}
@@ -256,7 +256,7 @@ const CreateCompnayView = () => {
                         <Field name="ems_password">
                             {({ field }: any) => (
                                 <div className={s.inputBox}>
-                                    <div className={s.label}>رمز عبور</div>
+                                    <div className={s.label}>رمز عبور {'(ems_password)'}</div>
                                     <input
                                         type="password"
                                         {...field}
@@ -266,26 +266,26 @@ const CreateCompnayView = () => {
                                 </div>
                             )}
                         </Field>
-                        <Field name="id1">
+                        <Field name="ping_device_id">
                             {({ field }: any) => (
                                 <div className={s.inputBox}>
-                                    <div className={s.label}>id 1</div>
+                                    <div className={s.label}>ping_device_id</div>
                                     <input
                                         {...field}
                                         className={s.input}
-                                        placeholder="id 1"
+                                        placeholder="ping_device_id"
                                     />
                                 </div>
                             )}
                         </Field>
-                        <Field name="id2">
+                        <Field name="graph_device_id">
                             {({ field }: any) => (
                                 <div className={s.inputBox}>
-                                    <div className={s.label}>id 2</div>
+                                    <div className={s.label}>graph_device_id</div>
                                     <input
                                         {...field}
                                         className={s.input}
-                                        placeholder="id 2"
+                                        placeholder="graph_device_id"
                                     />
                                 </div>
                             )}
