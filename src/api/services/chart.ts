@@ -32,6 +32,12 @@ export const getChartCpus = async () => {
   return response;
 };
 
+export const getChartNewCpu = async () => {
+  const response = await axiosInstance.get("/chart/new/cpu");
+
+  return response;
+};
+
 export const getChartVirtualMachines = async () => {
   const response = await axiosInstance.get("/chart/virtual/machines");
 
@@ -45,17 +51,19 @@ export const getChartGraph = async () => {
 };
 
 export const fetchChartsData = async () => {
-  const [healthStorage, cpusStatus, virtualMachines, chartGraph] =
+  const [healthStorage, cpusStatus, virtualMachines, chartGraph, chartNewCpu] =
     await Promise.all([
       getChartHealthStorage()?.catch((err) => err),
       getChartCpus()?.catch((err) => err),
       getChartVirtualMachines()?.catch((err) => err),
       getChartGraph()?.catch((err) => err),
+      getChartNewCpu()?.catch((err) => err),
     ]);
   return {
     healthStorage,
     cpusStatus,
     virtualMachines,
     chartGraph,
+    chartNewCpu,
   };
 };

@@ -5,9 +5,6 @@ import {
   getChartHealthStatus,
   getChartNetStatus,
   getChartUptime,
-  getChartHealthStorage,
-  getChartCpus,
-  getChartVirtualMachines,
 } from "./chart";
 import { getCompanyAll } from "./company";
 import { getDeviceAll } from "./devices";

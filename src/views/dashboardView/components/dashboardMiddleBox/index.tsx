@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux';
 
 const DashboardMiddleBox = ({ data, chartsData }: any) => {
     const user = useSelector((state: any) => state?.auth?.data?.user);
-    const cpusStatus = chartsData?.cpusStatus?.data?.data
+    const cpusStatus = chartsData?.chartNewCpu?.data?.data?.sensors
 
     const [donwloadValue, setDownloadValue] = useState(0)
     const [uploadValue, setUploadValue] = useState(0)
@@ -97,18 +97,27 @@ const DashboardMiddleBox = ({ data, chartsData }: any) => {
         legend: {
             bottom: 0,
             left: 'center',
-            data: ["Veeam-BK1", "Veeam-BK2", "DNS-Nport", "CUCM"]
+            data: cpusStatus ?
+                cpusStatus?.map((item: any) => item?.device)
+                : []
         },
         series: [{
             type: 'pie',
             radius: '70%',
             center: ['50%', '38%'],
             data: cpusStatus ?
-                [{ name: "Veeam-BK1", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "Veeam-BK1")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
-                { name: "Veeam-BK2", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "Veeam-BK2")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
-                { name: "DNS-Nport", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "CUCM")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
-                { name: "CUCM", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "DNS-Nport")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) }
-                ] : [],
+                cpusStatus?.map((item: any) => {
+                    return {
+                        name: item?.device,
+                        value: parseFloat(item?.lastvalue || 0)
+                    }
+                })
+                // [{ name: "Veeam-BK1", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "Veeam-BK1")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
+                // { name: "Veeam-BK2", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "Veeam-BK2")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
+                // { name: "DNS-Nport", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "CUCM")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
+                // { name: "CUCM", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "DNS-Nport")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) }
+                // ] 
+                : [],
             emphasis: {
                 itemStyle: {
                     shadowBlur: 10,
