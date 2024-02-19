@@ -44,26 +44,49 @@ export const getChartVirtualMachines = async () => {
   return response;
 };
 
+export const getChartNewVirtualMachines = async () => {
+  const response = await axiosInstance.get("/chart/new/virtual/machines");
+
+  return response;
+};
+
 export const getChartGraph = async () => {
   const response = await axiosInstance.get("/chart/graph");
 
   return response;
 };
 
+export const getChartNewStorage = async () => {
+  const response = await axiosInstance.get("/chart/new/storage");
+
+  return response;
+};
+
 export const fetchChartsData = async () => {
-  const [healthStorage, cpusStatus, virtualMachines, chartGraph, chartNewCpu] =
-    await Promise.all([
-      getChartHealthStorage()?.catch((err) => err),
-      getChartCpus()?.catch((err) => err),
-      getChartVirtualMachines()?.catch((err) => err),
-      getChartGraph()?.catch((err) => err),
-      getChartNewCpu()?.catch((err) => err),
-    ]);
+  const [
+    healthStorage,
+    cpusStatus,
+    virtualMachines,
+    chartGraph,
+    chartNewCpu,
+    chartNewStorage,
+    newVirtualMachines,
+  ] = await Promise.all([
+    getChartHealthStorage()?.catch((err) => err),
+    getChartCpus()?.catch((err) => err),
+    getChartVirtualMachines()?.catch((err) => err),
+    getChartGraph()?.catch((err) => err),
+    getChartNewCpu()?.catch((err) => err),
+    getChartNewStorage()?.catch((err) => err),
+    getChartNewVirtualMachines()?.catch((err) => err),
+  ]);
   return {
     healthStorage,
     cpusStatus,
     virtualMachines,
     chartGraph,
     chartNewCpu,
+    chartNewStorage,
+    newVirtualMachines,
   };
 };

@@ -9,6 +9,8 @@ const ChartsWrapper = ({ data }: any) => {
     const healthStorage = data?.healthStorage?.data?.data;
     const cpusStatus = data?.cpusStatus?.data?.data
     const virtualMachines = data?.virtualMachines?.data?.data?.device
+    const newVirtualMachines = data?.newVirtualMachines?.data?.data?.sensors
+
 
     const option = {
         title: {
@@ -79,27 +81,37 @@ const ChartsWrapper = ({ data }: any) => {
         legend: {
             bottom: 0,
             left: 'center',
-            data: ['WINSRV2022', "Ubuntu-Akaam", 'Product 3'],
-            selected: {
-                'Series 1': true,
-            },
-            selectedMode: 'single'
+            data: newVirtualMachines?.map((item: any) => item?.sensor),
+            // selected: {
+            //     'Series 1': true,
+            // },
+            // selectedMode: 'single'
         },
         tooltip: {},
-        series: [{
-            data: cpusStatus?.find((item: any) => item?.name === "WINSRV2022")?.channels?.map((node: any) => parseFloat(node?.info?.data[0]?.lastvalue?.replace(/[^0-9.]/g, ""))),
-            type: 'bar',
-            name: 'WINSRV2022',
-            barMinHeight: 5
-        }, {
-            data: cpusStatus?.find((item: any) => item?.name === "Ubuntu-Akaam")?.channels?.map((node: any) => parseFloat(node?.info?.data[0]?.lastvalue?.replace(/[^0-9.]/g, ""))),
-            type: 'bar',
-            name: "Ubuntu-Akaam"
-        }, {
-            data: cpusStatus?.find((item: any) => item?.name === "PRTG-Core")?.channels?.map((node: any) => parseFloat(node?.info?.data[0]?.lastvalue?.replace(/[^0-9.]/g, ""))),
-            type: 'bar',
-            name: 'Product 3'
-        }],
+        series: newVirtualMachines?.map((item: any) => {
+            const dataVal = Math.abs(item?.lastvalue?.split(" %")[0])
+
+            return {
+                data: [dataVal],
+                type: "bar",
+                name: item?.sensor,
+                barMinHeight: 5
+            }
+        }),
+        // series: [{
+        //     data: cpusStatus?.find((item: any) => item?.name === "WINSRV2022")?.channels?.map((node: any) => parseFloat(node?.info?.data[0]?.lastvalue?.replace(/[^0-9.]/g, ""))),
+        //     type: 'bar',
+        //     name: 'WINSRV2022',
+        //     barMinHeight: 5
+        // }, {
+        //     data: cpusStatus?.find((item: any) => item?.name === "Ubuntu-Akaam")?.channels?.map((node: any) => parseFloat(node?.info?.data[0]?.lastvalue?.replace(/[^0-9.]/g, ""))),
+        //     type: 'bar',
+        //     name: "Ubuntu-Akaam"
+        // }, {
+        //     data: cpusStatus?.find((item: any) => item?.name === "PRTG-Core")?.channels?.map((node: any) => parseFloat(node?.info?.data[0]?.lastvalue?.replace(/[^0-9.]/g, ""))),
+        //     type: 'bar',
+        //     name: 'Product 3'
+        // }],
         xAxis: {
             type: 'category',
         },
