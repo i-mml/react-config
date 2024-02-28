@@ -32,7 +32,7 @@ const RoutingConfig = () => {
 
   useEffect(() => {
     if (!tokenValue || tokenValue === "") { return navigate('/login') };
-    if (user?.role === 3 && location.pathname === "/") { return navigate('/support') };
+    if (user?.role === 2 && location.pathname === "/") { return navigate('/support') };
   }, [])
 
   return (
