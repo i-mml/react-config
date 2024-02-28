@@ -13,7 +13,7 @@ const MobileSideBarView = () => {
 
 
   const SidebarList =
-    user?.role === 2 ?
+    user?.role === 0 ?
       [
         {
           id: 3,
@@ -118,7 +118,7 @@ const MobileSideBarView = () => {
 
   return (
     <div className={s.container}>
-      <div className={s.itemBox} style={user?.role === 3 ? { justifyContent: "center" } : {}}>
+      <div className={s.itemBox} style={user?.role === 0 ? { justifyContent: "center" } : {}}>
         {SidebarList?.map(
           (item: {
             id: number;
