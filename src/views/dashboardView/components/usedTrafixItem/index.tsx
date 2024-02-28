@@ -34,7 +34,7 @@ const UsedTraficItem = (props: IProps) => {
                 {hasPercent && "%"} {value}
             </div>
             <div className={s.percentSlider} >
-                <div className={`${s.percentSlierBar} ${increased ? s.redBg : s.greenBg}`} style={{ width: `${value / 1000 * 100}%` }}></div>
+                <div className={`${s.percentSlierBar} ${increased ? s.redBg : s.greenBg}`} style={{ width: `${value / 100 * 100}%` }}></div>
             </div>
 
         </div>
