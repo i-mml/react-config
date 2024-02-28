@@ -10,7 +10,7 @@ interface Iprops {
 }
 
 const AllDeviceReportBox = (props: Iprops) => {
-    const { title, data } = props
+    const { title } = props
 
     return (
         <div className={s.container}>
@@ -25,11 +25,19 @@ const AllDeviceReportBox = (props: Iprops) => {
                 <div className={s.allDeviceBox}>
                     <div className={s.offline}>
                         <StatusBox active={false} title='آفلاین' />
-                        <p>{data?.activeDevices?.offline_devices?.treesize || 0}</p>
+                        <p>
+                            {
+                                props?.offlineCount
+                            }
+                        </p>
                     </div>
                     <div className={s.online}>
                         <StatusBox active={true} title='آنلاین' />
-                        <p>{data?.activeDevices?.online_devices?.treesize || 0}</p>
+                        <p>
+                            {
+                                props?.onlineCount
+                            }
+                        </p>
                     </div>
                 </div>
             </div>

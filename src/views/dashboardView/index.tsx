@@ -33,9 +33,11 @@ const DashboardView = () => {
             {user?.role === 1 && <BannersTable />}
             {user?.role !== 1 &&
                 <div className={s.statusesBox}>
-                    <AllDeviceReportBox title='کل دستگاه ها' offlineCount={60} onlineCount={33} data={data} />
+                    <AllDeviceReportBox title='کل دستگاه ها' offlineCount={data?.activeDevices?.offline_devices?.treesize || 0} onlineCount={data?.activeDevices?.online_devices?.treesize || 0} data={data} />
                     <StatusCartItem title='ترافیک پهنا باند' value={data?.dashboardNetStatus?.data?.data?.sensors?.[0]?.lastvalue} icon="wifi" hasArrow />
-                    <StatusCartItem title='وضعیت اتصال VLANS ها' value={data?.dashboardVlanConnection?.data?.online?.sensors?.filter((item: any) => item?.status === "Up")?.length || 0} icon="zap-off" />
+                    <AllDeviceReportBox title='وضعیت اتصال VLANS ها' offlineCount={data?.dashboardVlanConnection?.data?.offline?.sensors?.filter((item: any) => item?.status === "Up")?.length || 0} onlineCount={data?.dashboardVlanConnection?.data?.online?.sensors?.filter((item: any) => item?.status === "Up")?.length || 0} data={data} />
+
+                    {/* <StatusCartItem title='وضعیت اتصال VLANS ها' value={data?.dashboardVlanConnection?.data?.online?.sensors?.filter((item: any) => item?.status === "Up")?.length || 0} icon="zap-off" /> */}
                     <StatusCartItem title='وضعیت اتصال به ISP' value={data?.dashboardPing?.data?.data?.sensors?.[0]?.lastvalue} icon="zap-off" />
                 </div>}
             {
