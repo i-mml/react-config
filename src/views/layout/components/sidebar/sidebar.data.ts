@@ -15,7 +15,7 @@ export const SidebarList = [
       "/plan/management",
       "/banner/create",
     ],
-    allowedRoles: [1, 2],
+    allowedRoles: [1, 3],
   },
 
   {
@@ -29,7 +29,7 @@ export const SidebarList = [
       "/financial-management/detail-service",
       "/financial-management/reneval-service",
     ],
-    allowedRoles: [2],
+    allowedRoles: [3],
   },
 
   {

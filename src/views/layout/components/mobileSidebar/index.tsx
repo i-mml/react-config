@@ -13,7 +13,7 @@ const MobileSideBarView = () => {
 
 
   const SidebarList =
-    user?.role === 3 ?
+    user?.role === 2 ?
       [
         {
           id: 3,
