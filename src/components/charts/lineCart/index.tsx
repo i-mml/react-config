@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import s from './style.module.scss';
 import ReactEcharts from "echarts-for-react";
 import TitleBox from '../../../views/dashboardView/components/titleBox';
-import moment from 'moment-jalaali';
+import moment from "moment-jalaali";
 
 const YearItem = ({ value, color }: { value: string, color: string }) => {
     const colorClasses: any = {
@@ -26,11 +26,13 @@ const LineChart = ({ data }: any) => {
         { id: 2, title: "کاربران", value: "users" },
         { id: 3, title: "کل شبکه", value: "all network" },
     ]
-
     const option = {
         xAxis: {
             type: 'category',
-            data: []
+            data: chartGraphData?.values?.slice(-50)?.map((item: any) => moment(item?.datetime, "M/D/YYYY h:mm:ss").format('(h:mm)|jYYYY/jMM/jDD')),
+            axisLabel: {
+                rotate: 0,
+            }
         },
         yAxis: {
             type: 'value'
@@ -104,7 +106,7 @@ const LineChart = ({ data }: any) => {
         ]
     };
     return (
-        <div className={s.container}>
+        <div className={s.container} >
             <div className={s.topBox}>
                 <TitleBox title='ترافیک شبکه' icon='/images/icons/trending-up.svg' />
                 {/* <div className={s.tabs}>
