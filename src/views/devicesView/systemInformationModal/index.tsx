@@ -41,7 +41,7 @@ const SystemInformationModal = ({ modal, toggle, objid, systemType }: { modal: b
                 {loading ? <div className={s.spinner}><Spinner /></div> :
                     systemInfomations?.[systemType?.value]?.sysinfo?.length > 0 ? <div className={s.sensorsList}>
                         <div className={s.listHeader}>
-                            <span>عنوان</span>
+                            <span>ورژن</span>
                             <span>مقدار</span>
                         </div>
                         {systemInfomations?.[systemType?.value]?.sysinfo?.map((item: any) =>
