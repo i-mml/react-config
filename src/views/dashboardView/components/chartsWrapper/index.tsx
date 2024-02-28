@@ -77,6 +77,7 @@ const ChartsWrapper = ({ data }: any) => {
         }],
 
     };
+    const maxValue = Math.max(...newVirtualMachines?.map((item: any) => parseFloat(item?.lastvalue?.split(" %")[0])));
     const barOption = {
         legend: {
             bottom: 0,
@@ -119,7 +120,11 @@ const ChartsWrapper = ({ data }: any) => {
             type: 'value',
             axisLabel: {
                 rotate: 90,
-                fontSize: 10
+                fontSize: 10,
+                formatter: function (value: any) {
+                    const percentage = (value / maxValue) * 100;
+                    return `${percentage.toFixed(0)}%`; // Adjust the number of decimal places as needed
+                }
             }
         },
         // Declare several bar series, each will be mapped
