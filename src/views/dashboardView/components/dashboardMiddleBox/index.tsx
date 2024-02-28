@@ -136,8 +136,8 @@ const DashboardMiddleBox = ({ data, chartsData }: any) => {
     };
 
     useEffect(() => {
-        setDownloadValue(+data?.netSTatus?.data?.data?.channels?.find((item: any) => item?.name === "Traffic In")?.lastvalue.split(" ")[0]?.split(",")?.join("") || 0)
-        setUploadValue(+data?.netSTatus?.data?.data?.channels?.find((item: any) => item?.name === "Traffic Out")?.lastvalue.split(" ")[0]?.split(",")?.join("") || 0)
+        setDownloadValue(+data?.netSTatus?.data?.data?.channels?.find((item: any) => item?.name === "Download Speed")?.lastvalue.split(" ")[0]?.split(",")?.join("") || 0)
+        setUploadValue(+data?.netSTatus?.data?.data?.channels?.find((item: any) => item?.name === "Upload Speed")?.lastvalue.split(" ")[0]?.split(",")?.join("") || 0)
     }, [data?.netSTatus])
 
     return (
