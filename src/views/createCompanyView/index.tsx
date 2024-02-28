@@ -269,7 +269,7 @@ const CreateCompnayView = () => {
                         <Field name="ping_device_id">
                             {({ field }: any) => (
                                 <div className={s.inputBox}>
-                                    <div className={s.label}>ping_device_id</div>
+                                    <div className={s.label}>سرعت اینترنت</div>
                                     <input
                                         {...field}
                                         className={s.input}
