@@ -3,7 +3,7 @@ import s from './style.module.scss';
 import moment from 'moment-jalaali';
 import StatusBox from '../../../../components/statusBox';
 
-const NotifListItem = ({ device = "", status = "", priority = "", downtimesince = "", defaultShow = false }) => {
+const NotifListItem = ({ device = "", message = "", priority = "", downtimesince = "", defaultShow = false }) => {
     const [isOpened, setIsOpened] = useState(defaultShow)
     const nowD = moment().format('jYYYY/jMM/jDD')
 
@@ -23,7 +23,7 @@ const NotifListItem = ({ device = "", status = "", priority = "", downtimesince 
                 </div>
                 <div className={s.subTitleBox}>
                     <div className={s.subTitle}>
-                        {status}
+                        {message}
                     </div>
                     <div className={s.date}>
                         {nowD}

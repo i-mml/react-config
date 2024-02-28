@@ -54,11 +54,14 @@
       color: #292929;
       font-size: 12px;
       font-weight: 400;
+      width: 90%;
+      word-break: break-word;
     }
     .date {
       color: #888;
       font-size: 12px;
       margin-right: 7px;
+      flex: 1;
     }
   }
   .description {
