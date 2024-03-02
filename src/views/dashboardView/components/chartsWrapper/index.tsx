@@ -19,14 +19,14 @@ const ChartsWrapper = ({ data }: any) => {
         legend: {
             bottom: 0,
             left: 'center',
-            data: healthStorage ? healthStorage?.map((item: any) => item?.sensordata?.name) : []
+            data: healthStorage?.length > 0 ? healthStorage?.map((item: any) => item?.sensordata?.name) : []
         },
         series: [{
             type: 'pie',
             radius: '65%',
             selectedMode: "single",
             center: ['50%', '40%'],
-            data: healthStorage ? healthStorage?.map((item: any) => ({ value: +item?.sensordata?.uptime?.split("%")[0], name: item?.sensordata?.name })) : [],
+            data: healthStorage?.length > 0 ? healthStorage?.map((item: any) => ({ value: +item?.sensordata?.uptime?.split("%")[0], name: item?.sensordata?.name })) : [],
             emphasis: {
                 itemStyle: {
                     shadowBlur: 10,
@@ -51,7 +51,7 @@ const ChartsWrapper = ({ data }: any) => {
         legend: {
             bottom: 0,
             left: 'center',
-            data: virtualMachines ? [virtualMachines?.find((item: any) => item?.name === "Datastore 1"), virtualMachines?.find((item: any) => item?.name === "Datastore 2"), virtualMachines?.find((item: any) => item?.name === "Datastore 3"), virtualMachines?.find((item: any) => item?.name === "Datastore 4")]?.map((item: any) => item?.name) : []
+            data: virtualMachines?.length > 0 ? [virtualMachines?.find((item: any) => item?.name === "Datastore 1"), virtualMachines?.find((item: any) => item?.name === "Datastore 2"), virtualMachines?.find((item: any) => item?.name === "Datastore 3"), virtualMachines?.find((item: any) => item?.name === "Datastore 4")]?.map((item: any) => item?.name) : []
 
         },
         series: [{
@@ -59,7 +59,7 @@ const ChartsWrapper = ({ data }: any) => {
             radius: '65%',
             selectedMode: "single",
             center: ['50%', '38%'],
-            data: virtualMachines ? [virtualMachines?.find((item: any) => item?.name === "Datastore 1"), virtualMachines?.find((item: any) => item?.name === "Datastore 2"), virtualMachines?.find((item: any) => item?.name === "Datastore 3"), virtualMachines?.find((item: any) => item?.name === "Datastore 4")]?.map((item: any) => ({ value: +item?.info?.data[0]?.lastvalue?.split(" %")[0], name: item?.name })) : [],
+            data: virtualMachines?.length > 0 ? [virtualMachines?.find((item: any) => item?.name === "Datastore 1"), virtualMachines?.find((item: any) => item?.name === "Datastore 2"), virtualMachines?.find((item: any) => item?.name === "Datastore 3"), virtualMachines?.find((item: any) => item?.name === "Datastore 4")]?.map((item: any) => ({ value: +item?.info?.data[0]?.lastvalue?.split(" %")[0], name: item?.name })) : [],
 
             emphasis: {
                 itemStyle: {
@@ -77,12 +77,12 @@ const ChartsWrapper = ({ data }: any) => {
         }],
 
     };
-    const maxValue = Math.max(...newVirtualMachines?.map((item: any) => parseFloat(item?.lastvalue?.split(" %")[0])));
+    const maxValue = newVirtualMachines?.length > 0 ? Math.max(...newVirtualMachines?.map((item: any) => parseFloat(item?.lastvalue?.split(" %")[0]))) : 0;
     const barOption = {
         legend: {
             bottom: 0,
             left: 'center',
-            data: newVirtualMachines?.map((item: any) => item?.sensor),
+            data: newVirtualMachines?.length > 0 ? newVirtualMachines?.map((item: any) => item?.sensor) : [],
             // selected: {
             //     'Series 1': true,
             // },

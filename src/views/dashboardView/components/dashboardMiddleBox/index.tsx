@@ -97,7 +97,7 @@ const DashboardMiddleBox = ({ data, chartsData }: any) => {
         legend: {
             bottom: 0,
             left: 'center',
-            data: cpusStatus ?
+            data: cpusStatus?.length > 0 ?
                 cpusStatus?.map((item: any) => item?.device)
                 : []
         },
@@ -105,7 +105,7 @@ const DashboardMiddleBox = ({ data, chartsData }: any) => {
             type: 'pie',
             radius: '70%',
             center: ['50%', '38%'],
-            data: cpusStatus ?
+            data: cpusStatus?.length > 0 ?
                 cpusStatus?.map((item: any) => {
                     return {
                         name: item?.device,
