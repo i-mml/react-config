@@ -29,7 +29,7 @@ const LineChart = ({ data }: any) => {
     const option = {
         xAxis: {
             type: 'category',
-            data: chartGraphData?.values?.slice?.slice(-50)?.some((obj: any) => 'datetime' in obj) ? chartGraphData?.values?.slice(-50)?.map((item: any) => moment(item?.datetime, "M/D/YYYY h:mm:ss").format('(h:mm)|jYYYY/jMM/jDD')) : [],
+            data: chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => moment(item?.datetime, "M/D/YYYY h:mm:ss").format('(h:mm)|jYYYY/jMM/jDD')) : [],
             axisLabel: {
                 rotate: 0,
             }
@@ -40,7 +40,7 @@ const LineChart = ({ data }: any) => {
         center: ['60%', '40%'],
         series: [
             {
-                data: chartGraphData?.values?.slice(-50)?.some((obj: any) => 'Traffic Total (volume)' in obj) ? chartGraphData?.values?.slice(-50)?.map((item: any) => item?.['Traffic Total (volume)']) : [],
+                data: chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => item?.['Traffic Total (volume)']) : [],
                 lineStyle: {
                     color: '#4CA5FF' // Gray line color for shadow
                 },
@@ -61,7 +61,7 @@ const LineChart = ({ data }: any) => {
                 // }
             },
             {
-                data: chartGraphData?.values?.slice(-50)?.some((obj: any) => 'Traffic In (volume)' in obj) ? chartGraphData?.values?.slice(-50)?.map((item: any) => item?.['Traffic In (volume)']) : [],
+                data: chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => item?.['Traffic In (volume)']) : [],
                 lineStyle: {
                     color: '#80BFFF' // Gray line color for shadow
                 },
@@ -82,7 +82,7 @@ const LineChart = ({ data }: any) => {
                 }
             },
             {
-                data: chartGraphData?.values?.slice(-50)?.some((obj: any) => 'Traffic Out (volume)' in obj) ? chartGraphData?.values?.slice(-50)?.map((item: any) => item?.['Traffic Out (volume)']) : [],
+                data: chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => item?.['Traffic Out (volume)']) : [],
                 lineStyle: {
                     color: '#007eff' // Gray line color for shadow
                 },
