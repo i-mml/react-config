@@ -7,6 +7,8 @@ const NotifListItem = ({ device = "", message = "", priority = "", downtimesince
     const [isOpened, setIsOpened] = useState(defaultShow)
     const nowD = moment().format('jYYYY/jMM/jDD')
 
+    const regex = /<div class="status">|<div class="moreicon">|<\/div>$/g;
+
     return (
         <div className={s.notifItem} onClick={() => setIsOpened(prevState => !prevState)}>
             {/* ${status ? s.offCircle : ""} */}
@@ -23,7 +25,7 @@ const NotifListItem = ({ device = "", message = "", priority = "", downtimesince
                 </div>
                 <div className={s.subTitleBox}>
                     <div className={s.subTitle}>
-                        {message?.split(`<div class="status">`)?.[1]}
+                        {message?.replace(regex, '')}
                     </div>
                     <div className={s.date}>
                         {nowD}
