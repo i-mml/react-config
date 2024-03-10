@@ -31,7 +31,7 @@ const LineChart = ({ data }: any) => {
             type: 'category',
             data: chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => moment(item?.datetime, "M/D/YYYY h:mm:ss").format('(h:mm)|jYYYY/jMM/jDD')) : [],
             axisLabel: {
-                rotate: 0,
+                rotate: 90,
             }
         },
         yAxis: {
