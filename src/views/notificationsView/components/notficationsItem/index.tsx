@@ -8,7 +8,7 @@ const NotificationItem = (props: any) => {
     const { message, message_raw, device, priority, downtimesince } = props
     const nowD = moment().format('jYYYY/jMM/jDD')
     const [isOpened, toggle] = useState(false)
-
+    console.log()
     return (
         <div className={s.notifItemContainer} >
             <div className={s.titleBox} onClick={() => toggle(pre => !pre)}>
@@ -23,7 +23,7 @@ const NotificationItem = (props: any) => {
 
             <div className={s.subTitleBox}>
                 <div className={s.subTitle}>
-                    {message}
+                    {message?.split(`<div class="status">`)?.[1]}
                 </div>
                 <div className={s.date}>
                     {nowD}

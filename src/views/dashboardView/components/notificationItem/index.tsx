@@ -23,7 +23,7 @@ const NotifListItem = ({ device = "", message = "", priority = "", downtimesince
                 </div>
                 <div className={s.subTitleBox}>
                     <div className={s.subTitle}>
-                        {message}
+                        {message?.split(`<div class="status">`)?.[1]}
                     </div>
                     <div className={s.date}>
                         {nowD}
