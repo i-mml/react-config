@@ -40,7 +40,12 @@ const FinancialManagmentView = () => {
           <RemainDate remainDay={data?.data?.remain} wholePeriod={data?.data?.hole} />
 
           <div className={s.reaminSubTitle}>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
+            <div>
+              اشتراک سرویس شما به پایان رسیده است.
+            </div>
+            <div>
+              لطفا جهت تمدید اشتراک خود از طریق لینک زیر اقدام کنید.
+            </div>
           </div>
 
           {servisList?.map((item) => (
