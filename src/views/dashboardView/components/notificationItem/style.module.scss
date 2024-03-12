@@ -56,6 +56,9 @@
       font-weight: 400;
       width: 90%;
       word-break: break-word;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
     .date {
       color: #888;
