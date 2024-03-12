@@ -79,3 +79,13 @@
     }
   }
 }
+
+.halfWidth {
+  width: 48%;
+  min-width: 150px;
+  padding: 17px 6%;
+  margin-top: 0;
+  .value {
+    color: #c31414;
+  }
+}

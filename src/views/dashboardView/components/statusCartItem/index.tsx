@@ -8,13 +8,14 @@ interface Iprops {
     hasArrow?: boolean
     arrowType?: "up" | "down"
     arrowTitle?: string;
+    halfWidth?: boolean
 }
 
 const StatusCartItem = (props: Iprops) => {
-    const { title, value, icon, hasArrow, arrowType, arrowTitle } = props
+    const { title, value, icon, hasArrow, halfWidth = false } = props
 
     return (
-        <div className={s.container}>
+        <div className={`${s.container} ${halfWidth ? s.halfWidth : ""}`}>
             <div className={s.top}>
                 <img className={s.icon} src={`/images/icons/${icon}.svg`} />
             </div>

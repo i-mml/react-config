@@ -3,6 +3,7 @@ import s from './style.module.scss';
 import UsedTraficItem from '../usedTrafixItem';
 import { rolesConsts } from '../../../../constants/user';
 import { useSelector } from 'react-redux';
+import StatusCartItem from '../statusCartItem';
 
 const DashboardTopBox = ({ data }: any) => {
     const user = useSelector((state: any) => state?.auth?.data?.user);
@@ -19,7 +20,7 @@ const DashboardTopBox = ({ data }: any) => {
             </div>
             {user?.role !== 1 &&
                 <div className={s.left}>
-                    <UsedTraficItem id={1} title="پیام‌ها و هشدارهای مهم" value={data?.notificationsList?.treesize || 0} increased={true} hasPercent={false} />
+                    <StatusCartItem title="پیام‌ها و هشدارهای مهم" value={data?.notificationsList?.treesize || 0} icon="zap-off" halfWidth />
                     {/* <UsedTraficItem id={2} title='سلامت اتصال سرویس' value={data?.healthStatus?.data?.data?.Alarms || 0} increased={false} hasPercent /> */}
                     <UsedTraficItem id={2} title='سلامت اتصال سرویس' value={data?.healthStatus?.data?.data?.sensors?.[0]?.lastvalue?.split(" %")?.[0] || 0} increased={false} hasPercent />
 
