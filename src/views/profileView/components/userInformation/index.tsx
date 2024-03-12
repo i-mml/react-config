@@ -69,7 +69,7 @@ const UserInformationTab = () => {
             />
           }
 
-          <span className={s.topBoxTitle}>شرکت پردازش داده</span>
+          <span className={s.topBoxTitle}>{data?.data?.title || "-"}</span>
         </div>
         <input type="file" accept="image/*" onChange={handleImageChange} hidden ref={inputFileRef} />
         {/* @ts-ignore */}
