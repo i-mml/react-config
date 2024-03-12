@@ -4,11 +4,12 @@ import { Spinner, Modal, ModalBody } from 'reactstrap';
 import ModalHeaderTitle from '../../../components/modalTitle';
 import s from './style.module.scss';
 import NotFoundBox from '../../../components/notFound';
+import SystemContent from '../../../components/systemInformations/System';
 
 const SystemInformationModal = ({ modal, toggle, objid, systemType }: { modal: boolean, toggle: any, objid?: number, systemType: { title: string, value: string } }) => {
     const [loading, setLoding] = useState(false)
     const [systemInfomations, setSystemInfomations] = useState<any>()
-
+    console.log(systemInfomations)
 
     const getSystemInformations = async () => {
         setLoding(true)
@@ -39,18 +40,7 @@ const SystemInformationModal = ({ modal, toggle, objid, systemType }: { modal: b
             <ModalBody className={s.modalBody}>
                 <ModalHeaderTitle title={`اطلاعات سیستم (${systemType?.title})`} handleClose={toggle} />
                 {loading ? <div className={s.spinner}><Spinner /></div> :
-                    systemInfomations?.[systemType?.value]?.sysinfo?.length > 0 ? <div className={s.sensorsList}>
-                        <div className={s.listHeader}>
-                            <span>ورژن</span>
-                            <span>مقدار</span>
-                        </div>
-                        {systemInfomations?.[systemType?.value]?.sysinfo?.map((item: any) =>
-                            <div className={s.listItem}>
-                                <span>{item?.key || "-"}</span>
-                                <span>{item?.value || "-"}</span>
-                            </div>
-                        )}
-                    </div> : <NotFoundBox />
+                    systemInfomations?.[systemType?.value]?.sysinfo?.length > 0 ? <SystemContent data={systemInfomations?.[systemType?.value]?.sysinfo} type={systemType} /> : <NotFoundBox />
                 }
             </ModalBody>
         </Modal>
