@@ -148,6 +148,7 @@ const CreateCompnayView = () => {
     const selectFiles = (event: any) => {
         setSelectedPlanFiles([...event.target.files]);
     };
+    console.log("  ")
 
     useEffect(() => {
         const fileReaders = selectedPlanFiles.map((file: any, index: number) => {
