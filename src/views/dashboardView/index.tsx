@@ -38,7 +38,7 @@ const DashboardView = () => {
                     <AllDeviceReportBox title='وضعیت اتصال VLANS ها' offlineCount={data?.dashboardVlanConnection?.data?.offline?.sensors?.filter((item: any) => item?.status === "Up")?.length || 0} onlineCount={data?.dashboardVlanConnection?.data?.online?.sensors?.filter((item: any) => item?.status === "Up")?.length || 0} data={data} />
 
                     {/* <StatusCartItem title='وضعیت اتصال VLANS ها' value={data?.dashboardVlanConnection?.data?.online?.sensors?.filter((item: any) => item?.status === "Up")?.length || 0} icon="zap-off" /> */}
-                    <StatusCartItem title='وضعیت اتصال به ISP' value={data?.dashboardPing?.data?.data?.sensors?.[0]?.lastvalue} icon="zap-off" />
+                    <StatusCartItem title='وضعیت اتصال به ISP' value={data?.dashboardPing?.data?.data?.sensors?.[0]?.lastvalue} icon="zap-off" topBoxText='PING' />
                 </div>}
             {
                 user?.role !== 1 && isMobile && <div className={s.mobileLinkWrapper}>
