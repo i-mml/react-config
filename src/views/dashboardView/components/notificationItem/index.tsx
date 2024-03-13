@@ -7,7 +7,7 @@ const NotifListItem = ({ device = "", message = "", priority = "", downtimesince
     const [isOpened, setIsOpened] = useState(defaultShow)
     const nowD = moment().format('jYYYY/jMM/jDD')
 
-    const regex = /<div class="status">|<div class="moreicon">|<\/div>$/g;
+    const regex = /<div class="status">|<div class="moreicon">|\/div>|<\/div>$/g;
 
     return (
         <div className={s.notifItem} onClick={() => setIsOpened(prevState => !prevState)}>

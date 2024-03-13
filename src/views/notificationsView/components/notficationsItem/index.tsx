@@ -9,7 +9,7 @@ const NotificationItem = (props: any) => {
     const nowD = moment().format('jYYYY/jMM/jDD')
     const [isOpened, toggle] = useState(false)
 
-    const regex = /<div class="status">|<div class="moreicon">|<\/div>$/g;
+    const regex = /<div class="status">|<div class="moreicon">|\/div>|>|<|;|<\/div>$/g;
 
     return (
         <div className={s.notifItemContainer} >
