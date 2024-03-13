@@ -58,7 +58,7 @@ const DashboardView = () => {
             {user?.role !== 1 && !chartLoading &&
                 <>
                     <LineChart data={ChartsData} />
-                    <ChartsWrapper data={ChartsData} />
+                    <ChartsWrapper data={data} chartsData={ChartsData} />
                 </>
             }
         </div>
