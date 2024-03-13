@@ -27,7 +27,7 @@ const DashboardMiddleBox = ({ data, chartsData }: any) => {
                 startAngle: 220,
                 endAngle: -40,
                 min: 0,
-                max: 10000,
+                max: donwloadValue > 50 ? 100 : donwloadValue > 10 ? 50 : donwloadValue > 0 ? 10 : 100,
                 splitNumber: 10,
                 itemStyle: {
                     color: '#007EFF',
@@ -75,7 +75,7 @@ const DashboardMiddleBox = ({ data, chartsData }: any) => {
                     offsetCenter: [0, '-8%'],
                     fontSize: 17,
                     fontWeight: 'bold',
-                    formatter: `{value}` + `${data?.netSTatus?.data?.data?.channels?.find((item: any) => item?.name === "Download Speed")?.lastvalue.split(" ")[1]?.split(",")?.join("")}`,
+                    formatter: `{value}` + `${data?.netSTatus?.data?.data?.channels?.find((item: any) => item?.name === "Download Speed")?.lastvalue.split(" ")[1]?.split(",")?.join("") || ""}`,
                     color: '#000',
                 },
                 data: [
@@ -206,14 +206,14 @@ const DashboardMiddleBox = ({ data, chartsData }: any) => {
                                 <svg xmlns="http://www.w3.org/2000/svg" width="63" height="14" viewBox="0 0 63 14" fill="none">
                                     <path d="M62.4492 0.813152C53.7433 1.95925 50.9021 6.36578 42.0234 6.86332C33.8377 7.32204 29.7232 3.09327 21.5977 3.83824C11.744 4.74164 11.1275 12.5858 1.17187 12.9135" stroke="#FE9B0E" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <p className={s.title}>Upload {`${data?.netSTatus?.data?.data?.channels?.find((item: any) => item?.name === "Upload Speed")?.lastvalue.split(" ")[1]?.split(",")?.join("")}`}</p>
+                                <p className={s.title}>Upload {`${data?.netSTatus?.data?.data?.channels?.find((item: any) => item?.name === "Upload Speed")?.lastvalue.split(" ")[1]?.split(",")?.join("") || ""}`}</p>
                                 <p className={s.value}>{uploadValue}</p>
                             </div>
                             <div className={s.section}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="60" height="14" viewBox="0 0 60 14" fill="none">
                                     <path d="M59.2227 0.813152C50.9313 1.95925 48.2254 6.36578 39.7695 6.86332C31.9736 7.32204 28.055 3.09327 20.3164 3.83824C10.932 4.74164 10.3448 12.5858 0.863281 12.9135" stroke="#007EFF" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <p className={s.title}>Download {`${data?.netSTatus?.data?.data?.channels?.find((item: any) => item?.name === "Download Speed")?.lastvalue.split(" ")[1]?.split(",")?.join("")}`}</p>
+                                <p className={s.title}>Download {`${data?.netSTatus?.data?.data?.channels?.find((item: any) => item?.name === "Download Speed")?.lastvalue.split(" ")[1]?.split(",")?.join("") || ""}`}</p>
                                 <p className={s.value}>{donwloadValue}</p>
                             </div>
                         </div>
