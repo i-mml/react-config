@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import s from "./style.module.scss";
 import { Field, Form, Formik } from "formik";
 import { useMutation, useQuery } from "react-query";
@@ -27,6 +27,7 @@ const CreateCompnayView = () => {
     const [selectedPlanFiles, setSelectedPlanFiles] = useState<any>([]);
     const [selectedPlanImages, setSelectedPlanImages] = useState(null);
     const [previews, setPreviews] = useState<any>([]);
+    const [subScriptionValue, setsubScriptionValue] = useState("")
     const [role, setRole] = useState(data?.admin?.role)
     const inputFileRef = useRef(null);
     const inputPlaneRef = useRef(null);
@@ -36,6 +37,12 @@ const CreateCompnayView = () => {
 
     const [title, setTitle] = useState("")
 
+    const handleChangeSubScriptionValue = (event: ChangeEvent<HTMLInputElement>) => {
+        const inputValue = event.target.value;
+        const numericValue = inputValue.replace(/\D/g, '');
+        const formattedValue = numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        setsubScriptionValue(formattedValue);
+    };
     const handleImageChange = (event: any) => {
         if (event.target.files && event.target.files[0]) {
             setSelectedFile(event.target.files[0])
@@ -135,7 +142,7 @@ const CreateCompnayView = () => {
         formData.append("english_name", values?.english_name)
         formData.append("description", values?.description)
         formData.append("sub_title", values?.sub_title)
-        formData.append("sub_scription", values?.sub_scription)
+        formData.append("sub_scription", subScriptionValue?.split(",")?.join(""))
         formData.append("ping_device_id", values?.ping_device_id)
         formData.append("graph_device_id", values?.graph_device_id)
         values?.id3?.split(",")?.map((item: string, index: number) => formData.append(`health_device_id_${index + 1}`, item))
@@ -148,7 +155,6 @@ const CreateCompnayView = () => {
     const selectFiles = (event: any) => {
         setSelectedPlanFiles([...event.target.files]);
     };
-    console.log("  ")
 
     useEffect(() => {
         const fileReaders = selectedPlanFiles.map((file: any, index: number) => {
@@ -233,10 +239,12 @@ const CreateCompnayView = () => {
                                 <div className={s.inputBox}>
                                     <div className={s.label}>مبلغ تمدید</div>
                                     <input
-                                        type="number"
+                                        type="text"
                                         {...field}
                                         placeholder="مبلغ تمدید"
                                         className={s.input}
+                                        value={subScriptionValue}
+                                        onChange={handleChangeSubScriptionValue}
                                     />
                                 </div>
                             )}
