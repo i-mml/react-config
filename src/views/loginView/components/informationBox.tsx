@@ -44,7 +44,7 @@ const InformationBox = () => {
     <div className={s.informationBoxContainer}>
       <div className={s.logoBox}>
 
-        <img src="/images/icons/sidebar_icon.svg" alt="Logo" className={s.logoImg} />
+        <img src="/images/icons/netport.svg" alt="Logo" className={s.logoImg} />
         <div className={s.logoText}>نت پورت</div>
       </div>
 
