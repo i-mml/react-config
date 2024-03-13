@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TitleBox from '../dashboardView/components/titleBox'
 import { getCompanyAll } from '../../api/services/company'
 import { useQuery } from 'react-query'
@@ -12,12 +12,33 @@ import SecondaryButton from '../../components/buttons/secondaryButton'
 const CompaniesView = ({ limitShow = false }: { limitShow?: boolean }) => {
     const { data } = useQuery("get-all-companies", getCompanyAll)
     const navigate = useNavigate()
+    const [isActive, setIsActive] = useState(true)
+
+    const tabsList = [
+        { id: 1, title: "شرکت‌های فعال", active: true },
+        { id: 2, title: "شرکت‌های غیرفعال", active: false },
+    ];
+
 
     return (
         <div className={`${s.container} ${limitShow && s.limitContainer}`}>
             <div className={s.titleWrappwer}>
                 <TitleBox icon='/images/icons/printer.svg' title='شرکت ها' />
                 <PrimaryButton className={s.createCompany} onClick={() => navigate("/company/create")} type="button">ایجاد شرکت</PrimaryButton>
+            </div>
+            <div className={s.tabContainer}>
+                <div className={s.TabsBox}>
+                    {tabsList?.map(({ title, id, active }) => (
+                        <div
+                            className={`${s.profileTab} ${isActive === active && s.profileActiveTab
+                                }`}
+                            onClick={() => setIsActive(active)}
+                            key={id}
+                        >
+                            {title}
+                        </div>
+                    ))}
+                </div>
             </div>
             <table className={s.tableWrapper}>
                 <thead>
@@ -36,10 +57,10 @@ const CompaniesView = ({ limitShow = false }: { limitShow?: boolean }) => {
                 <tbody>
                     {
                         limitShow ?
-                            data?.data?.slice(0, 5)?.map((item: any) =>
+                            data?.data?.filter((item: any) => item?.active === isActive)?.slice(0, 5)?.map((item: any) =>
                                 <CompanyTableItem {...item} />
                             ) :
-                            data?.data?.map((item: any) =>
+                            data?.data?.filter((item: any) => item?.active === isActive)?.map((item: any) =>
                                 <CompanyTableItem {...item} />
                             )
                     }

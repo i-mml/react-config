@@ -79,3 +79,34 @@
     display: none;
   }
 }
+
+.tabContainer {
+  background-color: white;
+}
+
+.TabsBox {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background-color: white;
+}
+
+.profileTab {
+  color: var(--colors-neutral-400, #888);
+  cursor: pointer;
+  background-color: white;
+  margin: 0 1.8%;
+  padding: 37px 0 12px;
+  font-size: 16px;
+  font-weight: 500;
+  @media (max-width: 750px) {
+    padding: 0 0 12px;
+    margin: 0;
+    margin-left: 16px;
+  }
+}
+
+.profileActiveTab {
+  color: #007eff;
+  border-bottom: 1px solid #007eff;
+}
