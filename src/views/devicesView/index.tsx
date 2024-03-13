@@ -15,7 +15,7 @@ const DevicesView = () => {
     return (
         <div className={s.container}>
             <div className={s.titleWrappwer}>
-                <TitleBox icon='/images/icons/printer.svg' title='دستگاه‌های متصل' />
+                <TitleBox icon='/images/icons/devices-list-icon.svg' title='دستگاه‌های متصل' />
                 <InputSearch hideMobile placeholder='جستجو دستگاه' value={value} setValue={setValue} />
             </div>
             <table className={s.tableWrapper}>

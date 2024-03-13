@@ -43,12 +43,12 @@ const DashboardView = () => {
             {
                 user?.role !== 1 && isMobile && <div className={s.mobileLinkWrapper}>
                     <DashboardMobileLinkBox
-                        icon='/images/connectedDeviceMobile.png'
+                        icon='/images/icons/devices-list-icon.svg'
                         link='/devices'
                         title='دستگاه‌های متصل'
                     />
                     <DashboardMobileLinkBox
-                        icon='/images/CamerasMobile.png'
+                        icon='/images/icons/camera-list-icon.svg'
                         link='/cameras'
                         title='دوربین‌ها'
                     />

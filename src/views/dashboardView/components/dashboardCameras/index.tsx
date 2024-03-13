@@ -12,7 +12,7 @@ const DashboardCameras = ({ camerasList = [] }: any) => {
 
     return (
         <div className={s.container}>
-            <TitleBox title='دوربین ها' icon='/images/icons/webcam.svg' />
+            <TitleBox title='دوربین ها' icon='/images/icons/camera-list-icon.svg' />
             {
                 camerasList?.slice(0, 4)?.map((item: any, index: number) => <CameraListItem key={item.id} title={item.title} external_link={item?.external_link} isLast={index === 3} />)
             }

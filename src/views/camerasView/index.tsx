@@ -18,7 +18,7 @@ const CamerasView = () => {
     return (
         <div className={s.container}>
             <div className={s.titleWrappwer}>
-                <TitleBox icon='/images/icons/printer.svg' title='دوربین ها' />
+                <TitleBox icon='/images/icons/camera-list-icon.svg' title='دوربین ها' />
                 <InputSearch hideMobile={true} placeholder='جستجو دوربین' value={value} setValue={setValue} />
             </div>
             <table className={s.tableWrapper}>
