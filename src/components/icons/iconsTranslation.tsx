@@ -17,7 +17,7 @@ export const iconsTranslation: any = {
     IPS: <MonitorIcon />,
     "VMware Hosts": <ServerIcon />,
     "Linux / macOS / Unix": <MonitorIcon />,
-    Windows: <MonitorIcon />,
+    Windows: <ServerIcon />,
     "Network Infrastructure": <MonitorIcon />,
     Routers: <RouterIcon />,
     "IP Phones": <MobileIcon />,

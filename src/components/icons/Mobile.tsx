@@ -2,7 +2,7 @@ import React from 'react'
 
 const MobileIcon = () => {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="33" viewBox="0 0 13 21" fill="none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="23" viewBox="0 0 13 21" fill="none">
             <g id="iphone.smartbatterycase.gen2 1" clip-path="url(#clip0_1332_2110)">
                 <g id="Group">
                     <path id="Vector" d="M10.9766 2.79297V17.8809C10.9766 18.6621 10.5176 19.1016 9.69727 19.1016H7.79297V18.7695C7.79297 18.3691 7.5293 18.0957 7.12891 18.0957H5.43945C5.0293 18.0957 4.76562 18.3691 4.76562 18.7695L4.76563 19.1016H2.86133C2.03125 19.1016 1.57227 18.6621 1.57227 17.8809V2.79297C1.57227 2.01172 2.03125 1.57227 2.86133 1.57227H9.69727C10.5176 1.57227 10.9766 2.01172 10.9766 2.79297Z" fill="white" fill-opacity="0.2125" />
