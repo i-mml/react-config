@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import s from './style.module.scss';
 import TitleBox from '../dashboardView/components/titleBox';
 import { Field, Form, Formik } from 'formik';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import SecondaryButton from '../../components/buttons/secondaryButton';
 import PrimaryButton from '../../components/buttons/primaryButton';
 import { useMutation, useQuery } from 'react-query';
@@ -33,6 +33,7 @@ const SupportCreateView = () => {
     }
 
     const [loading, setLoading] = useState(false);
+    const [searchParams] = useSearchParams();
     const navigate = useNavigate()
     const user = useSelector((state: any) => state?.auth?.data?.user);
 
@@ -58,7 +59,8 @@ const SupportCreateView = () => {
     const mutation = useMutation((e: FormInitialValueType) => postTicketSend({
         label: e.label,
         title: e.title,
-        user_id: user?.user_id
+        user_id: user?.user_id,
+        internal: searchParams?.get("isInternal") === "true"
     }).then((res) => {
         hanldeSendMessage(e, res?.data)
     }

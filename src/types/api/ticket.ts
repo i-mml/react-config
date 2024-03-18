@@ -2,6 +2,7 @@ export type TicketSendFields = {
   title: string;
   user_id: string;
   label: string;
+  internal?: boolean;
 };
 
 export type TicketEditFields = {

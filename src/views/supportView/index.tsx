@@ -22,15 +22,14 @@ const SupportView = () => {
   const [value, setValue] = useState("")
   const user = useSelector((state: any) => state?.auth?.data?.user);
 
-
   const navigate = useNavigate()
   const tabsList = user?.role === 1 ? [
     { id: 3, faTitle: "پشتیبانی داخلی", isInternal: true },
     { id: 1, faTitle: "پشتیبانی خارجی", isInternal: false },
   ] :
     [
-      { id: 1, faTitle: "پشتیبانی خارجی", isInternal: false },
       { id: 3, faTitle: "پشتیبانی داخلی", isInternal: true },
+      { id: 1, faTitle: "پشتیبانی خارجی", isInternal: false },
     ];
 
   const labelGenerator: any = {
@@ -63,7 +62,7 @@ const SupportView = () => {
             <InputSearch value={value} setValue={setValue} />
 
           </div>
-          <button className={s.sentTiketBtn} onClick={() => navigate("/support/create")}>ارسال تیکت</button>
+          <button className={s.sentTiketBtn} onClick={() => navigate(`/support/create${internal ? "" : "?isInternal=false"}`)}>ارسال تیکت</button>
         </div>
         <div className={s.tabContainer}>
           <div className={s.TabsBox}>
