@@ -80,11 +80,7 @@ const FinancialManagmentView = () => {
             کنید.
           </div>
           <div className={s.btnBox}>
-            <Link to="/financial-management/detail-service">
-              <button className={s.detailBtn}>
-                جزئیات سرویس
-              </button>
-            </Link>
+
             <Link to="/financial-management/reneval-service">
               <button className={s.renevalBtn}>
                 تمدید سرویس
