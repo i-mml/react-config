@@ -47,7 +47,9 @@ const DashboardMap = ({ planList = [] }: any) => {
     return (
         <div className={s.dashboardMapContainer}>
             <TitleBox title='نقشه' icon='/images/icons/blackMap.svg' />
-
+            <div className={s.mapTitle}>
+                {planList[currentIndex]?.plan?.title}
+            </div>
             <div className={s.sliderBox} style={{
                 transform: `scale(${zoomValue})`
             }}>
