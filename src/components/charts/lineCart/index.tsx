@@ -26,21 +26,52 @@ const LineChart = ({ data }: any) => {
         { id: 2, title: "کاربران", value: "users" },
         { id: 3, title: "کل شبکه", value: "all network" },
     ]
+    const oneMilion = 1000000
     const option = {
         xAxis: {
-            type: 'category',
-            data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => moment(item?.datetime, "M/D/YYYY h:mm:ss").format('(h:mm)|jYYYY/jMM/jDD')) : [],
+
+            data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => moment(item?.datetime, "M/D/YYYY h:mm:ss").format('h:mm')) : [],
+            // the last version of graph '(h:mm)|jYYYY/jMM/jDD'
             axisLabel: {
                 rotate: 90,
             }
         },
         yAxis: {
-            type: 'value'
+            type: 'value',
+            axisLabel: {
+                rich: {
+                    value: {
+                        color: '#333',
+                        fontSize: 12,
+                        fontWeight: 'bold'
+                    },
+                    unit: {
+                        color: '#888',
+                        fontSize: 10,
+                        fontWeight: 'normal'
+                    }
+                },
+                formatter: function (value: any) {
+                    // Convert the value to a locale string and then concatenate with ' Mb/s'
+                    // Use the rich text placeholders for the value and unit
+                    return '{value|' + value.toLocaleString() + '} {unit|Mb/s}';
+                }
+            }
         },
         center: ['60%', '40%'],
+        legend: {
+            data: ['Traffic Total (volume)', 'Traffic In (volume)', 'Traffic Out (volume)'],
+            selectedMode: true
+        },
         series: [
             {
-                data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => item?.['Traffic Total (volume)']) : [],
+                data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => Number(item?.['Traffic Total (volume)'] / oneMilion)) : [],
+                name: 'Traffic Total (volume)',
+                type: 'line',
+                stack: 'Total',
+                emphasis: {
+                    focus: 'series'
+                },
                 lineStyle: {
                     color: '#4CA5FF' // Gray line color for shadow
                 },
@@ -50,20 +81,19 @@ const LineChart = ({ data }: any) => {
                 areaStyle: {
                     color: '#B2DEFF80' // Gray color for shadow area
                 },
-                type: 'line',
-                datasetId: 'dataset_since_1950_of_germany',
                 showSymbol: false,
-                // encode: {
-                //     x: 'Year',
-                //     y: 'Income',
-                //     itemName: 'Year',
-                //     tooltip: ['Income']
-                // }
+
             },
             {
-                data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => item?.['Traffic In (volume)']) : [],
+                data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => Number(item?.['Traffic In (volume)']) / oneMilion) : [],
+                name: 'Traffic In (volume)',
+                type: 'line',
+                stack: 'Total',
+                emphasis: {
+                    focus: 'series'
+                },
                 lineStyle: {
-                    color: '#80BFFF' // Gray line color for shadow
+                    color: '#4CA5FF' // Gray line color for shadow
                 },
                 itemStyle: {
                     opacity: 0 // Make the shadow invisible
@@ -71,20 +101,18 @@ const LineChart = ({ data }: any) => {
                 areaStyle: {
                     color: '#B2DEFF80' // Gray color for shadow area
                 },
-                type: 'line',
-                datasetId: 'dataset_since_1950_of_germany',
                 showSymbol: false,
-                encode: {
-                    x: 'Year',
-                    y: 'Income',
-                    itemName: 'Year',
-                    tooltip: ['Income']
-                }
             },
             {
-                data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => item?.['Traffic Out (volume)']) : [],
+                data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => Number(item?.['Traffic Out (volume)']) / oneMilion) : [],
+                name: 'Traffic Out (volume)',
+                type: 'line',
+                stack: 'Total',
+                emphasis: {
+                    focus: 'series'
+                },
                 lineStyle: {
-                    color: '#007eff' // Gray line color for shadow
+                    color: '#4CA5FF' // Gray line color for shadow
                 },
                 itemStyle: {
                     opacity: 0 // Make the shadow invisible
@@ -92,15 +120,7 @@ const LineChart = ({ data }: any) => {
                 areaStyle: {
                     color: '#B2DEFF80' // Gray color for shadow area
                 },
-                type: 'line',
-                datasetId: 'dataset_since_1950_of_germany',
                 showSymbol: false,
-                encode: {
-                    x: 'Year',
-                    y: 'Income',
-                    itemName: 'Year',
-                    tooltip: ['Income']
-                }
             }
 
         ]
@@ -119,11 +139,11 @@ const LineChart = ({ data }: any) => {
                         </div>
                     )}
                 </div> */}
-                <div className={s.tabs}>
+                {/* <div className={s.tabs}>
                     <YearItem color='80BFFF' value='Traffic Total (volume)' />
                     <YearItem color='4CA5FF' value='Traffic In (volume)' />
                     <YearItem color='007eff' value='Traffic Out (volume)' />
-                </div>
+                </div> */}
             </div>
 
             {/* @ts-ignore */}
