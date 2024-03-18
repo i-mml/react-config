@@ -60,7 +60,7 @@ const SupportCreateView = () => {
         label: e.label,
         title: e.title,
         user_id: user?.user_id,
-        internal: searchParams?.get("isInternal") === "true"
+        internal: searchParams?.get("isInternal") && searchParams?.get("isInternal") === "false" ? false : true
     }).then((res) => {
         hanldeSendMessage(e, res?.data)
     }
