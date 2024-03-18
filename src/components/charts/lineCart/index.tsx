@@ -60,13 +60,19 @@ const LineChart = ({ data }: any) => {
         },
         center: ['60%', '40%'],
         legend: {
-            data: ['Traffic Total (volume)', 'Traffic In (volume)', 'Traffic Out (volume)'],
-            selectedMode: true
+            data: ['ترافیک کل', 'ترافیک داخلی', 'ترافیک خارجی'],
+            selectedMode: true,
+            textStyle: {
+                fontSize: 14,
+                fontWeight: 500,
+                fontFamily: "Vazirmmatn"
+            }
+
         },
         series: [
             {
                 data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => Number(item?.['Traffic Total (volume)'] / oneMilion)) : [],
-                name: 'Traffic Total (volume)',
+                name: 'ترافیک کل',
                 type: 'line',
                 stack: 'Total',
                 emphasis: {
@@ -86,7 +92,7 @@ const LineChart = ({ data }: any) => {
             },
             {
                 data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => Number(item?.['Traffic In (volume)']) / oneMilion) : [],
-                name: 'Traffic In (volume)',
+                name: 'ترافیک داخلی',
                 type: 'line',
                 stack: 'Total',
                 emphasis: {
@@ -105,7 +111,7 @@ const LineChart = ({ data }: any) => {
             },
             {
                 data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => Number(item?.['Traffic Out (volume)']) / oneMilion) : [],
-                name: 'Traffic Out (volume)',
+                name: 'ترافیک خارجی',
                 type: 'line',
                 stack: 'Total',
                 emphasis: {
