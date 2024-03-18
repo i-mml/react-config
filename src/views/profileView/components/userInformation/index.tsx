@@ -10,6 +10,13 @@ import { useSelector } from "react-redux";
 import { EditUserFields } from "../../../../types/api/user";
 import { Link, useNavigate } from "react-router-dom";
 
+const rolesTranslation: any = {
+  0: "کارمند",
+  1: "مدیرعامل",
+  2: "مدیر",
+  3: "ادمین"
+}
+
 const UserInformationTab = () => {
   const navigate = useNavigate()
   const authData = useSelector((state: any) => state?.auth?.data)
@@ -104,18 +111,14 @@ const UserInformationTab = () => {
               {({ field }: any) => (
                 <div className={s.inputBox}>
                   <div className={s.label}>نقش</div>
-                  <select
-                    className={s.select}
+                  <input
+                    type="text"
                     {...field}
-                    defaultValue={data?.admin?.role}
-                    value={role}
+                    className={s.input}
+                    value={rolesTranslation[role]}
+                    disabled
                     onChange={(e) => setRole(e.target.value)}
-                  >
-                    <option value={0}>کارمند</option>
-                    <option value={3}>ادمین</option>
-                    <option value={2}>مدیر</option>
-                    <option value={1}>مدیرعامل</option>
-                  </select>
+                  />
                 </div>
               )}
             </Field>
