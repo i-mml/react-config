@@ -265,7 +265,7 @@ const ChartsWrapper = ({ data, chartsData }: any) => {
                 rotate: 90,
                 fontSize: 10,
                 formatter: function (value: any) {
-                    const percentage = (value / maxValue) * 100;
+                    const percentage = ((value / maxValue) * 100) > 100 ? 100 : (value / maxValue) * 100;
                     return `${percentage.toFixed(0)}%`; // Adjust the number of decimal places as needed
                 }
             }
