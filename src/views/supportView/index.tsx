@@ -23,13 +23,12 @@ const SupportView = () => {
   const user = useSelector((state: any) => state?.auth?.data?.user);
 
   const navigate = useNavigate()
-  const tabsList = user?.role === 1 ? [
+  const tabsList = user?.role === 3 || user?.role === 1 ? [
     { id: 3, faTitle: "پشتیبانی داخلی", isInternal: true },
     { id: 1, faTitle: "پشتیبانی خارجی", isInternal: false },
   ] :
     [
       { id: 3, faTitle: "پشتیبانی داخلی", isInternal: true },
-      { id: 1, faTitle: "پشتیبانی خارجی", isInternal: false },
     ];
 
   const labelGenerator: any = {

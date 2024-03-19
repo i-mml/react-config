@@ -61,7 +61,7 @@ const SupportCreateView = () => {
         user_id: user?.user_id,
         internal: searchParams?.get("isInternal") && searchParams?.get("isInternal") === "false" ? false : true,
         device_id: e.device_id,
-        companeyId: searchParams?.get("isInternal") && searchParams?.get("isInternal") === "false" ? null : e.companeyId as any
+        companeyId: searchParams?.get("isInternal") && searchParams?.get("isInternal") === "false" ? e.companeyId : null as any
     }).then((res) => {
         hanldeSendMessage(e, res?.data)
     }
@@ -104,7 +104,6 @@ const SupportCreateView = () => {
                             )}
                         </Field>
                         {
-                            user?.role !== 1 &&
                             <Field name="device_id">
                                 {({ field }: any) => (
                                     <div className={s.inputBox}>

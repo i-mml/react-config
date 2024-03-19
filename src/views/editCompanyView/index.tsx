@@ -14,7 +14,6 @@ import { postPlanCreate } from "../../api/services/plan";
 
 const EditCompnayView = ({ data, plans, id }: any) => {
     const navigate = useNavigate()
-
     const createNewCompanyMutation = useMutation((e: any) => putCompanyEdit(e).then(res => { handleCreateAdmin(res?.data?.ID) }).catch(err => err));
     const createNewAdminMutation = useMutation((e: any) => postAdminRegister(e).catch(err => err));
     const createNewItManMutation = useMutation((e: any) => postAdminRegister(e).then(() => { toast.success("ایجاد شرکت و ادمین ها با موفقیت انجام شد.") }).catch(err => err));
@@ -189,10 +188,9 @@ const EditCompnayView = ({ data, plans, id }: any) => {
             <div className={s.form}>
                 <Formik
                     initialValues={{
-                        sub_title: data?.data?.sub_title,
-                        english_name: data?.data?.english_name,
-                        description: data?.data?.description,
+                        ...data?.data,
                         sub_scription: Number(data?.data?.sub_scription),
+
                     }}
                     innerRef={formRef}
                     onSubmit={(value: any) => {
@@ -239,10 +237,10 @@ const EditCompnayView = ({ data, plans, id }: any) => {
                                 </div>
                             )}
                         </Field>
-                        <Field name="id1">
+                        <Field name="graph_device_id">
                             {({ field }: any) => (
                                 <div className={s.inputBox}>
-                                    <div className={s.label}>id 1</div>
+                                    <div className={s.label}>graph_device_id</div>
                                     <input
                                         {...field}
                                         className={s.input}
@@ -251,10 +249,10 @@ const EditCompnayView = ({ data, plans, id }: any) => {
                                 </div>
                             )}
                         </Field>
-                        <Field name="id2">
+                        <Field name="ping_device_id">
                             {({ field }: any) => (
                                 <div className={s.inputBox}>
-                                    <div className={s.label}>id 2</div>
+                                    <div className={s.label}>ping_device_id</div>
                                     <input
                                         {...field}
                                         className={s.input}
@@ -263,14 +261,122 @@ const EditCompnayView = ({ data, plans, id }: any) => {
                                 </div>
                             )}
                         </Field>
-                        <Field name="id3">
+                        <Field name="health_device_id_1">
                             {({ field }: any) => (
                                 <div className={s.inputBox}>
-                                    <div className={s.label}>id 3</div>
+                                    <div className={s.label}>health_device_id_1</div>
                                     <input
                                         {...field}
                                         className={s.input}
-                                        placeholder="2540,478,680"
+                                        placeholder="number"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="health_device_id_2">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>health_device_id_2</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="number"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="health_device_id_3">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>health_device_id_3</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="number"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="health_device_id_4">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>health_device_id_4</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="number"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="health_device_id_5">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>health_device_id_5</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="number"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="health_device_id_6">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>health_device_id_6</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="number"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="health_device_id_7">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>health_device_id_7</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="number"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="health_device_id_8">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>health_device_id_8</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="number"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="health_device_id_9">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>health_device_id_9</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="number"
+                                    />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="health_device_id_10">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>health_device_id_10</div>
+                                    <input
+                                        {...field}
+                                        className={s.input}
+                                        placeholder="number"
                                     />
                                 </div>
                             )}
@@ -556,7 +662,7 @@ const EditCompnayView = ({ data, plans, id }: any) => {
                         <div className={s.btnBox}>
                             <PrimaryButton type="submit" className={s.saveBtn} disabled={selectedFile === "" && createNewCompanyMutation.isLoading || createNewAdminMutation.isLoading}>
                                 {
-                                    createNewAdminMutation.isLoading || createNewCompanyMutation.isLoading ? <img src='/images/icons/loadingLines.svg' /> : "ایجاد"}
+                                    createNewAdminMutation.isLoading || createNewCompanyMutation.isLoading ? <img src='/images/icons/loadingLines.svg' /> : "ثبت"}
                             </PrimaryButton>
 
                             <SecondaryButton className={s.cancelBtn} onClick={() => navigate("/")} disabled={createNewCompanyMutation.isLoading} >
