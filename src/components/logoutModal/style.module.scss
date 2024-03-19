@@ -11,7 +11,6 @@
   }
   .btn {
     width: 100%;
-    margin-top: 86px;
     background-color: #c31414;
     border: none;
     outline: none;
@@ -21,4 +20,9 @@
     color: #fff;
     border-radius: 10px;
   }
+}
+.modalIcon {
+  margin: 25px auto;
+  display: block;
+  width: 60px;
 }
