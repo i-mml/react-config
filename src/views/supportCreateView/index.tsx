@@ -37,10 +37,9 @@ const SupportCreateView = () => {
     const navigate = useNavigate()
     const user = useSelector((state: any) => state?.auth?.data?.user);
 
-    const queryKey = user?.role === 1 ? "get-all-companies" : "get-all-device"
-    const queryFunc = user?.role === 1 ? getCompanyAll : getDeviceAll
+    const { data: companiesData, isLoading } = useQuery<any>(user?.role === 1 || user?.role === 3 ? "get-all-companies" : "", user?.role === 1 || user?.role === 3 ? getCompanyAll : () => { })
+    const { data: devicesData } = useQuery<any>("get-all-device", getDeviceAll)
 
-    const { data, isLoading } = useQuery<any>(queryKey, queryFunc as any)
 
 
     const hanldeSendMessage = async (fields: FormInitialValueType, response: any) => {
@@ -113,7 +112,7 @@ const SupportCreateView = () => {
                                             {...field}
                                         >
                                             {
-                                                data?.devices?.map((item: any) => <option value={`${item?.objid}`} key={item?.objid}>{item?.name || "-"}</option>)
+                                                devicesData?.devices?.map((item: any) => <option value={`${item?.objid}`} key={item?.objid}>{item?.name || "-"}</option>)
                                             }
                                         </select>
                                     </div>
@@ -130,7 +129,7 @@ const SupportCreateView = () => {
                                             {...field}
                                         >
                                             {
-                                                data?.data?.map((item: any) => <option value={`${item?.ID}`} key={item?.Id}>{item?.title || "-"}</option>)
+                                                companiesData?.data?.map((item: any) => <option value={`${item?.ID}`} key={item?.Id}>{item?.title || "-"}</option>)
                                             }
                                         </select>
                                     </div>
