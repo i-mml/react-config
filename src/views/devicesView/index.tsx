@@ -6,6 +6,7 @@ import { useQuery } from 'react-query';
 import { getDeviceAll } from '../../api/services/devices';
 import InputSearch from '../../components/searchInput';
 import TablePagination from '../../components/pagination';
+import { isMobile } from 'react-device-detect';
 
 const DevicesView = () => {
     const { data } = useQuery("get-all-device", getDeviceAll)
@@ -22,8 +23,10 @@ const DevicesView = () => {
                 <thead>
                     <tr>
                         <th className={s.deviceTh}>نام دستگاه</th>
-                        <th>وضعیت</th>
-                        <th>سنسور</th>
+                        <th className={s.statusTh}>
+                            {isMobile ? "سنسور/وضعیت" : "وضعیت"}
+                        </th>
+                        <th className={s.hideMobile}>سنسور</th>
                         <th className={s.hideMobile} style={{ width: "40%", textAlign: "center" }}>اطلاعات سیستم</th>
                     </tr>
                 </thead>

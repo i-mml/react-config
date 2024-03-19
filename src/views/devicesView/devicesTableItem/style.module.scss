@@ -10,17 +10,26 @@
     .nameValue {
       display: block;
       margin-right: 8px;
-      width: 80%;
+      width: fit-content;
+      max-width: 80%;
+      direction: ltr;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
 
       @media (max-width: 750px) {
-        width: 90px;
+        max-width: 160px;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
       }
+    }
+  }
+  .statusTd {
+    @media (max-width: 750px) {
+      display: grid;
+      place-items: center;
+      gap: 10px;
     }
   }
   .statusBox {

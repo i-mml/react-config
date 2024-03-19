@@ -28,6 +28,12 @@
       width: 10% !important;
       overflow: hidden;
     }
+    .statusTh {
+      @media (max-width: 750px) {
+        width: 33% !important;
+        text-align: center;
+      }
+    }
     & tbody tr {
       border-bottom: 1px solid #e7e7e7;
     }

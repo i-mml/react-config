@@ -4,6 +4,7 @@ import SensorsModal from '../sensorsModal';
 import SystemInformationModal from '../systemInformationModal';
 import MonitorIcon from '../../../components/icons/Monitor';
 import { iconsTranslation } from '../../../components/icons/iconsTranslation';
+import { isMobile } from 'react-device-detect';
 
 const DeviceTableItem = ({ name, icon, fold, objid, tags, group, status }: any) => {
     const [modal, setModal] = useState(false);
@@ -25,13 +26,17 @@ const DeviceTableItem = ({ name, icon, fold, objid, tags, group, status }: any) 
                     <span className={s.nameValue}>{name}</span>
                 </div>
             </td>
-            <td>
+            <td className={s.statusTd}>
                 <div className={`${s.statusBox} ${status !== "Up" ? s.statusBoxOffline : ""}`}>
                     <div className={s.statusBadge}></div>
                     <div className={s.status}>{status === "Up" ? "آنلاین" : "آفلاین"}</div>
                 </div>
+                {isMobile &&
+                    <div className={s.link} onClick={toggle}>
+                        سنسور PIR
+                    </div>}
             </td>
-            <td>
+            <td className={s.hideMobile}>
                 <div className={s.link} onClick={toggle}>
                     سنسور PIR
                 </div>
