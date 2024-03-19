@@ -146,7 +146,7 @@ const EditCompnayView = ({ data, plans, id }: any) => {
         formData.append("health_device_id_10", values?.health_device_id_10)
         formData.append("active", values?.active)
 
-        formData.append("logo", selectedFile !== "" ? selectedFile : process.env.REACT_APP_IMAGE_BASE_URL + data?.data?.logo)
+        formData.append("logo", selectedFile !== "" ? selectedFile : data?.data?.logo)
 
 
         await createNewCompanyMutation.mutate(formData)
