@@ -11,6 +11,7 @@ import { isMobile } from 'react-device-detect';
 import ReactECharts from 'echarts-for-react';
 import TitleBox from '../titleBox';
 import { useSelector } from 'react-redux';
+import CustomPieChart from '../../../../components/pieCharts';
 
 const DashboardMiddleBox = ({ data, chartsData }: any) => {
     const user = useSelector((state: any) => state?.auth?.data?.user);
@@ -234,7 +235,21 @@ const DashboardMiddleBox = ({ data, chartsData }: any) => {
                     <NotificationsBox notifications={data?.notificationsList?.sensors} />
                     <div className={s.diskHealth}>
                         <TitleBox title='سلامت سرور مجازی' />
-                        <ReactECharts option={pieOptions} />
+                        <CustomPieChart
+                            data={
+                                cpusStatus?.length > 0 ?
+                                    cpusStatus?.map((item: any) => {
+                                        return {
+                                            name: item?.device,
+                                            value: parseFloat(item?.lastvalue || 0)
+                                        }
+                                    })
+                                    : []
+                            }
+                            legendData={cpusStatus?.length > 0 ?
+                                cpusStatus?.map((item: any) => item?.device)
+                                : []}
+                        />
                     </div>
                 </div>}
 
