@@ -14,7 +14,7 @@ import { postPlanCreate } from "../../api/services/plan";
 
 const EditCompnayView = ({ data, plans, id }: any) => {
     const navigate = useNavigate()
-    const createNewCompanyMutation = useMutation((e: any) => putCompanyEdit(e).then(res => { handleCreateAdmin(res?.data?.ID) }).catch(err => err));
+    const createNewCompanyMutation = useMutation((e: any) => putCompanyEdit(e));
     const createNewAdminMutation = useMutation((e: any) => postAdminRegister(e).catch(err => err));
     const createNewItManMutation = useMutation((e: any) => postAdminRegister(e).then(() => { toast.success("ایجاد شرکت و ادمین ها با موفقیت انجام شد.") }).catch(err => err));
     const createPlanMutation = useMutation((e: any) => postPlanCreate(e).then(() => { toast.success("پلن با موفقیت آپلود شد.") }).catch(err => err));
@@ -132,11 +132,22 @@ const EditCompnayView = ({ data, plans, id }: any) => {
         formData.append("description", values?.description)
         formData.append("sub_title", values?.sub_title)
         formData.append("sub_scription", values?.sub_scription)
-        formData.append("id_1", values?.id1)
-        formData.append("id_2", values?.id2)
-        formData.append("id_3", values?.id3?.split(","))
+        formData.append("ping_device_id", values?.ping_device_id)
+        formData.append("graph_device_id", values?.graph_device_id)
+        formData.append("health_device_id_1", values?.health_device_id_1)
+        formData.append("health_device_id_2", values?.health_device_id_2)
+        formData.append("health_device_id_3", values?.health_device_id_3)
+        formData.append("health_device_id_4", values?.health_device_id_4)
+        formData.append("health_device_id_5", values?.health_device_id_5)
+        formData.append("health_device_id_6", values?.health_device_id_6)
+        formData.append("health_device_id_7", values?.health_device_id_7)
+        formData.append("health_device_id_8", values?.health_device_id_8)
+        formData.append("health_device_id_9", values?.health_device_id_9)
+        formData.append("health_device_id_10", values?.health_device_id_10)
+        formData.append("active", values?.active)
 
-        formData.append("logo", selectedFile)
+        formData.append("logo", selectedFile !== "" ? selectedFile : process.env.REACT_APP_IMAGE_BASE_URL + data?.data?.logo)
+
 
         await createNewCompanyMutation.mutate(formData)
     }
@@ -378,6 +389,20 @@ const EditCompnayView = ({ data, plans, id }: any) => {
                                         className={s.input}
                                         placeholder="number"
                                     />
+                                </div>
+                            )}
+                        </Field>
+                        <Field name="active">
+                            {({ field }: any) => (
+                                <div className={s.inputBox}>
+                                    <div className={s.label}>وضعیت شرکت</div>
+                                    <select
+                                        className={s.select}
+                                        {...field}
+                                    >
+                                        <option value="true" defaultChecked>فعال</option>
+                                        <option value="false">غیرفعال</option>
+                                    </select>
                                 </div>
                             )}
                         </Field>
