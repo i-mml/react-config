@@ -278,20 +278,6 @@ const ChartsWrapper = ({ data, chartsData }: any) => {
 
     return (
         <div className={s.smallBoxWrapper}>
-            <div className={s.smallBox}>
-                <TitleBox title='سلامت دیسک ها' />
-                <ReactEcharts option={option} />
-            </div>
-            <div className={s.smallBox}>
-                <TitleBox title='نمودار ماشین های مجازی' />
-                <ReactEcharts option={barOption} />
-            </div>
-            <div className={s.smallBox}>
-                <TitleBox title='حجم دیسک سرور مجازی' />
-
-                <ReactEcharts option={diskUsageOption} />
-            </div>
-
             {isMobile && user?.role !== 1 &&
                 <div className={s.notifications}>
                     <div className={s.speedTest}>
@@ -316,6 +302,24 @@ const ChartsWrapper = ({ data, chartsData }: any) => {
                             </div>
                         </div>
                     </div>
+                </div>}
+            <div className={s.smallBox}>
+                <TitleBox title='سلامت دیسک ها' />
+                <ReactEcharts option={option} />
+            </div>
+            <div className={s.smallBox}>
+                <TitleBox title='نمودار ماشین های مجازی' />
+                <ReactEcharts option={barOption} />
+            </div>
+            <div className={s.smallBox}>
+                <TitleBox title='حجم دیسک سرور مجازی' />
+
+                <ReactEcharts option={diskUsageOption} />
+            </div>
+
+            {isMobile && user?.role !== 1 &&
+                <div className={s.notifications}>
+
                     <div className={s.diskHealth}>
                         <TitleBox title='سلامت سرور مجازی' />
                         <ReactEcharts option={pieOptions} />
