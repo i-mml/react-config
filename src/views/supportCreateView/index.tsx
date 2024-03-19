@@ -50,7 +50,6 @@ const SupportCreateView = () => {
         formData.append("sender", response?.user_id)
         formData.append("ticket_id", response?.ID)
         formData.append("type", "t")
-        formData.append(user?.role !== 1 ? "device_id" : "companeyId", user?.role !== 1 ? fields.device_id : fields.companeyId as any)
 
         postMessageCreate(formData).then(res => navigate(`/support/${res?.data?.ticket_id}`))
     }
@@ -60,7 +59,9 @@ const SupportCreateView = () => {
         label: e.label,
         title: e.title,
         user_id: user?.user_id,
-        internal: searchParams?.get("isInternal") && searchParams?.get("isInternal") === "false" ? false : true
+        internal: searchParams?.get("isInternal") && searchParams?.get("isInternal") === "false" ? false : true,
+        device_id: e.device_id,
+        companeyId: searchParams?.get("isInternal") && searchParams?.get("isInternal") === "false" ? null : e.companeyId as any
     }).then((res) => {
         hanldeSendMessage(e, res?.data)
     }
@@ -120,7 +121,7 @@ const SupportCreateView = () => {
                                 )}
                             </Field>
                         }
-                        {user?.role === 1 &&
+                        {searchParams?.get("isInternal") && searchParams?.get("isInternal") === "false" &&
                             <Field name="companeyId">
                                 {({ field }: any) => (
                                     <div className={s.inputBox}>

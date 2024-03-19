@@ -3,6 +3,8 @@ export type TicketSendFields = {
   user_id: string;
   label: string;
   internal?: boolean;
+  device_id?: any;
+  companeyId?: any;
 };
 
 export type TicketEditFields = {
