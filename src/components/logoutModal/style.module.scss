@@ -25,4 +25,7 @@
   margin: 25px auto;
   display: block;
   width: 60px;
+  @media (max-width: 750px) {
+    width: 38px;
+  }
 }
