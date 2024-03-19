@@ -10,9 +10,11 @@ import SecondaryButton from "../../components/buttons/secondaryButton";
 import TitleBox from "../dashboardView/components/titleBox";
 import { postAdminRegister } from "../../api/services/admin";
 import { toast } from "react-toastify";
-import { postPlanCreate } from "../../api/services/plan";
+import { patchPlanActive, postPlanCreate } from "../../api/services/plan";
+import LoadingPage from "../../components/loadingPage";
+import { Spinner } from "reactstrap";
 
-const EditCompnayView = ({ data, plans, id }: any) => {
+const EditCompnayView = ({ data, plans, id, reloadData, loading }: any) => {
     const navigate = useNavigate()
     const createNewCompanyMutation = useMutation((e: any) => putCompanyEdit(e));
     const createNewAdminMutation = useMutation((e: any) => postAdminRegister(e).catch(err => err));
@@ -156,6 +158,10 @@ const EditCompnayView = ({ data, plans, id }: any) => {
         setSelectedPlanFiles([...event.target.files]);
     };
 
+    const handleDeletePlan = async (id: number) => {
+        await patchPlanActive(id)?.then(() => reloadData())
+    }
+
     useEffect(() => {
         const fileReaders = selectedPlanFiles.map((file: any, index: number) => {
             const reader = new FileReader();
@@ -175,7 +181,13 @@ const EditCompnayView = ({ data, plans, id }: any) => {
         };
     }, [selectedPlanFiles]);
 
-
+    if (
+        loading
+    ) return <div className={s.userInformationContainer}>
+        <div className={s.loadingBox}>
+            <Spinner color='info' />
+        </div>
+    </div>
     return (
         <div className={s.userInformationContainer}>
             <TitleBox title="ایجاد شرکت جدید" />
@@ -434,10 +446,20 @@ const EditCompnayView = ({ data, plans, id }: any) => {
                         </div>
                         <div className={s.selectedPlanImageList} >
                             {plans?.map((item: any, index: number) => (
-                                <img key={index} src={process.env.REACT_APP_IMAGE_BASE_URL + item?.plan?.image} alt="preview" className={s.selectedPlanImage} />
+                                <div className={s.planBox}>
+                                    <img key={index} src={process.env.REACT_APP_IMAGE_BASE_URL + item?.plan?.image} alt="preview" className={s.selectedPlanImage} />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                                        onClick={() => handleDeletePlan(id)}
+                                    ><path fill="red" d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6zM8 9h8v10H8zm7.5-5l-1-1h-5l-1 1H5v2h14V4z" /></svg>
+                                </div>
                             ))}
                             {previews.map((preview: any, index: number) => (
-                                <img key={index} src={preview} alt="preview" className={s.selectedPlanImage} />
+                                <div className={s.planBox}>
+                                    <img key={index} src={preview} alt="preview" className={s.selectedPlanImage} />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                                        onClick={() => setPreviews((prev: any) => (prev?.filter((node: any, nodeIndex: number) => nodeIndex !== index)))}
+                                    ><path fill="red" d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6zM8 9h8v10H8zm7.5-5l-1-1h-5l-1 1H5v2h14V4z" /></svg>
+                                </div>
                             ))}
                         </div>
 

@@ -25,3 +25,11 @@ export const postPlanCreate = async (e: CreatePlanFields) => {
 
   return response;
 };
+
+export const patchPlanActive = async (planId: any) => {
+  const response = await axiosInstance
+    .patch(`/plan/active?id=${planId}`)
+    .then((res) => res?.data?.data);
+
+  return response;
+};
