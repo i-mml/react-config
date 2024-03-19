@@ -17,15 +17,17 @@
 .statusBox {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: fit-content;
-  margin-right: auto;
   background-color: #ecfdf3;
-  padding: 2px 7px;
+  padding: 0px 7px;
   border-radius: 16px;
+  width: 56px;
+  height: 21px;
+  margin-right: auto;
   .statusBadge {
-    width: 6px;
-    height: 6px;
-    margin-left: 4px;
+    width: 8px;
+    height: 8px;
     background-color: #36976a;
     border-radius: 50%;
   }
