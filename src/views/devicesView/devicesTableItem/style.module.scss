@@ -40,7 +40,8 @@
     background-color: #ecfdf3;
     padding: 0px 7px;
     border-radius: 16px;
-    width: 56px;
+    width: fit-content;
+    gap: 4px;
     height: 21px;
     .statusBadge {
       width: 8px;
