@@ -31,6 +31,9 @@
       & svg {
         width: 20px;
         height: 20px;
+        & path {
+          stroke: #585858;
+        }
       }
     }
     .title {
@@ -45,10 +48,9 @@
       color: #007eff;
     }
     .iconBox {
-      background-color: #198bff;
       & svg {
         & path {
-          stroke: #fff;
+          stroke: #007eff;
         }
       }
     }
