@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import moment from "moment-jalaali";
 import InputSearch from "../../components/searchInput";
 import { useQuery } from "react-query";
-import { getTicketAll } from "../../api/services/ticket";
+import { getAcceptedTicket, getTicketAll } from "../../api/services/ticket";
 import { Spinner } from "reactstrap";
 import TablePagination from "../../components/pagination";
 import { useSelector } from "react-redux";
@@ -15,12 +15,13 @@ moment.loadPersian();
 
 
 const SupportView = () => {
+  const user = useSelector((state: any) => state?.auth?.data?.user);
+  console.log(user)
   const [internal, setInternal] = useState(true)
-  const { data: tickets, isLoading } = useQuery("tickets-list", getTicketAll);
+  const { data: tickets, isLoading } = useQuery("tickets-list", user?.role === 1 ? () => getTicketAll() : () => getAcceptedTicket(`user_id=${user?.user_id}`));
   const pageSize = 30;
   const [page, setPage] = useState(0)
   const [value, setValue] = useState("")
-  const user = useSelector((state: any) => state?.auth?.data?.user);
 
   const navigate = useNavigate()
   const tabsList = user?.role === 3 || user?.role === 1 ? [

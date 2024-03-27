@@ -27,7 +27,7 @@ export const putTicketEdit = async (e: TicketEditFields) => {
 
 export const getAcceptedTicket = async (e: string) => {
   const response = await axiosInstance
-    .get(`/ticket/?${e}`)
+    .get(`/ticket/my/ticket?${e}`)
     .then((res) => res?.data);
 
   return response;
