@@ -10,6 +10,7 @@ import WifiIcon from "./Wifi";
 export const iconsTranslation: any = {
     VMware: <ServerIcon />,
     Swtiches: <SwtichesIcon />,
+    Switches: <SwtichesIcon />,
     "SIP Servers (CUCM)": <PhoneIcon />,
     Clients: <MonitorIcon />,
     Printers: <PrinterIcon />,

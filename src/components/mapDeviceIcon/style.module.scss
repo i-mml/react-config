@@ -20,6 +20,14 @@
   @media (max-width: 750px) {
     left: 3px;
   }
+  svg {
+    width: 16px;
+    height: 16px;
+
+    path {
+      fill: white;
+    }
+  }
 }
 
 .modalContainer {
