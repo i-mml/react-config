@@ -114,6 +114,12 @@
           background: #fff;
         }
       }
+      .mapNameInputBox {
+        width: 100%;
+        .input {
+          width: 100%;
+        }
+      }
       .textAreaBox {
         background-color: white;
         width: 100%;
@@ -204,7 +210,13 @@
   align-items: center;
   justify-content: center;
   gap: 3px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  .planName {
+    margin-bottom: 7px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+  }
   svg {
     cursor: pointer;
   }
@@ -213,4 +225,7 @@
   display: grid;
   place-items: center;
   height: 80vh;
+}
+.uploadImageBox {
+  text-align: center;
 }

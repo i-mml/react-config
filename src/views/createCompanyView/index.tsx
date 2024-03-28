@@ -50,7 +50,7 @@ const CreateCompnayView = () => {
             setSelectedImage(URL.createObjectURL(event.target.files[0]));
         }
     };
-
+    console.log(formRef?.current?.values?.["plan_title_0"])
     const handleCreateAdmin = async (company_id: any) => {
         const values = formRef?.current?.values
 
@@ -130,7 +130,7 @@ const CreateCompnayView = () => {
             planCreateBody.append("company_id", company_id)
             planCreateBody.append("position", `${index + 1}`)
             planCreateBody.append("image", item)
-            planCreateBody.append("title", "")
+            planCreateBody.append("title", values?.[`plan_title_${index}`])
             createPlanMutation.mutate(planCreateBody)
         })
     }
@@ -455,7 +455,24 @@ const CreateCompnayView = () => {
                         </div>
                         <div className={s.selectedPlanImageList} >
                             {previews.map((preview: any, index: number) => (
-                                <img key={index} src={preview} alt="preview" className={s.selectedPlanImage} />
+                                <div className={s.uploadImageBox}>
+                                    <img key={index} src={preview} alt="preview" className={s.selectedPlanImage} />
+                                    <Field name={`plan_title_${index}`}>
+                                        {({ field }: any) => (
+                                            <div className={`${s.inputBox} ${s.mapNameInputBox}`}>
+                                                <div className={s.label}>عنوان نقشه</div>
+                                                <input
+                                                    {...field}
+                                                    className={s.input}
+                                                    placeholder="عنوان نقشه"
+                                                />
+                                            </div>
+                                        )}
+                                    </Field>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                                        onClick={() => setPreviews((prev: any) => (prev?.filter((node: any, nodeIndex: number) => nodeIndex !== index)))}
+                                    ><path fill="red" d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6zM8 9h8v10H8zm7.5-5l-1-1h-5l-1 1H5v2h14V4z" /></svg>
+                                </div>
                             ))}
                         </div>
 

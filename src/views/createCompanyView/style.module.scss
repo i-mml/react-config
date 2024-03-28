@@ -113,6 +113,12 @@
           background: #fff;
         }
       }
+      .mapNameInputBox {
+        width: 100%;
+        .input {
+          width: 100%;
+        }
+      }
       .textAreaBox {
         background-color: white;
         width: 100%;
@@ -196,4 +202,7 @@
     margin-bottom: 20px;
     border-radius: 14px;
   }
+}
+.uploadImageBox {
+  text-align: center;
 }

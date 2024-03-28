@@ -122,7 +122,7 @@ const EditCompnayView = ({ data, plans, id, reloadData, loading }: any) => {
             planCreateBody.append("company_id", company_id)
             planCreateBody.append("position", `${index + 1}`)
             planCreateBody.append("image", item)
-            planCreateBody.append("title", "")
+            planCreateBody.append("title", values?.[`plan_title_${index}`])
             createPlanMutation.mutate(planCreateBody)
         })
     }
@@ -448,14 +448,29 @@ const EditCompnayView = ({ data, plans, id, reloadData, loading }: any) => {
                             {plans?.map((item: any, index: number) => (
                                 <div className={s.planBox}>
                                     <img key={index} src={process.env.REACT_APP_IMAGE_BASE_URL + item?.plan?.image} alt="preview" className={s.selectedPlanImage} />
+                                    <div className={s.planName}>
+                                        {item?.plan?.title}
+                                    </div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                                         onClick={() => handleDeletePlan(id)}
                                     ><path fill="red" d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6zM8 9h8v10H8zm7.5-5l-1-1h-5l-1 1H5v2h14V4z" /></svg>
                                 </div>
                             ))}
                             {previews.map((preview: any, index: number) => (
-                                <div className={s.planBox}>
+                                <div className={s.uploadImageBox}>
                                     <img key={index} src={preview} alt="preview" className={s.selectedPlanImage} />
+                                    <Field name={`plan_title_${index}`}>
+                                        {({ field }: any) => (
+                                            <div className={`${s.inputBox} ${s.mapNameInputBox}`}>
+                                                <div className={s.label}>عنوان نقشه</div>
+                                                <input
+                                                    {...field}
+                                                    className={s.input}
+                                                    placeholder="عنوان نقشه"
+                                                />
+                                            </div>
+                                        )}
+                                    </Field>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                                         onClick={() => setPreviews((prev: any) => (prev?.filter((node: any, nodeIndex: number) => nodeIndex !== index)))}
                                     ><path fill="red" d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6zM8 9h8v10H8zm7.5-5l-1-1h-5l-1 1H5v2h14V4z" /></svg>
