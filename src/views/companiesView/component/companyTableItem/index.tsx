@@ -37,7 +37,7 @@ const CompanyTableItem = (props: any) => {
       <td >
         <img src={process.env.REACT_APP_IMAGE_BASE_URL + logo} className={s.image} />
       </td>
-      <td onClick={() => navigate(`/guest-dashboard?guestToken=${ems_token}`)}>
+      <td onClick={() => navigate(`/guest-dashboard?guestId=${ID}&guestToken=${ems_token}`)}>
         <div className={s.name}>
           <span className={s.nameValue}>{title}</span>
         </div>

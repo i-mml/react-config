@@ -7,6 +7,7 @@ import { useQuery } from 'react-query';
 import { fetchDashboardData, fetchSuperAdminData } from '../../api/services/dashboard';
 import { useSelector } from 'react-redux';
 import { fetchChartsData } from '../../api/services/chart';
+import { useSearchParams } from 'react-router-dom';
 
 const CompaniesView = lazy(() => import('../companiesView'));
 const BannersTable = lazy(() => import('../../components/bannersTable'));
@@ -17,10 +18,12 @@ const LineChart = lazy(() => import('../../components/charts/lineCart'));
 const DashboardMiddleBox = lazy(() => import('./components/dashboardMiddleBox'));
 
 const GuestDashboardView = () => {
+    const [searchParams] = useSearchParams();
+    const guestId = searchParams?.get("guestId")
     const user = useSelector((state: any) => state?.auth?.data?.user);
     const authData = useSelector((state: any) => state?.auth?.data);
     const queryKey = 'dashboard-all-services'
-    const queryFunc = () => fetchDashboardData(authData?.admin?.company_Id)
+    const queryFunc = () => fetchDashboardData(Number(guestId))
 
     const { data, isLoading } = useQuery<any>(queryKey, queryFunc as any)
     const { data: ChartsData, isLoading: chartLoading } = useQuery<any>('get-charts-data', fetchChartsData)
