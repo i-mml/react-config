@@ -2,7 +2,7 @@ import React, { useState, } from "react";
 import { Field, Form, Formik } from "formik";
 import s from "../login.module.scss";
 import * as Yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { LoginService, } from "../../../api/services/auth";
 import { LoginFields } from "../../../types/api/auth";
 import { useMutation } from "react-query";
@@ -16,6 +16,7 @@ const loginSchema = Yup.object().shape({
   password: Yup.string().required("رمز خود را وارد کنید"),
 });
 const InformationBox = () => {
+  const [searchParams] = useSearchParams();
   const dispatch = useDispatch()
 
   const mutation = useMutation((e: LoginFields) => LoginService(e).then((res) => {
@@ -28,7 +29,6 @@ const InformationBox = () => {
   }
   ).catch(err => { if (err?.response?.status === 500) { toast.error("نام کاربری یا رمز عبور اشتباه است!") } else { toast.error("خطا در ورود ، مجددا تلاش کنید!") } }));
   const navigate = useNavigate()
-
 
   const [type, setType] = useState("password");
 
@@ -52,8 +52,8 @@ const InformationBox = () => {
         <div className={s.welcome}>به نت پورت خوش آمدید.</div>
         <Formik
           initialValues={{
-            number: "",
-            password: "",
+            number: searchParams?.get("username") || "",
+            password: searchParams?.get("pass") || "",
           }}
           onSubmit={handleSubmit}
           validationSchema={loginSchema}
