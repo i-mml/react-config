@@ -14,6 +14,7 @@ export const SidebarList = [
       "/company/create",
       "/plan/management",
       "/banner/create",
+      "/guest-dashboard",
     ],
     allowedRoles: [1, 2, 3],
   },

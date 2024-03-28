@@ -19,11 +19,11 @@ const DashboardMiddleBox = lazy(() => import('./components/dashboardMiddleBox'))
 const GuestDashboardView = () => {
     const user = useSelector((state: any) => state?.auth?.data?.user);
     const authData = useSelector((state: any) => state?.auth?.data);
-    const queryKey = user?.role !== 1 ? 'dashboard-all-services' : 'super-admin-all-services'
-    const queryFunc = user?.role !== 1 ? () => fetchDashboardData(authData?.admin?.company_Id) : fetchSuperAdminData
+    const queryKey = 'dashboard-all-services'
+    const queryFunc = () => fetchDashboardData(authData?.admin?.company_Id)
 
     const { data, isLoading } = useQuery<any>(queryKey, queryFunc as any)
-    const { data: ChartsData, isLoading: chartLoading } = useQuery<any>('get-charts-data', user?.role !== 1 ? fetchChartsData : () => { })
+    const { data: ChartsData, isLoading: chartLoading } = useQuery<any>('get-charts-data', fetchChartsData)
     return (
         <div className={s.dashboardContainer}>
             <DashboardTopBox data={data} />
