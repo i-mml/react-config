@@ -1,0 +1,119 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin-top: 16px;
+
+  .content,
+  .contentSupoerAdmin {
+    width: 74.47%;
+    @media (max-width: 750px) {
+      width: 100%;
+    }
+    .middleSlider {
+      width: 100%;
+      background-color: white;
+      padding: 38px 0;
+      border-radius: 14px;
+      margin-top: 16px;
+    }
+    .slider {
+      width: 88.11%;
+      margin: 0 auto;
+      :global {
+        .swiper-pagination {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 18px;
+          width: fit-content;
+          margin: 41px auto 0;
+          background-color: #e5f2ff;
+          padding: 3px 5px;
+          border-radius: 14px;
+          @media (max-width: 750px) {
+            margin-top: 31px;
+          }
+        }
+        .swiper-pagination-bullet {
+          margin: 0 8px;
+          border-radius: 50%;
+          background: #fff;
+          width: 7px;
+          height: 7px;
+          cursor: pointer;
+        }
+        .swiper-pagination-bullet-active {
+          background: #007eff;
+        }
+      }
+    }
+  }
+  .contentSupoerAdmin {
+    width: 100%;
+  }
+
+  .notifications {
+    width: 23.43%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media (max-width: 750px) {
+      display: none;
+    }
+  }
+  .speedTest,
+  .diskHealth {
+    width: 100%;
+    background-color: white;
+    border-radius: 14px;
+    margin-bottom: 16px;
+    padding: 20px 5px;
+    .titleBoxContainer {
+      padding-right: 6px;
+    }
+    .speedBottom {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 9.2%;
+      .section {
+        text-align: center;
+        cursor: pointer;
+      }
+      .title {
+        margin: 0;
+        color: #111;
+        font-size: 12px;
+        line-height: 16px;
+        margin-bottom: 4px;
+      }
+      .value {
+        margin: 0;
+        color: #007eff;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 16px;
+      }
+    }
+  }
+  .smallBoxWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+
+    @media (max-width: 750px) {
+      display: none;
+    }
+  }
+  .smallBox {
+    width: 48.6%;
+  }
+  .diskHealth {
+    margin-bottom: 0;
+    margin-top: 16px;
+  }
+}

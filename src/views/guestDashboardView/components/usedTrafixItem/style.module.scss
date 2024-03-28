@@ -1,0 +1,56 @@
+.usedTraficItem {
+  background-color: #fff;
+  width: 48%;
+  min-width: 150px;
+  border-radius: 14px;
+  padding: 17px 6%;
+  .top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    .title {
+      margin-right: 8px;
+      color: #111;
+      font-size: 14px;
+      font-weight: 500;
+
+      @media (max-width: 750px) {
+        font-size: 12px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 80%;
+        white-space: nowrap;
+      }
+    }
+  }
+  .percentNumber {
+    text-align: left;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+  }
+  .percentSlider {
+    width: 100%;
+    height: 4px;
+    border-radius: 8px;
+    background-color: #e7e7e7;
+  }
+  .percentSlierBar {
+    height: 4px;
+    border-radius: 12px 0 0 12px;
+  }
+  .green {
+    color: #208b59;
+  }
+  .red {
+    color: #c31414;
+  }
+  .greenBg {
+    background-color: #208b59;
+  }
+  .redBg {
+    background-color: #c31414;
+  }
+}

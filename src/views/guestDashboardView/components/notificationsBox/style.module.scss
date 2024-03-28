@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+  flex: 1;
+  background-color: white;
+  padding: 16px;
+  border-radius: 14px;
+  position: relative;
+  min-height: 20%;
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .readAll {
+    color: #007eff;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+  }
+  .showAll {
+    width: calc(100% - 32px);
+    position: absolute;
+    bottom: 20px;
+    right: 16px;
+    left: 16px;
+  }
+}

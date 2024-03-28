@@ -23,6 +23,7 @@ import CreateBannerPage from "../pages/CreateBanner";
 import PlanManagementPage from "../pages/planManaement";
 import { useSelector } from "react-redux";
 import EditCompanyPage from "../pages/editCompany";
+import GuestDashboardView from "../views/guestDashboardView";
 
 const RoutingConfig = () => {
   const tokenValue = Cookies.get("access-token");
@@ -47,6 +48,15 @@ const RoutingConfig = () => {
         element={
           <PrivateRoute>
             <HomePage />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/guest-dashboard"
+        element={
+          <PrivateRoute>
+            <GuestDashboardView />
           </PrivateRoute>
         }
       />
