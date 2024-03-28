@@ -20,8 +20,6 @@ const DashboardMiddleBox = lazy(() => import('./components/dashboardMiddleBox'))
 const GuestDashboardView = () => {
     const [searchParams] = useSearchParams();
     const guestId = searchParams?.get("guestId")
-    const user = useSelector((state: any) => state?.auth?.data?.user);
-    const authData = useSelector((state: any) => state?.auth?.data);
     const queryKey = 'dashboard-all-services'
     const queryFunc = () => fetchDashboardData(Number(guestId))
 
