@@ -57,7 +57,7 @@ const CompanyTableItem = (props: any) => {
         <img src='/images/icons/webcam.svg' className={s.actionIcon} onClick={toggle} />
 
       </td>
-      <td className={`${s.hideMobile}`} onClick={() => navigate(`/plan/management?companyId=${ID}`)}>
+      <td className={`${s.hideMobile}`} onClick={() => navigate(`/plan/management?companyId=${ID}&token=${ems_token}`)}>
         <img src='/images/icons/add.svg' className={s.actionIcon} />
       </td>
       <td className={`${s.hideMobile}`}>

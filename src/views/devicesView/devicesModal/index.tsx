@@ -2,22 +2,37 @@ import React, { useEffect, useState } from 'react'
 import s from './style.module.scss';
 import { Spinner, Modal, ModalBody } from 'reactstrap';
 import ModalHeaderTitle from '../../../components/modalTitle';
-import { getDeviceAll, getDeviceByDeviceId } from '../../../api/services/devices';
+import { getDeviceAll, getDeviceAllUsingToken, getDeviceByDeviceId } from '../../../api/services/devices';
 import StatusBox from '../../../components/statusBox';
 import NotFoundBox from '../../../components/notFound';
+import { useSearchParams } from 'react-router-dom';
+import axiosInstance from '../../../api/axiosConfig';
 
 const DevicesModal = ({ modal, toggle, onItemClick }: { modal: boolean, toggle: any, onItemClick: (e: number) => void }) => {
     const [loading, setLoding] = useState(false)
     const [devices, setDevices] = useState([])
 
+    const [searchParams] = useSearchParams();
+    const xToken = searchParams?.get("token")
+
     const getDevices = async () => {
         setLoding(true)
-        await getDeviceAll()
-            .then(res => {
-                setDevices(res?.sensorxref?.filter((node: any) => node?.basetype !== "group"))
-            })?.catch(err => {
-                console.log(err)
-            }).finally(() => setLoding(false))
+        if (!!xToken) {
+            axiosInstance.defaults.headers.common["x-api-key"] = xToken;
+            await getDeviceAllUsingToken(xToken)
+                .then(res => {
+                    setDevices(res?.devices?.filter((node: any) => node?.basetype !== "group"))
+                })?.catch(err => {
+                    console.log(err)
+                }).finally(() => setLoding(false))
+        } else {
+            await getDeviceAll()
+                .then(res => {
+                    setDevices(res?.devices?.filter((node: any) => node?.basetype !== "group"))
+                })?.catch(err => {
+                    console.log(err)
+                }).finally(() => setLoding(false))
+        }
     }
 
     useEffect(() => {
@@ -47,7 +62,7 @@ const DevicesModal = ({ modal, toggle, onItemClick }: { modal: boolean, toggle: 
                             {devices?.map((item: any) =>
                                 <div className={s.listItem} onClick={() => onItemClick(item)}>
                                     <span>{item?.name}</span>
-                                    <span><StatusBox active={item?.fold} title={item?.fold ? "فعال" : "غیرفعال"} /></span>
+                                    <span><StatusBox active={item?.status === "Up"} title={item?.status === "Up" ? "فعال" : "غیرفعال"} /></span>
                                     <span>{item?.objid}</span>
                                 </div>
                             )}
