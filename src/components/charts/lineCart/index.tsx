@@ -27,10 +27,11 @@ const LineChart = ({ data }: any) => {
         { id: 3, title: "کل شبکه", value: "all network" },
     ]
     const oneMilion = 1000000
+    const isDataEmpty = !Array.isArray(chartGraphData?.values) || chartGraphData?.values?.length === 0
     const option = {
         xAxis: {
 
-            data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => moment(item?.datetime, "M/D/YYYY h:mm:ss").format('h:mm')) : [],
+            data: isDataEmpty ? [] : chartGraphData?.values?.slice(-50)?.map((item: any) => moment(item?.datetime, "M/D/YYYY h:mm:ss").format('h:mm')),
             // the last version of graph '(h:mm)|jYYYY/jMM/jDD'
             axisLabel: {
                 rotate: 90,
@@ -69,67 +70,69 @@ const LineChart = ({ data }: any) => {
             }
 
         },
-        series: [
-            {
-                data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => Number(item?.['Traffic Total (volume)'] / oneMilion)) : [],
-                name: 'ترافیک کل',
-                type: 'line',
-                stack: 'Total',
-                emphasis: {
-                    focus: 'series'
-                },
-                lineStyle: {
-                    color: '#4CA5FF' // Gray line color for shadow
-                },
-                itemStyle: {
-                    opacity: 0 // Make the shadow invisible
-                },
-                areaStyle: {
-                    color: '#B2DEFF80' // Gray color for shadow area
-                },
-                showSymbol: false,
+        series:
+            isDataEmpty ? [] :
+                [
+                    {
+                        data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => Number(item?.['Traffic Total (volume)'] / oneMilion)) : [],
+                        name: 'ترافیک کل',
+                        type: 'line',
+                        stack: 'Total',
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        lineStyle: {
+                            color: '#4CA5FF' // Gray line color for shadow
+                        },
+                        itemStyle: {
+                            opacity: 0 // Make the shadow invisible
+                        },
+                        areaStyle: {
+                            color: '#B2DEFF80' // Gray color for shadow area
+                        },
+                        showSymbol: false,
 
-            },
-            {
-                data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => Number(item?.['Traffic In (volume)']) / oneMilion) : [],
-                name: 'ترافیک داخلی',
-                type: 'line',
-                stack: 'Total',
-                emphasis: {
-                    focus: 'series'
-                },
-                lineStyle: {
-                    color: '#4CA5FF' // Gray line color for shadow
-                },
-                itemStyle: {
-                    opacity: 0 // Make the shadow invisible
-                },
-                areaStyle: {
-                    color: '#B2DEFF80' // Gray color for shadow area
-                },
-                showSymbol: false,
-            },
-            {
-                data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => Number(item?.['Traffic Out (volume)']) / oneMilion) : [],
-                name: 'ترافیک خارجی',
-                type: 'line',
-                stack: 'Total',
-                emphasis: {
-                    focus: 'series'
-                },
-                lineStyle: {
-                    color: '#4CA5FF' // Gray line color for shadow
-                },
-                itemStyle: {
-                    opacity: 0 // Make the shadow invisible
-                },
-                areaStyle: {
-                    color: '#B2DEFF80' // Gray color for shadow area
-                },
-                showSymbol: false,
-            }
+                    },
+                    {
+                        data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => Number(item?.['Traffic In (volume)']) / oneMilion) : [],
+                        name: 'ترافیک داخلی',
+                        type: 'line',
+                        stack: 'Total',
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        lineStyle: {
+                            color: '#4CA5FF' // Gray line color for shadow
+                        },
+                        itemStyle: {
+                            opacity: 0 // Make the shadow invisible
+                        },
+                        areaStyle: {
+                            color: '#B2DEFF80' // Gray color for shadow area
+                        },
+                        showSymbol: false,
+                    },
+                    {
+                        data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => Number(item?.['Traffic Out (volume)']) / oneMilion) : [],
+                        name: 'ترافیک خارجی',
+                        type: 'line',
+                        stack: 'Total',
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        lineStyle: {
+                            color: '#4CA5FF' // Gray line color for shadow
+                        },
+                        itemStyle: {
+                            opacity: 0 // Make the shadow invisible
+                        },
+                        areaStyle: {
+                            color: '#B2DEFF80' // Gray color for shadow area
+                        },
+                        showSymbol: false,
+                    }
 
-        ]
+                ]
     };
     return (
         <div className={s.container} >
