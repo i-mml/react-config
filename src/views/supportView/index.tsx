@@ -126,7 +126,7 @@ const SupportView = () => {
                           </td>
                           :
                           <td>
-                            {item?.device_id || '-'}
+                            {item?.device_name || '-'}
                           </td>
                       }
                       <td>
