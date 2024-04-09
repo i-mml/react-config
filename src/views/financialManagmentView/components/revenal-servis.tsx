@@ -1,12 +1,16 @@
 import React from "react";
 import s from "../financialManagment.module.scss";
-import FinancialManagementHeader from "./FinancialManagementHeader";
-import { useMutation } from "react-query";
-import { postPaymentRequest } from "../../../api/services/payment";
+import moment from 'moment-jalaali';
 import { useSelector } from "react-redux";
+import FinancialManagementHeader from "./FinancialManagementHeader";
+import { useMutation, useQuery } from "react-query";
+import { postPaymentRequest } from "../../../api/services/payment";
+import { getSubscription } from "../../../api/services/subscription";
 
 const RenevalServis = () => {
   const authData = useSelector((state: any) => state?.auth?.data)
+  const { data } = useQuery("subscription-data", getSubscription);
+  console.log(data)
 
   const informationList = [
     {
@@ -20,24 +24,9 @@ const RenevalServis = () => {
       value: "۱۲ ماهه",
     },
     {
-      id: 6,
-      title: "انواع پرداخت ها",
-      value: "",
-    },
-    {
       id: 3,
-      title: "پرداخت ۱ مرحله ای (۲۷.۸ درصد تخفیف)",
-      value: "۷۸ میلیون تومان (ماهانه ۶.۵ میلیون تومان)",
-    },
-    {
-      id: 4,
-      title: "پرداخت ۲ مرحله ای (۱۱.۲ درصد تخفیف)",
-      value: "۹۶ میلیون تومان (ماهانه ۸ میلیون تومان)",
-    },
-    {
-      id: 5,
-      title: "پرداخت ۴ مرحله ای",
-      value: "۱۰۶ میلیون تومان (ماهانه ۹ میلیون تومان)",
+      title: "تاریخ پایان اشتراک",
+      value: data?.data?.expire_at ? moment(data?.data?.expire_at).format('jYYYY/jMM/jDD') : "-",
     },
   ];
 
@@ -72,17 +61,12 @@ const RenevalServis = () => {
 
       <div className={s.informationContainer}>
         {informationList?.map((item) =>
-          item.id === 6 ?
-            (
-              <div className={s.renevalSectionTitle}>{item?.title}</div>
-            )
-            : (
-              <div className={s.informationBox} key={item?.id}>
-                <div className={s.renevalInfoTitle}>{item?.title}</div>
-                <div className={s.divider}><div className={s.dashed}></div></div>
-                <div className={s.renevalInfoValue}>{item?.value}</div>
-              </div>
-            ))}
+          <div className={s.informationBox} key={item?.id}>
+            <div className={s.renevalInfoTitle}>{item?.title}</div>
+            <div className={s.divider}><div className={s.dashed}></div></div>
+            <div className={s.renevalInfoValue}>{item?.value}</div>
+          </div>
+        )}
         <button className={s.payBtn} onClick={handlePayment} disabled={postPaymentRequestMutation.isLoading}>
           {
             postPaymentRequestMutation?.isLoading ? <img src='/images/icons/loadingLines.svg' /> : "پرداخت"
