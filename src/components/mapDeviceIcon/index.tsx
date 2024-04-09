@@ -23,7 +23,6 @@ const MapDeviceIcon = (props: any) => {
                 <path d="M14.5 33.5C18.125 26.8 29 22.4756 29 13.4C29 5.99938 22.5081 0 14.5 0C6.49187 0 0 5.99938 0 13.4C0 22.4756 10.875 26.8 14.5 33.5Z" fill={props?.sensors?.sensors?.find((node: any) => node?.sensor === "Ping")?.lastvalue === "0 msec" ? "#C31414" : "#208B59"} />
             </svg>
             {
-
                 iconsTranslation[props?.sensors?.sensors?.[0]?.group] ?
                     <div className={s.icon} >
                         {iconsTranslation[props?.sensors?.sensors?.[0]?.group]}
@@ -35,7 +34,7 @@ const MapDeviceIcon = (props: any) => {
 
 
             {!props?.deleteMode && modal &&
-                <SensorsModal toggle={toggle} modal={modal} sensors={props?.sensors?.sensors} />}
+                <SensorsModal modalTitle={props?.device_name || "-"} toggle={toggle} modal={modal} sensors={props?.sensors?.sensors} />}
             {
                 props?.deleteMode && modal && <Modal
                     isOpen={modal}

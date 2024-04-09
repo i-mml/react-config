@@ -5,7 +5,9 @@ import ModalHeaderTitle from '../../../components/modalTitle';
 import { getDeviceByDeviceId } from '../../../api/services/devices';
 import NotFoundBox from '../../../components/notFound';
 
-const SensorsModal = ({ modal, toggle, sensors = [], objid, tags }: { modal: boolean, toggle: any, sensors?: any[], objid?: number, tags?: string }) => {
+interface IProps { modal: boolean, toggle: any, sensors?: any[], objid?: number, tags?: string, modalTitle?: string }
+
+const SensorsModal = ({ modal, toggle, sensors = [], objid, tags, modalTitle = 'سنسورها' }: IProps) => {
     const [loading, setLoding] = useState(false)
     const [sensorsData, setSensorsData] = useState(sensors)
 
@@ -36,7 +38,7 @@ const SensorsModal = ({ modal, toggle, sensors = [], objid, tags }: { modal: boo
             keyboard
         >
             <ModalBody className={s.modalBody}>
-                <ModalHeaderTitle title='سنسورها' handleClose={toggle} />
+                <ModalHeaderTitle title={modalTitle} handleClose={toggle} />
                 {loading ? <div className={s.spinner}><Spinner /></div> :
                     sensorsData?.length > 0 ? <div className={s.sensorsList}>
                         <div className={s.listHeader}>
