@@ -47,9 +47,6 @@ const DashboardMap = ({ planList = [] }: any) => {
     return (
         <div className={s.dashboardMapContainer}>
             <TitleBox title='نقشه' icon='/images/icons/blackMap.svg' />
-            <div className={s.mapTitle}>
-                {planList[currentIndex]?.plan?.title}
-            </div>
             <div className={s.sliderBox} style={{
                 transform: `scale(${zoomValue})`
             }}>
@@ -89,7 +86,9 @@ const DashboardMap = ({ planList = [] }: any) => {
                 <div className={s.swiper_button_prev_unique} onClick={goNext}>
                     <img src='/images/icons/paginationArrow.svg' />
                 </div>
-                <div className={s.paginationText}>طبقات</div>
+                <div className={s.planName}>
+                    {planList[currentIndex]?.plan?.title}
+                </div>
                 <div className={s.zoomBox}>
                     <button onClick={() => setZoomValue(prev => +Math.abs(prev + 0.1)?.toFixed(1))} disabled={zoomValue > 1.4} className={s.zoomBtn}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

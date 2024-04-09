@@ -8,12 +8,6 @@
     display: flex;
     align-items: center;
   }
-  .mapTitle {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 16px;
-    margin: 16px 0 8px;
-  }
   .mapIcon {
     width: 20px;
     height: 20px;
@@ -27,6 +21,7 @@
     width: 100%;
     color: #200;
     position: relative;
+    margin: 16px 0;
     .image {
       width: 100%;
       margin: 0 auto;
@@ -141,7 +136,15 @@
   }
   .zoomBox {
     position: absolute;
+    left: 0;
+  }
+  .planName {
+    position: absolute;
     right: 0;
+
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
   }
 }
 .select {
