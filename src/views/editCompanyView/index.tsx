@@ -16,7 +16,7 @@ import { Spinner } from "reactstrap";
 
 const EditCompnayView = ({ data, plans, id, reloadData, loading }: any) => {
     const navigate = useNavigate()
-    const createNewCompanyMutation = useMutation((e: any) => putCompanyEdit(e));
+    const createNewCompanyMutation = useMutation((e: any) => putCompanyEdit(e).then(res => { handleCreateAdmin(id) }).catch(err => err));
     const createNewAdminMutation = useMutation((e: any) => postAdminRegister(e).catch(err => err));
     const createNewItManMutation = useMutation((e: any) => postAdminRegister(e).then(() => { toast.success("ایجاد شرکت و ادمین ها با موفقیت انجام شد.") }).catch(err => err));
     const createPlanMutation = useMutation((e: any) => postPlanCreate(e).then(() => { toast.success("پلن با موفقیت آپلود شد.") }).catch(err => err));
@@ -45,77 +45,6 @@ const EditCompnayView = ({ data, plans, id, reloadData, loading }: any) => {
 
     const handleCreateAdmin = async (company_id: any) => {
         const values = formRef?.current?.values
-
-        const body = {
-            user: {
-                last_name: values?.last_name,
-                first_name: values?.first_name,
-                mobile: values?.mobile,
-                national_code: values?.national_code,
-                email: values?.email,
-                is_active: true,
-                login: false,
-                password: values?.password,
-                phone_registered: true,
-                role: 2,
-            },
-            admin: {
-                user_id: "",
-                role_id: 2,
-                telephone: values?.mobile,
-                company_id
-            }
-        }
-        const itManBody = {
-            user: {
-                last_name: values?.it_last_name,
-                first_name: values?.it_first_name,
-                mobile: values?.it_mobile,
-                national_code: values?.it_national_code,
-                email: values?.it_email,
-                is_active: true,
-                login: false,
-                password: values?.it_password,
-                phone_registered: true,
-                role: 2,
-            },
-            admin: {
-                user_id: "",
-                role_id: 2,
-                telephone: values?.it_mobile,
-                company_id
-            }
-        }
-        const employeeBody = {
-            user: {
-                last_name: values?.employee_last_name,
-                first_name: values?.employee_first_name,
-                mobile: values?.employee_mobile,
-                national_code: values?.employee_national_code,
-                email: values?.employee_email,
-                is_active: true,
-                login: false,
-                password: values?.employee_password,
-                phone_registered: true,
-                role: 3,
-            },
-            admin: {
-                user_id: "",
-                role_id: 3,
-                telephone: values?.employee_mobile,
-                company_id
-            }
-        }
-        const planCreateBody = new FormData()
-        planCreateBody.append("company_id", company_id)
-        planCreateBody.append("position", "1")
-        planCreateBody.append("image", selectedPlanFiles[0])
-        planCreateBody.append("title", "")
-
-        await createNewAdminMutation.mutate(body)
-        // await createNewItManMutation.mutate(itManBody)
-        // await createNewItManMutation.mutate(employeeBody)
-
 
         selectedPlanFiles?.map((item: any, index: number) => {
             const planCreateBody = new FormData()
@@ -452,7 +381,7 @@ const EditCompnayView = ({ data, plans, id, reloadData, loading }: any) => {
                                         {item?.plan?.title}
                                     </div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
-                                        onClick={() => handleDeletePlan(id)}
+                                        onClick={() => handleDeletePlan(item?.plan?.ID)}
                                     ><path fill="red" d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6zM8 9h8v10H8zm7.5-5l-1-1h-5l-1 1H5v2h14V4z" /></svg>
                                 </div>
                             ))}
