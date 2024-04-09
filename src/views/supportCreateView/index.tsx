@@ -19,6 +19,7 @@ interface FormInitialValueType {
     label: string,
     message: string,
     device_id?: string,
+    device_name?: string,
     companeyId?: ""
 }
 
@@ -60,16 +61,17 @@ const SupportCreateView = () => {
         user_id: user?.user_id,
         internal: !!isExternal ? false : true,
         device_id: !!isExternal ? "" : e.device_id,
+        device_name: !!isExternal ? "" : e.device_name,
         companeyId: !!isExternal ? e.companeyId : null as any
     }).then((res) => {
         hanldeSendMessage(e, res?.data)
     }
     ));
-
-
+    // console.log(devicesData?.devices?.find((item: any) => item?.objid === 2128))
     const hanldeSubmitCreateTicket = (e: FormInitialValueType) => {
         setLoading(true);
-        mutation.mutate(e, {
+
+        mutation.mutate({ ...e, device_name: devicesData?.devices?.find((item: any) => item?.objid === Number(e?.device_id))?.name }, {
             onSuccess() {
                 setLoading(false);
             },

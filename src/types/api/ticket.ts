@@ -4,6 +4,7 @@ export type TicketSendFields = {
   label: string;
   internal?: boolean;
   device_id?: any;
+  device_name?: any;
   companeyId?: any;
 };
 
