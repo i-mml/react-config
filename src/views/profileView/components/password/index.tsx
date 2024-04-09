@@ -6,6 +6,7 @@ import { putCompanyChangePassword } from "../../../../api/services/company";
 import { useMutation } from "react-query";
 import { CompanyChangePassword } from "../../../../types/api/company";
 import { useNavigate } from "react-router-dom";
+import PasswordInput from "../passwordInput";
 interface InitialValues {
   currentPassword: string,
   newPassword: string,
@@ -49,12 +50,7 @@ const PasswordTab = () => {
               {({ field }: any) => (
                 <div className={s.inputBox}>
                   <div className={s.label}>رمز عبور فعلی</div>
-                  <input
-                    type="password"
-                    {...field}
-                    placeholder="رمز عبور فعلی خود را وارد کنید."
-                    className={s.input}
-                  />
+                  <PasswordInput field={field} placeholder="رمز عبور فعلی خود را وارد کنید." />
                 </div>
               )}
             </Field>
@@ -63,12 +59,7 @@ const PasswordTab = () => {
               {({ field }: any) => (
                 <div className={s.inputBox}>
                   <div className={s.label}>رمز عبور جدید</div>
-                  <input
-                    type="password"
-                    {...field}
-                    placeholder="رمز عبور جدید خود را وارد کنید."
-                    className={s.input}
-                  />
+                  <PasswordInput field={field} placeholder="رمز عبور جدید خود را وارد کنید." />
                 </div>
               )}
             </Field>
@@ -77,12 +68,7 @@ const PasswordTab = () => {
               {({ field }: any) => (
                 <div className={s.inputBox}>
                   <div className={s.label}>تکرار رمز عبور جدید</div>
-                  <input
-                    type="password"
-                    {...field}
-                    placeholder="رمز عبور جدید خود را تکرار کنید."
-                    className={s.input}
-                  />
+                  <PasswordInput field={field} placeholder="رمز عبور جدید خود را تکرار کنید." />
                 </div>
               )}
             </Field>
