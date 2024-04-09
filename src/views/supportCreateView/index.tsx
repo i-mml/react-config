@@ -37,10 +37,10 @@ const SupportCreateView = () => {
     const navigate = useNavigate()
     const user = useSelector((state: any) => state?.auth?.data?.user);
 
+    const isExternal = searchParams?.get("isInternal") && searchParams?.get("isInternal") === "false"
+
     const { data: companiesData, isLoading } = useQuery<any>(user?.role === 1 || user?.role === 3 ? "get-all-companies" : "", user?.role === 1 || user?.role === 3 ? getCompanyAll : () => { })
     const { data: devicesData } = useQuery<any>("get-all-device", getDeviceAll)
-
-
 
     const hanldeSendMessage = async (fields: FormInitialValueType, response: any) => {
         setLoading(true)
@@ -58,9 +58,9 @@ const SupportCreateView = () => {
         label: e.label,
         title: e.title,
         user_id: user?.user_id,
-        internal: searchParams?.get("isInternal") && searchParams?.get("isInternal") === "false" ? false : true,
-        device_id: e.device_id,
-        companeyId: searchParams?.get("isInternal") && searchParams?.get("isInternal") === "false" ? e.companeyId : null as any
+        internal: !!isExternal ? false : true,
+        device_id: !!isExternal ? "" : e.device_id,
+        companeyId: !!isExternal ? e.companeyId : null as any
     }).then((res) => {
         hanldeSendMessage(e, res?.data)
     }
@@ -75,7 +75,6 @@ const SupportCreateView = () => {
             },
         });
     }
-
 
     return (
         <div className={s.container}>
@@ -102,7 +101,7 @@ const SupportCreateView = () => {
                                 </div>
                             )}
                         </Field>
-                        {
+                        {!!!isExternal &&
                             <Field name="device_id">
                                 {({ field }: any) => (
                                     <div className={s.inputBox}>
@@ -119,7 +118,7 @@ const SupportCreateView = () => {
                                 )}
                             </Field>
                         }
-                        {searchParams?.get("isInternal") && searchParams?.get("isInternal") === "false" &&
+                        {!!isExternal &&
                             <Field name="companeyId">
                                 {({ field }: any) => (
                                     <div className={s.inputBox}>

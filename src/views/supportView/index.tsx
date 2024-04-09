@@ -16,21 +16,21 @@ moment.loadPersian();
 
 const SupportView = () => {
   const user = useSelector((state: any) => state?.auth?.data?.user);
-  console.log(user)
-  const [internal, setInternal] = useState(true)
-  const { data: tickets, isLoading } = useQuery("tickets-list", user?.role === 1 ? () => getTicketAll() : () => getAcceptedTicket(`user_id=${user?.user_id}`));
-  const pageSize = 30;
-  const [page, setPage] = useState(0)
-  const [value, setValue] = useState("")
 
-  const navigate = useNavigate()
   const tabsList = user?.role === 3 || user?.role === 1 ? [
-    { id: 3, faTitle: "پشتیبانی داخلی", isInternal: true },
     { id: 1, faTitle: "پشتیبانی خارجی", isInternal: false },
   ] :
     [
       { id: 3, faTitle: "پشتیبانی داخلی", isInternal: true },
     ];
+
+  const { data: tickets, isLoading } = useQuery("tickets-list", user?.role === 1 ? () => getTicketAll() : () => getAcceptedTicket(`user_id=${user?.user_id}`));
+  const pageSize = 30;
+  const [page, setPage] = useState(0)
+  const [value, setValue] = useState("")
+  const [internal, setInternal] = useState(tabsList[0]?.isInternal)
+
+  const navigate = useNavigate()
 
   const labelGenerator: any = {
     "فوری": {
