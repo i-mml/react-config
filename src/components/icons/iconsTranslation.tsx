@@ -12,6 +12,7 @@ export const iconsTranslation: any = {
     Swtiches: <SwtichesIcon />,
     Switches: <SwtichesIcon />,
     "SIP Servers (CUCM)": <PhoneIcon />,
+    "Mobile phones": <MobileIcon />,
     Clients: <MonitorIcon />,
     Printers: <PrinterIcon />,
     Wireless: <WifiIcon />,
