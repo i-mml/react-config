@@ -67,7 +67,7 @@ const SupportCreateView = () => {
         hanldeSendMessage(e, res?.data)
     }
     ));
-    // console.log(devicesData?.devices?.find((item: any) => item?.objid === 2128))
+
     const hanldeSubmitCreateTicket = (e: FormInitialValueType) => {
         setLoading(true);
 

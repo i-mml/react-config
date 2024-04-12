@@ -22,7 +22,6 @@ const YearItem = ({ value, color }: { value: string, color: string }) => {
 
 const LineChart = ({ data, netData }: any) => {
     const chartGraphData = data?.chartGraph?.data?.data
-    console.log(netData)
     const user = useSelector((state: any) => state?.auth?.data?.user);
 
     const [currentTab, setCurrentTab] = useState(1)

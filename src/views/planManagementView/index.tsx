@@ -26,7 +26,7 @@ const PlanManagementView = () => {
     const createPlanManagementMutation = useMutation((e: any) => postPlanManagementCreate(e).then(() => toggle()).catch(err => err));
 
     const ref = useRef<any>()
-    // console.log(planList[swiper?.activeIndex]?.plan?.ID)
+
     useEffect(() => {
         if (planList?.length > 0) {
             setTags(planList[swiper?.activeIndex]?.devices)

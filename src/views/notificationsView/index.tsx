@@ -12,7 +12,7 @@ const NotificationsView = () => {
     const pageSize = 30;
     const [page, setPage] = useState(0)
     const [value, setValue] = useState("")
-    console.log(data)
+
     return (
         <div className={s.container}>
             <div className={s.titleWrappwer}>

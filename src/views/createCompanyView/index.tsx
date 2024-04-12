@@ -50,7 +50,6 @@ const CreateCompnayView = () => {
             setSelectedImage(URL.createObjectURL(event.target.files[0]));
         }
     };
-    console.log(formRef?.current?.values?.["plan_title_0"])
     const handleCreateAdmin = async (company_id: any) => {
         const values = formRef?.current?.values
 

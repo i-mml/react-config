@@ -9,7 +9,6 @@ import SystemContent from '../../../components/systemInformations/System';
 const SystemInformationModal = ({ modal, toggle, objid, systemType }: { modal: boolean, toggle: any, objid?: number, systemType: { title: string, value: string } }) => {
     const [loading, setLoding] = useState(false)
     const [systemInfomations, setSystemInfomations] = useState<any>()
-    console.log(systemInfomations)
 
     const getSystemInformations = async () => {
         setLoding(true)
@@ -26,8 +25,6 @@ const SystemInformationModal = ({ modal, toggle, objid, systemType }: { modal: b
             getSystemInformations()
         }
     }, [modal])
-
-    // console.log(systemInfomations?.[systemType?.value]?.sysinfo)
 
     return (
         <Modal

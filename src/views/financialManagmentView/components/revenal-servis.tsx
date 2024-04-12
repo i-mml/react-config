@@ -10,7 +10,6 @@ import { getSubscription } from "../../../api/services/subscription";
 const RenevalServis = () => {
   const authData = useSelector((state: any) => state?.auth?.data)
   const { data } = useQuery("subscription-data", getSubscription);
-  console.log(data)
 
   const informationList = [
     {
