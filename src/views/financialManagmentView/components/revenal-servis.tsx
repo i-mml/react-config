@@ -16,7 +16,7 @@ const RenevalServis = () => {
     {
       id: 1,
       title: "اشتراک سرویس مانیتورینگ شبکه",
-      value: "۱۰۶ میلیون تومان",
+      value: data?.data?.price + " تومان" ?? "-",
     },
     {
       id: 2,
