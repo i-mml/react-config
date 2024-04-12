@@ -5,10 +5,11 @@ import { getSubscription } from "../../api/services/subscription";
 import { useQuery } from "react-query";
 import FinancialManagementHeader from "./components/FinancialManagementHeader";
 import { Link } from "react-router-dom";
+import LoadingPage from "../../components/loadingPage";
 
 
 const FinancialManagmentView = () => {
-  const { data } = useQuery("subscription-data", getSubscription);
+  const { data, isLoading } = useQuery("subscription-data", getSubscription);
   const servisList = [
     {
       id: 1,
@@ -30,7 +31,9 @@ const FinancialManagmentView = () => {
     },
   ];
 
-
+  if (isLoading) {
+    return <LoadingPage />
+  }
   return (
     <div className={s.container}>
       <FinancialManagementHeader title="وضعیت سرویس شما" />

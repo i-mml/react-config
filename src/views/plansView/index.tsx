@@ -6,10 +6,11 @@ import MapDeviceIcon from '../../components/mapDeviceIcon';
 import { useQuery } from 'react-query';
 import { getPlanAll } from '../../api/services/plan';
 import { useSelector } from 'react-redux';
+import LoadingPage from '../../components/loadingPage';
 
 const PlansView = () => {
     const authData = useSelector((state: any) => state?.auth?.data)
-    const { data: planList = [] } = useQuery("get-all-plan", () => getPlanAll(authData?.admin?.company_Id))
+    const { data: planList = [], isLoading } = useQuery("get-all-plan", () => getPlanAll(authData?.admin?.company_Id))
 
     const [selectedPlan, setSelectedPlan] = useState<any>()
     const [zoomValue, setZoomValue] = useState(1)
@@ -22,7 +23,9 @@ const PlansView = () => {
     }, [planList])
 
 
-
+    if (isLoading) {
+        return <LoadingPage />
+    }
     return (
         <>
             <div className={s.planTopBox}>

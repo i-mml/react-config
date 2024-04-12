@@ -11,7 +11,6 @@ import TitleBox from "../dashboardView/components/titleBox";
 import { postAdminRegister } from "../../api/services/admin";
 import { toast } from "react-toastify";
 import { patchPlanActive, postPlanCreate } from "../../api/services/plan";
-import LoadingPage from "../../components/loadingPage";
 import { Spinner } from "reactstrap";
 
 const EditCompnayView = ({ data, plans, id, reloadData, loading }: any) => {

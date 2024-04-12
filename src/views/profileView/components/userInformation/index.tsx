@@ -17,11 +17,10 @@ const rolesTranslation: any = {
   3: "ادمین"
 }
 
-const UserInformationTab = () => {
+const UserInformationTab = ({ data }: any) => {
   const navigate = useNavigate()
   const authData = useSelector((state: any) => state?.auth?.data)
 
-  const { data } = useQuery("get-company-by-id", () => getCompanyById(authData?.admin?.company_Id));
   const updateUserMutation = useMutation((e: EditUserFields) => putUserUpdate(e));
   const updateLogoMutation = useMutation((e: any) => putCompanyEdit(e).then(res => window.location.reload()));
 
@@ -63,6 +62,7 @@ const UserInformationTab = () => {
   useEffect(() => {
     setRole(data?.admin?.role)
   }, [data?.admin?.role])
+
 
   return (
     <div className={s.userInformationContainer}>

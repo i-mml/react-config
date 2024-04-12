@@ -8,6 +8,7 @@ import { getAcceptedTicket, getTicketAll } from "../../api/services/ticket";
 import { Spinner } from "reactstrap";
 import TablePagination from "../../components/pagination";
 import { useSelector } from "react-redux";
+import LoadingPage from "../../components/loadingPage";
 
 
 moment.loadPersian();
@@ -49,6 +50,10 @@ const SupportView = () => {
   const statusGenerator: any = {
     DONE: "انجام شده",
     INPROCESS: "در حال بررسی"
+  }
+
+  if (isLoading) {
+    return <LoadingPage />
   }
   return (
     <div className={s.supportWrapper}>

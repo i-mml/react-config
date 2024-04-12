@@ -9,8 +9,6 @@ import { useNavigate } from "react-router-dom";
 const Support = () => {
   const navigate = useNavigate()
 
-
-
   return (
     <>
       <MobileNaviagtorLine title="پشتیبانی" hasLink={false} hasCustom customLink={
