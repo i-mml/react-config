@@ -4,6 +4,15 @@ import ReactECharts from 'echarts-for-react';
 const CustomPieChart = ({ data, legendData, selectedMode = "" }: any) => {
     const chartRef = useRef<any>(null);
 
+    const labelFormatter = (params: any) => {
+        console.log(params)
+        if (params?.data?.name === 'Free') {
+            return '';
+        }
+        // '% {c}'
+        return `${params.percent}%`;
+    };
+
     useEffect(() => {
         if (chartRef.current) {
             const chartInstance = chartRef.current.getEchartsInstance();
@@ -31,9 +40,10 @@ const CustomPieChart = ({ data, legendData, selectedMode = "" }: any) => {
                             }
                         },
                         label: {
+                            formatter: labelFormatter,
                             show: true,
                             position: 'inside',
-                            formatter: '% {c}',
+                            // formatter: '% {c}',
                             fontSize: "11px",
                         },
                     }
