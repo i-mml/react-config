@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import s from './style.module.scss';
 import ReactEcharts from "echarts-for-react";
 import TitleBox from '../titleBox';
-import { Spinner } from 'reactstrap';
 import { isMobile } from 'react-device-detect';
 import { useSelector } from 'react-redux';
-import NotificationsBox from '../notificationsBox';
 
 
 const ChartsWrapper = ({ data, chartsData }: any) => {

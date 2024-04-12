@@ -76,7 +76,12 @@ const ChartsWrapper = ({ chartsData }: any) => {
         legend: {
             bottom: 0,
             left: 'center',
-            data: healthStorage?.length > 0 ? healthStorage?.map((item: any) => item?.sensordata?.name) : []
+            data: healthStorage?.length > 0 ? healthStorage?.map((item: any) => item?.sensordata?.name) : [],
+            selectedMode: 'single'
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: '{b} : {c} ({d}%)'
         },
         series: [{
             type: 'pie',
@@ -94,7 +99,8 @@ const ChartsWrapper = ({ chartsData }: any) => {
             label: {
                 show: true,
                 position: 'inside',
-                formatter: '% {c}'
+                // formatter: '% {c}'
+                formatter: '{c}',
             },
         }],
 
@@ -105,11 +111,15 @@ const ChartsWrapper = ({ chartsData }: any) => {
         title: {
             show: false
         },
+        tooltip: {
+            trigger: 'item',
+            formatter: '{b} : {c} ({d}%)'
+        },
         legend: {
             bottom: 0,
             left: 'center',
             data: virtualMachines?.length > 0 ? [virtualMachines?.find((item: any) => item?.name === "Datastore 1"), virtualMachines?.find((item: any) => item?.name === "Datastore 2"), virtualMachines?.find((item: any) => item?.name === "Datastore 3"), virtualMachines?.find((item: any) => item?.name === "Datastore 4")]?.map((item: any) => item?.name) : [],
-            // selectedMode: 'single'
+            selectedMode: 'single'
         },
         series: [{
             type: 'pie',
