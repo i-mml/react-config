@@ -25,7 +25,7 @@ const NotifListItem = ({ device = "", message = "", priority = "", downtimesince
                 </div>
                 <div className={s.subTitleBox}>
                     <div className={s.subTitle}>
-                        {message?.replace(regex, '')}
+                        downtimesince: {downtimesince}
                     </div>
                     <div className={s.date}>
                         {nowD}
@@ -33,7 +33,7 @@ const NotifListItem = ({ device = "", message = "", priority = "", downtimesince
                 </div>
                 {isOpened &&
                     <div className={s.description}>
-                        downtimesince: {downtimesince}
+                        {message?.replace(regex, '')}
                     </div>
                 }
             </div>
