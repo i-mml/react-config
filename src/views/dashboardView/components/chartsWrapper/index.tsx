@@ -128,7 +128,8 @@ const ChartsWrapper = ({ chartsData }: any) => {
             label: {
                 show: true,
                 position: 'inside',
-                formatter: '% {c}',
+                // formatter: '% {c}',
+                formatter: '{c}',
                 fontSize: "11px",
             },
         }],
