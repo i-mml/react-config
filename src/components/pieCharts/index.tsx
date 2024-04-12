@@ -5,7 +5,6 @@ const CustomPieChart = ({ data, legendData, selectedMode = "" }: any) => {
     const chartRef = useRef<any>(null);
 
     const labelFormatter = (params: any) => {
-        console.log(params)
         if (params?.data?.name === 'Free') {
             return '';
         }

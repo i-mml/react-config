@@ -53,7 +53,7 @@ const GuestDashboardView = () => {
             {!chartLoading &&
                 <>
                     <LineChart data={ChartsData} />
-                    <ChartsWrapper data={data} chartsData={ChartsData} />
+                    <ChartsWrapper chartsData={ChartsData} />
                 </>
             }
         </div>
