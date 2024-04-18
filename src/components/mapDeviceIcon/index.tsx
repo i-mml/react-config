@@ -34,7 +34,7 @@ const MapDeviceIcon = (props: any) => {
 
 
             {!props?.deleteMode && modal &&
-                <SensorsModal modalTitle={props?.device_name || "-"} toggle={toggle} modal={modal} sensors={props?.sensors?.sensors} />}
+                <SensorsModal modalTitle={props?.sensors?.sensors?.[0]?.device || "-"} toggle={toggle} modal={modal} sensors={props?.sensors?.sensors} />}
             {
                 props?.deleteMode && modal && <Modal
                     isOpen={modal}
