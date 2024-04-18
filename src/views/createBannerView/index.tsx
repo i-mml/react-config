@@ -32,7 +32,7 @@ const CreateBannerView = () => {
         const formData = new FormData()
         formData.append("title", values?.title)
         formData.append("sub_title", values?.sub_title)
-        formData.append("position", data?.length + 1)
+        formData.append("position", values?.position)
         formData.append("external_link", values?.external_link)
         formData.append("description", values?.description)
         formData.append("image", selectedFile)
@@ -116,8 +116,6 @@ const CreateBannerView = () => {
                                         {...field}
                                         className={s.input}
                                         placeholder="جایگاه"
-                                        disabled
-                                        value={data?.length + 1}
                                     />
                                 </div>
                             )}
