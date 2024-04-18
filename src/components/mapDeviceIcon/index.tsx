@@ -15,7 +15,6 @@ import { iconsTranslation } from '../icons/iconsTranslation';
 const MapDeviceIcon = (props: any) => {
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
-    console.log("what the hell", props?.sensors?.sensors?.[0]?.device)
     const deletePlanManagementMutation = useMutation((e: any) => deletePlanManagementByDeviceId(e).then(() => { toast.success("دستگاه با موفقیت حذف شد."); window?.location?.reload(); }).catch(err => { toggle(); toast.error("حذف دستگاه با خطا مواجه شد.") }));
     return (
         <div className={s.mapDeviceIcon} onClick={toggle} {...props}  >
