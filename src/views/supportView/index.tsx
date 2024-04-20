@@ -18,7 +18,7 @@ moment.loadPersian();
 const SupportView = () => {
   const user = useSelector((state: any) => state?.auth?.data?.user);
 
-  const tabsList = user?.role === 3 || user?.role === 1 ? [
+  const tabsList = user?.role === 1 ? [
     { id: 1, faTitle: "پشتیبانی خارجی", isInternal: false },
   ] :
     [

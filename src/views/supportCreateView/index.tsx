@@ -40,7 +40,7 @@ const SupportCreateView = () => {
 
     const isExternal = searchParams?.get("isInternal") && searchParams?.get("isInternal") === "false"
 
-    const { data: companiesData, isLoading } = useQuery<any>(user?.role === 1 || user?.role === 3 ? "get-all-companies" : "", user?.role === 1 || user?.role === 3 ? getCompanyAll : () => { })
+    const { data: companiesData, isLoading } = useQuery<any>(user?.role === 1 ? "get-all-companies" : "", user?.role === 1 ? getCompanyAll : () => { })
     const { data: devicesData } = useQuery<any>("get-all-device", getDeviceAll)
 
     const hanldeSendMessage = async (fields: FormInitialValueType, response: any) => {
