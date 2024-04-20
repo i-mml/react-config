@@ -26,3 +26,24 @@ export const iconsTranslation: any = {
     Servers: <ServerIcon />
 
 }
+
+export const mapIconsTranslation: any = {
+    VMware: <ServerIcon fillInside="#fff" />,
+    Swtiches: <SwtichesIcon fillInside="#fff" />,
+    Switches: <SwtichesIcon fillInside="#fff" />,
+    "SIP Servers (CUCM)": <PhoneIcon fillInside="#fff" />,
+    "Mobile phones": <MobileIcon fillInside="#fff" />,
+    Clients: <MonitorIcon fillInside="#fff" />,
+    Printers: <PrinterIcon fillInside="#fff" />,
+    Wireless: <WifiIcon fillInside="#fff" />,
+    IPS: <MonitorIcon fillInside="#fff" />,
+    "VMware Hosts": <ServerIcon fillInside="#fff" />,
+    "Linux / macOS / Unix": <MonitorIcon fillInside="#fff" />,
+    Windows: <ServerIcon fillInside="#fff" />,
+    "Network Infrastructure": <MonitorIcon fillInside="#fff" />,
+    Routers: <RouterIcon fillInside="#fff" />,
+    "IP Phones": <MobileIcon fillInside="#fff" />,
+    Servers: <ServerIcon fillInside="#fff" />
+}
+
+

@@ -9,7 +9,7 @@ import { useMutation, useQueryClient } from 'react-query';
 import { toast } from 'react-toastify';
 import { deletePlanManagementByDeviceId } from '../../api/services/planManagement';
 import MonitorIcon from '../icons/Monitor';
-import { iconsTranslation } from '../icons/iconsTranslation';
+import { iconsTranslation, mapIconsTranslation } from '../icons/iconsTranslation';
 
 
 const MapDeviceIcon = (props: any) => {
@@ -22,9 +22,9 @@ const MapDeviceIcon = (props: any) => {
                 <path d="M14.5 33.5C18.125 26.8 29 22.4756 29 13.4C29 5.99938 22.5081 0 14.5 0C6.49187 0 0 5.99938 0 13.4C0 22.4756 10.875 26.8 14.5 33.5Z" fill={props?.sensors?.sensors?.find((node: any) => node?.sensor === "Ping")?.lastvalue === "0 msec" ? "#C31414" : "#208B59"} />
             </svg>
             {
-                iconsTranslation[props?.sensors?.sensors?.[0]?.group] ?
+                mapIconsTranslation[props?.sensors?.sensors?.[0]?.group] ?
                     <div className={s.icon} >
-                        {iconsTranslation[props?.sensors?.sensors?.[0]?.group]}
+                        {mapIconsTranslation[props?.sensors?.sensors?.[0]?.group]}
                     </div>
                     :
                     <MonitorIcon className={s.icon} fillInside="#fff" />
