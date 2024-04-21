@@ -31,6 +31,8 @@ const FinancialManagmentView = () => {
     },
   ];
 
+  console.log(data?.data)
+
   if (isLoading) {
     return <LoadingPage />
   }
@@ -51,20 +53,9 @@ const FinancialManagmentView = () => {
             </div>
           </div>
 
-          {servisList?.map((item) => (
-            <div className={s.infoBox} key={item?.id}>
-              <img alt="info-icon" src={item?.icon} className={s.infoIcon} />
-              <div className={s.infoITitle}>{item?.title}</div>
-              <div className={s.infoValue}>{item?.value}</div>
-            </div>
-          ))}
+
 
           <div className={s.btnBox}>
-            <Link to="/financial-management/detail-service">
-              <button className={s.detailBtn}>
-                جزئیات سرویس
-              </button>
-            </Link>
             <Link to="/financial-management/reneval-service">
               <button className={s.renevalBtn}>
                 تمدید سرویس
