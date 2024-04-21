@@ -15,15 +15,17 @@ const NotificationsView = () => {
 
     return (
         <div className={s.container}>
+
             <div className={s.titleWrappwer}>
-                <TitleBox icon='/images/icons/printer.svg' title='هشدار قطع اتصال' />
+                <TitleBox icon='/images/icons/bell.svg' title='هشدار قطع اتصال' />
                 <InputSearch styles={{ marginTop: "16px" }} value={value} setValue={setValue} />
 
             </div>
+
             {
                 data?.sensors?.filter((item: any) => item?.sensor?.toUpperCase()?.includes(value.toUpperCase()))?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) => <NotificationItem {...item} key={item.id} />)
             }
-            <TablePagination dataLength={data?.sensors?.filter((item: any) => item?.device_raw?.toUpperCase()?.includes(value.toUpperCase()))?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
+            <TablePagination dataLength={data?.sensors?.filter((item: any) => item?.device?.toUpperCase()?.includes(value.toUpperCase()))?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
 
         </div >
     )
