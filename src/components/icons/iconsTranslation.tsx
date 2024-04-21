@@ -54,7 +54,7 @@ export const mapIconsTranslation: any = {
     "IP Phones": <IpPhonesIcon fillInside="#fff" />,
     Servers: <ServerIcon fillInside="#fff" />,
     Firewalls: <FirewallsIcon fillInside="#fff" />,
-    IPCAM: <CameraIcon />,
+    IPCAM: <CameraIcon fillInside="#fff" />,
     Storages: <StorageIcon fillInside="#fff" />
 }
 
