@@ -1,0 +1,18 @@
+import React from 'react'
+
+const CameraIcon = () => {
+    return (
+        <svg width="24" height="24" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+            <rect width="58" height="58" fill="url(#pattern0)" />
+            <defs>
+                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1" >
+                    <use xlinkHref="#image0_1318_2133" transform="scale(0.015625)" />
+                </pattern>
+                <image id="image0_1318_2133" width="64" height="64" xlinkHref="data:image/png;base64,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" />
+            </defs>
+        </svg>
+
+    )
+}
+
+export default CameraIcon
