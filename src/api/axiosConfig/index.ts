@@ -17,7 +17,7 @@ axiosInstance.interceptors.request.use(function (config) {
   }
 
   if (guestToken) {
-    config.headers["x-api-token"] = guestToken;
+    config.headers["x-api-key"] = guestToken;
   } else {
     config.headers["x-api-key"] = emsTokenValue;
   }
