@@ -9,7 +9,6 @@ import { Spinner } from 'reactstrap';
 
 const BannersTableItem = (props: any) => {
     const { active, ID, title, position, image } = props
-
     const queryClient = useQueryClient()
     const deactiveBannerMutation = useMutation((e: any) => pathDeactiveBanner(e).then(() => { queryClient.invalidateQueries("get-all-banners"); toast.success("غیرفعال سازی بنر با موفقیت انجام شد.") }).catch(err => err));
 

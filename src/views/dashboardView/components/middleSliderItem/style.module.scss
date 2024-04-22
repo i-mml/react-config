@@ -1,6 +1,7 @@
 .middleSliderItem {
   display: flex;
   align-items: center;
+  text-decoration: none;
   @media (max-width: 750px) {
     flex-wrap: wrap;
   }
