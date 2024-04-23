@@ -6,6 +6,7 @@ import { Spinner } from 'reactstrap';
 import { isMobile } from 'react-device-detect';
 import { useSelector } from 'react-redux';
 import NotificationsBox from '../notificationsBox';
+import { adjustData, labelFormatter, labelFormatterWithoutPercent } from '../../../../utils/pieChartHelpers';
 
 
 const ChartsWrapper = ({ chartsData }: any) => {
@@ -20,9 +21,6 @@ const ChartsWrapper = ({ chartsData }: any) => {
     const [uploadValue, setUploadValue] = useState(0)
     const [rangeValue, setRangeValue] = useState<'UPLOAD' | "DOWNLOAD">("DOWNLOAD")
     const [rangeMax, setRangeMax] = useState(0)
-
-
-
 
     const pieOptions = {
         title: {
@@ -39,19 +37,22 @@ const ChartsWrapper = ({ chartsData }: any) => {
             type: 'pie',
             radius: '70%',
             center: ['50%', '38%'],
-            data: cpusStatus?.length > 0 ?
+            data: adjustData(cpusStatus?.length > 0 ?
                 cpusStatus?.map((item: any) => {
                     return {
                         name: item?.device,
-                        value: parseFloat(item?.lastvalue || 0)
+                        value: parseFloat(item?.lastvalue || 0) / cpusStatus?.length,
+                        percentage: parseFloat(item?.lastvalue || 0)
                     }
                 })
-                // [{ name: "Veeam-BK1", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "Veeam-BK1")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
-                // { name: "Veeam-BK2", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "Veeam-BK2")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
-                // { name: "DNS-Nport", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "CUCM")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
-                // { name: "CUCM", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "DNS-Nport")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) }
-                // ] 
-                : [],
+                : []),
+
+
+            // [{ name: "Veeam-BK1", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "Veeam-BK1")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
+            // { name: "Veeam-BK2", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "Veeam-BK2")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
+            // { name: "DNS-Nport", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "CUCM")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
+            // { name: "CUCM", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "DNS-Nport")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) }
+            // ] 
             emphasis: {
                 itemStyle: {
                     shadowBlur: 10,
@@ -60,13 +61,13 @@ const ChartsWrapper = ({ chartsData }: any) => {
                 }
             },
             label: {
+                formatter: labelFormatter,
                 show: true,
                 position: 'inside',
-                formatter: '% {c}',
+                // formatter: '% {c}',
                 fontSize: "11px",
             },
         }],
-
     };
 
     const option = {
@@ -79,16 +80,18 @@ const ChartsWrapper = ({ chartsData }: any) => {
             data: healthStorage?.length > 0 ? healthStorage?.map((item: any) => item?.sensordata?.name) : [],
 
         },
-        tooltip: {
-            trigger: 'item',
-            formatter: '{b} : {c} ({d}%)'
-        },
+        // tooltip: {
+        //     trigger: 'item',
+        //     formatter: '{b} : {c} ({d}%)'
+        // },
         series: [{
             type: 'pie',
             radius: '65%',
 
             center: ['50%', '40%'],
-            data: healthStorage?.length > 0 ? healthStorage?.map((item: any) => ({ value: +item?.sensordata?.uptime?.split("%")[0], name: item?.sensordata?.name })) : [],
+            data: adjustData(
+                healthStorage?.length > 0 ? healthStorage?.map((item: any) => ({ value: +item?.sensordata?.uptime?.split("%")[0] / healthStorage?.length, name: item?.sensordata?.name, percentage: parseFloat(item?.lastvalue || 0) })) : []
+            ),
             emphasis: {
                 itemStyle: {
                     shadowBlur: 10,
@@ -99,8 +102,8 @@ const ChartsWrapper = ({ chartsData }: any) => {
             label: {
                 show: true,
                 position: 'inside',
-                // formatter: '% {c}'
-                formatter: '{c}',
+                // formatter: '{c}',
+                formatter: labelFormatterWithoutPercent,
             },
         }],
 
@@ -111,10 +114,10 @@ const ChartsWrapper = ({ chartsData }: any) => {
         title: {
             show: false
         },
-        tooltip: {
-            trigger: 'item',
-            formatter: '{b} : {c} ({d}%)'
-        },
+        // tooltip: {
+        //     trigger: 'item',
+        //     formatter: '{b} : {c} ({d}%)'
+        // },
         legend: {
             bottom: 0,
             left: 'center',
@@ -126,8 +129,9 @@ const ChartsWrapper = ({ chartsData }: any) => {
             radius: '65%',
 
             center: ['50%', '38%'],
-            data: virtualMachines?.length > 0 ? [virtualMachines?.find((item: any) => item?.name === "Datastore 1"), virtualMachines?.find((item: any) => item?.name === "Datastore 2"), virtualMachines?.find((item: any) => item?.name === "Datastore 3"), virtualMachines?.find((item: any) => item?.name === "Datastore 4")]?.map((item: any) => ({ value: +item?.info?.data[0]?.lastvalue?.split(" %")[0], name: item?.name })) : [],
-
+            // data: virtualMachines?.length > 0 ? [virtualMachines?.find((item: any) => item?.name === "Datastore 1"), virtualMachines?.find((item: any) => item?.name === "Datastore 2"), virtualMachines?.find((item: any) => item?.name === "Datastore 3"), virtualMachines?.find((item: any) => item?.name === "Datastore 4")]?.map((item: any) => ({ value: +item?.info?.data[0]?.lastvalue?.split(" %")[0], name: item?.name })) : [],
+            data: adjustData(
+                virtualMachines?.length > 0 ? [virtualMachines?.find((item: any) => item?.name === "Datastore 1"), virtualMachines?.find((item: any) => item?.name === "Datastore 2"), virtualMachines?.find((item: any) => item?.name === "Datastore 3"), virtualMachines?.find((item: any) => item?.name === "Datastore 4")]?.map((item: any) => ({ value: +item?.info?.data[0]?.lastvalue?.split(" %")[0] / 4, name: item?.name, percentage: +item?.info?.data[0]?.lastvalue?.split(" %")[0] })) : []),
             emphasis: {
                 itemStyle: {
                     shadowBlur: 10,
@@ -139,7 +143,7 @@ const ChartsWrapper = ({ chartsData }: any) => {
                 show: true,
                 position: 'inside',
                 // formatter: '% {c}',
-                formatter: '{c}',
+                formatter: labelFormatterWithoutPercent,
                 fontSize: "11px",
             },
         }],

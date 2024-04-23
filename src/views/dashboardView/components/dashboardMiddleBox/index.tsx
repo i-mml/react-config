@@ -12,6 +12,7 @@ import ReactECharts from 'echarts-for-react';
 import TitleBox from '../titleBox';
 import { useSelector } from 'react-redux';
 import CustomPieChart from '../../../../components/pieCharts';
+import { adjustData, labelFormatter } from '../../../../utils/pieChartHelpers';
 
 const DashboardMiddleBox = ({ data, chartsData }: any) => {
     const user = useSelector((state: any) => state?.auth?.data?.user);
@@ -115,19 +116,22 @@ const DashboardMiddleBox = ({ data, chartsData }: any) => {
             type: 'pie',
             radius: '70%',
             center: ['50%', '38%'],
-            data: cpusStatus?.length > 0 ?
+            data: adjustData(cpusStatus?.length > 0 ?
                 cpusStatus?.map((item: any) => {
                     return {
                         name: item?.device,
-                        value: parseFloat(item?.lastvalue || 0)
+                        value: parseFloat(item?.lastvalue || 0) / cpusStatus?.length,
+                        percentage: parseFloat(item?.lastvalue || 0)
                     }
                 })
-                // [{ name: "Veeam-BK1", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "Veeam-BK1")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
-                // { name: "Veeam-BK2", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "Veeam-BK2")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
-                // { name: "DNS-Nport", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "CUCM")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
-                // { name: "CUCM", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "DNS-Nport")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) }
-                // ] 
-                : [],
+                : []),
+
+
+            // [{ name: "Veeam-BK1", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "Veeam-BK1")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
+            // { name: "Veeam-BK2", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "Veeam-BK2")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
+            // { name: "DNS-Nport", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "CUCM")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) },
+            // { name: "CUCM", value: parseFloat(cpusStatus?.find((item: any) => item?.name === "DNS-Nport")?.channels?.find((node: any) => node?.name === "CPU usage")?.maximum?.replace(/[^0-9.]/g, "") || 0) }
+            // ] 
             emphasis: {
                 itemStyle: {
                     shadowBlur: 10,
@@ -136,13 +140,13 @@ const DashboardMiddleBox = ({ data, chartsData }: any) => {
                 }
             },
             label: {
+                formatter: labelFormatter,
                 show: true,
                 position: 'inside',
-                formatter: '% {c}',
+                // formatter: '% {c}',
                 fontSize: "11px",
             },
         }],
-
     };
 
     useEffect(() => {
@@ -235,7 +239,7 @@ const DashboardMiddleBox = ({ data, chartsData }: any) => {
                     <NotificationsBox notifications={data?.notificationsList?.sensors} />
                     <div className={s.diskHealth}>
                         <TitleBox title='سلامت سرور مجازی' />
-                        <CustomPieChart
+                        {/* <CustomPieChart
                             data={
                                 cpusStatus?.length > 0 ?
                                     cpusStatus?.map((item: any) => {
@@ -249,7 +253,9 @@ const DashboardMiddleBox = ({ data, chartsData }: any) => {
                             legendData={cpusStatus?.length > 0 ?
                                 cpusStatus?.map((item: any) => item?.device)
                                 : []}
-                        />
+                        /> */}
+                        <ReactECharts option={pieOptions} />
+
                     </div>
                 </div>}
 
