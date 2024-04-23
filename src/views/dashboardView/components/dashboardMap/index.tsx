@@ -136,12 +136,12 @@ const DashboardMap = ({ planList = [], isModal = false }: any) => {
                         :
                         <div className={s.zoomBoxModal}>
                             <div>
-                                <button onClick={() => setTopValue(prev => prev - 10)} disabled={zoomValue > 1.4} className={s.zoomBtn}>
+                                <button onClick={() => setTopValue(prev => prev - 10)} className={s.zoomBtn}>
                                     <img src={`/images/icons/up-arrow-modal.svg`} alt='arrow' className={`${s.arrowIcon} ${s.upIcon}`} />
                                 </button>
                             </div>
                             <div className={s.zoomBox}>
-                                <button onClick={() => setRightValue(prev => prev + 10)} disabled={zoomValue > 1.4} className={s.zoomBtn}>
+                                <button onClick={() => setRightValue(prev => prev + 10)} className={s.zoomBtn}>
                                     <img src={`/images/icons/up-arrow-modal.svg`} alt='arrow' className={`${s.arrowIcon} ${s.leftIcon}`} />
                                 </button>
                                 <select
@@ -155,12 +155,12 @@ const DashboardMap = ({ planList = [], isModal = false }: any) => {
                                         zoomsList?.map(item => <option value={item} key={item}>{+Math.abs(item * 100)?.toFixed(1)}</option>)
                                     }
                                 </select>
-                                <button onClick={() => setRightValue(prev => prev - 10)} disabled={zoomValue > 1.4} className={s.zoomBtn}>
+                                <button onClick={() => setRightValue(prev => prev - 10)} className={s.zoomBtn}>
                                     <img src={`/images/icons/up-arrow-modal.svg`} alt='arrow' className={`${s.arrowIcon} ${s.rightIcon}`} />
                                 </button>
                             </div>
                             <div>
-                                <button onClick={() => setTopValue(prev => prev + 10)} disabled={zoomValue > 1.4} className={s.zoomBtn}>
+                                <button onClick={() => setTopValue(prev => prev + 10)} className={s.zoomBtn}>
                                     <img src={`/images/icons/up-arrow-modal.svg`} alt='arrow' className={`${s.arrowIcon} ${s.downIcon}`} />
                                 </button>
                             </div>
