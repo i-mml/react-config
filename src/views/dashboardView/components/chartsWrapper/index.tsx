@@ -77,7 +77,7 @@ const ChartsWrapper = ({ chartsData }: any) => {
             bottom: 0,
             left: 'center',
             data: healthStorage?.length > 0 ? healthStorage?.map((item: any) => item?.sensordata?.name) : [],
-            selectedMode: 'single'
+
         },
         tooltip: {
             trigger: 'item',
@@ -86,7 +86,7 @@ const ChartsWrapper = ({ chartsData }: any) => {
         series: [{
             type: 'pie',
             radius: '65%',
-            selectedMode: "single",
+
             center: ['50%', '40%'],
             data: healthStorage?.length > 0 ? healthStorage?.map((item: any) => ({ value: +item?.sensordata?.uptime?.split("%")[0], name: item?.sensordata?.name })) : [],
             emphasis: {
@@ -119,12 +119,12 @@ const ChartsWrapper = ({ chartsData }: any) => {
             bottom: 0,
             left: 'center',
             data: virtualMachines?.length > 0 ? [virtualMachines?.find((item: any) => item?.name === "Datastore 1"), virtualMachines?.find((item: any) => item?.name === "Datastore 2"), virtualMachines?.find((item: any) => item?.name === "Datastore 3"), virtualMachines?.find((item: any) => item?.name === "Datastore 4")]?.map((item: any) => item?.name) : [],
-            selectedMode: 'single'
+
         },
         series: [{
             type: 'pie',
             radius: '65%',
-            selectedMode: "single",
+
             center: ['50%', '38%'],
             data: virtualMachines?.length > 0 ? [virtualMachines?.find((item: any) => item?.name === "Datastore 1"), virtualMachines?.find((item: any) => item?.name === "Datastore 2"), virtualMachines?.find((item: any) => item?.name === "Datastore 3"), virtualMachines?.find((item: any) => item?.name === "Datastore 4")]?.map((item: any) => ({ value: +item?.info?.data[0]?.lastvalue?.split(" %")[0], name: item?.name })) : [],
 
@@ -154,7 +154,7 @@ const ChartsWrapper = ({ chartsData }: any) => {
             // selected: {
             //     'Series 1': true,
             // },
-            // selectedMode: 'single'
+            // 
         },
         tooltip: {},
         series: newVirtualMachines?.map((item: any) => {

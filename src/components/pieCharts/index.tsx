@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import ReactECharts from 'echarts-for-react';
 
-const CustomPieChart = ({ data, legendData, selectedMode = "" }: any) => {
+const CustomPieChart = ({ data, legendData }: any) => {
     const chartRef = useRef<any>(null);
 
     const labelFormatter = (params: any) => {
@@ -23,14 +23,13 @@ const CustomPieChart = ({ data, legendData, selectedMode = "" }: any) => {
                     bottom: 0,
                     left: 'center',
                     data: [...legendData, "Free"],
-                    selectedMode: selectedMode
+
                 },
                 series: [
                     {
                         type: 'pie',
                         radius: '55%',
                         data: adjustData(data),
-                        selectedMode: selectedMode, // Enable single selection mode
                         emphasis: {
                             itemStyle: {
                                 shadowBlur: 10,
