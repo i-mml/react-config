@@ -146,6 +146,31 @@
       fill: white;
     }
   }
+  .zoomBoxModal {
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .zoomBox {
+      position: unset;
+      margin: 4px 0;
+    }
+    .arrowIcon {
+      background-color: #e5f2ff;
+      padding: 4px;
+      border-radius: 8px;
+    }
+    .downIcon {
+      transform: rotate(180deg);
+    }
+    .leftIcon {
+      transform: rotate(90deg);
+    }
+    .rightIcon {
+      transform: rotate(270deg);
+    }
+  }
   .planName {
     position: absolute;
     right: 0;
