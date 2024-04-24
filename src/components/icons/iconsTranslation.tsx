@@ -31,7 +31,7 @@ export const iconsTranslation: any = {
     "IP Phones": <IpPhonesIcon />,
     Servers: <ServerIcon />,
     Firewalls: <FirewallsIcon />,
-    IPCAM: <CameraIcon />,
+    IPCAM: <CameraIcon fillInside="#000" />,
     Storages: <StorageIcon />
 }
 
