@@ -41,7 +41,9 @@
     }
   }
   .online {
-    margin-top: 12px;
+    @media (max-width: 750px) {
+      margin-top: 12px;
+    }
   }
   .title {
     color: #b8b8b8;
