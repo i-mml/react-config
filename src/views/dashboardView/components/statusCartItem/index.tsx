@@ -18,28 +18,33 @@ const StatusCartItem = (props: Iprops) => {
     return (
         <div className={`${s.container} ${halfWidth ? s.halfWidth : ""}`}>
             <div className={s.top}>
-                <img className={s.icon} src={`/images/icons/${icon}.svg`} />
-                {topBoxText || ""}
+                <div className={s.topTitle}>
+                    <img className={s.icon} src={`/images/icons/${icon}.svg`} />
+                    <span>
+                        {title}
+                    </span>
+                </div>
+
             </div>
 
             <div className={s.bottom}>
-                <div className={s.title}>
-                    {title}
-                </div>
 
-                <div className={s.value}>
-
+                <div className={s.arrows}>
+                    {
+                        hasArrow &&
+                        <div className={s.arrows}>
+                            <img className={s.icon} src={`/images/icons/arrow-down.svg`} />
+                            <img className={s.icon} src={`/images/icons/arrow-up.svg`} />
+                        </div>
+                    }
                     <div className={s.arrows}>
-                        {
-                            hasArrow &&
-                            <div className={s.arrows}>
-                                <img className={s.icon} src={`/images/icons/arrow-down.svg`} />
-                                <img className={s.icon} src={`/images/icons/arrow-up.svg`} />
-                            </div>
-                        }
-                        <span>{value}</span>
+                        {topBoxText || ""}
                     </div>
+
+
+                    <span>{value}</span>
                 </div>
+
             </div>
 
         </div>

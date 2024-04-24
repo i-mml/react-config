@@ -34,16 +34,14 @@
       width: 100%;
       display: flex;
       align-items: start;
-      flex-direction: row-reverse;
+      flex-direction: row;
       justify-content: space-between;
       margin-top: 12px;
       padding: 0 !important;
     }
   }
   .online {
-    // @media (max-width: 750px) {
-    //   display: none;
-    // }
+    margin-top: 12px;
   }
   .title {
     color: #b8b8b8;

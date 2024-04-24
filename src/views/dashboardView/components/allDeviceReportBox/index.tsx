@@ -15,13 +15,14 @@ const AllDeviceReportBox = (props: Iprops) => {
     return (
         <div className={s.container}>
             <div className={s.top}>
-                <img className={s.icon} src="/images/icons/laptop-02.svg" />
+                <div className={s.topTitle}>
+                    <img className={s.icon} src="/images/icons/laptop-02.svg" />
+                    <span>
+                        {title}
+                    </span>
+                </div>
             </div>
             <div className={s.bottom}>
-                <div className={s.title}>
-                    {title}
-                </div>
-
                 <div className={s.allDeviceBox}>
                     <div className={s.offline}>
                         <StatusBox active={false} title='آفلاین' />
