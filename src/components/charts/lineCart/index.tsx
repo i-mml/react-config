@@ -91,13 +91,13 @@ const LineChart = ({ data, netData }: any) => {
                             focus: 'series'
                         },
                         lineStyle: {
-                            color: '#4CA5FF' // Gray line color for shadow
+                            color: '#0033ff' // Gray line color for shadow
                         },
                         itemStyle: {
                             opacity: 0 // Make the shadow invisible
                         },
                         areaStyle: {
-                            color: '#B2DEFF80' // Gray color for shadow area
+                            color: '#00518a95' // Gray color for shadow area
                         },
                         showSymbol: false,
 
@@ -111,13 +111,13 @@ const LineChart = ({ data, netData }: any) => {
                             focus: 'series'
                         },
                         lineStyle: {
-                            color: '#4CA5FF' // Gray line color for shadow
+                            color: '#007eff' // Gray line color for shadow
                         },
                         itemStyle: {
                             opacity: 0 // Make the shadow invisible
                         },
                         areaStyle: {
-                            color: '#B2DEFF80' // Gray color for shadow area
+                            color: '#007eff80' // Gray color for shadow area
                         },
                         showSymbol: false,
                     },
@@ -130,13 +130,13 @@ const LineChart = ({ data, netData }: any) => {
                             focus: 'series'
                         },
                         lineStyle: {
-                            color: '#4CA5FF' // Gray line color for shadow
+                            color: '#76bdef' // Gray line color for shadow
                         },
                         itemStyle: {
                             opacity: 0 // Make the shadow invisible
                         },
                         areaStyle: {
-                            color: '#B2DEFF80' // Gray color for shadow area
+                            color: '#76bdef80' // Gray color for shadow area
                         },
                         showSymbol: false,
                     }

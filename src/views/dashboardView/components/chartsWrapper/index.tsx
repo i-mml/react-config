@@ -143,7 +143,7 @@ const ChartsWrapper = ({ chartsData }: any) => {
                 show: true,
                 position: 'inside',
                 // formatter: '% {c}',
-                formatter: labelFormatterWithoutPercent,
+                formatter: labelFormatter,
                 fontSize: "11px",
             },
         }],
