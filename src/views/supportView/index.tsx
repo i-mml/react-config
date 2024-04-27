@@ -97,11 +97,11 @@ const SupportView = () => {
                         نام شرکت
                       </th>
                       :
-                      <th>
-                        دستگاه
-                      </th>
-
+                      null
                   }
+                  <th>
+                    دستگاه
+                  </th>
                   <th>تاریخ ایجاد</th>
                   <th>درجه اهمیت</th>
                   <th className={s.mobileShow}>وضعیت</th>
@@ -130,10 +130,11 @@ const SupportView = () => {
                             {item?.company_name || '-'}
                           </td>
                           :
-                          <td>
-                            {item?.device_name || '-'}
-                          </td>
+                          null
                       }
+                      <td>
+                        {item?.device_name || '-'}
+                      </td>
                       <td>
                         {
                           moment(item?.CreatedAt).format("jYYYY/jMM/jDD")
