@@ -109,7 +109,7 @@ const DashboardMiddleBox = ({ data, chartsData }: any) => {
             bottom: 0,
             left: 'center',
             data: cpusStatus?.length > 0 ?
-                cpusStatus?.map((item: any) => item?.device)
+                cpusStatus?.map((item: any, index: number) => `${item?.device} ${index}`)
                 : []
         },
         series: [{
@@ -117,9 +117,9 @@ const DashboardMiddleBox = ({ data, chartsData }: any) => {
             radius: '70%',
             center: ['50%', '38%'],
             data: adjustData(cpusStatus?.length > 0 ?
-                cpusStatus?.map((item: any) => {
+                cpusStatus?.map((item: any, index: number) => {
                     return {
-                        name: item?.device,
+                        name: `${item?.device} ${index}`,
                         value: parseFloat(item?.lastvalue || 0) / cpusStatus?.length,
                         percentage: parseFloat(item?.lastvalue || 0)
                     }

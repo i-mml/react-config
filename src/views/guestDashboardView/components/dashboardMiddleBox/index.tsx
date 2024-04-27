@@ -238,16 +238,16 @@ const DashboardMiddleBox = ({ data, chartsData }: any) => {
                         <CustomPieChart
                             data={
                                 cpusStatus?.length > 0 ?
-                                    cpusStatus?.map((item: any) => {
+                                    cpusStatus?.map((item: any, index: number) => {
                                         return {
-                                            name: item?.device,
+                                            name: `${item?.device} ${index}`,
                                             value: parseFloat(item?.lastvalue || 0)
                                         }
                                     })
                                     : []
                             }
                             legendData={cpusStatus?.length > 0 ?
-                                cpusStatus?.map((item: any) => item?.device)
+                                cpusStatus?.map((item: any, index: number) => `${item?.device} ${index}`)
                                 : []}
                         />
                     </div>

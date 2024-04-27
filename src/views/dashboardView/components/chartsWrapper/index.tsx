@@ -30,7 +30,7 @@ const ChartsWrapper = ({ chartsData }: any) => {
             bottom: 0,
             left: 'center',
             data: cpusStatus?.length > 0 ?
-                cpusStatus?.map((item: any) => item?.device)
+                cpusStatus?.map((item: any, index: number) => `${item?.device} ${index}`)
                 : []
         },
         series: [{
@@ -38,11 +38,11 @@ const ChartsWrapper = ({ chartsData }: any) => {
             radius: '70%',
             center: ['50%', '38%'],
             data: adjustData(cpusStatus?.length > 0 ?
-                cpusStatus?.map((item: any) => {
+                cpusStatus?.map((item: any, index: number) => {
                     return {
-                        name: item?.device,
-                        value: parseFloat(item?.lastvalue || 0) / cpusStatus?.length,
-                        percentage: parseFloat(item?.lastvalue || 0)
+                        name: `${item?.device} ${index}`,
+                        value: Number(parseFloat(item?.lastvalue || 0) / cpusStatus?.length).toFixed(2),
+                        percentage: Number(parseFloat(item?.lastvalue || 0)).toFixed(2)
                     }
                 })
                 : []),
@@ -69,7 +69,7 @@ const ChartsWrapper = ({ chartsData }: any) => {
             },
         }],
     };
-
+    console.log(healthStorage?.map((item: any) => ({ value: +item?.sensordata?.uptime?.split("%")[0] })))
     const option = {
         title: {
             show: false
@@ -90,7 +90,7 @@ const ChartsWrapper = ({ chartsData }: any) => {
 
             center: ['50%', '40%'],
             data: adjustData(
-                healthStorage?.length > 0 ? healthStorage?.map((item: any) => ({ value: +item?.sensordata?.uptime?.split("%")[0] / healthStorage?.length, name: item?.sensordata?.name, percentage: parseFloat(item?.lastvalue || 0) })) : []
+                healthStorage?.length > 0 ? healthStorage?.map((item: any) => ({ value: +item?.sensordata?.uptime?.split("%")[0] / healthStorage?.length, name: item?.sensordata?.name, percentage: (+item?.sensordata?.uptime?.split("%")[0]).toFixed(2) })) : []
             ),
             emphasis: {
                 itemStyle: {
@@ -131,7 +131,7 @@ const ChartsWrapper = ({ chartsData }: any) => {
             center: ['50%', '38%'],
             // data: virtualMachines?.length > 0 ? [virtualMachines?.find((item: any) => item?.name === "Datastore 1"), virtualMachines?.find((item: any) => item?.name === "Datastore 2"), virtualMachines?.find((item: any) => item?.name === "Datastore 3"), virtualMachines?.find((item: any) => item?.name === "Datastore 4")]?.map((item: any) => ({ value: +item?.info?.data[0]?.lastvalue?.split(" %")[0], name: item?.name })) : [],
             data: adjustData(
-                virtualMachines?.length > 0 ? [virtualMachines?.find((item: any) => item?.name === "Datastore 1"), virtualMachines?.find((item: any) => item?.name === "Datastore 2"), virtualMachines?.find((item: any) => item?.name === "Datastore 3"), virtualMachines?.find((item: any) => item?.name === "Datastore 4")]?.map((item: any) => ({ value: +item?.info?.data[0]?.lastvalue?.split(" %")[0] / 4, name: item?.name, percentage: +item?.info?.data[0]?.lastvalue?.split(" %")[0] })) : []),
+                virtualMachines?.length > 0 ? [virtualMachines?.find((item: any) => item?.name === "Datastore 1"), virtualMachines?.find((item: any) => item?.name === "Datastore 2"), virtualMachines?.find((item: any) => item?.name === "Datastore 3"), virtualMachines?.find((item: any) => item?.name === "Datastore 4")]?.map((item: any) => ({ value: +(item?.info?.data[0]?.lastvalue?.split(" %")[0] / 4).toFixed(2), name: item?.name, percentage: (+item?.info?.data[0]?.lastvalue?.split(" %")[0]).toFixed(2) })) : []),
             emphasis: {
                 itemStyle: {
                     shadowBlur: 10,
