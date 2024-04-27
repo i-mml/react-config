@@ -59,9 +59,9 @@ const SoftwareHeader = () => {
 const ProcessContents = ({ item }: any) => {
     return (
         <div className={s.listItem}>
-            <span>{item?.["process id"] || "-"}</span>
-            <span>{item?.name || "-"}</span>
-            <span>{item?.["start time"] || "-"}</span>
+            <span>{item?.["Process ID"] || "-"}</span>
+            <span>{item?.Name || "-"}</span>
+            <span>{item?.["Start Time"] || "-"}</span>
         </div>
     )
 }
@@ -113,14 +113,13 @@ const UsersHeader = () => {
 }
 
 const SystemContent = ({ data, type }: any) => {
-
     const systemTypeContent: any = {
         hard_ware: { title: "Hardware", value: "hard_ware", header: <HardwareHeader />, content: <>{data?.map((item: any) => <HardwareContents item={item} />)}</> },
         system: { title: "System", value: "system", header: <SystemHeader />, content: <>{data?.map((item: any) => <SystemContents item={item} />)}</> },
         users: { title: "Users", value: "users", header: <UsersHeader />, content: <>{data?.map((item: any) => <UsersContents item={item} />)}</> },
         soft_ware: { title: "Software", value: "soft_ware", header: <SoftwareHeader />, content: <>{data?.map((item: any) => <SoftwareContents item={item} />)}</> },
-        services: { title: "Services", value: "services", header: <ServiceHeader />, content: <>{data?.map((item: any) => <ServiceContents item={item} />)}</> },
-        processes: { title: "Processes", value: "processes", header: <ProcessHeader />, content: <>{data?.map((item: any) => <ProcessContents item={item} />)}</> }
+        service: { title: "Services", value: "services", header: <ServiceHeader />, content: <>{data?.map((item: any) => <ServiceContents item={item} />)}</> },
+        process: { title: "Processes", value: "processes", header: <ProcessHeader />, content: <>{data?.map((item: any) => <ProcessContents item={item} />)}</> }
     }
     return (
         <div className={s.sensorsList}>

@@ -15,7 +15,7 @@ const DeviceTableItem = ({ name, icon, fold, objid, tags, group, status }: any) 
     const [selectedSystem, setSelectedSystem] = useState({ title: "", value: "" })
 
     const systemTypesList = [
-        { title: "Hardware", value: "hard_ware" }, { title: "System", value: "system" }, { title: "Users", value: "users" }, { title: "Software", value: "soft_ware" }, { title: "Services", value: "services" }, { title: "Processes", value: "processes" }
+        { title: "Hardware", value: "hard_ware" }, { title: "System", value: "system" }, { title: "Users", value: "users" }, { title: "Software", value: "soft_ware" }, { title: "Services", value: "service" }, { title: "Processes", value: "process" }
     ]
 
     return (
