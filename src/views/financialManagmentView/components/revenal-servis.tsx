@@ -6,18 +6,16 @@ import FinancialManagementHeader from "./FinancialManagementHeader";
 import { useMutation, useQuery } from "react-query";
 import { postPaymentRequest } from "../../../api/services/payment";
 import { getSubscription } from "../../../api/services/subscription";
-import { getCompanyById } from "../../../api/services/company";
 
 const RenevalServis = () => {
   const authData = useSelector((state: any) => state?.auth?.data)
   const { data } = useQuery("subscription-data", getSubscription);
-  const { data: companyData } = useQuery("get-company-by-id", () => getCompanyById(authData?.admin?.company_Id));
 
   const informationList = [
     {
       id: 1,
       title: "اشتراک سرویس مانیتورینگ شبکه",
-      value: companyData?.data?.sub_scription + " تومان" ?? "-",
+      value: data?.data?.price + " تومان" ?? "-",
     },
     {
       id: 2,
