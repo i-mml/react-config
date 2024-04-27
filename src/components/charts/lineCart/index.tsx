@@ -40,7 +40,7 @@ const LineChart = ({ data, netData }: any) => {
     const option = {
         xAxis: {
 
-            data: isDataEmpty ? [] : chartGraphData?.values?.slice(-50)?.map((item: any) => moment(item?.datetime, "M/D/YYYY h:mm:ss").format('h:mm')),
+            data: isDataEmpty ? [] : chartGraphData?.values?.slice(0, 50)?.map((item: any) => moment(item?.datetime, "M/D/YYYY h:mm:ss").format('h:mm')),
             // the last version of graph '(h:mm)|jYYYY/jMM/jDD'
             axisLabel: {
                 rotate: 90,
@@ -83,7 +83,7 @@ const LineChart = ({ data, netData }: any) => {
             isDataEmpty ? [] :
                 [
                     {
-                        data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => Number(item?.['Traffic Total (volume)'] / oneMilion)) : [],
+                        data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(0, 50)?.map((item: any) => Number(item?.['Traffic Total (volume)'] / oneMilion)) : [],
                         name: 'ترافیک کل',
                         type: 'line',
                         stack: 'Total',
@@ -103,7 +103,7 @@ const LineChart = ({ data, netData }: any) => {
 
                     },
                     {
-                        data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => Number(item?.['Traffic In (volume)']) / oneMilion) : [],
+                        data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(0, 50)?.map((item: any) => Number(item?.['Traffic In (volume)']) / oneMilion) : [],
                         name: 'ترافیک داخلی',
                         type: 'line',
                         stack: 'Total',
@@ -122,7 +122,7 @@ const LineChart = ({ data, netData }: any) => {
                         showSymbol: false,
                     },
                     {
-                        data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(-50)?.map((item: any) => Number(item?.['Traffic Out (volume)']) / oneMilion) : [],
+                        data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(0, 50)?.map((item: any) => Number(item?.['Traffic Out (volume)']) / oneMilion) : [],
                         name: 'ترافیک خارجی',
                         type: 'line',
                         stack: 'Total',
