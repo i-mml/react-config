@@ -93,7 +93,7 @@ const SupportView = () => {
                 <tr>
                   <th className={s.mobileShow}>شماره تیکت</th>
                   {
-                    !internal ?
+                    user?.role === 1 ?
                       <th>
                         نام شرکت
                       </th>
@@ -126,7 +126,7 @@ const SupportView = () => {
                         </div>
                       </td>
                       {
-                        !internal ?
+                        user?.role === 1 ?
                           <td>
                             {item?.company_name || '-'}
                           </td>
