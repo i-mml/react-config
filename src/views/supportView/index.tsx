@@ -19,8 +19,8 @@ const SupportView = () => {
   const user = useSelector((state: any) => state?.auth?.data?.user);
 
   const tabsList = user?.role !== 0 ? [
-    { id: 1, faTitle: "پشتیبانی خارجی", isInternal: false },
     { id: 2, faTitle: "پشتیبانی داخلی", isInternal: true },
+    { id: 1, faTitle: "پشتیبانی خارجی", isInternal: false },
   ] :
     [
       { id: 3, faTitle: "پشتیبانی داخلی", isInternal: true },

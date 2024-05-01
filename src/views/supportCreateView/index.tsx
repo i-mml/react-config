@@ -45,13 +45,13 @@ const SupportCreateView = () => {
     const navigate = useNavigate()
     const user = useSelector((state: any) => state?.auth?.data?.user);
     const profile = useSelector((state: any) => state?.auth?.data);
-
+    console.log(profile)
 
     const isExternal = searchParams?.get("isInternal") && searchParams?.get("isInternal") === "false"
 
     const { data: companiesData, isLoading } = useQuery<any>(user?.role === 1 ? "get-all-companies" : "", user?.role === 1 ? getCompanyAll : () => { })
     const { data: devicesData } = useQuery<any>("get-all-device", getDeviceAll)
-    const { data: planAll, isLoading: planListLoading } = useQuery<any>('dashboard-all-services', () => getPlanAll(profile?.admin?.company_Id))
+    const { data: planAll, isLoading: planListLoading } = useQuery<any>('dashboard-all-services', () => getPlanAll(profile?.user?.role !== 0 ? profile?.admin?.company_Id : profile?.user?.companey_id))
 
 
     const hanldeSendMessage = async (fields: FormInitialValueType, response: any) => {
@@ -114,7 +114,7 @@ const SupportCreateView = () => {
                                 </div>
                             )}
                         </Field>
-                        {!!!isExternal &&
+                        {user?.role !== 1 &&
                             <Field name="device_id">
                                 {({ field }: any) => (
                                     <div className={s.inputBox}>
@@ -148,7 +148,7 @@ const SupportCreateView = () => {
                                 )}
                             </Field>
                         }
-                        {!!isExternal &&
+                        {user?.role === 1 &&
                             <Field name="companeyId">
                                 {({ field }: any) => (
                                     <div className={s.inputBox}>

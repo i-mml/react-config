@@ -20,7 +20,7 @@ const SideBarView = () => {
   let location = useLocation();
   const navigate = useNavigate()
   const user = useSelector((state: any) => state?.auth?.data);
-  const { data } = useQuery("get-company-by-id", () => getCompanyById(user?.admin?.company_Id));
+  const { data } = useQuery("get-company-by-id", () => getCompanyById(user?.user?.role !== 0 ? user?.admin?.company_Id : user?.user?.companey_id));
 
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);

@@ -7,7 +7,7 @@ import { useQuery } from 'react-query';
 
 const MobileHeader = () => {
     const authData = useSelector((state: any) => state?.auth?.data)
-    const { data } = useQuery("get-company-by-id", () => getCompanyById(authData?.admin?.company_Id));
+    const { data } = useQuery("get-company-by-id", () => getCompanyById(authData?.user?.role !== 0 ? authData?.admin?.company_Id : authData?.user?.companey_id));
 
     const navigate = useNavigate()
 
