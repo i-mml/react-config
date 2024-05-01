@@ -81,7 +81,7 @@ const ServiceContents = ({ item }: any) => {
         <div className={s.listItem}>
             <span>{item?.Name || "-"}</span>
             <span>{item?.Startmode || "-"}</span>
-            <span>{item?.State || "-"}</span>
+            <span>{item?.State?.split(` `)?.[2] ? item?.State?.split(` `)?.[2] : item?.State || "-"}</span>
         </div>
     )
 }
