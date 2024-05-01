@@ -35,12 +35,15 @@ const LineChart = ({ data, netData }: any) => {
         { id: 2, title: "کاربران", value: "users" },
         { id: 3, title: "کل شبکه", value: "all network" },
     ]
+    console.log(
+        chartGraphData?.values?.slice(0, 50)?.reverse()?.map((item: any) => item)
+    )
     const oneMilion = 1000000
     const isDataEmpty = !Array.isArray(chartGraphData?.values) || chartGraphData?.values?.length === 0
     const option = {
         xAxis: {
 
-            data: isDataEmpty ? [] : chartGraphData?.values?.slice(0, 50)?.map((item: any) => moment(item?.datetime, "M/D/YYYY h:mm:ss").format('h:mm')),
+            data: isDataEmpty ? [] : chartGraphData?.values?.slice(0, 50)?.reverse()?.map((item: any) => moment(item?.datetime, "M/D/YYYY h:mm:ss").format('h:mm')),
             // the last version of graph '(h:mm)|jYYYY/jMM/jDD'
             axisLabel: {
                 rotate: 90,
@@ -83,27 +86,26 @@ const LineChart = ({ data, netData }: any) => {
             isDataEmpty ? [] :
                 [
                     {
-                        data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(0, 50)?.map((item: any) => Number(item?.['Traffic Total (volume)'] / oneMilion)) : [],
-                        name: 'ترافیک کل',
+                        data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(0, 50)?.reverse()?.map((item: any) => Number(item?.['Traffic Out (volume)']) / oneMilion) : [],
+                        name: 'ترافیک خارجی',
                         type: 'line',
                         stack: 'Total',
                         emphasis: {
                             focus: 'series'
                         },
                         lineStyle: {
-                            color: '#0033ff' // Gray line color for shadow
+                            color: '#76bdef' // Gray line color for shadow
                         },
                         itemStyle: {
                             opacity: 0 // Make the shadow invisible
                         },
                         areaStyle: {
-                            color: '#00518a95' // Gray color for shadow area
+                            color: '#76bdef80' // Gray color for shadow area
                         },
                         showSymbol: false,
-
                     },
                     {
-                        data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(0, 50)?.map((item: any) => Number(item?.['Traffic In (volume)']) / oneMilion) : [],
+                        data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(0, 50)?.reverse()?.map((item: any) => Number(item?.['Traffic In (volume)']) / oneMilion) : [],
                         name: 'ترافیک داخلی',
                         type: 'line',
                         stack: 'Total',
@@ -122,24 +124,25 @@ const LineChart = ({ data, netData }: any) => {
                         showSymbol: false,
                     },
                     {
-                        data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(0, 50)?.map((item: any) => Number(item?.['Traffic Out (volume)']) / oneMilion) : [],
-                        name: 'ترافیک خارجی',
+                        data: Array.isArray(chartGraphData?.values) && chartGraphData?.values?.length > 0 ? chartGraphData?.values?.slice(0, 50)?.reverse()?.map((item: any) => Number(item?.['Traffic Total (volume)'] / oneMilion)) : [],
+                        name: 'ترافیک کل',
                         type: 'line',
                         stack: 'Total',
                         emphasis: {
                             focus: 'series'
                         },
                         lineStyle: {
-                            color: '#76bdef' // Gray line color for shadow
+                            color: '#0033ff' // Gray line color for shadow
                         },
                         itemStyle: {
                             opacity: 0 // Make the shadow invisible
                         },
                         areaStyle: {
-                            color: '#76bdef80' // Gray color for shadow area
+                            color: '#00518a95' // Gray color for shadow area
                         },
                         showSymbol: false,
-                    }
+
+                    },
 
                 ]
     };
