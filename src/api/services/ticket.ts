@@ -9,6 +9,14 @@ export const getTicketAll = async () => {
   return response;
 };
 
+export const getTicketByStatus = async (e: string) => {
+  const response = await axiosInstance
+    .get(`/ticket?${e}`)
+    .then((res) => res?.data);
+
+  return response;
+};
+
 export const postTicketSend = async (e: TicketSendFields) => {
   const response = await axiosInstance
     .post("/ticket/send", e)

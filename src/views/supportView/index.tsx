@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import moment from "moment-jalaali";
 import InputSearch from "../../components/searchInput";
 import { useQuery } from "react-query";
-import { getAcceptedTicket, getTicketAll } from "../../api/services/ticket";
+import { getAcceptedTicket, getTicketAll, getTicketByStatus } from "../../api/services/ticket";
 import { Spinner } from "reactstrap";
 import TablePagination from "../../components/pagination";
 import { useSelector } from "react-redux";
@@ -26,12 +26,11 @@ const SupportView = () => {
       { id: 3, faTitle: "پشتیبانی داخلی", isInternal: true },
     ];
 
-  const { data: tickets, isLoading } = useQuery("tickets-list", user?.role === 1 ? () => getTicketAll() : () => getAcceptedTicket(`user_id=${user?.user_id}`));
+  const { data: tickets, isLoading } = useQuery("tickets-list", user?.role === 1 ? () => getTicketByStatus(`status=ALL&user_id=${user?.user_id}`) : () => getTicketByStatus(`status=ALL&user_id=${user?.user_id}`));
   const pageSize = 30;
   const [page, setPage] = useState(0)
   const [value, setValue] = useState("")
   const [internal, setInternal] = useState(tabsList[0]?.isInternal)
-
   const navigate = useNavigate()
 
   const labelGenerator: any = {
@@ -112,7 +111,7 @@ const SupportView = () => {
 
               <tbody className={s.tableBody}>
                 {
-                  tickets?.data?.filter((node: any) => node?.internal === internal)?.filter((item: any) => item?.title?.toString()?.toUpperCase()?.includes(value.toUpperCase()))?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) =>
+                  tickets?.data?.[internal ? 0 : 1]?.filter((item: any) => item?.title?.toString()?.toUpperCase()?.includes(value.toUpperCase()))?.slice(page * pageSize, (page + 1) * pageSize)?.map((item: any) =>
                     <tr key={item.id} onClick={() => navigate(`/support/${item?.ID}`)}>
                       <td className={s.mobileShow}>
                         <div className={s.ticketId}>
@@ -178,7 +177,7 @@ const SupportView = () => {
 
             </table>
         }
-        <TablePagination dataLength={tickets?.data?.filter((node: any) => node?.internal === internal)?.filter((item: any) => item?.title?.toString()?.toUpperCase()?.includes(value.toUpperCase()))?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
+        <TablePagination dataLength={tickets?.data?.[internal ? 0 : 1]?.filter((item: any) => item?.title?.toString()?.toUpperCase()?.includes(value.toUpperCase()))?.length || 0} page={page} pageSize={pageSize} setPage={setPage} />
       </div>
     </div>
 
