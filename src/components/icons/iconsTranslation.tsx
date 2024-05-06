@@ -51,7 +51,7 @@ export const mapIconsTranslation: any = {
     Windows: <ServerIcon fillInside="#fff" />,
     "Network Infrastructure": <MonitorIcon fillInside="#fff" />,
     Routers: <RouterIcon fillInside="#fff" />,
-    "IP Phones": <IpPhonesIcon fillInside="#fff" />,
+    "IP Phones": <img src="/images/ip_phones.png" alt="ips" style={{ width: "18px", height: "18px" }} />,
     Servers: <ServerIcon fillInside="#fff" />,
     Firewalls: <FirewallsIcon fillInside="#fff" />,
     IPCAM: <CameraIcon fillInside="#fff" />,
