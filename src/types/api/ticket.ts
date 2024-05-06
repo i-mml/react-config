@@ -5,7 +5,7 @@ export type TicketSendFields = {
   internal?: boolean;
   device_id?: any;
   device_name?: any;
-  companeyId?: any;
+  company_id?: any;
 };
 
 export type TicketEditFields = {

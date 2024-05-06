@@ -69,10 +69,10 @@ const SupportCreateView = () => {
         label: e.label,
         title: e.title,
         user_id: user?.user_id,
-        internal: !!isExternal ? false : true,
-        device_id: !!isExternal ? "" : e.device_id,
-        device_name: !!isExternal ? "" : e.device_name,
-        companeyId: !!isExternal ? e.companeyId : null as any
+        internal: user?.role === 1 ? false : true,
+        device_id: user?.role === 1 ? "" : e.device_id,
+        device_name: user?.role === 1 ? "" : e.device_name,
+        company_id: user?.role === 1 ? Number(e.companeyId) : null as any
     }).then((res) => {
         hanldeSendMessage(e, res?.data)
     }
