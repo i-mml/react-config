@@ -26,7 +26,7 @@ const SupportView = () => {
       { id: 3, faTitle: "پشتیبانی داخلی", isInternal: true },
     ];
 
-  const { data: tickets, isLoading } = useQuery("tickets-list", user?.role === 1 ? () => getTicketByStatus(`status=ALL&user_id=${user?.user_id}`) : () => getTicketByStatus(`status=ALL&user_id=${user?.user_id}`));
+  const { data: tickets, isLoading } = useQuery("tickets-list", user?.role === 1 ? () => getTicketByStatus(`status=INPROCESS&user_id=${user?.user_id}`) : () => getTicketByStatus(`status=INPROCESS&user_id=${user?.user_id}`));
   const pageSize = 30;
   const [page, setPage] = useState(0)
   const [value, setValue] = useState("")
