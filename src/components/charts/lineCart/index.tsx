@@ -35,9 +35,7 @@ const LineChart = ({ data, netData }: any) => {
         { id: 2, title: "کاربران", value: "users" },
         { id: 3, title: "کل شبکه", value: "all network" },
     ]
-    console.log(
-        chartGraphData?.values?.slice(0, 50)?.reverse()?.map((item: any) => item)
-    )
+
     const oneMilion = 1000000
     const isDataEmpty = !Array.isArray(chartGraphData?.values) || chartGraphData?.values?.length === 0
     const option = {

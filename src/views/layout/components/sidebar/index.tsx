@@ -62,7 +62,7 @@ const SideBarView = () => {
               subMenue: any[];
               supportedLinks: string[]
             }) => (
-              <a href={item?.link} className={`${s.sidebarLink} ${activeClassName(item?.supportedLinks)}`}>
+              <a key={item?.id} href={item?.link} className={`${s.sidebarLink} ${activeClassName(item?.supportedLinks)}`}>
                 <div
                   className={s.sidebarItem}
                 >

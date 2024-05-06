@@ -25,7 +25,7 @@ const InformationBox = () => {
 
     dispatch(setToken(res));
     toast.success("با موفقیت وارد شدید")
-    navigate("/", { replace: true });
+    navigate(res?.user?.role === 0 ? "/support" : "/", { replace: true });
   }
   ).catch(err => { if (err?.response?.status === 500) { toast.error("نام کاربری یا رمز عبور اشتباه است!") } else { toast.error("خطا در ورود ، مجددا تلاش کنید!") } }));
   const navigate = useNavigate()

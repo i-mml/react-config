@@ -45,7 +45,6 @@ const SupportCreateView = () => {
     const navigate = useNavigate()
     const user = useSelector((state: any) => state?.auth?.data?.user);
     const profile = useSelector((state: any) => state?.auth?.data);
-    console.log(profile)
 
     const isExternal = searchParams?.get("isInternal") && searchParams?.get("isInternal") === "false"
 

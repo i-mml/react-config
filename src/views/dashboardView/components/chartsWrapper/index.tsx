@@ -69,7 +69,7 @@ const ChartsWrapper = ({ chartsData }: any) => {
             },
         }],
     };
-    console.log(healthStorage?.map((item: any) => ({ value: +item?.sensordata?.uptime?.split("%")[0] })))
+
     const option = {
         title: {
             show: false

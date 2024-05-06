@@ -31,7 +31,6 @@ const FinancialManagmentView = () => {
     },
   ];
 
-  console.log(data?.data)
 
   if (isLoading) {
     return <LoadingPage />
