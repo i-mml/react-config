@@ -84,11 +84,11 @@ const CreateCompnayView = () => {
                 login: false,
                 password: values?.it_password,
                 phone_registered: true,
-                role: 2,
+                role: 3,
             },
             admin: {
                 user_id: "",
-                role_id: 2,
+                role_id: 3,
                 telephone: values?.it_mobile,
                 company_id
             }
@@ -104,11 +104,11 @@ const CreateCompnayView = () => {
                 login: false,
                 password: values?.employee_password,
                 phone_registered: true,
-                role: 3,
+                role: 0,
             },
             admin: {
                 user_id: "",
-                role_id: 3,
+                role_id: 0,
                 telephone: values?.employee_mobile,
                 company_id
             }
