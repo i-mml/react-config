@@ -58,7 +58,7 @@ const EditCompnayView = ({ data, plans, id, reloadData, loading }: any) => {
     const handleSubmit = async (values: any) => {
         const formData = new FormData()
         formData.append("id", id)
-        formData.append("title", title)
+        formData.append("title", title || data?.data?.title)
         formData.append("ems_token", data?.data?.ems_token)
         formData.append("english_name", values?.english_name)
         formData.append("description", values?.description)
