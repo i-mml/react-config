@@ -14,7 +14,7 @@ const ChatListItem = (props: any) => {
             {
                 auth?.user_id !== sender &&
                 <div className={s.username}>
-                    ارسال شده از طرف {last_name} {first_name}
+                    ارسال شده از طرف {first_name} {last_name}
                 </div>
             }
         </div>
