@@ -1,12 +1,13 @@
 import React from 'react'
 import s from './style.module.scss';
+import CameraIcon from '../../../../components/icons/Camera';
 
 
 const CameraListItem = ({ title = "", isLast = false, external_link = "" }) => {
 
     return (
         <div className={`${s.container} ${isLast ? s.isLast : ""}`}>
-            <img src='/images/icons/webcam.svg' className={s.image} />
+            <CameraIcon fillInside="#000" className={s.image} />
             <div className={s.title}>{title}</div>
 
             <div className={s.playLink}>

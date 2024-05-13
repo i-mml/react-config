@@ -2,6 +2,7 @@ import React from 'react'
 import s from './style.module.scss';
 import { Stats } from 'fs';
 import StatusBox from '../../../components/statusBox';
+import CameraIcon from '../../../components/icons/Camera';
 
 interface IProps {
     ID: number,
@@ -16,7 +17,7 @@ const CameraTableItem = ({ ID, title, active, external_link }: IProps) => {
         <tr className={s.cameraTableItem} key={ID}>
             <td>
                 <div className={s.name}>
-                    <img src={`/images/icons/webcam.svg`} className={s.image} />
+                    <CameraIcon fillInside="#000" className={s.image} />
                     <span className={s.nameValue}>{title}</span>
                 </div>
             </td>
