@@ -12,9 +12,9 @@ import { Link, useNavigate } from "react-router-dom";
 
 const rolesTranslation: any = {
   0: "کارمند",
-  1: "مدیرعامل",
-  2: "مدیر",
-  3: "ادمین"
+  1: "سوپرادمین",
+  2: "مدیرعامل",
+  3: "آی تی من"
 }
 
 const UserInformationTab = ({ data }: any) => {

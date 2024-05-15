@@ -129,7 +129,7 @@ const SupportView = () => {
                       {
                         user?.role === 1 ?
                           <td>
-                            {item?.companey_name || '-'}
+                            {item?.company_name || '-'}
                           </td>
                           :
                           null
