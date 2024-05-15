@@ -17,8 +17,8 @@ export const adjustData = (data: any[]) => {
   if (sum < 100) {
     data.push({
       name: "Free",
-      value: 100 - sum / data?.length,
-      percentage: 100 - sum / data?.length,
+      value: (100 - sum) / data?.length,
+      percentage: (100 - sum) / data?.length,
       itemStyle: {
         color: "#b7b7b7",
       },
