@@ -15,7 +15,7 @@ function PrivateRoute({ children }: { children: ReactElement }) {
   const tokenValue = Cookies.get("access-token")
 
   if (!tokenValue || tokenValue === "") { return <Navigate to='/login' replace /> };
-  if (!authData?.subscription && location.pathname !== "/financial-management") { return <Navigate to='/financial-management' /> };
+  if (!authData?.subscription && !location.pathname?.includes("/financial-management")) { return <Navigate to='/financial-management' /> };
 
 
   return <Layout>
