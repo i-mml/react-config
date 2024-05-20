@@ -9,7 +9,7 @@ import { CompanyCreateFields } from "../../types/api/company";
 import PrimaryButton from "../../components/buttons/primaryButton";
 import SecondaryButton from "../../components/buttons/secondaryButton";
 import TitleBox from "../dashboardView/components/titleBox";
-import { postAdminRegister } from "../../api/services/admin";
+import { postAdminRegister, postUserRegister } from "../../api/services/admin";
 import { toast } from "react-toastify";
 import { postPlanCreate } from "../../api/services/plan";
 
@@ -20,6 +20,7 @@ const CreateCompnayView = () => {
     const createNewCompanyMutation = useMutation((e: any) => postCompanyCreate(e).then(res => { handleCreateAdmin(res?.data?.ID) }).catch(err => err));
     const createNewAdminMutation = useMutation((e: any) => postAdminRegister(e).catch(err => err));
     const createNewItManMutation = useMutation((e: any) => postAdminRegister(e).then(() => { toast.success("ایجاد شرکت و ادمین ها با موفقیت انجام شد.") }).catch(err => err));
+    const createNewEmployeeMutation = useMutation((e: any) => postUserRegister(e).then(() => { toast.success("ایجاد کارمند با موفقیت انجام شد.") }).catch(err => err));
     const createPlanMutation = useMutation((e: any) => postPlanCreate(e).then(() => { toast.success("پلن با موفقیت آپلود شد.") }).catch(err => err));
 
     const [selectedImage, setSelectedImage] = useState(null);
@@ -105,12 +106,10 @@ const CreateCompnayView = () => {
                 password: values?.employee_password,
                 phone_registered: true,
                 role: 0,
-            },
-            admin: {
                 user_id: "",
                 role_id: 0,
                 telephone: values?.employee_mobile,
-                company_id
+                companey_id: company_id
             }
         }
         const planCreateBody = new FormData()
@@ -121,7 +120,7 @@ const CreateCompnayView = () => {
 
         await createNewAdminMutation.mutate(body)
         await createNewItManMutation.mutate(itManBody)
-        await createNewItManMutation.mutate(employeeBody)
+        await createNewEmployeeMutation.mutate(employeeBody)
 
 
         selectedPlanFiles?.map((item: any, index: number) => {
@@ -719,9 +718,9 @@ const CreateCompnayView = () => {
                         </Field>
 
                         <div className={s.btnBox}>
-                            <PrimaryButton type="submit" className={s.saveBtn} disabled={selectedFile === "" && createNewCompanyMutation.isLoading || createNewAdminMutation.isLoading}>
+                            <PrimaryButton type="submit" className={s.saveBtn} disabled={selectedFile === "" && createNewCompanyMutation.isLoading || createNewAdminMutation.isLoading || createNewItManMutation.isLoading || createNewEmployeeMutation.isLoading}>
                                 {
-                                    createNewAdminMutation.isLoading || createNewCompanyMutation.isLoading ? "درحال انجام" : "ایجاد"}
+                                    createNewAdminMutation.isLoading || createNewCompanyMutation.isLoading || createNewItManMutation.isLoading || createNewEmployeeMutation.isLoading ? "درحال انجام" : "ایجاد"}
                             </PrimaryButton>
 
                             <SecondaryButton className={s.cancelBtn} onClick={() => navigate("/")} disabled={createNewCompanyMutation.isLoading} >
