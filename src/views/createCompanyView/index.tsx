@@ -95,20 +95,20 @@ const CreateCompnayView = () => {
             }
         }
         const employeeBody = {
-            user: {
-                last_name: values?.employee_last_name,
-                first_name: values?.employee_first_name,
-                mobile: values?.employee_mobile,
-                national_code: values?.employee_national_code,
-                email: values?.employee_email,
-                is_active: true,
-                login: false,
-                password: values?.employee_password,
-                phone_registered: true,
-                role: 0,
-                user_id: "",
-                companey_id: company_id
-            }
+
+            last_name: values?.employee_last_name,
+            first_name: values?.employee_first_name,
+            mobile: values?.employee_mobile,
+            national_code: values?.employee_national_code,
+            email: values?.employee_email,
+            is_active: true,
+            login: false,
+            password: values?.employee_password,
+            phone_registered: true,
+            role: 0,
+            user_id: "",
+            companey_id: company_id
+
         }
         const planCreateBody = new FormData()
         planCreateBody.append("company_id", company_id)
