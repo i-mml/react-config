@@ -107,8 +107,6 @@ const CreateCompnayView = () => {
                 phone_registered: true,
                 role: 0,
                 user_id: "",
-                role_id: 0,
-                telephone: values?.employee_mobile,
                 companey_id: company_id
             }
         }
