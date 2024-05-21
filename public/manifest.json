@@ -3,14 +3,12 @@
   "name": "Net Port Application",
   "icons": [
     {
-      "src": "/images/pwa-netport.svg",
-      "sizes": "192x192",
-      "type": "image/svg+xml"
+      "src": "/images/pwa-netport.png",
+      "sizes": "192x192"
     },
     {
-      "src": "/images/pwa-netport.svg",
-      "sizes": "512x512",
-      "type": "image/svg+xml"
+      "src": "/images/pwa-netport.png",
+      "sizes": "512x512"
     }
   ],
   "start_url": "/",
