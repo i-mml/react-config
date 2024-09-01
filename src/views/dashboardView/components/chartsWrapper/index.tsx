@@ -32,9 +32,7 @@ const ChartsWrapper = ({ chartsData }: any) => {
       left: "center",
       data:
         cpusStatus?.length > 0
-          ? cpusStatus?.map(
-              (item: any, index: number) => `${item?.device} ${index}`
-            )
+          ? cpusStatus?.map((item: any, index: number) => `${item?.device}`)
           : [],
     },
     series: [
@@ -44,17 +42,14 @@ const ChartsWrapper = ({ chartsData }: any) => {
         center: ["50%", "38%"],
         data: adjustData(
           cpusStatus?.length > 0
-            ? cpusStatus?.map((item: any, index: number) => {
-                return {
-                  name: `${item?.device} ${index}`,
-                  value: Number(
-                    parseFloat(item?.lastvalue || 0) / cpusStatus?.length
-                  ).toFixed(2),
-                  percentage: Number(parseFloat(item?.lastvalue || 0)).toFixed(
-                    2
-                  ),
-                };
-              })
+            ? cpusStatus?.map((item: any) => ({
+                value:
+                  +(
+                    +item?.lastvalue?.split(" %")[0] / cpusStatus?.length
+                  ).toFixed(2) || 0,
+                name: item?.device,
+                percentage: (+item?.lastvalue?.split(" %")[0]).toFixed(2),
+              }))
             : []
         ),
 
@@ -160,7 +155,7 @@ const ChartsWrapper = ({ chartsData }: any) => {
           virtualMachines?.length > 0
             ? virtualMachines?.map((item: any) => ({
                 value: +(
-                  item?.lastvalue?.split(" %")[0] / virtualMachines?.length
+                  +item?.lastvalue?.split(" %")[0] / virtualMachines?.length
                 ).toFixed(2),
                 name: item?.sensor,
                 percentage: (+item?.lastvalue?.split(" %")[0]).toFixed(2),
